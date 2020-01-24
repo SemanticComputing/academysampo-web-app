@@ -443,12 +443,12 @@ export const networkNodesQuery = `
 
 export const productionPlacesQuery = `
   SELECT ?id ?lat ?long
-  (COUNT(DISTINCT ?manuscripts) as ?instanceCount)
+  (COUNT(DISTINCT ?prs) as ?instanceCount)
   WHERE {
     <FILTER>
-    ?manuscripts ^crm:P108_has_produced/crm:P7_took_place_at ?id .
-    ?id wgs84:lat ?lat ;
-        wgs84:long ?long .
+    ?prs :has_birth/schema:place ?id .
+    ?id geo:lat ?lat ;
+    geo:long ?long .
   }
   GROUP BY ?id ?lat ?long
 `

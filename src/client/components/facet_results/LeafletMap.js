@@ -397,6 +397,10 @@ class LeafletMap extends React.Component {
       popUpTemplate += '<p>Events:</p>'
       popUpTemplate += this.createInstanceListing(result.events)
     }
+    if (this.props.resultClass === 'peoplePlaces') {
+      popUpTemplate += '<p>People:</p>'
+      popUpTemplate += this.createInstanceListing(result.related)
+    }
     // console.log(popUpTemplate)
     return popUpTemplate
   }

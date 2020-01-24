@@ -1,6 +1,8 @@
 import { runSelectQuery } from './SparqlApi'
 import { runNetworkQuery } from './NetworkApi'
 import { prefixes } from './SparqlQueriesPrefixes'
+import { peoplePropertiesInstancePage, 
+  peoplePropertiesFacetResults, peoplePlacesQuery } from './SparqlQueriesPeople'
 import {
   endpoint,
   countQuery,
@@ -31,9 +33,10 @@ import {
   manuscriptsProducedAt,
   lastKnownLocationsAt,
   actorsAt,
-  allPlacesQuery
+  allPlacesQuery,
+  peopleRelatedTo 
 } from './SparqlQueriesPlaces'
-import { facetConfigs } from './FacetConfigsSampo'
+import { facetConfigs } from './FacetConfigsAs'
 import { mapCount, mapPlaces } from './Mappers'
 import { makeObjectList } from './SparqlObjectMapper'
 import { generateConstraintsBlock } from './Filters'
@@ -79,9 +82,9 @@ export const getAllResults = ({
   let filterTarget = ''
   let mapper = makeObjectList
   switch (resultClass) {
-    case 'placesAll':
-      q = allPlacesQuery
-      filterTarget = 'id'
+    case 'peoplePlaces':
+      q = peoplePlacesQuery
+      filterTarget = 'person'
       break
     case 'placesMsProduced':
       q = productionPlacesQuery
@@ -218,8 +221,8 @@ const getPaginatedData = ({
   q = q.replace('<PAGE>', `LIMIT ${pagesize} OFFSET ${page * pagesize}`)
   let resultSetProperties
   switch (resultClass) {
-    case 'perspective1':
-      resultSetProperties = manuscriptPropertiesFacetResults
+    case 'people':
+      resultSetProperties = peoplePropertiesFacetResults
       break
     case 'perspective2':
       resultSetProperties = workProperties
@@ -249,66 +252,21 @@ export const getByURI = ({
 }) => {
   let q
   switch (resultClass) {
-    case 'manuscripts':
+    case 'people':
       q = instanceQuery
-      q = q.replace('<PROPERTIES>', manuscriptPropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'expressions':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', expressionProperties)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'collections':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', collectionProperties)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'works':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', workProperties)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'events':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', eventProperties)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'actors':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', actorProperties)
+      q = q.replace('<PROPERTIES>', peoplePropertiesInstancePage)
       q = q.replace('<RELATED_INSTANCES>', '')
       break
     case 'places':
       q = instanceQuery
       q = q.replace('<PROPERTIES>', placePropertiesInstancePage)
       q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'placesAll':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'placesActors':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', actorsAt)
-      break
-    case 'placesMsProduced':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', manuscriptsProducedAt)
-      break
-    case 'lastKnownLocations':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', lastKnownLocationsAt)
-      break
-    case 'placesEvents':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
+      break 
+    case 'peoplePlaces':
+        q = instanceQuery
+        q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
+        q = q.replace('<RELATED_INSTANCES>', peopleRelatedTo)
+        break 
   }
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')

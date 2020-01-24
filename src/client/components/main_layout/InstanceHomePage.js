@@ -41,7 +41,7 @@ class InstanceHomePage extends React.Component {
 
   componentDidMount = () => {
     let uri = ''
-    const base = 'http://ldf.fi/mmm'
+    const base = 'http://ldf.fi/yoma'
     const locationArr = this.props.routeProps.location.pathname.split('/')
     let localID = locationArr.pop()
     this.props.tabs.map(tab => {
@@ -51,8 +51,8 @@ class InstanceHomePage extends React.Component {
     })
     this.setState({ localID: localID })
     switch (this.props.resultClass) {
-      case 'manuscripts':
-        uri = `${base}/manifestation_singleton/${localID}`
+      case 'people':
+        uri = `${base}/${localID}`
         break
       case 'expressions':
         uri = `${base}/expression/${localID}`

@@ -1,6 +1,6 @@
-# Sampo Web App
+# Ylioppilasmatrikkeli 1640–1899
 
-Sampo Semantic Portal
+Based on https://github.com/SemanticComputing/sampo-web-app
 
 ## Requirements
 

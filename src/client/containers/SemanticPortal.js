@@ -13,14 +13,14 @@ import Main from '../components/main_layout/Main'
 import Footer from '../components/main_layout/Footer'
 import Message from '../components/main_layout/Message'
 import FacetBar from '../components/facet_bar/FacetBar'
-import Perspective1 from '../components/perspectives/sampo/Perspective1'
+import People from '../components/perspectives/as/People'
 import Perspective2 from '../components/perspectives/sampo/Perspective2'
 import Perspective3 from '../components/perspectives/sampo/Perspective3'
 import All from '../components/perspectives/mmm/All'
 import InstanceHomePage from '../components/main_layout/InstanceHomePage'
 import TextPage from '../components/main_layout/TextPage'
-import { perspectiveConfig } from '../configs/sampo/PerspectiveConfig'
-import { perspectiveConfigOnlyInfoPages } from '../configs/sampo/PerspectiveConfigOnlyInfoPages'
+import { perspectiveConfig } from '../configs/as/PerspectiveConfig' 
+import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
 import InfoHeader from '../components/main_layout/InfoHeader'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { has } from 'lodash'
@@ -174,12 +174,12 @@ const SemanticPortal = props => {
   const renderPerspective = (perspective, routeProps) => {
     let perspectiveElement = null
     switch (perspective.id) {
-      case 'perspective1':
+      case 'people':
         perspectiveElement =
-          <Perspective1
-            perspective1={props.perspective1}
+          <People
+            people={props.people}
             places={props.places}
-            facetData={props.perspective1Facets}
+            facetData={props.peopleFacets}
             fetchPaginatedResults={props.fetchPaginatedResults}
             fetchResults={props.fetchResults}
             fetchByURI={props.fetchByURI}
@@ -423,8 +423,8 @@ const SemanticPortal = props => {
 
 const mapStateToProps = state => {
   return {
-    perspective1: state.perspective1,
-    perspective1Facets: state.perspective1Facets,
+    people: state.people,
+    peopleFacets: state.peopleFacets,
     perspective2: state.perspective2,
     perspective2Facets: state.perspective2Facets,
     perspective3: state.perspective3,
@@ -461,8 +461,8 @@ SemanticPortal.propTypes = {
   theme: PropTypes.object.isRequired,
   options: PropTypes.object.isRequired,
   error: PropTypes.object.isRequired,
-  perspective1: PropTypes.object.isRequired,
-  perspective1Facets: PropTypes.object.isRequired,
+  people: PropTypes.object.isRequired,
+  peopleFacets: PropTypes.object.isRequired,
   perspective2: PropTypes.object.isRequired,
   perspective2Facets: PropTypes.object.isRequired,
   perspective3: PropTypes.object.isRequired,

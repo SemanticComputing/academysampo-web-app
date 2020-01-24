@@ -129,12 +129,12 @@ export const allPlacesQuery = `
   }
 `
 
-export const manuscriptsProducedAt = `
+export const peopleRelatedTo = `
     OPTIONAL {
       <FILTER>
-      ?related__id ^crm:P108_has_produced/crm:P7_took_place_at ?id .
+      ?related__id :has_birth/schema:place ?id .
       ?related__id skos:prefLabel ?related__prefLabel .
-      BIND(CONCAT("/manuscripts/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+      BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
     }
 `
 

@@ -162,7 +162,7 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-  ?id :has_event/schema:place ?place__id .
+  ?id (:has_event|:has_title)/schema:place ?place__id .
   ?place__id skos:prefLabel ?place__prefLabel .
   BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
   }
@@ -184,6 +184,10 @@ export const peoplePropertiesFacetResults =
     ?id schema:relatedLink ?externalLink__id. 
     BIND ("Ylioppilasmatrikkeli" AS ?externalLink__prefLabel)
     BIND (?externalLink AS ?externalLink__dataProviderUrl)
+  }
+  UNION 
+  { ?id dct:source ?source__id .
+    ?source__id skos:prefLabel ?source__prefLabel .
   }
 `
 

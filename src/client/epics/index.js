@@ -47,7 +47,7 @@ export const apiUrl = (process.env.NODE_ENV === 'development')
   ? `http://localhost:3001${rootUrl}/api/`
   : `${window.location.protocol}//${window.location.hostname}${port}${rootUrl}/api/`
 
-const backendErrorText = 'Cannot connect to the MMM Knowledge Base. Please try again later.'
+const backendErrorText = 'An error occured. Please check.'
 
 export const availableLocales = {
   en: localeEN,

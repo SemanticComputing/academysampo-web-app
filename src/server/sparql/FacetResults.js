@@ -12,8 +12,6 @@ import {
 import {
   manuscriptPropertiesFacetResults,
   manuscriptPropertiesInstancePage,
-  expressionProperties,
-  collectionProperties,
   productionPlacesQuery,
   lastKnownLocationsQuery,
   migrationsQuery,
@@ -23,12 +21,8 @@ import {
 import { workProperties } from './SparqlQueriesWorks'
 import { eventProperties, eventPlacesQuery } from './SparqlQueriesEvents'
 import { generateEventsByPeriodQuery } from './FacetResultsEvents'
+import { placesActorsQuery } from './SparqlQueriesActors'
 import {
-  actorProperties,
-  placesActorsQuery
-} from './SparqlQueriesActors'
-import {
-  placePropertiesInstancePage,
   placePropertiesInfoWindow,
   manuscriptsProducedAt,
   lastKnownLocationsAt,
@@ -267,6 +261,46 @@ export const getByURI = ({
         q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
         q = q.replace('<RELATED_INSTANCES>', peopleRelatedTo)
         break 
+    case 'perspective1':
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', manuscriptPropertiesInstancePage)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
+    case 'perspective2':
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', workProperties)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
+    case 'perspective3':
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', eventProperties)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
+    case 'placesAll':
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
+    case 'placesActors':
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
+      q = q.replace('<RELATED_INSTANCES>', actorsAt)
+      break
+    case 'placesMsProduced':
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
+      q = q.replace('<RELATED_INSTANCES>', manuscriptsProducedAt)
+      break
+    case 'lastKnownLocations':
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
+      q = q.replace('<RELATED_INSTANCES>', lastKnownLocationsAt)
+      break
+    case 'placesEvents':
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
   }
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')

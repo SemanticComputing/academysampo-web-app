@@ -51,26 +51,19 @@ class InstanceHomePage extends React.Component {
     })
     this.setState({ localID: localID })
     switch (this.props.resultClass) {
+<<<<<<< HEAD
       case 'people':
         uri = `${base}/${localID}`
+=======
+      case 'perspective1':
+        uri = `${base}/manifestation_singleton/${localID}`
+>>>>>>> upstream/master
         break
-      case 'expressions':
-        uri = `${base}/expression/${localID}`
-        break
-      case 'collections':
-        uri = `${base}/collection/${localID}`
-        break
-      case 'works':
+      case 'perspective2':
         uri = `${base}/work/${localID}`
         break
-      case 'events':
+      case 'perspective3':
         uri = `${base}/event/${localID}`
-        break
-      case 'actors':
-        uri = `${base}/actor/${localID}`
-        break
-      case 'places':
-        uri = `${base}/place/${localID}`
         break
     }
     this.props.fetchByURI({

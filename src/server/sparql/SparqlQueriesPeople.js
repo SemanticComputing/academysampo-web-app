@@ -6,8 +6,10 @@ BIND(CONCAT("/people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLa
 BIND(?id as ?uri__id)
 BIND(?id as ?uri__dataProviderUrl)
 BIND(?id as ?uri__prefLabel)
+
 {
-?id skosxl:altLabel/skos:prefLabel ?altLabel .
+  ?id skosxl:altLabel/skos:prefLabel ?altLabel__id .
+  BIND (?altLabel__id AS ?altLabel__prefLabel )
 }
 UNION
 {
@@ -105,6 +107,12 @@ UNION
   BIND (REPLACE(STR(?externalLink__id) , "^.+nbf/(p.+)$", "http://biografiasampo.fi/henkilo/$1") AS ?externalLink__dataProviderUrl )
 }
 UNION
+{ ?id dct:source ?source__id .
+  ?source__id 
+    skos:prefLabel ?source__prefLabel ;
+    skos:related ?source__dataProviderUrl .
+}
+UNION
 {
 ?id ^:supervisor/a :Study .
 BIND("Supervisor" as ?role)
@@ -123,10 +131,7 @@ export const peoplePropertiesFacetResults =
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
-  {
-  ?id skosxl:altLabel/skos:prefLabel ?altLabel .
-  }
-  UNION
+  
   {
     ?id skosxl:prefLabel/schema:familyName ?fname .
   }
@@ -186,16 +191,22 @@ export const peoplePropertiesFacetResults =
     BIND(CONCAT("/nations/page/", REPLACE(STR(?studentnation__id), "^.*\\\\/(.+)", "$1")) AS ?studentnation__dataProviderUrl)
   }
   UNION
-  {
+  { 
     ?id :wikidata ?externalLink__id. 
     BIND ("Wikidata" AS ?externalLink__prefLabel)
-    BIND (?externalLink AS ?externalLink__dataProviderUrl)
+    BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
   }
   UNION
   {
     ?id schema:relatedLink ?externalLink__id. 
     BIND ("Ylioppilasmatrikkeli" AS ?externalLink__prefLabel)
-    BIND (?externalLink AS ?externalLink__dataProviderUrl)
+    BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id :nbf ?externalLink__id. 
+    BIND ("Biografiasampo" AS ?externalLink__prefLabel)
+    BIND (REPLACE(STR(?externalLink__id) , "^.+nbf/(p.+)$", "http://biografiasampo.fi/henkilo/$1") AS ?externalLink__dataProviderUrl )
   }
   UNION 
   { ?id dct:source ?source__id .

@@ -163,10 +163,28 @@ export default {
             The family name of the actor.
           `
         },
+        altLabel: {
+          label: 'Alternative names',
+          description: `
+          Alternative names.
+          `
+        },
         entryText: {
           label: 'Entry text',
           description: `
             Full description.
+          `
+        },
+        relativeText: {
+          label: 'List of relatives',
+          description: `
+            List of known relatives
+          `
+        },
+        referenceText: {
+          label: 'List of references',
+          description: `
+            List of used references
           `
         },
         title: {

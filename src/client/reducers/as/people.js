@@ -47,15 +47,6 @@ export const INITIAL_STATE = {
   instancePageHeaderExpanded: false,
   properties: [
     {
-      id: 'uri',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'prefLabel',
       valueType: 'object',
       makeLink: true,
@@ -80,33 +71,6 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false
-    },
-    {
-      id: 'entryText',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'relativeText',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'referenceText',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
     },
     {
       id: 'birthDateTimespan',
@@ -145,6 +109,16 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
+      id: 'altLabel',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 220,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'deathPlace',
       valueType: 'object',
       makeLink: true,
@@ -152,6 +126,33 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 220
+    },
+    {
+      id: 'entryText',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'relativeText',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'referenceText',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'place',
@@ -173,6 +174,15 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
+      id: 'uri',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'externalLink',
       valueType: 'object',
       makeLink: true,
@@ -184,8 +194,8 @@ export const INITIAL_STATE = {
     {
       id: 'source',
       valueType: 'object',
-      makeLink: false,
-      externalLink: false,
+      makeLink: true,
+      externalLink: true,
       sortValues: true,
       numberedList: false,
       minWidth: 150

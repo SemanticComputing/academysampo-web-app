@@ -24,6 +24,11 @@ export const perspectiveConfig = [
         id: 'map',
         value: 1,
         icon: <AddLocationIcon />
+      },
+      {
+        id: 'export',
+        value: 2,
+        icon: <CloudDownloadIcon />
       }
     ],
     instancePageTabs: [

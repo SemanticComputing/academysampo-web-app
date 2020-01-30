@@ -249,10 +249,10 @@ export default {
         }
       }
     },
-    perspective2: {
-      label: 'Perspective 2',
-      facetResultsType: 'works',
-      shortDescription: 'Perspective 2 description',
+    places: {
+      label: 'Places',
+      facetResultsType: 'places',
+      shortDescription: 'Places description',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to Works. The MMM data model follows
@@ -277,7 +277,7 @@ export default {
         </ul>
       `,
       instancePage: {
-        label: 'Work',
+        label: 'Place',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             The MMM data model follows the
@@ -360,9 +360,9 @@ export default {
       }
     },
     perspective3: {
-      label: 'Perspective 3',
+      label: 'Titles',
       facetResultsType: 'events',
-      shortDescription: 'Perspective 3 description',
+      shortDescription: 'Titles description',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to events associated with the

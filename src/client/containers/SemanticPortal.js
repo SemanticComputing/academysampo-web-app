@@ -14,7 +14,7 @@ import Footer from '../components/main_layout/Footer'
 import Message from '../components/main_layout/Message'
 import FacetBar from '../components/facet_bar/FacetBar'
 import People from '../components/perspectives/as/People'
-import Perspective2 from '../components/perspectives/sampo/Perspective2'
+import Places from '../components/perspectives/as/Places'
 import Perspective3 from '../components/perspectives/sampo/Perspective3'
 import All from '../components/perspectives/mmm/All'
 import InstanceHomePage from '../components/main_layout/InstanceHomePage'
@@ -193,20 +193,22 @@ const SemanticPortal = props => {
             animateMap={props.animateMap}
           />
         break
-      case 'perspective2':
+      case 'places':
         perspectiveElement =
-          <Perspective2
-            perspective2={props.perspective2}
+          <Places
             places={props.places}
-            facetData={props.perspective2Facets}
+            facetData={props.placesFacets}
             fetchPaginatedResults={props.fetchPaginatedResults}
             fetchResults={props.fetchResults}
             fetchByURI={props.fetchByURI}
             updatePage={props.updatePage}
             updateRowsPerPage={props.updateRowsPerPage}
+            updateFacetOption={props.updateFacetOption}
             sortResults={props.sortResults}
             routeProps={routeProps}
             perspective={perspective}
+            animationValue={props.animationValue}
+            animateMap={props.animateMap}
           />
         break
       case 'perspective3':
@@ -425,8 +427,8 @@ const mapStateToProps = state => {
   return {
     people: state.people,
     peopleFacets: state.peopleFacets,
-    perspective2: state.perspective2,
-    perspective2Facets: state.perspective2Facets,
+    places: state.places,
+    placesFacets: state.placesFacets,
     perspective3: state.perspective3,
     perspective3Facets: state.perspective3Facets,
     places: state.places,
@@ -463,8 +465,8 @@ SemanticPortal.propTypes = {
   error: PropTypes.object.isRequired,
   people: PropTypes.object.isRequired,
   peopleFacets: PropTypes.object.isRequired,
-  perspective2: PropTypes.object.isRequired,
-  perspective2Facets: PropTypes.object.isRequired,
+  placesFacets: PropTypes.object.isRequired,
+  places: PropTypes.object.isRequired,
   perspective3: PropTypes.object.isRequired,
   perspective3Facets: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,

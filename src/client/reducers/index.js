@@ -4,7 +4,7 @@ import error from './error'
 import options from './options'
 import people from './as/people'
 import places from './as/places'
-import perspective2 from './sampo/perspective2'
+import placesFacets from './as/placesFacets'
 import perspective3 from './sampo/perspective3'
 import peopleFacets from './as/peopleFacets'
 import perspective2Facets from './sampo/perspective2Facets'
@@ -14,12 +14,11 @@ import clientSideFacetedSearch from './mmm/clientSideFacetedSearch'
 
 const reducer = combineReducers({
   people,
-  perspective2,
+  places,
   perspective3,
   peopleFacets,
-  perspective2Facets,
+  placesFacets,
   perspective3Facets,
-  places,
   animation,
   options,
   error,

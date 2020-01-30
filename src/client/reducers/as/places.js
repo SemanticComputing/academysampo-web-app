@@ -43,8 +43,8 @@ export const INITIAL_STATE = {
   fetching: false,
   fetchingResultCount: false,
   sparqlQuery: null,
-  facetedSearchHeaderExpanded: true,
-  instancePageHeaderExpanded: true,
+  facetedSearchHeaderExpanded: false,
+  instancePageHeaderExpanded: false,
   properties: [
     {
       id: 'uri',
@@ -134,7 +134,7 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'peoplePlaces'
+  'peoplePlaces', 'places'
 ])
 
 const places = (state = INITIAL_STATE, action) => {

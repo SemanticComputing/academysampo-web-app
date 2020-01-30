@@ -45,7 +45,7 @@ export const perspectiveConfig = [
     ]
   },
   {
-    id: 'perspective2',
+    id: 'places',
     frontPageImage: worksImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set(['prefLabel']),
@@ -54,6 +54,11 @@ export const perspectiveConfig = [
         id: 'table',
         value: 0,
         icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'map',
+        value: 1,
+        icon: <AddLocationIcon />
       },
       {
         id: 'export',
@@ -75,7 +80,7 @@ export const perspectiveConfig = [
     ]
   },
   {
-    id: 'perspective3',
+    id: 'titles',
     frontPageImage: eventsImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set(['prefLabel']),

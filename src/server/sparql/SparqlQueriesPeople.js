@@ -21,18 +21,11 @@ UNION
   BIND(?gname__prefLabel AS ?gname__id)
 }
 UNION 
-{ ?id :entry_text ?entryText__id .
-  BIND (?entryText__id AS ?entryText__prefLabel)
-}
+{ ?id :entry_text ?entryText }
 UNION 
-{ ?id :reference_text ?referenceText__id .
-  BIND (?referenceText__id AS ?referenceText__prefLabel)
-}
+{ ?id :reference_text ?referenceText }
 UNION 
-{ ?id :relative_text ?relativeText__id .
-  BIND (?relativeText__id AS ?relativeText__prefLabel)
-}
-
+{ ?id :relative_text ?relativeText }
 UNION
 { 
   ?id :has_birth ?bir 

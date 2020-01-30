@@ -3,6 +3,7 @@ import { runNetworkQuery } from './NetworkApi'
 import { prefixes } from './SparqlQueriesPrefixes'
 import { peoplePropertiesInstancePage, 
   peoplePropertiesFacetResults, peoplePlacesQuery } from './SparqlQueriesPeople'
+import { placePropertiesInstancePage, placePropertiesFacetResults } from './SparqlQueriesPlaces'
 import {
   endpoint,
   countQuery,

@@ -129,7 +129,8 @@ export const INITIAL_STATE = {
     },
     {
       id: 'entryText',
-      valueType: 'object',
+      valueType: 'string',
+      renderAsHTML: true, 
       makeLink: true,
       externalLink: false,
       sortValues: true,
@@ -138,7 +139,8 @@ export const INITIAL_STATE = {
     },
     {
       id: 'relativeText',
-      valueType: 'object',
+      valueType: 'string',
+      renderAsHTML: true, 
       makeLink: true,
       externalLink: false,
       sortValues: true,
@@ -147,7 +149,8 @@ export const INITIAL_STATE = {
     },
     {
       id: 'referenceText',
-      valueType: 'object',
+      valueType: 'string',
+      renderAsHTML: true, 
       makeLink: true,
       externalLink: false,
       sortValues: true,

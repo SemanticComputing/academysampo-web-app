@@ -106,4 +106,15 @@ export const facetConfigs = {
       type: 'timespan'
     }
   }
+  ,
+  places: {
+    facetClass: '<http://ldf.fi/yoma/schema/Place>',
+    prefLabel: {
+      id: 'prefLabel',
+      labelPath: 'skos:prefLabel',
+      textQueryPredicate: '', // empty for querying the facetClass
+      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
+      type: 'text'
+    }
+  }
 }

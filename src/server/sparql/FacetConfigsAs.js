@@ -74,10 +74,17 @@ export const facetConfigs = {
       type: 'hierarchical'
       },
     source: {
-      id: 'source',
+        id: 'source',
+        facetValueFilter: '',
+        labelPath: 'dct:source/skos:prefLabel',
+        predicate: 'dct:source',
+        type: 'list'
+      },
+    gender: {
+      id: 'gender',
       facetValueFilter: '',
-      labelPath: 'dct:source/skos:prefLabel',
-      predicate: 'dct:source',
+      labelPath: 'schema:gender/skos:prefLabel',
+      predicate: 'schema:gender',
       type: 'list'
     },
     fname: {

@@ -157,6 +157,12 @@ export default {
             corporation, or family (Group)
           `
         },
+        gender: {
+          label: 'Gender',
+          description: `
+            The gender of the actor.
+          `
+        },
         fname: {
           label: 'Family name',
           description: `

@@ -107,6 +107,13 @@ UNION
 }
 UNION
 {
+  ?id schema:gender ?gender__id. 
+  ?gender__id skos:prefLabel ?gender__prefLabel .
+  FILTER (LANG(?gender__prefLabel)='fi')
+  BIND (?gender__id AS ?gender__dataProviderUrl)
+} 
+UNION
+{
 ?id ^:supervisor/a :Study .
 BIND("Supervisor" as ?role)
 }
@@ -200,6 +207,13 @@ export const peoplePropertiesFacetResults =
     ?id :nbf ?externalLink__id. 
     BIND ("Biografiasampo" AS ?externalLink__prefLabel)
     BIND (REPLACE(STR(?externalLink__id) , "^.+nbf/(p.+)$", "http://biografiasampo.fi/henkilo/$1") AS ?externalLink__dataProviderUrl )
+  }
+  UNION
+  {
+    ?id schema:gender ?gender__id. 
+    ?gender__id skos:prefLabel ?gender__prefLabel .
+    FILTER (LANG(?gender__prefLabel)='fi')
+    BIND (?gender__id AS ?gender__dataProviderUrl)
   }
   UNION 
   { ?id dct:source ?source__id .

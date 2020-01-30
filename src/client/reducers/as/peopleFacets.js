@@ -147,6 +147,23 @@ export const INITIAL_STATE = {
       type: 'hierarchical',
       priority: 6
     },
+    gender: {
+      id: 'gender',
+      // predicate: defined in backend
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'instanceCount',
+      sortDirection: 'desc',
+      sortButton: false,
+      spatialFilterButton: false,
+      isFetching: false,
+      searchField: false,
+      containerClass: 'five',
+      filterType: 'uriFilter',
+      uriFilter: null,
+      priority: 6
+    },
     source: {
       id: 'source',
       // predicate: defined in backend

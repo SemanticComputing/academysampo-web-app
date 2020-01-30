@@ -80,6 +80,10 @@ export const facetConfigs = {
       predicate: 'dct:source',
       type: 'list'
     },
+    fname: {
+      id: 'fname',
+      labelPath: 'skosxl:prefLabel/schema:familyName'
+    },
     enrollmentTimespan: {
       id: 'enrollmentTimespan',
       facetValueFilter: ``,

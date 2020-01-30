@@ -66,7 +66,7 @@ export const INITIAL_STATE = {
     },
     {
       id: 'fname',
-      valueType: 'object',
+      valueType: 'string',
       makeLink: true,
       externalLink: false,
       sortValues: true,
@@ -80,6 +80,33 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false
+    },
+    {
+      id: 'entryText',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'relativeText',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'referenceText',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'birthDateTimespan',

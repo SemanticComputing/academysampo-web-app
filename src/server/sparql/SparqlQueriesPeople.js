@@ -11,14 +11,26 @@ BIND(?id as ?uri__prefLabel)
 }
 UNION
 {
-  ?id skosxl:prefLabel/schema:familyName ?fname__prefLabel .
-  BIND(?fname__prefLabel AS ?fname__id)
+  ?id skosxl:prefLabel/schema:familyName ?fname .
 }
 UNION
 {
   ?id skosxl:prefLabel/schema:givenName ?gname__prefLabel .
   BIND(?gname__prefLabel AS ?gname__id)
 }
+UNION 
+{ ?id :entry_text ?entryText__id .
+  BIND (?entryText__id AS ?entryText__prefLabel)
+}
+UNION 
+{ ?id :reference_text ?referenceText__id .
+  BIND (?referenceText__id AS ?referenceText__prefLabel)
+}
+UNION 
+{ ?id :relative_text ?relativeText__id .
+  BIND (?relativeText__id AS ?relativeText__prefLabel)
+}
+
 UNION
 { 
   ?id :has_birth ?bir 
@@ -57,7 +69,7 @@ UNION
 }
 UNION
 {
-?id :has_title ?title__id .
+  { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
 OPTIONAL { ?title__id skos:prefLabel ?title__prefLabel }
 BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
 }
@@ -75,16 +87,22 @@ UNION
   BIND(CONCAT("/nations/page/", REPLACE(STR(?studentnation__id), "^.*\\\\/(.+)", "$1")) AS ?studentnation__dataProviderUrl)
 }
 UNION
-{
+{ 
   ?id :wikidata ?externalLink__id. 
   BIND ("Wikidata" AS ?externalLink__prefLabel)
-  BIND (?externalLink AS ?externalLink__dataProviderUrl)
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 UNION
 {
   ?id schema:relatedLink ?externalLink__id. 
   BIND ("Ylioppilasmatrikkeli" AS ?externalLink__prefLabel)
-  BIND (?externalLink AS ?externalLink__dataProviderUrl)
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+}
+UNION
+{
+  ?id :nbf ?externalLink__id. 
+  BIND ("Biografiasampo" AS ?externalLink__prefLabel)
+  BIND (REPLACE(STR(?externalLink__id) , "^.+nbf/(p.+)$", "http://biografiasampo.fi/henkilo/$1") AS ?externalLink__dataProviderUrl )
 }
 UNION
 {
@@ -110,13 +128,7 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id skosxl:prefLabel/schema:familyName ?fname__prefLabel .
-    BIND(?fname__prefLabel AS ?fname__id)
-  }
-  UNION
-  {
-    ?id skosxl:prefLabel/schema:givenName ?gname__prefLabel .
-    BIND(?gname__prefLabel AS ?gname__id)
+    ?id skosxl:prefLabel/schema:familyName ?fname .
   }
   UNION
   { 
@@ -156,7 +168,7 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-  ?id (:has_event*)/:has_title ?title__id .
+    { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
   OPTIONAL { ?title__id skos:prefLabel ?title__prefLabel }
   BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
   }
@@ -189,6 +201,7 @@ export const peoplePropertiesFacetResults =
   { ?id dct:source ?source__id .
     ?source__id skos:prefLabel ?source__prefLabel .
   }
+
 `
 
 

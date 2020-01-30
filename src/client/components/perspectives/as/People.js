@@ -41,7 +41,6 @@ const People = props => {
             results={props.places.results}
             pageType='facetResults'
             facetUpdateID={props.facetData.facetUpdateID}
-            facet={props.facetData.facets.productionPlace}
             facetID='productionPlace'
             resultClass='peoplePlaces'
             facetClass='people'

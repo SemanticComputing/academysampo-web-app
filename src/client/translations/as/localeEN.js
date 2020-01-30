@@ -163,6 +163,12 @@ export default {
             The family name of the actor.
           `
         },
+        entryText: {
+          label: 'Entry text',
+          description: `
+            Full description.
+          `
+        },
         title: {
           label: 'Title',
           description: `

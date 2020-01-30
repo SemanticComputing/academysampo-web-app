@@ -6,6 +6,32 @@ export const placePropertiesInstancePage = `
       BIND(?id as ?uri__id)
       BIND(?id as ?uri__dataProviderUrl)
       BIND(?id as ?uri__prefLabel)
+
+      { 
+        ?id skos:broader+ ?broader__id . 
+        ?broader__id skos:prefLabel ?broader__prefLabel .
+        BIND(CONCAT("/places/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
+        FILTER (LANG(?broader__prefLabel)='fi')
+      }
+      UNION 
+      { 
+        ?id :wikidata ?externalLink__id . 
+        BIND ("Wikidata" AS ?externalLink__prefLabel)
+        BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+      } 
+      UNION 
+      { 
+        ?id :yso ?externalLink__id . 
+        BIND ("YSO" AS ?externalLink__prefLabel)
+        BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+      } 
+      UNION 
+      { 
+        ?id owl:sameAs ?externalLink__id . 
+        FILTER (REGEX(STR(?externalLink__id), 'geonames.org'))
+        BIND ("Geonames" AS ?externalLink__prefLabel)
+        BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+      }
     }
 `
 

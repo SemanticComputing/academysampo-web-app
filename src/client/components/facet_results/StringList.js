@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Collapse from '@material-ui/core/Collapse'
+import ReactHtmlParser from 'react-html-parser'
+import { Link } from 'react-router-dom'
 
 const styles = () => ({
   valueList: {
@@ -41,22 +43,29 @@ const StringList = props => {
     )
   }
 
-  const { data } = props
+  const transform = (node, index) => {
+    if (node.type === 'tag' && node.name === 'a') {
+      const href = node.attribs.href
+      const text = node.children[0].data
+      return <Link key={index} to={href}>{text}</Link>
+    }
+  }
+
+  const { renderAsHTML } = props
+  let { data } = props
   if (data == null || data === '-') {
     return '-'
   }
   const isArray = Array.isArray(data)
+  if (renderAsHTML) {
+    data = ReactHtmlParser(data, { transform })
+  }
   return (
     <>
       {!props.expanded && createFirstValue(data, isArray)}
       <Collapse in={props.expanded} timeout='auto' unmountOnExit>
         {isArray && createBasicList(data)}
-        {!isArray && !props.renderAsHTML && <div className={props.classes.stringContainer}>{data}</div>}
-        {!isArray && props.renderAsHTML &&
-          <div
-            className={props.classes.stringContainer}
-            dangerouslySetInnerHTML={{ __html: data }}
-          />}
+        {!isArray && <div className={props.classes.stringContainer}>{data}</div>}
       </Collapse>
     </>
   )

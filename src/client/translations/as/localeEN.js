@@ -103,7 +103,7 @@ export default {
         </ul>
       `,
       instancePage: {
-        label: 'Manuscript',
+        label: 'Person',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             MMM’s Manuscript entity corresponds to

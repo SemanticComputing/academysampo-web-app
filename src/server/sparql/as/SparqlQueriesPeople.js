@@ -119,6 +119,13 @@ BIND("Supervisor" as ?role)
 }
 UNION
 {
+  ?id bioc:has_family_relation  ?relative__id .
+  ?relative__id skos:prefLabel ?relative__prefLabel ;
+                bioc:inheres_in ?relative__personUrl .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?relative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
+}
+UNION
+{
   ?id ^rels:relates_to [ a :Distance ; rels:relates_to ?similar__id ; :value ?similar__distance ]
   FILTER (?similar__id != ?id)
   # ?similar__id skos:prefLabel ?similar__label .

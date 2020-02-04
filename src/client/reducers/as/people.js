@@ -214,6 +214,15 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
+      id: 'relative',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'similar',
       valueType: 'object',
       makeLink: true,

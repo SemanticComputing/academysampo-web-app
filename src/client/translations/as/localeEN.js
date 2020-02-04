@@ -199,6 +199,12 @@ export default {
             The title of the actor.
           `
         },
+        relative: {
+          label: 'Relatives',
+          description: `
+            This list of relatives is generated from the data.
+          `
+        },
         similar: {
           label: 'Similar people',
           description: `

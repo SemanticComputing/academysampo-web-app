@@ -1,25 +1,13 @@
+export const endpoint = 'http://ldf.fi/yoma/sparql'
+// export const endpoint = 'http://localhost:3050/ds/sparql';
+
 /* TODO:
   labelPath is only used when sorting results, so it should removed from
   facet configs
 */
-const invalidTransferOfCustodyTimespans = `
-        <http://ldf.fi/mmm/time/bibale_element_478356>
-`
-
-const invalidActors = `
-        <http://ldf.fi/mmm/actor/sdbm_names/>
-`
 
 const invalidTitles = `
         <http://ldf.fi/ammo/ylioppilas>
-`
-
-const invalidLanguages = `
-        <http://ldf.fi/mmm/language/sdbm_languages/>
-`
-
-const invalidMaterials = `
-        <http://ldf.fi/mmm/material/>
 `
 
 export const facetConfigs = {
@@ -34,7 +22,7 @@ export const facetConfigs = {
     },
     birthDateTimespan: {
       id: 'birthDateTimespan',
-      facetValueFilter: ``,
+      facetValueFilter: '',
       sortByAscPredicate: ':has_birth/schema:date/gvp:estStart',
       sortByDescPredicate: ':has_birth/schema:date/gvp:estEnd',
       predicate: ':has_birth/schema:date',
@@ -72,14 +60,14 @@ export const facetConfigs = {
       parentProperty: 'skos:broader',
       parentPredicate: ':has_death/schema:place/skos:broader+',
       type: 'hierarchical'
-      },
+    },
     source: {
-        id: 'source',
-        facetValueFilter: '',
-        labelPath: 'dct:source/skos:prefLabel',
-        predicate: 'dct:source',
-        type: 'list'
-      },
+      id: 'source',
+      facetValueFilter: '',
+      labelPath: 'dct:source/skos:prefLabel',
+      predicate: 'dct:source',
+      type: 'list'
+    },
     gender: {
       id: 'gender',
       facetValueFilter: '',
@@ -93,8 +81,8 @@ export const facetConfigs = {
     },
     enrollmentTimespan: {
       id: 'enrollmentTimespan',
-      facetValueFilter: ``,
-      /**labelPath: ':has_enrollment/schema:date/skos:prefLabel',*/
+      facetValueFilter: '',
+      // labelPath: ':has_enrollment/schema:date/skos:prefLabel',
       sortByAscPredicate: ':has_enrollment/schema:date/gvp:estStart',
       sortByDescPredicate: ':has_enrollment/schema:date/gvp:estEnd',
       predicate: ':has_enrollment/schema:date',
@@ -104,7 +92,7 @@ export const facetConfigs = {
     },
     deathDateTimespan: {
       id: 'deathDateTimespan',
-      facetValueFilter: ``,
+      facetValueFilter: '',
       sortByAscPredicate: ':has_death/schema:date/gvp:estStart',
       sortByDescPredicate: ':has_death/schema:date/gvp:estEnd',
       predicate: ':has_death/schema:date',
@@ -112,8 +100,7 @@ export const facetConfigs = {
       endProperty: 'gvp:estEnd',
       type: 'timespan'
     }
-  }
-  ,
+  },
   places: {
     facetClass: '<http://ldf.fi/yoma/schema/Place>',
     prefLabel: {

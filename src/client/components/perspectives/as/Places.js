@@ -14,6 +14,7 @@ const Places = props => {
       <PerspectiveTabs
         routeProps={props.routeProps}
         tabs={props.perspective.tabs}
+        screenSize={props.screenSize}
       />
       <Route
         exact path='/places/faceted-search'
@@ -98,7 +99,6 @@ const Places = props => {
 }
 
 Places.propTypes = {
-  // people: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
   fetchResults: PropTypes.func.isRequired,
@@ -111,7 +111,8 @@ Places.propTypes = {
   updateFacetOption: PropTypes.func.isRequired,
   perspective: PropTypes.object.isRequired,
   animationValue: PropTypes.array.isRequired,
-  animateMap: PropTypes.func.isRequired
+  animateMap: PropTypes.func.isRequired,
+  screenSize: PropTypes.string.isRequired
 }
 
 export default Places

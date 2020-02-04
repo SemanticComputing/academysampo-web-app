@@ -53,10 +53,10 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 250
+      minWidth: 150
     },
     {
-      id: 'fname',
+      id: 'type',
       valueType: 'string',
       makeLink: true,
       externalLink: false,
@@ -219,6 +219,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
+      sortBy: 'level',
       numberedList: false,
       onlyOnInstancePage: true
     },

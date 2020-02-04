@@ -199,6 +199,12 @@ export default {
             The title of the actor.
           `
         },
+        similar: {
+          label: 'Similar people',
+          description: `
+            This list of recommended people is automatically generated from the data.
+          `
+        },
         studentnation: {
           label: 'Student nation',
           description: `

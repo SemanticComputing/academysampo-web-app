@@ -119,6 +119,15 @@ BIND("Supervisor" as ?role)
 }
 UNION
 {
+  ?id ^rels:relates_to [ a :Distance ; rels:relates_to ?similar__id ; :value ?similar__distance ]
+  FILTER (?similar__id != ?id)
+  # ?similar__id skos:prefLabel ?similar__label .
+  # BIND(CONCAT(?similar__label, STR(?similar__distance)) AS ?similar__prefLabel)
+  ?similar__id skos:prefLabel ?similar__prefLabel .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?similar__id), "^.*\\\\/(.+)", "$1")) AS ?similar__dataProviderUrl)
+}
+UNION
+{
 ?id :has_event/a :RectorPeriod .
 BIND("Rector" as ?role)
 }

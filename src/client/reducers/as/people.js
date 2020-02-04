@@ -109,6 +109,15 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
+      id: 'deathPlace',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 220
+    },
+    {
       id: 'altLabel',
       valueType: 'object',
       makeLink: true,
@@ -117,15 +126,6 @@ export const INITIAL_STATE = {
       numberedList: false,
       minWidth: 220,
       onlyOnInstancePage: true
-    },
-    {
-      id: 'deathPlace',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 220
     },
     {
       id: 'gender',
@@ -211,6 +211,16 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 150
+    },
+    {
+      id: 'similar',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      sortBy: 'distance',
+      numberedList: false,
+      onlyOnInstancePage: true
     }
   ]
 }

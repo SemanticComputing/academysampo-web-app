@@ -2,11 +2,9 @@ export const prefixes = `
 PREFIX crm: <http://erlangen-crm.org/current/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX text: <http://jena.apache.org/text#>
 PREFIX sch: <http://schema.org/>
 PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
 PREFIX frbroo: <http://erlangen-crm.org/efrbroo/>
-PREFIX mmm-schema: <http://ldf.fi/mmm/schema/>
 PREFIX gvp: <http://vocab.getty.edu/ontology#>
 PREFIX wgs84: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX spatial: <http://jena.apache.org/spatial#>

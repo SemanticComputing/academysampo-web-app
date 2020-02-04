@@ -8,7 +8,7 @@ import {
   fetchFacet,
   fetchFacetFailed,
   updateFacetValues,
-  updateFacetOption
+  updateFacetOption 
 } from '../helpers'
 
 export const INITIAL_STATE = {

@@ -70,7 +70,8 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false
+      numberedList: false,
+      minWidth: 220
     },
     {
       id: 'birthDateTimespan',
@@ -79,7 +80,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220
+      minWidth: 120
     },
     {
       id: 'birthPlace',
@@ -88,7 +89,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220
+      minWidth: 180
     },
     {
       id: 'enrollmentTimespan',
@@ -97,7 +98,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220
+      minWidth: 120
     },
     {
       id: 'deathDateTimespan',
@@ -106,7 +107,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220
+      minWidth: 120
     },
     {
       id: 'deathPlace',
@@ -115,7 +116,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220
+      minWidth: 180 
     },
     {
       id: 'altLabel',
@@ -134,7 +135,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 150
+      minWidth: 120
     },
     {
       id: 'entryText',
@@ -173,7 +174,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220,
+      minWidth: 180,
       onlyOnInstancePage: true
     },
     {
@@ -183,7 +184,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 150
+      minWidth: 180
     },
     {
       id: 'uri',

@@ -73,7 +73,7 @@ export default {
   perspectives: {
     people: {
       label: 'People',
-      facetResultsType: 'manuscripts',
+      facetResultsType: 'people',
       shortDescription: 'People description',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">

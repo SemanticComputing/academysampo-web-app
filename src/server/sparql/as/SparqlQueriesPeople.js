@@ -2,7 +2,7 @@ export const peoplePropertiesInstancePage = `
 
 ?id skos:prefLabel ?prefLabel__id .
 BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-BIND(CONCAT("/people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+
 BIND(?id as ?uri__id)
 BIND(?id as ?uri__dataProviderUrl)
 BIND(?id as ?uri__prefLabel)
@@ -255,7 +255,7 @@ export const peoplePlacesQuery = `
   (COUNT(DISTINCT ?person) as ?instanceCount)
   WHERE {
     <FILTER>
-    ?person :has_birth/schema:place ?id .
+    ?person :has_event/schema:place ?id .
     ?id geo:lat ?lat ;
     geo:long ?long .
   }

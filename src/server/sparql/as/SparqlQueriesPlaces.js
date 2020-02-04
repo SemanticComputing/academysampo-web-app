@@ -65,7 +65,7 @@ export const allPlacesQuery = `
 export const peopleRelatedTo = `
     OPTIONAL {
       <FILTER>
-      ?related__id :has_birth/schema:place ?id .
+      ?related__id :has_event/schema:place ?id .
       ?related__id skos:prefLabel ?related__prefLabel .
       BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
     }

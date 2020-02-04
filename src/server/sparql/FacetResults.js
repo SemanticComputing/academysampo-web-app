@@ -1,37 +1,27 @@
 import { runSelectQuery } from './SparqlApi'
 import { runNetworkQuery } from './NetworkApi'
-import { prefixes } from './SparqlQueriesPrefixes'
-import { peoplePropertiesInstancePage, 
-  peoplePropertiesFacetResults, peoplePlacesQuery } from './SparqlQueriesPeople'
-import { placePropertiesInstancePage, placePropertiesFacetResults } from './SparqlQueriesPlaces'
+import { prefixes } from './as/SparqlQueriesPrefixes'
 import {
-  endpoint,
-  countQuery,
-  facetResultSetQuery,
-  instanceQuery
-} from './SparqlQueriesGeneral'
+  peoplePropertiesInstancePage,
+  peoplePropertiesFacetResults,
+  peoplePlacesQuery
+} from './as/SparqlQueriesPeople'
 import {
-  manuscriptPropertiesFacetResults,
-  manuscriptPropertiesInstancePage,
-  productionPlacesQuery,
-  lastKnownLocationsQuery,
-  migrationsQuery,
-  networkLinksQuery,
-  networkNodesQuery
-} from './SparqlQueriesManuscripts'
-import { workProperties } from './SparqlQueriesWorks'
-import { eventProperties, eventPlacesQuery } from './SparqlQueriesEvents'
-import { generateEventsByPeriodQuery } from './FacetResultsEvents'
-import { placesActorsQuery } from './SparqlQueriesActors'
-import {
+  placePropertiesInstancePage,
+  placePropertiesFacetResults,
   placePropertiesInfoWindow,
   manuscriptsProducedAt,
   lastKnownLocationsAt,
   actorsAt,
   allPlacesQuery,
-  peopleRelatedTo 
-} from './SparqlQueriesPlaces'
-import { facetConfigs } from './FacetConfigsAs'
+  peopleRelatedTo
+} from './as/SparqlQueriesPlaces'
+import {
+  countQuery,
+  facetResultSetQuery,
+  instanceQuery
+} from './SparqlQueriesGeneral'
+import { facetConfigs, endpoint } from './as/FacetConfigsAs'
 import { mapCount, mapPlaces } from './Mappers'
 import { makeObjectList } from './SparqlObjectMapper'
 import { generateConstraintsBlock } from './Filters'
@@ -75,42 +65,11 @@ export const getAllResults = ({
 }) => {
   let q = ''
   let filterTarget = ''
-  let mapper = makeObjectList
+  const mapper = makeObjectList
   switch (resultClass) {
     case 'peoplePlaces':
       q = peoplePlacesQuery
       filterTarget = 'person'
-      break
-    case 'placesMsProduced':
-      q = productionPlacesQuery
-      filterTarget = 'manuscripts'
-      mapper = mapPlaces
-      break
-    case 'lastKnownLocations':
-      q = lastKnownLocationsQuery
-      filterTarget = 'manuscripts'
-      mapper = mapPlaces
-      break
-    case 'placesActors':
-      q = placesActorsQuery
-      filterTarget = 'actor__id'
-      mapper = mapPlaces
-      break
-    case 'placesMsMigrations':
-      q = migrationsQuery
-      filterTarget = 'manuscript__id'
-      break
-    case 'placesEvents':
-      q = eventPlacesQuery
-      filterTarget = 'event'
-      break
-    case 'eventsByTimePeriod':
-      q = generateEventsByPeriodQuery({ startYear: 1600, endYear: 1620, periodLength: 10 })
-      filterTarget = 'event'
-      break
-    case 'manuscriptsNetwork':
-      q = networkLinksQuery
-      filterTarget = 'source'
       break
   }
   if (constraints == null) {
@@ -124,15 +83,15 @@ export const getAllResults = ({
       facetID: null
     }))
   }
-  if (resultClass === 'manuscriptsNetwork') {
-    // console.log(prefixes + q)
-    return runNetworkQuery({
-      endpoint,
-      prefixes,
-      links: q,
-      nodes: networkNodesQuery
-    })
-  }
+  // if (resultClass === 'manuscriptsNetwork') {
+  //   // console.log(prefixes + q)
+  //   return runNetworkQuery({
+  //     endpoint,
+  //     prefixes,
+  //     links: q,
+  //     nodes: networkNodesQuery
+  //   })
+  // }
   // console.log(prefixes + q)
   return runSelectQuery({
     query: prefixes + q,
@@ -256,26 +215,11 @@ export const getByURI = ({
       q = instanceQuery
       q = q.replace('<PROPERTIES>', placePropertiesInstancePage)
       q = q.replace('<RELATED_INSTANCES>', '')
-      break 
+      break
     case 'peoplePlaces':
-        q = instanceQuery
-        q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-        q = q.replace('<RELATED_INSTANCES>', peopleRelatedTo)
-        break 
-    case 'perspective1':
       q = instanceQuery
-      q = q.replace('<PROPERTIES>', manuscriptPropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'perspective2':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', workProperties)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'perspective3':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', eventProperties)
-      q = q.replace('<RELATED_INSTANCES>', '')
+      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
+      q = q.replace('<RELATED_INSTANCES>', peopleRelatedTo)
       break
     case 'placesAll':
       q = instanceQuery

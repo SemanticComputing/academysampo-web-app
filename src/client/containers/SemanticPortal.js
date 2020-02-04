@@ -170,6 +170,16 @@ const styles = theme => ({
 const SemanticPortal = props => {
   const { classes, /* browser */ error } = props
   const xsScreen = useMediaQuery(theme => theme.breakpoints.down('xs'))
+  const smScreen = useMediaQuery(theme => theme.breakpoints.between('sm', 'md'))
+  const mdScreen = useMediaQuery(theme => theme.breakpoints.between('md', 'lg'))
+  const lgScreen = useMediaQuery(theme => theme.breakpoints.between('lg', 'xl'))
+  const xlScreen = useMediaQuery(theme => theme.breakpoints.up('xl'))
+  let screenSize = ''
+  if (xsScreen) { screenSize = 'xs' }
+  if (smScreen) { screenSize = 'sm' }
+  if (mdScreen) { screenSize = 'md' }
+  if (lgScreen) { screenSize = 'lg' }
+  if (xlScreen) { screenSize = 'xl' }
 
   const renderPerspective = (perspective, routeProps) => {
     let perspectiveElement = null
@@ -191,6 +201,7 @@ const SemanticPortal = props => {
             perspective={perspective}
             animationValue={props.animationValue}
             animateMap={props.animateMap}
+            screenSize={screenSize}
           />
         break
       case 'places':
@@ -209,6 +220,7 @@ const SemanticPortal = props => {
             perspective={perspective}
             animationValue={props.animationValue}
             animateMap={props.animateMap}
+            screenSize={screenSize}
           />
         break
       case 'perspective3':
@@ -226,6 +238,7 @@ const SemanticPortal = props => {
             sortResults={props.sortResults}
             routeProps={routeProps}
             perspective={perspective}
+            screenSize={screenSize}
           />
         break
       default:
@@ -345,6 +358,7 @@ const SemanticPortal = props => {
                                 sparqlQuery={props[perspective.id].instanceSparqlQuery}
                                 isLoading={props[perspective.id].fetching}
                                 routeProps={routeProps}
+                                screenSize={screenSize}
                               />
                             </Grid>
                           </Grid>
@@ -387,6 +401,7 @@ const SemanticPortal = props => {
                           sparqlQuery={props[perspective.id].instanceSparqlQuery}
                           isLoading={props[perspective.id].fetching}
                           routeProps={routeProps}
+                          screenSize={screenSize}
                         />
                       </Grid>
                     </Grid>
@@ -431,7 +446,6 @@ const mapStateToProps = state => {
     placesFacets: state.placesFacets,
     perspective3: state.perspective3,
     perspective3Facets: state.perspective3Facets,
-    places: state.places,
     clientSideFacetedSearch: state.clientSideFacetedSearch,
     animationValue: state.animation.value,
     options: state.options,
@@ -469,7 +483,6 @@ SemanticPortal.propTypes = {
   places: PropTypes.object.isRequired,
   perspective3: PropTypes.object.isRequired,
   perspective3Facets: PropTypes.object.isRequired,
-  places: PropTypes.object.isRequired,
   animationValue: PropTypes.array.isRequired,
   fetchResults: PropTypes.func.isRequired,
   fetchResultCount: PropTypes.func.isRequired,

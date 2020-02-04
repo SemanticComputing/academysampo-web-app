@@ -28,7 +28,7 @@ UNION
 { ?id :relative_text ?relativeText }
 UNION
 { 
-  ?id :has_birth ?bir 
+  ?id :has_birth|:has_baptism ?bir 
   OPTIONAL {
       ?bir schema:place ?birthPlace__id .
       ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
@@ -49,7 +49,7 @@ OPTIONAL { ?enrollmentTimespan__id gvp:estEnd ?enrollmentTimespan__end }
 } 
 UNION
 { 
-  ?id :has_death ?dea
+  ?id :has_death|:has_burial ?dea
   OPTIONAL {
       ?dea schema:place ?deathPlace__id .
       ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .

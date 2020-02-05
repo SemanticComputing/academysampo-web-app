@@ -4,7 +4,7 @@ import { prefixes } from './as/SparqlQueriesPrefixes'
 import {
   peoplePropertiesInstancePage,
   peoplePropertiesFacetResults,
-  peoplePlacesQuery
+  peopleEventPlacesQuery
 } from './as/SparqlQueriesPeople'
 import {
   relativesPropertiesInstancePage,
@@ -73,7 +73,7 @@ export const getAllResults = ({
   const mapper = makeObjectList
   switch (resultClass) {
     case 'peoplePlaces':
-      q = peoplePlacesQuery
+      q = peopleEventPlacesQuery
       filterTarget = 'person'
       break
   }

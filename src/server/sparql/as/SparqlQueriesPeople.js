@@ -276,7 +276,7 @@ export const peoplePropertiesFacetResults =
 `
 
 
-export const peoplePlacesQuery = `
+export const peopleEventPlacesQuery = `
   SELECT ?id ?lat ?long
   (COUNT(DISTINCT ?person) as ?instanceCount)
   WHERE {

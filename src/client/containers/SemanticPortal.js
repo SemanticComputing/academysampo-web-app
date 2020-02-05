@@ -204,8 +204,8 @@ const SemanticPortal = props => {
             animateMap={props.animateMap}
             screenSize={screenSize}
           />
-        break
-        case 'relatives':
+          break
+      case 'relatives':
           perspectiveElement =
             <Relatives
               relatives={props.relatives}

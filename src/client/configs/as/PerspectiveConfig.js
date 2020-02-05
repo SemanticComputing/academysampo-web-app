@@ -21,13 +21,18 @@ export const perspectiveConfig = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'map',
+        id: 'life_map',
         value: 1,
         icon: <AddLocationIcon />
       },
       {
-        id: 'export',
+        id: 'map',
         value: 2,
+        icon: <AddLocationIcon />
+      },
+      {
+        id: 'export',
+        value: 3,
         icon: <CloudDownloadIcon />
       }
     ],

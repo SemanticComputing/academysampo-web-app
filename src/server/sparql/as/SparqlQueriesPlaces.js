@@ -41,7 +41,6 @@ export const placePropertiesFacetResults = `
       BIND(?prefLabel__id AS ?prefLabel__prefLabel)
       BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
     }
-    
 `
 
 export const placePropertiesInfoWindow = `

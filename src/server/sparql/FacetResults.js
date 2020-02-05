@@ -7,6 +7,11 @@ import {
   peoplePlacesQuery
 } from './as/SparqlQueriesPeople'
 import {
+  relativePropertiesInstancePage,
+  relativePropertiesFacetResults,
+  relativePlacesQuery
+} from './as/SparqlQueriesRelative'
+import {
   placePropertiesInstancePage,
   placePropertiesFacetResults,
   placePropertiesInfoWindow,
@@ -211,6 +216,11 @@ export const getByURI = ({
       q = q.replace('<PROPERTIES>', peoplePropertiesInstancePage)
       q = q.replace('<RELATED_INSTANCES>', '')
       break
+    case 'relative':
+        q = instanceQuery
+        q = q.replace('<PROPERTIES>', relativePropertiesInstancePage)
+        q = q.replace('<RELATED_INSTANCES>', '')
+        break
     case 'places':
       q = instanceQuery
       q = q.replace('<PROPERTIES>', placePropertiesInstancePage)

@@ -14,6 +14,7 @@ import Footer from '../components/main_layout/Footer'
 import Message from '../components/main_layout/Message'
 import FacetBar from '../components/facet_bar/FacetBar'
 import People from '../components/perspectives/as/People'
+import Relative from '../components/perspectives/as/Relative'
 import Places from '../components/perspectives/as/Places'
 import Perspective3 from '../components/perspectives/sampo/Perspective3'
 import All from '../components/perspectives/mmm/All'
@@ -204,6 +205,27 @@ const SemanticPortal = props => {
             screenSize={screenSize}
           />
         break
+        case 'relative':
+          perspectiveElement =
+            <Relative
+              relative={props.relative}
+              places={props.places}
+              facetData={props.relativeFacets}
+              fetchPaginatedResults={props.fetchPaginatedResults}
+              fetchResults={props.fetchResults}
+              fetchByURI={props.fetchByURI}
+              updatePage={props.updatePage}
+              updateRowsPerPage={props.updateRowsPerPage}
+              updateFacetOption={props.updateFacetOption}
+              sortResults={props.sortResults}
+              routeProps={routeProps}
+              perspective={perspective}
+              animationValue={props.animationValue}
+              animateMap={props.animateMap}
+              screenSize={screenSize}
+            />
+          break
+        
       case 'places':
         perspectiveElement =
           <Places
@@ -442,6 +464,8 @@ const mapStateToProps = state => {
   return {
     people: state.people,
     peopleFacets: state.peopleFacets,
+    relative: state.relative,
+    // relativeFacets: state.relativeFacets,
     places: state.places,
     placesFacets: state.placesFacets,
     perspective3: state.perspective3,
@@ -479,6 +503,8 @@ SemanticPortal.propTypes = {
   error: PropTypes.object.isRequired,
   people: PropTypes.object.isRequired,
   peopleFacets: PropTypes.object.isRequired,
+  // relativeFacets: PropTypes.object.isRequired,
+  relative: PropTypes.object.isRequired,
   placesFacets: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   perspective3: PropTypes.object.isRequired,

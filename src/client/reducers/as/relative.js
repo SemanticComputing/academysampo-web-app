@@ -56,13 +56,13 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
-      id: 'type',
-      valueType: 'string',
-      makeLink: true,
+      id: 'gender',
+      valueType: 'object',
+      makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 150
+      minWidth: 120
     },
     {
       id: 'title',
@@ -90,15 +90,6 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 180
-    },
-    {
-      id: 'enrollmentTimespan',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 120
     },
     {
       id: 'deathDateTimespan',
@@ -129,45 +120,6 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'gender',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 120
-    },
-    {
-      id: 'entryText',
-      valueType: 'string',
-      renderAsHTML: true, 
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'relativeText',
-      valueType: 'string',
-      renderAsHTML: true, 
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'referenceText',
-      valueType: 'string',
-      renderAsHTML: true, 
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'place',
       valueType: 'object',
       makeLink: true,
@@ -176,15 +128,6 @@ export const INITIAL_STATE = {
       numberedList: false,
       minWidth: 180,
       onlyOnInstancePage: true
-    },
-    {
-      id: 'studentnation',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 180
     },
     {
       id: 'uri',
@@ -205,31 +148,12 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
-      id: 'source',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
-    },
-    {
       id: 'relative',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
       sortValues: true,
       sortBy: 'level',
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'similar',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      sortBy: 'distance',
       numberedList: false,
       onlyOnInstancePage: true
     }

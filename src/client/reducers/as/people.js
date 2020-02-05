@@ -56,15 +56,6 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
-      id: 'type',
-      valueType: 'string',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
-    },
-    {
       id: 'title',
       valueType: 'object',
       makeLink: true,

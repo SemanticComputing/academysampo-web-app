@@ -1,8 +1,8 @@
 export default {
   languageLabel: 'English',
   appTitle: {
-    short: 'sampo',
-    long: 'Sampo Semantic Portal',
+    short: 'AcademySampo',
+    long: 'AcademySampo Semantic Portal',
     subheading: `
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
       doloremque laudantium unde
@@ -21,7 +21,7 @@ export default {
     info: {
       info: 'Info',
       blog: 'Project blog',
-      blogUrl: 'https://seco.cs.aalto.fi',
+      blogUrl: 'https://seco.cs.aalto.fi/projects/yo-matrikkelit/',
       aboutThePortal: 'About the Portal'
     },
     searchBarPlaceHolder: 'Search all content',
@@ -203,6 +203,12 @@ export default {
           label: 'Relatives',
           description: `
             This list of relatives is generated from the data.
+          `
+        },
+        related: {
+          label: 'Related people',
+          description: `
+            This list of related people contains students, teachers, supervisors, and namesakes of a person.
           `
         },
         similar: {

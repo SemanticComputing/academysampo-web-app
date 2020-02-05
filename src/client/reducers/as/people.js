@@ -215,6 +215,15 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
+      id: 'related',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    }, 
+    {
       id: 'similar',
       valueType: 'object',
       makeLink: true,

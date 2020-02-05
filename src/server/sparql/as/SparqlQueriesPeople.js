@@ -152,6 +152,26 @@ UNION
 }
 UNION
 {
+  ?id bioc:has_person_relation  ?related__id .
+  ?related__id skos:prefLabel ?related__prefLabel ;
+                bioc:inheres_in ?related__personUrl .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?related__personUrl), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+}
+UNION
+{
+  ?id :has_event ?related__id .
+  ?related__id :supervisor ?related__personUrl ;  skos:prefLabel ?related__prefLabel .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?related__personUrl), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+} 
+UNION
+{
+  ?related__id :has_event [ :supervisor ?id ; skos:prefLabel ?evt_label ] ; 
+      skos:prefLabel ?prs_label .
+      BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+      BIND (CONCAT(REPLACE(STR(?prs_label), '[(][^)]+[)]',''),': ',?evt_label) AS ?related__prefLabel)
+} 
+UNION
+{
 ?id :has_event/a :RectorPeriod .
 BIND("Rector" as ?role)
 }

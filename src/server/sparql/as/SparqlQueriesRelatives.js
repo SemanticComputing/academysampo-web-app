@@ -1,4 +1,4 @@
-export const relativePropertiesInstancePage = `
+export const relativesPropertiesInstancePage = `
 
 ?id skos:prefLabel ?prefLabel__id .
 BIND(?prefLabel__id AS ?prefLabel__prefLabel)
@@ -31,7 +31,7 @@ UNION
   OPTIONAL {
       ?bir schema:place ?birthPlace__id .
       ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
-      BIND(CONCAT("/relative/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
+      BIND(CONCAT("/relatives/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
   }
   OPTIONAL {
       ?bir schema:date ?birthDateTimespan__id .
@@ -46,7 +46,7 @@ UNION
   OPTIONAL {
       ?dea schema:place ?deathPlace__id .
       ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
-      BIND(CONCAT("/relative/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
+      BIND(CONCAT("/relatives/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
   }
   OPTIONAL {
       ?dea schema:date ?deathDateTimespan__id .
@@ -109,16 +109,16 @@ UNION
     BIND(CONCAT("/people/page/", REPLACE(STR(?relative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
   } UNION {
     ?relative__personUrl a :ReferencedPerson .
-    BIND(CONCAT("/relative/page/", REPLACE(STR(?relative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
+    BIND(CONCAT("/relatives/page/", REPLACE(STR(?relative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
   }
 }
 
 `
 
-export const relativePropertiesFacetResults =
+export const relativesPropertiesFacetResults =
   `?id skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-  BIND(CONCAT("/relative/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  BIND(CONCAT("/relatives/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
@@ -214,7 +214,7 @@ export const relativePropertiesFacetResults =
 `
 
 
-export const relativePlacesQuery = `
+export const relativesPlacesQuery = `
   SELECT ?id ?lat ?long
   (COUNT(DISTINCT ?person) as ?instanceCount)
   WHERE {

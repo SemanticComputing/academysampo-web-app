@@ -267,8 +267,8 @@ export default {
         }
       }
     },
-    relative: {
-      label: 'People',
+    relatives: {
+      label: 'Relatives',
       facetResultsType: 'people',
       shortDescription: 'People description',
       longDescription: `

@@ -98,7 +98,7 @@ export const facetConfigs = {
       type: 'timespan'
     }
   },
-  relative: {
+  relatives: {
     facetClass: '<http://ldf.fi/yoma/schema/ReferencedPerson>',
     prefLabel: {
       id: 'prefLabel',

@@ -3,7 +3,7 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 import error from './error'
 import options from './options'
 import people from './as/people'
-import relative from './as/relative'
+import relatives from './as/relatives'
 import places from './as/places'
 import placesFacets from './as/placesFacets'
 import perspective3 from './sampo/perspective3'
@@ -15,7 +15,7 @@ import clientSideFacetedSearch from './mmm/clientSideFacetedSearch'
 
 const reducer = combineReducers({
   people,
-  relative,
+  relatives,
   places,
   perspective3,
   peopleFacets,

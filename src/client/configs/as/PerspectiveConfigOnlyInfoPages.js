@@ -4,7 +4,7 @@ import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 
 export const perspectiveConfigOnlyInfoPages = [
   {
-    id: 'relative',
+    id: 'relatives',
     perspectiveDescHeight: 160,
     instancePageTabs: [
       {

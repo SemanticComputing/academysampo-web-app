@@ -161,10 +161,10 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'relative'
+  'relatives'
 ])
 
-const relative = (state = INITIAL_STATE, action) => {
+const relatives = (state = INITIAL_STATE, action) => {
   if (resultClasses.has(action.resultClass)) {
     switch (action.type) {
       case FETCH_RESULTS:
@@ -200,4 +200,4 @@ const relative = (state = INITIAL_STATE, action) => {
   } else return state
 }
 
-export default relative
+export default relatives

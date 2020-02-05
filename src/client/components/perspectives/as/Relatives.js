@@ -8,7 +8,7 @@ import Deck from '../../facet_results/Deck'
 import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
 
-const Relative = props => {
+const Relatives = props => {
   return (
     <>
       <PerspectiveTabs
@@ -17,17 +17,17 @@ const Relative = props => {
         screenSize={props.screenSize}
       />
       <Route
-        exact path='/relative/faceted-search'
-        render={() => <Redirect to='/relative/faceted-search/table' />}
+        exact path='/relatives/faceted-search'
+        render={() => <Redirect to='/relatives/faceted-search/table' />}
       />
       <Route
-        path='/relative/faceted-search/table'
+        path='/relatives/faceted-search/table'
         render={routeProps =>
           <ResultTable
-            data={props.relative}
+            data={props.relatives}
             facetUpdateID={props.facetData.facetUpdateID}
-            resultClass='relative'
-            facetClass='relative'
+            resultClass='relatives'
+            facetClass='relatives'
             fetchPaginatedResults={props.fetchPaginatedResults}
             updatePage={props.updatePage}
             updateRowsPerPage={props.updateRowsPerPage}
@@ -36,7 +36,7 @@ const Relative = props => {
           />}
       />
       <Route
-        path='/relative/faceted-search/map'
+        path='/relatives/faceted-search/map'
         render={() =>
           <LeafletMap
             results={props.places.results}
@@ -44,7 +44,7 @@ const Relative = props => {
             facetUpdateID={props.facetData.facetUpdateID}
             facetID='productionPlace'
             resultClass='relativePlaces'
-            facetClass='relative'
+            facetClass='relatives'
             mapMode='cluster'
             instance={props.places.instance}
             fetchResults={props.fetchResults}
@@ -55,23 +55,23 @@ const Relative = props => {
           />}
       />
       <Route
-        path='/relative/faceted-search/statistics'
+        path='/relatives/faceted-search/statistics'
         render={() =>
           <Network
-            results={props.relative.results}
+            results={props.relatives.results}
             fetchResults={props.fetchResults}
             resultClass='relativeNetwork'
-            facetClass='relative'
+            facetClass='relatives'
           />}
       />
       <Route
-        path='/relative/faceted-search/migrations'
+        path='/relatives/faceted-search/migrations'
         render={() =>
           <Deck
             results={props.places.results}
             facetUpdateID={props.facetData.facetUpdateID}
             resultClass='placesMsMigrations'
-            facetClass='relative'
+            facetClass='relatives'
             mapMode='cluster'
             instance={props.places.instance}
             fetchResults={props.fetchResults}
@@ -82,15 +82,15 @@ const Relative = props => {
           />}
       />
       <Route
-        path='/relative/faceted-search/export'
+        path='/relatives/faceted-search/export'
         render={() =>
           <Export
-            sparqlQuery={props.relative.paginatedResultsSparqlQuery}
+            sparqlQuery={props.relatives.paginatedResultsSparqlQuery}
             pageType='facetResults'
           />}
       />
       {/* <Route
-        path='/relative/faceted-search/network'
+        path='/relatives/faceted-search/network'
         render={() =>
           <Network />}
       /> */}
@@ -98,8 +98,8 @@ const Relative = props => {
   )
 }
 
-Relative.propTypes = {
-  relative: PropTypes.object.isRequired,
+Relatives.propTypes = {
+  relatives: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
   fetchResults: PropTypes.func.isRequired,
@@ -116,4 +116,4 @@ Relative.propTypes = {
   screenSize: PropTypes.string.isRequired
 }
 
-export default Relative
+export default Relatives

@@ -70,7 +70,7 @@ const People = props => {
           <Deck
             results={props.places.results}
             facetUpdateID={props.facetData.facetUpdateID}
-            resultClass='placesMsMigrations'
+            resultClass='peopleMigrations'
             facetClass='people'
             mapMode='cluster'
             instance={props.places.instance}

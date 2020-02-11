@@ -4,7 +4,8 @@ import { prefixes } from './as/SparqlQueriesPrefixes'
 import {
   peoplePropertiesInstancePage,
   peoplePropertiesFacetResults,
-  peopleEventPlacesQuery
+  peopleEventPlacesQuery,
+  peopleMigrationsQuery
 } from './as/SparqlQueriesPeople'
 import {
   relativesPropertiesInstancePage,
@@ -75,6 +76,10 @@ export const getAllResults = ({
     case 'peoplePlaces':
       q = peopleEventPlacesQuery
       filterTarget = 'person'
+      break
+    case 'peopleMigrations':
+      q = peopleMigrationsQuery
+      filterTarget = 'person__id'
       break
   }
   if (constraints == null) {

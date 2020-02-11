@@ -21,9 +21,9 @@ export const perspectiveConfig = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'life_map',
+        id: 'migrations',
         value: 1,
-        icon: <AddLocationIcon />
+        icon: <RedoIcon />
       },
       {
         id: 'map',

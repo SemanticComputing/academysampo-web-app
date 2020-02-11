@@ -57,6 +57,15 @@ export const facetConfigs = {
       parentProperty: 'skos:broader',
       parentPredicate: ':has_death/schema:place/skos:broader+',
       type: 'hierarchical'
+    }, 
+    cat: {
+      id: 'cat',
+      facetValueFilter: '',
+      predicate: ':has_category',
+      labelPath: ':has_category/skos:prefLabel',
+      parentProperty: 'skos:broader',
+      parentPredicate: ':has_category/skos:broader+',
+      type: 'hierarchical'
     },
     source: {
       id: 'source',

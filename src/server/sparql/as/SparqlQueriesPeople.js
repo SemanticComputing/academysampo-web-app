@@ -92,6 +92,12 @@ UNION
   BIND(CONCAT("/nations/page/", REPLACE(STR(?studentnation__id), "^.*\\\\/(.+)", "$1")) AS ?studentnation__dataProviderUrl)
 }
 UNION
+{
+  ?id :has_category ?cat__id .
+  ?cat__id skos:prefLabel ?cat__prefLabel .
+  BIND(?cat__id AS ?cat__dataProviderUrl)
+}
+UNION
 { 
   ?id :wikidata ?externalLink__id. 
   BIND ("Wikidata" AS ?externalLink__prefLabel)
@@ -223,6 +229,12 @@ export const peoplePropertiesFacetResults =
         OPTIONAL { ?deathDateTimespan__id gvp:estStart ?deathDateTimespan__start }
         OPTIONAL { ?deathDateTimespan__id gvp:estEnd ?deathDateTimespan__end }
     }
+  }
+  UNION
+  {
+    ?id :has_category ?cat__id .
+    ?cat__id skos:prefLabel ?cat__prefLabel .
+    BIND(?cat__id AS ?cat__dataProviderUrl)
   }
   UNION
   {

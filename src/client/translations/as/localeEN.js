@@ -193,6 +193,12 @@ export default {
             List of used references
           `
         },
+        cat: {
+          label: 'Category',
+          description: `
+            The category of the actor. This list is available only for the people in the 1640–1853 dataset.
+          `
+        },
         title: {
           label: 'Title',
           description: `

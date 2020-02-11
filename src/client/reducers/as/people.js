@@ -120,6 +120,15 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
+      id: 'cat',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 220
+    },
+    {
       id: 'gender',
       valueType: 'object',
       makeLink: false,

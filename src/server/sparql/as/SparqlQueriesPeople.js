@@ -313,8 +313,8 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
     ?to__id ?to__prefLabel ?to__dataProviderUrl ?to__lat ?to__long
   WHERE {
     <FILTER> 
-    ?person__id :has_birth/schema:place ?from__id ;
-  			:has_death/schema:place ?to__id ;
+    ?person__id (:has_birth|:has_baptism)/schema:place ?from__id ;
+  			(:has_death|:has_burial)/schema:place ?to__id ;
     		skos:prefLabel ?person__prefLabel .
     BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
     ?from__id skos:prefLabel ?from__prefLabel ;

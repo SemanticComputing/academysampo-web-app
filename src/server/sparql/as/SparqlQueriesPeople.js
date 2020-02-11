@@ -287,15 +287,22 @@ export const peoplePropertiesFacetResults =
 
 `
 
-
 export const peopleEventPlacesQuery = `
   SELECT ?id ?lat ?long
   (COUNT(DISTINCT ?person) as ?instanceCount)
   WHERE {
     <FILTER>
     ?person :has_event/schema:place ?id .
-    ?id geo:lat ?lat ;
-    geo:long ?long .
+    OPTIONAL {
+      ?id geo:lat ?lat1 ;
+        geo:long ?long1 
+    }
+    OPTIONAL {
+      ?id skos:broader [ geo:lat ?lat2 ;
+        geo:long ?long2 ] 
+    }
+    BIND (COALESCE(?lat1, ?lat2) AS ?lat)
+    BIND (COALESCE(?long1, ?long2) AS ?long)
   }
   GROUP BY ?id ?lat ?long
 `

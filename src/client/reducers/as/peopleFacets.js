@@ -8,7 +8,7 @@ import {
   fetchFacet,
   fetchFacetFailed,
   updateFacetValues,
-  updateFacetOption 
+  updateFacetOption
 } from '../helpers'
 
 export const INITIAL_STATE = {
@@ -147,8 +147,8 @@ export const INITIAL_STATE = {
       type: 'hierarchical',
       priority: 6
     },
-    cat: {
-      id: 'cat',
+    category: {
+      id: 'category',
       // predicate: defined in backend
       distinctValueCount: 0,
       values: [],

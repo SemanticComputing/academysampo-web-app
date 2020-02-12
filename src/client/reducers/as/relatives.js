@@ -56,13 +56,14 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
-      id: 'gender',
+      id: 'altLabel',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 120
+      minWidth: 220,
+      onlyOnInstancePage: true
     },
     {
       id: 'title',
@@ -72,6 +73,34 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 220
+    },
+    {
+      id: 'referer',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'relative',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      sortBy: 'level',
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'gender',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 120
     },
     {
       id: 'birthDateTimespan',
@@ -110,16 +139,6 @@ export const INITIAL_STATE = {
       minWidth: 180 
     },
     {
-      id: 'altLabel',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 220,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'place',
       valueType: 'object',
       makeLink: true,
@@ -146,16 +165,6 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 150
-    },
-    {
-      id: 'relative',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      sortBy: 'level',
-      numberedList: false,
-      onlyOnInstancePage: true
     }
   ]
 }

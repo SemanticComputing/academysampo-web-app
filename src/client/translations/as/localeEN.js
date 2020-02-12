@@ -193,7 +193,7 @@ export default {
             List of used references
           `
         },
-        cat: {
+        category: {
           label: 'Category',
           description: `
             The category of the actor. This list is available only for the people in the 1640–1853 dataset.
@@ -230,15 +230,15 @@ export default {
           `
         },
         birthPlace: {
-          label: 'Birth place',
+          label: 'Place of Birth or Baptism',
           description: `
-            The place when the actor was born.
+            The place when the actor was born or baptized.
           `
         },
         birthDateTimespan: {
-          label: 'Birth date',
+          label: 'Time of Birth or Baptism',
           description: `
-            The date when the actor was born.
+            The date when the actor was born or baptized.
           `
         },
         externalLink: {
@@ -254,27 +254,27 @@ export default {
           `
         },
         deathDateTimespan: {
-          label: 'Death date',
+          label: 'Time of Death or Burial',
           description: `
-            The date when the actor died or dissolved.
+            The date when the actor died or was buried.
           `
         },
         deathPlace: {
-          label: 'Death place',
+          label: 'Place of Death or Burial',
           description: `
-            The place when the actor died.
+            The place when the actor died or was buried.
           `
         },
         place: {
           label: 'Activity location',
           description: `
-            Place(s) of activity linked to this actor.
+            Place(s) of activity linked to this actor. This data has been automatically extracted from the textual descriptions.
           `
         },
         source: {
           label: 'Source',
           description: `
-            The source of information.
+            The source of information. The two available data sources have been Student Register 1640–1852, and Student Register 1853–1899.
           `
         }
       }
@@ -311,7 +311,7 @@ export default {
         </ul>
       `,
       instancePage: {
-        label: 'Person',
+        label: 'Referenced Person',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             MMM’s Manuscript entity corresponds to
@@ -383,6 +383,12 @@ export default {
           Alternative names.
           `
         },
+        referer: {
+          label: 'Referenced with',
+          description: `
+            People whose biographical descriptions mention this person.
+          `
+        },
         entryText: {
           label: 'Entry text',
           description: `
@@ -390,15 +396,15 @@ export default {
           `
         },
         relativeText: {
-          label: 'List of relatives',
+          label: 'Description of relatives',
           description: `
-            List of known relatives
+            List of known relatives. This information is only available with the 1640–1853 dataset.
           `
         },
         referenceText: {
-          label: 'List of references',
+          label: 'Description of references',
           description: `
-            List of used references
+            List of used references. This information is only available with the 1640–1853 dataset.
           `
         },
         title: {
@@ -532,32 +538,52 @@ export default {
           label: 'Title',
           description: 'The name or title of the Work.'
         },
-        author: {
-          label: 'Possible author',
+        broader: {
+          label: 'Parent Place',
           description: `
-            The author(s) associated with the Work. Because of the structure of
-            entries in the Schoenberg Database, the authors shown as being
-            associated with a Work may actually be associated with other
-            Works in the same manuscript instead.
+          A larger region or geographic division in which a place is contained.
           `
         },
-        language: {
-          label: 'Language',
+        externalLink: {
+          label: 'External Link',
           description: `
-            The language in which a Work is written in the manuscript
-            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+            Link to an external database.
           `
         },
-        expression: {
-          label: 'Expression',
+        narrower: {
+          label: 'Child Place',
           description: `
-            The expression(s) of the Work.
+          A smaller region or geographic division contained within the place.
           `
         },
-        manuscript: {
-          label: 'Manuscript',
+        peopleActive: {
+          label: 'Place of Activity',
           description: `
-            The specific manuscript(s) in which the Work can be found.
+            List of people who have life time activities connecting to this place.
+          `
+        },
+        peopleBorn: {
+          label: 'Place of Birth',
+          description: `
+            List of people born here.
+          `
+        },
+        peopleBaptized: {
+          label: 'Place of Baptism',
+          description: `
+            List of people baptized here. Notice that this information is available only for a few people.
+          `
+        },
+        peopleDied: {
+          label: 'Place of Death',
+          description: `
+            List of people died here.
+          `
+        },
+        peopleBuried: {
+          label: 'Place of Burial',
+          description: `
+            List of people buried here. Notice that this information is available only for a few people.
           `
         },
         productionTimespan: {

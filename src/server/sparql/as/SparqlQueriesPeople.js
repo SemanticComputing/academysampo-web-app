@@ -93,9 +93,9 @@ UNION
 }
 UNION
 {
-  ?id :has_category ?cat__id .
-  ?cat__id skos:prefLabel ?cat__prefLabel .
-  BIND(?cat__id AS ?cat__dataProviderUrl)
+  ?id :has_category ?category__id .
+  ?category__id skos:prefLabel ?category__prefLabel .
+  BIND(?category__id AS ?category__dataProviderUrl)
 }
 UNION
 { 
@@ -232,15 +232,16 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id :has_category ?cat__id .
-    ?cat__id skos:prefLabel ?cat__prefLabel .
-    BIND(?cat__id AS ?cat__dataProviderUrl)
+    ?id :has_category ?category__id .
+    ?category__id skos:prefLabel ?category__prefLabel .
+    BIND(?category__id AS ?category__dataProviderUrl)
   }
   UNION
   {
-    { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id } 
-  OPTIONAL { ?title__id skos:prefLabel ?title__prefLabel }
-  BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
+    ?id :has_title ?title__id . # { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id } 
+    # FILTER EXISTS { ?title__id :related_occupation/skos:broader [] }
+    ?title__id skos:prefLabel ?title__prefLabel .
+    BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
   }
   UNION
   {
@@ -248,7 +249,7 @@ export const peoplePropertiesFacetResults =
   ?place__id skos:prefLabel ?place__prefLabel .
   BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
   }
-  UNION 
+  UNION
   {
     ?id :has_event/:student_nation ?studentnation__id .
     ?studentnation__id skos:prefLabel ?studentnation__prefLabel .
@@ -292,14 +293,17 @@ export const peopleEventPlacesQuery = `
   (COUNT(DISTINCT ?person) as ?instanceCount)
   WHERE {
     <FILTER>
-    ?person :has_event/schema:place ?id .
+    
+    { ?person :has_event/schema:place ?id } 
+    UNION
+    { ?person :has_title/schema:place ?id } 
+    
     OPTIONAL {
       ?id geo:lat ?lat1 ;
         geo:long ?long1 
     }
     OPTIONAL {
-      ?id skos:broader [ geo:lat ?lat2 ;
-        geo:long ?long2 ] 
+      ?id skos:broader [ geo:lat ?lat2 ; geo:long ?long2 ] 
     }
     BIND (COALESCE(?lat1, ?lat2) AS ?lat)
     BIND (COALESCE(?long1, ?long2) AS ?long)

@@ -65,15 +65,6 @@ export const INITIAL_STATE = {
       minWidth: 170
     },
     {
-      id: 'externalLink',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
-    },
-    {
       id: 'broader',
       valueType: 'object',
       makeLink: true,
@@ -83,7 +74,16 @@ export const INITIAL_STATE = {
       minWidth: 170
     },
     {
-      id: 'manuscriptProduced',
+      id: 'narrower',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 170
+    },
+    {
+      id: 'peopleActive',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
@@ -93,7 +93,7 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'manuscriptTransferred',
+      id: 'peopleBorn',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
@@ -103,7 +103,7 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'manuscriptObserved',
+      id: 'peopleBaptized',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
@@ -113,7 +113,7 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'actor',
+      id: 'peopleDied',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
@@ -123,12 +123,23 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'source',
+      id: 'peopleBuried',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 250,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'externalLink',
       valueType: 'object',
       makeLink: true,
       externalLink: true,
       sortValues: true,
-      numberedList: false
+      numberedList: false,
+      minWidth: 150
     }
   ]
 }

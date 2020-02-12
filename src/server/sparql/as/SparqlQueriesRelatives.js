@@ -31,7 +31,7 @@ UNION
   OPTIONAL {
       ?bir schema:place ?birthPlace__id .
       ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
-      BIND(CONCAT("/relatives/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
+      BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
   }
   OPTIONAL {
       ?bir schema:date ?birthDateTimespan__id .
@@ -46,7 +46,7 @@ UNION
   OPTIONAL {
       ?dea schema:place ?deathPlace__id .
       ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
-      BIND(CONCAT("/relatives/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
+      BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
   }
   OPTIONAL {
       ?dea schema:date ?deathDateTimespan__id .
@@ -60,12 +60,6 @@ UNION
   { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
 OPTIONAL { ?title__id skos:prefLabel ?title__prefLabel }
 BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
-}
-UNION
-{
-?id :has_event/schema:place ?place__id .
-?place__id skos:prefLabel ?place__prefLabel .
-BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
 }
 UNION
 { 
@@ -97,6 +91,12 @@ UNION
   ?gender__id skos:prefLabel ?gender__prefLabel .
   FILTER (LANG(?gender__prefLabel)='fi')
   BIND (?gender__id AS ?gender__dataProviderUrl)
+} 
+UNION
+{
+  ?id :in_bio ?referer__id. 
+  ?referer__id skos:prefLabel ?referer__prefLabel .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?referer__id), "^.*\\\\/(.+)", "$1")) AS ?referer__dataProviderUrl)
 } 
 UNION
 {

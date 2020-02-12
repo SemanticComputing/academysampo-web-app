@@ -15,12 +15,13 @@ UNION
 }
 UNION
 { 
-  ?id :related_occupation ?ammo__id .
+  ?id :related_occupation ?broad .
+  ?broad skos:broader* ?ammo__id .
   ?ammo__id skos:prefLabel ?ammo__prefLabel .
-  BIND(CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")) AS ?ammo__dataProviderUrl)
+  # BIND(CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")) AS ?ammo__dataProviderUrl)
   
   OPTIONAL {
-    	?related__id :related_occupation ?ammo__id .
+    	?related__id :related_occupation ?broad .
       FILTER (?related__id != ?id)
       ?related__id skos:prefLabel ?related__prefLabel .
       BIND(CONCAT("/titles/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
@@ -35,10 +36,14 @@ UNION
 UNION
 {
   { ?person__id :has_title ?id } UNION { ?person__id :has_event/:has_title ?id }
-  VALUES ?person__class { :Person } # :ReferencedPerson
-  ?person__id a ?person__class ; 
-    skos:prefLabel ?person__prefLabel .
-  BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+  {
+    ?person__id a :Person .
+    BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+  } UNION {
+    ?person__id a :ReferencedPerson .
+    BIND(CONCAT("/relatives/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+  }
+  ?person__id skos:prefLabel ?person__prefLabel .
 }
 
 `

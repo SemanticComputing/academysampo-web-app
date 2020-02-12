@@ -586,19 +586,10 @@ export default {
             List of people buried here. Notice that this information is available only for a few people.
           `
         },
-        productionTimespan: {
-          label: 'Manuscript production date',
+        title: {
+          label: 'Related titles',
           description: `
-            The date(s) when the manuscript(s) in which the Work can be found were written.
-            Multiple production dates may appear for a single manuscript,
-            when there are discrepancies between the contributing data source
-            or when the precise date is uncertain.
-          `
-        },
-        collection: {
-          label: 'Collection',
-          description: `
-            The specific collection(s) of manuscripts in which a Work can be found.
+            Occupational titles that are connected to this place.
           `
         },
         source: {

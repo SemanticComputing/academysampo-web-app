@@ -197,7 +197,7 @@ export const facetConfigs = {
     }
   },
   titles: {
-    facetClass: '<http://ldf.fi/yoma/schema/Title>',
+    facetClass: '<http://ldf.fi/yoma/schema/Title> skos:Concept',
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',

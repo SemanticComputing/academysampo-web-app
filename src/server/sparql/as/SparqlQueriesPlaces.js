@@ -74,6 +74,13 @@ export const placePropertiesInstancePage = `
         ?peopleActive__id skos:prefLabel ?peopleActive__prefLabel .
       	BIND(CONCAT("/people/page/", REPLACE(STR(?peopleActive__id), "^.*\\\\/(.+)", "$1")) AS ?peopleActive__dataProviderUrl)
       } 
+      UNION 
+      { 
+        ?title__id schema:place ?id ; 
+          a :Title ;
+	        skos:prefLabel ?title__prefLabel .
+	      BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
+      } 
     }
 `
 

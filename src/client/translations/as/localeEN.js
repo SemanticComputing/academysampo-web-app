@@ -551,7 +551,7 @@ export default {
           `
         },
         narrower: {
-          label: 'Child Place',
+          label: 'Places within',
           description: `
           A smaller region or geographic division contained within the place.
           `
@@ -587,7 +587,7 @@ export default {
           `
         },
         title: {
-          label: 'Related titles',
+          label: 'Related occupations',
           description: `
             Occupational titles that are connected to this place.
           `

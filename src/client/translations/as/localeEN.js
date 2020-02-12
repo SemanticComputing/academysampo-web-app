@@ -611,9 +611,9 @@ export default {
         }
       }
     },
-    perspective3: {
-      label: 'Titles',
-      facetResultsType: 'events',
+    titles: {
+      label: 'Title',
+      facetResultsType: 'titles',
       shortDescription: 'Titles description',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -636,7 +636,7 @@ export default {
         </ul>
       `,
       instancePage: {
-        label: 'Event',
+        label: 'Title',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             Events refer to various activities related to Manuscripts and Actors. Event
@@ -649,28 +649,34 @@ export default {
         `
       },
       properties: {
+        prefLabel: {
+          label: "label",
+          description: ''
+        },
+        altLabel: {
+          label: "alternative labels",
+          description: 'List of alternative labels or abbreviations.'
+        },
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Uniform Resource Identifier.'
         },
-        type: {
-          label: 'Type',
+        related: {
+          label: 'Related titles',
           description: `
-            Distinguish between “Transfer of Custody”, “Production”, and other
-            types of “Activity” events.
+            Related occupational titles.
           `
         },
-        language: {
-          label: 'Language',
+        person: {
+          label: 'People',
           description: `
-            The language in which a Work is written in the manuscript
-            (i.e., an “Expression” of a Work). One manuscript may contain multiple languages.
+            People associated with this title.
           `
         },
-        manuscript: {
-          label: 'Manuscript / Collection',
+        ammo: {
+          label: 'AMMO',
           description: `
-            The manuscript or manuscript collection associated with the event.
+            Corresponding occupation in AMMO/HISCO ontology.
           `
         },
         eventTimespan: {
@@ -680,40 +686,9 @@ export default {
           `
         },
         place: {
-          label: 'Place',
+          label: 'Related place',
           description: `
-            The specific place(s) associated with the event.
-          `
-        },
-        note: {
-          label: 'Note',
-          description: `
-            Note
-          `
-        },
-        surrender: {
-          label: 'Custody surrendered by',
-          description: `
-            Custody surrendered by
-          `
-        },
-        receiver: {
-          label: 'Custody received by',
-          description: `
-            Custody received by
-          `
-        },
-        observedOwner: {
-          label: 'Observed owner',
-          description: `
-            Observed owner
-          `
-        },
-        source: {
-          label: 'Source',
-          description: `
-            The source database (Schoenberg, Bibale, and Bodleian) that provided
-            the information about the event.
+            The specific place(s) associated with the title.
           `
         }
       }

@@ -158,7 +158,7 @@ export const facetConfigs = {
       type: 'hierarchical'
     },
     source: {
-      id: 'source',
+      id: 'source', 
       facetValueFilter: '',
       labelPath: 'dct:source/skos:prefLabel',
       predicate: 'dct:source',
@@ -188,6 +188,16 @@ export const facetConfigs = {
   },
   places: {
     facetClass: '<http://ldf.fi/yoma/schema/Place>',
+    prefLabel: {
+      id: 'prefLabel',
+      labelPath: 'skos:prefLabel',
+      textQueryPredicate: '', // empty for querying the facetClass
+      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
+      type: 'text'
+    }
+  },
+  titles: {
+    facetClass: '<http://ldf.fi/yoma/schema/Title>',
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',

@@ -13,6 +13,9 @@ import {
   relativesPlacesQuery
 } from './as/SparqlQueriesRelatives'
 import {
+  titlesPropertiesInstancePage
+} from './as/SparqlQueriesTitles'
+import {
   placePropertiesInstancePage,
   placePropertiesFacetResults,
   placePropertiesInfoWindow,
@@ -231,6 +234,11 @@ export const getByURI = ({
       q = q.replace('<PROPERTIES>', placePropertiesInstancePage)
       q = q.replace('<RELATED_INSTANCES>', '')
       break
+    case 'titles':
+        q = instanceQuery
+        q = q.replace('<PROPERTIES>', titlesPropertiesInstancePage)
+        q = q.replace('<RELATED_INSTANCES>', '')
+        break
     case 'peoplePlaces':
       q = instanceQuery
       q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)

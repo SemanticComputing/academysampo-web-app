@@ -12,7 +12,7 @@ import Export from '../facet_results/Export'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
 
-const styles = () => ({
+const styles = () => ({ 
   root: {
     width: '100%',
     height: '100%'
@@ -64,6 +64,9 @@ class InstanceHomePage extends React.Component {
         break
       case 'relatives':
         uri = `${base}/${localID}`
+        break
+      case 'titles':
+        uri = `${base}/titles/${localID}`
         break
       case 'places':
         uri = `${base}/places/${localID}`
@@ -123,7 +126,7 @@ class InstanceHomePage extends React.Component {
   render = () => {
     const { classes, data, isLoading, resultClass } = this.props
     const hasData = data !== null && Object.values(data).length >= 1
-    // console.log(data)
+    console.log(data)
     return (
       <div className={classes.root}>
         <PerspectiveTabs

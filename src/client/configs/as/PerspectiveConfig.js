@@ -85,7 +85,7 @@ export const perspectiveConfig = [
     ]
   },
   {
-    id: 'titles',
+    id: 'perspective3',
     frontPageImage: eventsImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set(['prefLabel']),

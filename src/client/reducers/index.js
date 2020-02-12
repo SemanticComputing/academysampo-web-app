@@ -6,7 +6,7 @@ import people from './as/people'
 import relatives from './as/relatives'
 import places from './as/places'
 import placesFacets from './as/placesFacets'
-import perspective3 from './sampo/perspective3'
+import titles from './as/titles'
 import peopleFacets from './as/peopleFacets'
 import perspective2Facets from './sampo/perspective2Facets'
 import perspective3Facets from './sampo/perspective3Facets'
@@ -17,7 +17,7 @@ const reducer = combineReducers({
   people,
   relatives,
   places,
-  perspective3,
+  titles,
   peopleFacets,
   placesFacets,
   perspective3Facets,

@@ -21,7 +21,7 @@ export const perspectiveConfigOnlyInfoPages = [
     ]
   },
   {
-    id: 'perspective5',
+    id: 'titles',
     perspectiveDescHeight: 160,
     instancePageTabs: [
       {

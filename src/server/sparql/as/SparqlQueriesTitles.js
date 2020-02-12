@@ -18,7 +18,7 @@ UNION
   ?id :related_occupation ?broad .
   ?broad skos:broader* ?ammo__id .
   ?ammo__id skos:prefLabel ?ammo__prefLabel .
-  # BIND(CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")) AS ?ammo__dataProviderUrl)
+  # BIND( IF(?ammo__id=?broad, CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")), "") AS ?ammo__dataProviderUrl)
   
   OPTIONAL {
     	?related__id :related_occupation ?broad .

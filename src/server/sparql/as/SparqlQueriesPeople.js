@@ -337,3 +337,21 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
     BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
   } 
 `
+
+export const networkLinksQuery = `
+  SELECT DISTINCT ?source ?target ("author" as ?prefLabel)
+  WHERE {
+    <FILTER>
+    ?source :has_event/:supervisor ?target ; skos:prefLabel ?evt_label -
+  }
+`
+
+export const networkNodesQuery = `
+  SELECT DISTINCT ?id ?prefLabel ?class
+  WHERE {
+    VALUES ?class { :Person :ReferencedPerson }
+    VALUES ?id { <ID_SET> }
+    ?id a ?class ;
+        skos:prefLabel ?prefLabel .
+  }
+`

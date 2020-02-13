@@ -245,7 +245,7 @@ const SemanticPortal = props => {
             screenSize={screenSize}
           />
         break
-        case 'titles':
+      case 'titles':
           perspectiveElement =
             <Titles
               titles={props.titles}
@@ -264,7 +264,7 @@ const SemanticPortal = props => {
               screenSize={screenSize}
             />
           break
-      case 'perspective3':
+      /**case 'perspective3':
         perspectiveElement =
           <Perspective3
             perspective3={props.perspective3}
@@ -281,7 +281,7 @@ const SemanticPortal = props => {
             perspective={perspective}
             screenSize={screenSize}
           />
-        break
+        break */
       default:
         perspectiveElement = <div />
         break

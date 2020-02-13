@@ -1,5 +1,5 @@
 export const placePropertiesInstancePage = `
-    {
+    
       {
         ?id skos:prefLabel ?prefLabel__id .
         FILTER (LANG(?prefLabel__id)="fi")
@@ -81,7 +81,7 @@ export const placePropertiesInstancePage = `
 	        skos:prefLabel ?title__prefLabel .
 	      BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
       } 
-    }
+    
 `
 
 export const placePropertiesFacetResults = `

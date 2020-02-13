@@ -42,6 +42,7 @@ UNION
   OPTIONAL {
       ?bir schema:place ?birthPlace__id .
       ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
+      FILTER (LANG(?birthPlace__prefLabel)="fi")
       BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
   }
   OPTIONAL {
@@ -63,6 +64,7 @@ UNION
   OPTIONAL {
       ?dea schema:place ?deathPlace__id .
       ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
+      FILTER (LANG(?deathPlace__prefLabel)="fi")
       BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
   }
   OPTIONAL {

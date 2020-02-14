@@ -45,25 +45,29 @@ export const placePropertiesInstancePage = `
       UNION 
       { 
         ?peopleBorn__id :has_birth/schema:place ?id ;
+                  a :Person ;
                   skos:prefLabel ?peopleBorn__prefLabel .
       	BIND(CONCAT("/people/page/", REPLACE(STR(?peopleBorn__id), "^.*\\\\/(.+)", "$1")) AS ?peopleBorn__dataProviderUrl)
       }
       UNION 
       { 
         ?peopleBaptized__id :has_baptism/schema:place ?id ;
-                  skos:prefLabel ?peopleBaptized__prefLabel .
+          a :Person ;
+          skos:prefLabel ?peopleBaptized__prefLabel .
       	BIND(CONCAT("/people/page/", REPLACE(STR(?peopleBaptized__id), "^.*\\\\/(.+)", "$1")) AS ?peopleBaptized__dataProviderUrl)
       } 
       UNION 
       { 
         ?peopleDied__id :has_death/schema:place ?id ;
-                  skos:prefLabel ?peopleDied__prefLabel .
+          a :Person ;
+          skos:prefLabel ?peopleDied__prefLabel .
       	BIND(CONCAT("/people/page/", REPLACE(STR(?peopleDied__id), "^.*\\\\/(.+)", "$1")) AS ?peopleDied__dataProviderUrl)
       } 
       UNION 
       { 
         ?peopleBuried__id :has_burial/schema:place ?id ;
-                  skos:prefLabel ?peopleBuried__prefLabel .
+          a :Person ;
+          skos:prefLabel ?peopleBuried__prefLabel .
       	BIND(CONCAT("/people/page/", REPLACE(STR(?peopleBuried__id), "^.*\\\\/(.+)", "$1")) AS ?peopleBuried__dataProviderUrl)
       } 
       UNION 
@@ -71,7 +75,7 @@ export const placePropertiesInstancePage = `
         { ?peopleActive__id :has_event/schema:place ?id }
         UNION
         { ?peopleActive__id :has_title/schema:place ?id }
-        ?peopleActive__id skos:prefLabel ?peopleActive__prefLabel .
+        ?peopleActive__id a :Person ; skos:prefLabel ?peopleActive__prefLabel .
       	BIND(CONCAT("/people/page/", REPLACE(STR(?peopleActive__id), "^.*\\\\/(.+)", "$1")) AS ?peopleActive__dataProviderUrl)
       } 
       UNION 

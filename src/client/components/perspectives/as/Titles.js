@@ -89,11 +89,6 @@ const Titles = props => {
             pageType='facetResults'
           />}
       />
-      {/* <Route
-        path='/titles/faceted-search/network'
-        render={() =>
-          <Network />}
-      /> */}
     </>
   )
 }

@@ -37,7 +37,7 @@ const layout = {
 
 class Network extends React.Component {
   constructor (props) {
-    // console.log(props)
+    console.log(props)
     super(props)
     this.cyRef = React.createRef()
   }

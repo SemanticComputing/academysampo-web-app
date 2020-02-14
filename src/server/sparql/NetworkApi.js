@@ -14,8 +14,8 @@ export const runNetworkQuery = async ({
     limit: 50
     // id: 'http://ldf.fi/mmm/actor/bodley_person_51697938'
   }
-  console.log("payload", payload)
-    
+  // console.log("payload", payload)
+  
   const url = 'http://127.0.0.1:5000/query'
   const config = {
     headers: {

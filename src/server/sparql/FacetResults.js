@@ -86,6 +86,10 @@ export const getAllResults = ({
       q = peopleMigrationsQuery
       filterTarget = 'person__id'
       break
+    case 'peopleNetwork':
+      q = networkLinksQuery
+      filterTarget = 'person'
+      break
   }
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
@@ -99,15 +103,15 @@ export const getAllResults = ({
     }))
   }
   if (resultClass === 'peopleNetwork') {
-    console.log('peopleNetwork', prefixes + q)
+    
     return runNetworkQuery({
       endpoint,
       prefixes,
-      links: networkLinksQuery,
+      links: q,
       nodes: networkNodesQuery
     })
   }
-  // console.log(prefixes + q)
+  
   return runSelectQuery({
     query: prefixes + q,
     endpoint,

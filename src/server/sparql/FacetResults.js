@@ -5,7 +5,9 @@ import {
   peoplePropertiesInstancePage,
   peoplePropertiesFacetResults,
   peopleEventPlacesQuery,
-  peopleMigrationsQuery
+  peopleMigrationsQuery,
+  networkLinksQuery,
+  networkNodesQuery
 } from './as/SparqlQueriesPeople'
 import {
   relativesPropertiesInstancePage,
@@ -96,15 +98,15 @@ export const getAllResults = ({
       facetID: null
     }))
   }
-  // if (resultClass === 'manuscriptsNetwork') {
-  //   // console.log(prefixes + q)
-  //   return runNetworkQuery({
-  //     endpoint,
-  //     prefixes,
-  //     links: q,
-  //     nodes: networkNodesQuery
-  //   })
-  // }
+  if (resultClass === 'peopleNetwork') {
+    console.log('peopleNetwork', prefixes + q)
+    return runNetworkQuery({
+      endpoint,
+      prefixes,
+      links: networkLinksQuery,
+      nodes: networkNodesQuery
+    })
+  }
   // console.log(prefixes + q)
   return runSelectQuery({
     query: prefixes + q,

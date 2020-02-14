@@ -17,7 +17,7 @@ import People from '../components/perspectives/as/People'
 import Titles from '../components/perspectives/as/Titles'
 import Relatives from '../components/perspectives/as/Relatives'
 import Places from '../components/perspectives/as/Places'
-import Perspective3 from '../components/perspectives/sampo/Perspective3'
+// import Perspective3 from '../components/perspectives/sampo/Perspective3'
 import All from '../components/perspectives/mmm/All'
 import InstanceHomePage from '../components/main_layout/InstanceHomePage'
 import TextPage from '../components/main_layout/TextPage'
@@ -490,8 +490,8 @@ const mapStateToProps = state => {
     places: state.places,
     placesFacets: state.placesFacets,
     titles: state.titles,
-    perspective3: state.perspective3,
-    perspective3Facets: state.perspective3Facets,
+    // perspective3: state.perspective3,
+    // perspective3Facets: state.perspective3Facets,
     clientSideFacetedSearch: state.clientSideFacetedSearch,
     animationValue: state.animation.value,
     options: state.options,
@@ -529,8 +529,8 @@ SemanticPortal.propTypes = {
   titles: PropTypes.object.isRequired,
   placesFacets: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
-  perspective3: PropTypes.object.isRequired,
-  perspective3Facets: PropTypes.object.isRequired,
+  // perspective3: PropTypes.object.isRequired,
+  // perspective3Facets: PropTypes.object.isRequired,
   animationValue: PropTypes.array.isRequired,
   fetchResults: PropTypes.func.isRequired,
   fetchResultCount: PropTypes.func.isRequired,

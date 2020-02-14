@@ -37,6 +37,7 @@ const layout = {
 
 class Network extends React.Component {
   constructor (props) {
+    console.log(props)
     super(props)
     this.cyRef = React.createRef()
   }
@@ -54,7 +55,7 @@ class Network extends React.Component {
           selector: 'node',
           style: {
             'background-color': ele => ele.data('class') === 'http://erlangen-crm.org/efrbroo/F4_Manifestation_Singleton'
-              ? '#666' : '#000',
+              ? '#000' : '#666',
             label: 'data(prefLabel)'
           }
         },

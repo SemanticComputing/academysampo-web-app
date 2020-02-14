@@ -339,10 +339,10 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
 `
 
 export const networkLinksQuery = `
-  SELECT DISTINCT ?source ?target ("author" as ?prefLabel)
+  SELECT DISTINCT ?source ?target ("Teacher" as ?prefLabel)
   WHERE {
-    <FILTER>
-    ?source :has_event/:supervisor ?target ; skos:prefLabel ?evt_label -
+    # <FILTER>
+    ?source :has_event/:supervisor ?target ; skos:prefLabel ?evt_label .
   }
 `
 

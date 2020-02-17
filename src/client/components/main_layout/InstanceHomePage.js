@@ -69,6 +69,9 @@ class InstanceHomePage extends React.Component {
       case 'titles':
         uri = `${base}/titles/${localID}`
         break
+      case 'nations':
+        uri = `${base}/${localID}` // TODO unify urls
+        break
       case 'places':
         uri = `${base}/places/${localID}`
         break

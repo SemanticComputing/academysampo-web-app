@@ -205,5 +205,15 @@ export const facetConfigs = {
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
     }
+  },
+  nations: {
+    facetClass: '<http://ldf.fi/yoma/schema/StudentNation>',
+    prefLabel: {
+      id: 'prefLabel',
+      labelPath: 'skos:prefLabel',
+      textQueryPredicate: '', // empty for querying the facetClass
+      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
+      type: 'text'
+    }
   }
 }

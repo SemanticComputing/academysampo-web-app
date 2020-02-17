@@ -15,6 +15,7 @@ import Message from '../components/main_layout/Message'
 import FacetBar from '../components/facet_bar/FacetBar'
 import People from '../components/perspectives/as/People'
 import Titles from '../components/perspectives/as/Titles'
+import Nations from '../components/perspectives/as/Nations'
 import Relatives from '../components/perspectives/as/Relatives'
 import Places from '../components/perspectives/as/Places'
 // import Perspective3 from '../components/perspectives/sampo/Perspective3'
@@ -264,6 +265,25 @@ const SemanticPortal = props => {
               screenSize={screenSize}
             />
           break
+      case 'nations':
+            perspectiveElement =
+              <Nations
+                nations={props.nations}
+                facetData={props.nationsFacets}
+                fetchPaginatedResults={props.fetchPaginatedResults}
+                fetchResults={props.fetchResults}
+                fetchByURI={props.fetchByURI}
+                updatePage={props.updatePage}
+                updateRowsPerPage={props.updateRowsPerPage}
+                updateFacetOption={props.updateFacetOption}
+                sortResults={props.sortResults}
+                routeProps={routeProps}
+                perspective={perspective}
+                animationValue={props.animationValue}
+                animateMap={props.animateMap}
+                screenSize={screenSize}
+              />
+            break
       /**case 'perspective3':
         perspectiveElement =
           <Perspective3
@@ -490,6 +510,7 @@ const mapStateToProps = state => {
     places: state.places,
     placesFacets: state.placesFacets,
     titles: state.titles,
+    nations: state.nations,
     // perspective3: state.perspective3,
     // perspective3Facets: state.perspective3Facets,
     clientSideFacetedSearch: state.clientSideFacetedSearch,
@@ -527,6 +548,7 @@ SemanticPortal.propTypes = {
   peopleFacets: PropTypes.object.isRequired,
   relatives: PropTypes.object.isRequired,
   titles: PropTypes.object.isRequired,
+  nations: PropTypes.object.isRequired,
   placesFacets: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   // perspective3: PropTypes.object.isRequired,

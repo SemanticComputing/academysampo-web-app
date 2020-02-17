@@ -65,7 +65,7 @@ class Network extends React.Component {
             // 'width': 'data(weight)',
             'line-color': '#999',
             'curve-style': 'bezier',
-            content: 'data(prefLabel)',
+            content: ' data(prefLabel) ',
             'target-arrow-shape': 'triangle',
             'target-arrow-color': '#999',
             color: '#555',
@@ -74,7 +74,7 @@ class Network extends React.Component {
             'text-halign': 'center',
             'edge-text-rotation': 'autorotate',
             'text-background-opacity': 1,
-            'text-background-color': '#FFF',
+            'text-background-color': '#BDBDBD',
             'text-background-shape': 'roundrectangle'
           }
         }

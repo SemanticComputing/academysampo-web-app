@@ -18,6 +18,9 @@ import {
   titlesPropertiesInstancePage
 } from './as/SparqlQueriesTitles'
 import {
+  nationsPropertiesInstancePage
+} from './as/SparqlQueriesNations'
+import {
   placePropertiesInstancePage,
   placePropertiesFacetResults,
   placePropertiesInfoWindow,
@@ -245,6 +248,11 @@ export const getByURI = ({
         q = q.replace('<PROPERTIES>', titlesPropertiesInstancePage)
         q = q.replace('<RELATED_INSTANCES>', '')
         break
+    case 'nations':
+        q = instanceQuery
+        q = q.replace('<PROPERTIES>', nationsPropertiesInstancePage)
+        q = q.replace('<RELATED_INSTANCES>', '')
+        break
     case 'peoplePlaces':
       q = instanceQuery
       q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
@@ -288,7 +296,7 @@ export const getByURI = ({
     }))
   }
   q = q.replace('<ID>', `<${uri}>`)
-  // console.log(prefixes + q)
+  console.log(prefixes + q)
   return runSelectQuery({
     query: prefixes + q,
     endpoint,

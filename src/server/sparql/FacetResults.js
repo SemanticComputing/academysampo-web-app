@@ -296,7 +296,7 @@ export const getByURI = ({
     }))
   }
   q = q.replace('<ID>', `<${uri}>`)
-  console.log(prefixes + q)
+  // console.log(prefixes + q)
   return runSelectQuery({
     query: prefixes + q,
     endpoint,

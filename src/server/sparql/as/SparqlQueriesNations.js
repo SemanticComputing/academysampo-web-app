@@ -20,7 +20,13 @@ UNION
     FILTER (LANG(?altLabel__id)!="fi")
     BIND (?altLabel__id AS ?altLabel__prefLabel )
 }
-
+UNION
+{
+  ?person__id :has_event/:student_nation ?id ;
+    a :Person ;
+    skos:prefLabel ?person__prefLabel .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+}
 `
 
 

@@ -76,35 +76,6 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'place',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 180,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'ammo',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'related',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 180,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'uri',
       valueType: 'object',
       makeLink: true,

@@ -49,7 +49,7 @@ export const perspectiveConfig = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'network',
+        id: 'familyNetwork',
         value: 1,
         icon: <BubbleChartIcon />
       },

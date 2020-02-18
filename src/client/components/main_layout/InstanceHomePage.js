@@ -195,6 +195,17 @@ class InstanceHomePage extends React.Component {
                   />}
               />
               <Route
+                path={`/${resultClass}/page/${this.state.localID}/familyNetwork`}
+                render={() =>
+                  <Network
+                    /* results={this.props.people.results} */
+                    fetchResults={this.props.fetchResults} 
+                    resultClass='familyNetwork'
+                    facetClass='people'
+                    id={data.id}
+                  />}
+              />
+              <Route
                 path={`/${resultClass}/page/${this.state.localID}/export`}
                 render={() =>
                   <Export

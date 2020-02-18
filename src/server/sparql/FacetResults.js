@@ -7,7 +7,8 @@ import {
   peopleEventPlacesQuery,
   peopleMigrationsQuery,
   networkLinksQuery,
-  networkNodesQuery
+  networkNodesQuery,
+  networkFamilyRelationQuery
 } from './as/SparqlQueriesPeople'
 import {
   relativesPropertiesInstancePage,
@@ -96,6 +97,10 @@ export const getAllResults = ({
       q = networkLinksQuery
       filterTarget = 'person'
       break
+    case 'familyNetwork':
+      q = networkFamilyRelationQuery
+      filterTarget = 'person'
+      break
   }
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
@@ -109,7 +114,6 @@ export const getAllResults = ({
     }))
   }
   if (resultClass === 'peopleNetwork') {
-    
     return runNetworkQuery({
       endpoint,
       prefixes,
@@ -117,7 +121,15 @@ export const getAllResults = ({
       nodes: networkNodesQuery
     })
   }
-  
+  if (resultClass === 'familyNetwork') {
+    return runNetworkQuery({
+      // id: 
+      endpoint,
+      prefixes,
+      links: q,
+      nodes: networkNodesQuery
+    })
+  }
   return runSelectQuery({
     query: prefixes + q,
     endpoint,
@@ -304,7 +316,7 @@ export const getByURI = ({
     }))
   }
   q = q.replace('<ID>', `<${uri}>`)
-  // console.log(prefixes + q)
+  console.log(prefixes + q)
   return runSelectQuery({
     query: prefixes + q,
     endpoint,

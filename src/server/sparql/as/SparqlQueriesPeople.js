@@ -341,9 +341,18 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
 export const networkLinksQuery = `
   SELECT DISTINCT (?person as ?source) ?target ("Teacher" as ?prefLabel)
   WHERE {
-    <FILTER> 
+    <FILTER>
     ?person :has_event [ :supervisor ?target ]
   }
+`
+
+export const networkFamilyRelationQuery = `
+  SELECT DISTINCT (?person as ?source) ?target ?prefLabel
+  WHERE {
+    <FILTER> 
+    ?person bioc:has_family_relation [ a ?rel ; bioc:inheres_in ?target ] .
+    OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+  } 
 `
 
 export const networkNodesQuery = `

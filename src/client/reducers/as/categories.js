@@ -56,14 +56,22 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
-      id: 'altLabel',
+      id: 'broader',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220,
-      onlyOnInstancePage: true
+      minWidth: 170
+    },
+    {
+      id: 'narrower',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 170
     },
     {
       id: 'person',
@@ -74,15 +82,6 @@ export const INITIAL_STATE = {
       numberedList: false,
       minWidth: 180,
       onlyOnInstancePage: true
-    },
-    {
-      id: 'externalLink',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
     },
     {
       id: 'uri',
@@ -97,10 +96,10 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'nations'
+  'categories'
 ])
 
-const nations = (state = INITIAL_STATE, action) => {
+const categories = (state = INITIAL_STATE, action) => {
   if (resultClasses.has(action.resultClass)) {
     switch (action.type) {
       case FETCH_RESULTS:
@@ -136,4 +135,4 @@ const nations = (state = INITIAL_STATE, action) => {
   } else return state
 }
 
-export default nations
+export default categories

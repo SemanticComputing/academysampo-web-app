@@ -27,6 +27,12 @@ UNION
     skos:prefLabel ?person__prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
 }
+UNION
+{ 
+  ?id :wikidata ?externalLink__id. 
+  BIND ("Wikidata" AS ?externalLink__prefLabel)
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+}
 `
 
 

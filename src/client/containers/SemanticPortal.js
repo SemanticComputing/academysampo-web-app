@@ -18,6 +18,7 @@ import Titles from '../components/perspectives/as/Titles'
 import Nations from '../components/perspectives/as/Nations'
 import Relatives from '../components/perspectives/as/Relatives'
 import Places from '../components/perspectives/as/Places'
+import Categories from '../components/perspectives/as/Categories'
 // import Perspective3 from '../components/perspectives/sampo/Perspective3'
 import All from '../components/perspectives/mmm/All'
 import InstanceHomePage from '../components/main_layout/InstanceHomePage'
@@ -284,6 +285,25 @@ const SemanticPortal = props => {
                 screenSize={screenSize}
               />
             break
+      case 'categories':
+              perspectiveElement =
+                <Categories
+                  categories={props.categories}
+                  facetData={props.nationsFacets}
+                  fetchPaginatedResults={props.fetchPaginatedResults}
+                  fetchResults={props.fetchResults}
+                  fetchByURI={props.fetchByURI}
+                  updatePage={props.updatePage}
+                  updateRowsPerPage={props.updateRowsPerPage}
+                  updateFacetOption={props.updateFacetOption}
+                  sortResults={props.sortResults}
+                  routeProps={routeProps}
+                  perspective={perspective}
+                  animationValue={props.animationValue}
+                  animateMap={props.animateMap}
+                  screenSize={screenSize}
+                />
+              break
       /**case 'perspective3':
         perspectiveElement =
           <Perspective3
@@ -511,7 +531,7 @@ const mapStateToProps = state => {
     placesFacets: state.placesFacets,
     titles: state.titles,
     nations: state.nations,
-    // perspective3: state.perspective3,
+    categories: state.categories,
     // perspective3Facets: state.perspective3Facets,
     clientSideFacetedSearch: state.clientSideFacetedSearch,
     animationValue: state.animation.value,
@@ -549,6 +569,7 @@ SemanticPortal.propTypes = {
   relatives: PropTypes.object.isRequired,
   titles: PropTypes.object.isRequired,
   nations: PropTypes.object.isRequired,
+  categories: PropTypes.object.isRequired,
   placesFacets: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   // perspective3: PropTypes.object.isRequired,

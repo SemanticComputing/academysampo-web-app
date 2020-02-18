@@ -215,5 +215,15 @@ export const facetConfigs = {
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
     }
+  },
+  categories: {
+    facetClass: '<http://ldf.fi/yoma/schema/Category>',
+    prefLabel: {
+      id: 'prefLabel',
+      labelPath: 'skos:prefLabel',
+      textQueryPredicate: '', // empty for querying the facetClass
+      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
+      type: 'text'
+    }
   }
 }

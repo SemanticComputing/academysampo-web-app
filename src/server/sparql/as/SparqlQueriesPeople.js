@@ -97,7 +97,7 @@ UNION
 {
   ?id :has_category ?category__id .
   ?category__id skos:prefLabel ?category__prefLabel .
-  BIND(?category__id AS ?category__dataProviderUrl)
+  BIND(CONCAT("/categories/page/", REPLACE(STR(?category__id), "^.*\\\\/(.+)", "$1")) AS ?category__dataProviderUrl)
 }
 UNION
 { 
@@ -236,7 +236,7 @@ export const peoplePropertiesFacetResults =
   {
     ?id :has_category ?category__id .
     ?category__id skos:prefLabel ?category__prefLabel .
-    BIND(?category__id AS ?category__dataProviderUrl)
+    BIND(CONCAT("/categories/page/", REPLACE(STR(?category__id), "^.*\\\\/(.+)", "$1")) AS ?category__dataProviderUrl)
   }
   UNION
   {

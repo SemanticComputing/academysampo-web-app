@@ -21,6 +21,9 @@ import {
   nationsPropertiesInstancePage
 } from './as/SparqlQueriesNations'
 import {
+  categoriesPropertiesInstancePage
+} from './as/SparqlQueriesCategories'
+import {
   placePropertiesInstancePage,
   placePropertiesFacetResults,
   placePropertiesInfoWindow,
@@ -251,6 +254,11 @@ export const getByURI = ({
     case 'nations':
         q = instanceQuery
         q = q.replace('<PROPERTIES>', nationsPropertiesInstancePage)
+        q = q.replace('<RELATED_INSTANCES>', '')
+        break
+    case 'categories':
+        q = instanceQuery
+        q = q.replace('<PROPERTIES>', categoriesPropertiesInstancePage)
         q = q.replace('<RELATED_INSTANCES>', '')
         break
     case 'peoplePlaces':

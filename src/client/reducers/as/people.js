@@ -122,7 +122,7 @@ export const INITIAL_STATE = {
     {
       id: 'category',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,

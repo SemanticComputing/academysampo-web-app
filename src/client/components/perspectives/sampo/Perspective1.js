@@ -41,6 +41,7 @@ const Perspective1 = props => {
         render={() =>
           <LeafletMap
             results={props.places.results}
+            layers={props.leafletMapLayers}
             pageType='facetResults'
             facetUpdateID={props.facetData.facetUpdateID}
             facet={props.facetData.facets.productionPlace}
@@ -50,10 +51,12 @@ const Perspective1 = props => {
             mapMode='cluster'
             instance={props.places.instance}
             fetchResults={props.fetchResults}
+            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             fetching={props.places.fetching}
             showInstanceCountInClusters
             updateFacetOption={props.updateFacetOption}
+            showExternalLayers
           />}
       />
       <Route
@@ -70,6 +73,7 @@ const Perspective1 = props => {
             mapMode='cluster'
             instance={props.places.instance}
             fetchResults={props.fetchResults}
+            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             fetching={props.places.fetching}
             showInstanceCountInClusters
@@ -77,13 +81,15 @@ const Perspective1 = props => {
           />}
       />
       <Route
-        path={`${rootUrl}/${perspective.id}/faceted-search/statistics`}
+        path={`${rootUrl}/${perspective.id}/faceted-search/network`}
         render={() =>
           <Network
             results={props.perspective1.results}
+            resultUpdateID={props.perspective1.resultUpdateID}
             fetchResults={props.fetchResults}
             resultClass='perspective1Network'
             facetClass='perspective1'
+            facetUpdateID={props.facetData.facetUpdateID}
           />}
       />
       <Route
@@ -118,8 +124,10 @@ const Perspective1 = props => {
 Perspective1.propTypes = {
   perspective1: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
+  leafletMapLayers: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
   fetchResults: PropTypes.func.isRequired,
+  fetchGeoJSONLayers: PropTypes.func.isRequired,
   fetchPaginatedResults: PropTypes.func.isRequired,
   fetchByURI: PropTypes.func.isRequired,
   updatePage: PropTypes.func.isRequired,

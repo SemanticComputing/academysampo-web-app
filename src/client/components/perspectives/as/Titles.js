@@ -4,8 +4,8 @@ import { Route, Redirect } from 'react-router-dom'
 import PerspectiveTabs from '../../main_layout/PerspectiveTabs'
 import ResultTable from '../../facet_results/ResultTable'
 import LeafletMap from '../../facet_results/LeafletMap'
-import Deck from '../../facet_results/Deck'
-import Network from '../../facet_results/Network'
+// import Deck from '../../facet_results/Deck'
+// import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
 
 const Titles = props => {
@@ -89,11 +89,6 @@ const Titles = props => {
             pageType='facetResults'
           />}
       />
-      {/* <Route
-        path='/titles/faceted-search/network'
-        render={() =>
-          <Network />}
-      /> */}
     </>
   )
 }

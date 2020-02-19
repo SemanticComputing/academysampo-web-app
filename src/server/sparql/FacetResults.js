@@ -5,7 +5,10 @@ import {
   peoplePropertiesInstancePage,
   peoplePropertiesFacetResults,
   peopleEventPlacesQuery,
-  peopleMigrationsQuery
+  peopleMigrationsQuery,
+  networkLinksQuery,
+  networkNodesQuery,
+  networkFamilyRelationQuery
 } from './as/SparqlQueriesPeople'
 import {
   relativesPropertiesInstancePage,
@@ -15,6 +18,12 @@ import {
 import {
   titlesPropertiesInstancePage
 } from './as/SparqlQueriesTitles'
+import {
+  nationsPropertiesInstancePage
+} from './as/SparqlQueriesNations'
+import {
+  categoriesPropertiesInstancePage
+} from './as/SparqlQueriesCategories'
 import {
   placePropertiesInstancePage,
   placePropertiesFacetResults,
@@ -84,6 +93,10 @@ export const getAllResults = ({
       q = peopleMigrationsQuery
       filterTarget = 'person__id'
       break
+    case 'peopleNetwork':
+      q = networkLinksQuery
+      filterTarget = 'person'
+      break
   }
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
@@ -96,16 +109,24 @@ export const getAllResults = ({
       facetID: null
     }))
   }
-  // if (resultClass === 'manuscriptsNetwork') {
-  //   // console.log(prefixes + q)
-  //   return runNetworkQuery({
-  //     endpoint,
-  //     prefixes,
-  //     links: q,
-  //     nodes: networkNodesQuery
-  //   })
-  // }
-  // console.log(prefixes + q)
+  if (resultClass === 'peopleNetwork') {
+    // console.log(q)
+    return runNetworkQuery({
+      endpoint,
+      prefixes,
+      links: q,
+      nodes: networkNodesQuery
+    })
+  }
+  if (resultClass === 'familyNetwork') {
+    return runNetworkQuery({
+      // id: 
+      endpoint,
+      prefixes,
+      links: q,
+      nodes: networkNodesQuery
+    })
+  }
   return runSelectQuery({
     query: prefixes + q,
     endpoint,
@@ -239,6 +260,16 @@ export const getByURI = ({
         q = q.replace('<PROPERTIES>', titlesPropertiesInstancePage)
         q = q.replace('<RELATED_INSTANCES>', '')
         break
+    case 'nations':
+        q = instanceQuery
+        q = q.replace('<PROPERTIES>', nationsPropertiesInstancePage)
+        q = q.replace('<RELATED_INSTANCES>', '')
+        break
+    case 'categories':
+        q = instanceQuery
+        q = q.replace('<PROPERTIES>', categoriesPropertiesInstancePage)
+        q = q.replace('<RELATED_INSTANCES>', '')
+        break
     case 'peoplePlaces':
       q = instanceQuery
       q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
@@ -254,15 +285,8 @@ export const getByURI = ({
       q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
       q = q.replace('<RELATED_INSTANCES>', actorsAt)
       break
-    case 'placesMsProduced':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', manuscriptsProducedAt)
-      break
-    case 'lastKnownLocations':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', lastKnownLocationsAt)
+    case 'familyNetwork':
+      q = networkFamilyRelationQuery
       break
     case 'placesEvents':
       q = instanceQuery
@@ -283,10 +307,19 @@ export const getByURI = ({
   }
   q = q.replace('<ID>', `<${uri}>`)
   // console.log(prefixes + q)
-  return runSelectQuery({
-    query: prefixes + q,
-    endpoint,
-    resultMapper: makeObjectList,
-    resultFormat
-  })
+  if (resultClass==='familyNetwork') {
+    return runNetworkQuery({
+      endpoint,
+      prefixes,
+      links: q,
+      nodes: networkNodesQuery
+    })
+  } else {
+    return runSelectQuery({
+      query: prefixes + q,
+      endpoint,
+      resultMapper: makeObjectList,
+      resultFormat
+    })
+  }
 }

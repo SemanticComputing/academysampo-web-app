@@ -42,6 +42,7 @@ UNION
   OPTIONAL {
       ?bir schema:place ?birthPlace__id .
       ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
+      FILTER (LANG(?birthPlace__prefLabel)="fi")
       BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
   }
   OPTIONAL {
@@ -63,6 +64,7 @@ UNION
   OPTIONAL {
       ?dea schema:place ?deathPlace__id .
       ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
+      FILTER (LANG(?deathPlace__prefLabel)="fi")
       BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
   }
   OPTIONAL {
@@ -75,14 +77,14 @@ UNION
 UNION
 {
   { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
-OPTIONAL { ?title__id skos:prefLabel ?title__prefLabel }
-BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
+  OPTIONAL { ?title__id skos:prefLabel ?title__prefLabel }
+  BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
 }
 UNION
 {
-?id :has_event/schema:place ?place__id .
-?place__id skos:prefLabel ?place__prefLabel .
-BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
+  ?id :has_event/schema:place ?place__id .
+  ?place__id skos:prefLabel ?place__prefLabel .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
 }
 UNION 
 {
@@ -95,7 +97,7 @@ UNION
 {
   ?id :has_category ?category__id .
   ?category__id skos:prefLabel ?category__prefLabel .
-  BIND(?category__id AS ?category__dataProviderUrl)
+  BIND(CONCAT("/categories/page/", REPLACE(STR(?category__id), "^.*\\\\/(.+)", "$1")) AS ?category__dataProviderUrl)
 }
 UNION
 { 
@@ -130,8 +132,8 @@ UNION
 } 
 UNION
 {
-?id ^:supervisor/a :Study .
-BIND("Supervisor" as ?role)
+  ?id ^:supervisor/a :Study .
+  BIND("Supervisor" as ?role)
 }
 UNION
 {
@@ -234,7 +236,7 @@ export const peoplePropertiesFacetResults =
   {
     ?id :has_category ?category__id .
     ?category__id skos:prefLabel ?category__prefLabel .
-    BIND(?category__id AS ?category__dataProviderUrl)
+    BIND(CONCAT("/categories/page/", REPLACE(STR(?category__id), "^.*\\\\/(.+)", "$1")) AS ?category__dataProviderUrl)
   }
   UNION
   {
@@ -285,7 +287,6 @@ export const peoplePropertiesFacetResults =
   { ?id dct:source ?source__id .
     ?source__id skos:prefLabel ?source__prefLabel .
   }
-
 `
 
 export const peopleEventPlacesQuery = `
@@ -310,6 +311,7 @@ export const peopleEventPlacesQuery = `
   }
   GROUP BY ?id ?lat ?long
 `
+
 // # https://github.com/uber/deck.gl/blob/master/docs/layers/arc-layer.md
 export const peopleMigrationsQuery = `
 SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
@@ -334,4 +336,31 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
   	BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
     BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
   } 
+`
+
+export const networkLinksQuery = `
+  SELECT DISTINCT (?person as ?source) ?target ("Teacher" as ?prefLabel)
+  WHERE {
+    <FILTER>
+    ?person :has_event [ :supervisor ?target ]
+  }
+`
+
+export const networkFamilyRelationQuery = `
+  SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
+  WHERE {
+    VALUES ?source { <ID> }
+    ?source bioc:has_family_relation [ a ?rel ; bioc:inheres_in ?target ] .
+    OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+  } 
+`
+
+export const networkNodesQuery = `
+  SELECT DISTINCT ?id ?prefLabel ?class
+  WHERE {
+    VALUES ?class { :Person :ReferencedPerson }
+    VALUES ?id { <ID_SET> }
+    ?id a ?class ;
+        skos:prefLabel ?prefLabel .
+  }
 `

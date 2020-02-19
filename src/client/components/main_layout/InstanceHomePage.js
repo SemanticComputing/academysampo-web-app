@@ -8,6 +8,7 @@ import purple from '@material-ui/core/colors/purple'
 import PerspectiveTabs from './PerspectiveTabs'
 import InstanceHomePageTable from './InstanceHomePageTable'
 import LeafletMap from '../facet_results/LeafletMap'
+import Network from '../facet_results/Network'
 import Export from '../facet_results/Export'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
@@ -68,12 +69,20 @@ class InstanceHomePage extends React.Component {
       case 'titles':
         uri = `${base}/titles/${localID}`
         break
+      case 'nations':
+        uri = `${base}/${localID}` // TODO unify urls
+        break
+      case 'categories':
+          uri = `${base}/categories/${localID}`
+        break
       case 'places':
         uri = `${base}/places/${localID}`
         break
+      /*
       case 'perspective3':
         uri = `${base}/event/${localID}`
         break
+       */
     }
     this.props.fetchByURI({
       resultClass: this.props.resultClass,
@@ -172,6 +181,29 @@ class InstanceHomePage extends React.Component {
                     fetchByURI={this.props.fetchByURI}
                     fetching={this.props.isLoading}
                     showInstanceCountInClusters
+                  />}
+              />
+              <Route
+                path={`/${resultClass}/page/${this.state.localID}/network`}
+                render={() =>
+                  <Network
+                    /* results={this.props.people.results} */
+                    fetchResults={this.props.fetchResults} 
+                    resultClass='peopleNetwork'
+                    facetClass='people'
+                    id={data.id}
+                  />}
+              />
+              <Route
+                path={`/${resultClass}/page/${this.state.localID}/familyNetwork`}
+                render={() =>
+                  <Network
+                    pageType='instancePage'
+                    results={this.props.networkData}
+                    resultUpdateID={this.props.resultUpdateID}
+                    fetchNetworkById={this.props.fetchNetworkById} 
+                    resultClass='familyNetwork'
+                    id={data.id}
                   />}
               />
               <Route

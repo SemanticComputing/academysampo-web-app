@@ -11,9 +11,11 @@ export const runNetworkQuery = async ({
     prefixes,
     links,
     nodes,
-    limit: 500
+    limit: 50
     // id: 'http://ldf.fi/mmm/actor/bodley_person_51697938'
   }
+  // console.log("payload", payload)
+  
   const url = 'http://127.0.0.1:5000/query'
   const config = {
     headers: {
@@ -22,7 +24,7 @@ export const runNetworkQuery = async ({
   }
   try {
     const response = await axios.post(url, payload, config)
-    return {
+    return { 
       data: response.data
     }
   } catch (error) {

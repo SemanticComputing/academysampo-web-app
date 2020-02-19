@@ -3,6 +3,7 @@ import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 import AddLocationIcon from '@material-ui/icons/AddLocation'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import RedoIcon from '@material-ui/icons/Redo'
+import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import manuscriptsImage from '../../img/manuscripts-452x262.jpg'
 import worksImage from '../../img/works-452x262_2.jpg'
@@ -31,8 +32,13 @@ export const perspectiveConfig = [
         icon: <AddLocationIcon />
       },
       {
-        id: 'export',
+        id: 'network',
         value: 3,
+        icon: <BubbleChartIcon />
+      },
+      {
+        id: 'export',
+        value: 4,
         icon: <CloudDownloadIcon />
       }
     ],
@@ -43,8 +49,13 @@ export const perspectiveConfig = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'export',
+        id: 'familyNetwork',
         value: 1,
+        icon: <BubbleChartIcon />
+      },
+      {
+        id: 'export',
+        value: 2,
         icon: <CloudDownloadIcon />
       }
     ]
@@ -83,7 +94,7 @@ export const perspectiveConfig = [
         icon: <CloudDownloadIcon />
       }
     ]
-  },
+  }/**,
   {
     id: 'perspective3',
     frontPageImage: eventsImage,
@@ -100,7 +111,6 @@ export const perspectiveConfig = [
         value: 1,
         icon: <AddLocationIcon />
       },
-
       {
         id: 'export',
         value: 2,
@@ -120,5 +130,5 @@ export const perspectiveConfig = [
         icon: <CloudDownloadIcon />
       }
     ]
-  }
+  } */
 ]

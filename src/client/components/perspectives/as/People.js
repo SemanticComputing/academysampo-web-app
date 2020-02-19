@@ -55,10 +55,12 @@ const People = props => {
           />}
       />
       <Route
-        path='/people/faceted-search/statistics'
+        path='/people/faceted-search/network'
         render={() =>
           <Network
             results={props.people.results}
+            facetUpdateID={props.facetData.facetUpdateID}
+            resultUpdateID={props.people.resultUpdateID}
             fetchResults={props.fetchResults}
             resultClass='peopleNetwork'
             facetClass='people'
@@ -89,11 +91,7 @@ const People = props => {
             pageType='facetResults'
           />}
       />
-      {/* <Route
-        path='/people/faceted-search/network'
-        render={() =>
-          <Network />}
-      /> */}
+      
     </>
   )
 }

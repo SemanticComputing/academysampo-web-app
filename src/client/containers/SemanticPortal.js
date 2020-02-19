@@ -23,28 +23,26 @@ import Footer from '../components/main_layout/Footer'
 import FacetBar from '../components/facet_bar/FacetBar'
 import People from '../components/perspectives/as/People'
 import Titles from '../components/perspectives/as/Titles'
+import Nations from '../components/perspectives/as/Nations'
 import Relatives from '../components/perspectives/as/Relatives'
 import Places from '../components/perspectives/as/Places'
-import Perspective3 from '../components/perspectives/sampo/Perspective3'
+import Categories from '../components/perspectives/as/Categories'
+// import Perspective3 from '../components/perspectives/sampo/Perspective3'
 import All from '../components/perspectives/mmm/All'
-import InstanceHomePage from '../components/main_layout/InstanceHomePage'
-import TextPage from '../components/main_layout/TextPage'
 import { perspectiveConfig } from '../configs/as/PerspectiveConfig' 
 import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
-import InfoHeader from '../components/main_layout/InfoHeader'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { has } from 'lodash'
-import { rootUrl } from '../configs/sampo/GeneralConfig'
-
+import { rootUrl } from '../configs/as/GeneralConfig'
 import {
   fetchResultCount,
   fetchPaginatedResults,
   fetchResults,
   fetchResultsClientSide,
+  fetchNetworkById,
   clearResults,
   fetchByURI,
   fetchFacet,
   fetchFacetConstrainSelf,
+  fetchGeoJSONLayers,
   sortResults,
   updateFacetOption,
   updatePage,
@@ -201,10 +199,13 @@ const SemanticPortal = props => {
           <People
             people={props.people}
             places={props.places}
+            leafletMapLayers={props.leafletMapLayers}
             facetData={props.peopleFacets}
             fetchPaginatedResults={props.fetchPaginatedResults}
             fetchResults={props.fetchResults}
+            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
             fetchByURI={props.fetchByURI}
+            fetchNetworkById={props.fetchNetworkById}
             updatePage={props.updatePage}
             updateRowsPerPage={props.updateRowsPerPage}
             updateFacetOption={props.updateFacetOption}
@@ -257,7 +258,7 @@ const SemanticPortal = props => {
             rootUrl={rootUrl}
           />
         break
-        case 'titles':
+      case 'titles':
           perspectiveElement =
             <Titles
               titles={props.titles}
@@ -276,7 +277,45 @@ const SemanticPortal = props => {
               screenSize={screenSize}
             />
           break
-      case 'perspective3':
+      case 'nations':
+            perspectiveElement =
+              <Nations
+                nations={props.nations}
+                facetData={props.nationsFacets}
+                fetchPaginatedResults={props.fetchPaginatedResults}
+                fetchResults={props.fetchResults}
+                fetchByURI={props.fetchByURI}
+                updatePage={props.updatePage}
+                updateRowsPerPage={props.updateRowsPerPage}
+                updateFacetOption={props.updateFacetOption}
+                sortResults={props.sortResults}
+                routeProps={routeProps}
+                perspective={perspective}
+                animationValue={props.animationValue}
+                animateMap={props.animateMap}
+                screenSize={screenSize}
+              />
+            break
+      case 'categories':
+              perspectiveElement =
+                <Categories
+                  categories={props.categories}
+                  facetData={props.nationsFacets}
+                  fetchPaginatedResults={props.fetchPaginatedResults}
+                  fetchResults={props.fetchResults}
+                  fetchByURI={props.fetchByURI}
+                  updatePage={props.updatePage}
+                  updateRowsPerPage={props.updateRowsPerPage}
+                  updateFacetOption={props.updateFacetOption}
+                  sortResults={props.sortResults}
+                  routeProps={routeProps}
+                  perspective={perspective}
+                  animationValue={props.animationValue}
+                  animateMap={props.animateMap}
+                  screenSize={screenSize}
+                />
+              break
+      /**case 'perspective3':
         perspectiveElement =
           <Perspective3
             perspective3={props.perspective3}
@@ -294,7 +333,7 @@ const SemanticPortal = props => {
             screenSize={screenSize}
             rootUrl={rootUrl}
           />
-        break
+        break */
       default:
         perspectiveElement = <div />
         break
@@ -422,10 +461,13 @@ const SemanticPortal = props => {
                                 <InstanceHomePage
                                   rootUrl={rootUrl}
                                   fetchByURI={props.fetchByURI}
+                                  fetchNetworkById={props.fetchNetworkById}
                                   resultClass={perspective.id}
+                                  resultUpdateID={props[perspective.id].resultUpdateID}
                                   properties={props[perspective.id].properties}
                                   tabs={perspective.instancePageTabs}
                                   data={props[perspective.id].instance}
+                                  networkData={props[perspective.id].instanceNetworkData}
                                   sparqlQuery={props[perspective.id].instanceSparqlQuery}
                                   isLoading={props[perspective.id].fetching}
                                   routeProps={routeProps}
@@ -466,6 +508,9 @@ const SemanticPortal = props => {
                           <InstanceHomePage
                             rootUrl={rootUrl}
                             fetchByURI={props.fetchByURI}
+                            fetchNetworkById={props.fetchNetworkById}
+                            networkData={props[perspective.id].instanceNetworkData}
+                            resultUpdateID={props[perspective.id].resultUpdateID}
                             resultClass={perspective.id}
                             properties={props[perspective.id].properties}
                             tabs={perspective.instancePageTabs}
@@ -519,8 +564,9 @@ const mapStateToProps = state => {
     places: state.places,
     placesFacets: state.placesFacets,
     titles: state.titles,
-    perspective3: state.perspective3,
-    perspective3Facets: state.perspective3Facets,
+    nations: state.nations,
+    categories: state.categories,
+    // perspective3Facets: state.perspective3Facets,
     clientSideFacetedSearch: state.clientSideFacetedSearch,
     animationValue: state.animation.value,
     options: state.options,
@@ -536,6 +582,8 @@ const mapDispatchToProps = ({
   fetchByURI,
   fetchFacet,
   fetchFacetConstrainSelf,
+  fetchGeoJSONLayers,
+  fetchNetworkById,
   sortResults,
   clearResults,
   updateFacetOption,
@@ -556,16 +604,19 @@ SemanticPortal.propTypes = {
   peopleFacets: PropTypes.object.isRequired,
   relatives: PropTypes.object.isRequired,
   titles: PropTypes.object.isRequired,
+  nations: PropTypes.object.isRequired,
+  categories: PropTypes.object.isRequired,
   placesFacets: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
-  perspective3: PropTypes.object.isRequired,
-  perspective3Facets: PropTypes.object.isRequired,
+  // perspective3: PropTypes.object.isRequired,
+  // perspective3Facets: PropTypes.object.isRequired,
   animationValue: PropTypes.array.isRequired,
   fetchResults: PropTypes.func.isRequired,
   fetchResultCount: PropTypes.func.isRequired,
   fetchResultsClientSide: PropTypes.func.isRequired,
   fetchPaginatedResults: PropTypes.func.isRequired,
   fetchByURI: PropTypes.func.isRequired,
+  fetchGeoJSONLayers: PropTypes.func.isRequired,
   sortResults: PropTypes.func.isRequired,
   clearResults: PropTypes.func.isRequired,
   updatePage: PropTypes.func.isRequired,

@@ -1,5 +1,6 @@
 import { of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
+import axios from 'axios'
 import {
   mergeMap,
   switchMap,
@@ -29,15 +30,20 @@ import {
   FETCH_SIMILAR_DOCUMENTS_BY_ID,
   FETCH_SIMILAR_DOCUMENTS_BY_ID_FAILED,
   FETCH_FACET_FAILED,
+  FETCH_GEOJSON_LAYERS,
+  FETCH_NETWORK_BY_ID,
+  FETCH_NETWORK_BY_ID_FAILED,
   LOAD_LOCALES,
   updateResultCount,
   updatePaginatedResults,
   updateResults,
   updateInstance,
   updateInstanceRelatedData,
+  updateInstanceNetworkData,
   updateFacetValues,
   updateFacetValuesConstrainSelf,
-  updateLocale
+  updateLocale,
+  updateGeoJSONLayers
 } from '../actions'
 import {
   rootUrl,
@@ -45,6 +51,7 @@ import {
   documentFinderAPIUrl,
   backendErrorText
 } from '../configs/as/GeneralConfig'
+import querystring from 'querystring'
 
 // set port if running on localhost with NODE_ENV = 'production'
 const port = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
@@ -330,6 +337,66 @@ const fetchSimilarDocumentsEpic = (action$, state$) => action$.pipe(
   })
 )
 
+const fetchNetworkByURIEpic = (action$, state$) => action$.pipe(
+  ofType(FETCH_NETWORK_BY_ID ),
+  withLatestFrom(state$),
+  mergeMap(([action, state]) => {
+    const { resultClass, id, limit, optimize } = action
+    const params = { id, limit, optimize }
+    const requestUrl = `${apiUrl}${resultClass}/instance/${encodeURIComponent(id)}?${querystring.stringify(params)}`
+    return ajax.getJSON(requestUrl).pipe(
+      map(response => updateInstanceNetworkData({
+        resultClass: resultClass,
+        data: response.data,
+        sparqlQuery: response.sparqlQuery
+      })),
+      catchError(error => of({
+        type: FETCH_NETWORK_BY_ID_FAILED,
+        resultClass: resultClass,
+        error: error,
+        message: {
+          text: backendErrorText,
+          title: 'Error'
+        }
+      }))
+    )
+  })
+)
+
+const fetchGeoJSONLayers = action$ => action$.pipe(
+  ofType(FETCH_GEOJSON_LAYERS),
+  mergeMap(async action => {
+    const { layerIDs, bounds } = action
+    const data = await Promise.all(layerIDs.map(layerID => fetchGeoJSONLayer(layerID, bounds)))
+    return updateGeoJSONLayers({ payload: data })
+  })
+)
+
+const fetchGeoJSONLayer = async (layerID, bounds) => {
+  const baseUrl = 'http://kartta.nba.fi/arcgis/services/WFS/MV_Kulttuuriymparisto/MapServer/WFSServer'
+  const boundsStr =
+    `${bounds._southWest.lng},${bounds._southWest.lat},${bounds._northEast.lng},${bounds._northEast.lat}`
+  const mapServerParams = {
+    request: 'GetFeature',
+    service: 'WFS',
+    version: '2.0.0',
+    typeName: layerID,
+    srsName: 'EPSG:4326',
+    outputFormat: 'geojson',
+    bbox: boundsStr
+  }
+  const url = `${baseUrl}?${querystring.stringify(mapServerParams)}`
+  try {
+    const response = await axios.get(url)
+    return {
+      layerID: layerID,
+      geoJSON: response.data
+    }
+  } catch (error) {
+    handleAxiosError(error)
+  }
+}
+
 const rootEpic = combineEpics(
   fetchPaginatedResultsEpic,
   fetchResultsEpic,
@@ -338,8 +405,10 @@ const rootEpic = combineEpics(
   fetchByURIEpic,
   fetchFacetEpic,
   fetchFacetConstrainSelfEpic,
+  fetchNetworkByURIEpic,
   loadLocalesEpic,
-  fetchSimilarDocumentsEpic
+  fetchSimilarDocumentsEpic,
+  fetchGeoJSONLayers
 )
 
 export default rootEpic

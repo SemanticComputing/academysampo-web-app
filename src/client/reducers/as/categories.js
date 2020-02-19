@@ -12,7 +12,8 @@ import {
   UPDATE_PAGE,
   UPDATE_ROWS_PER_PAGE,
   SORT_RESULTS,
-  UPDATE_PERSPECTIVE_HEADER_EXPANDED
+  UPDATE_PERSPECTIVE_HEADER_EXPANDED,
+  UPDATE_URL
 } from '../../actions'
 import {
   fetchResults,
@@ -29,8 +30,7 @@ import {
 } from '../helpers'
 
 export const INITIAL_STATE = {
-  results: [],
-  resultUpdateID: 0,
+  results: null,
   resultsSparqlQuery: null,
   paginatedResults: [],
   paginatedResultsSparqlQuery: null,
@@ -43,10 +43,46 @@ export const INITIAL_STATE = {
   sortDirection: null,
   fetching: false,
   fetchingResultCount: false,
-  sparqlQuery: null,
-  facetedSearchHeaderExpanded: true,
-  instancePageHeaderExpanded: true,
+  facetedSearchHeaderExpanded: false,
+  instancePageHeaderExpanded: false,
   properties: [
+    {
+      id: 'prefLabel',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 150
+    },
+    {
+      id: 'broader',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 170
+    },
+    {
+      id: 'narrower',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 170
+    },
+    {
+      id: 'person',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 180,
+      onlyOnInstancePage: true
+    },
     {
       id: 'uri',
       valueType: 'object',
@@ -55,85 +91,16 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       onlyOnInstancePage: true
-    },
-    {
-      id: 'prefLabel',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 250
-    },
-    {
-      id: 'author',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 250
-    },
-    {
-      id: 'language',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
-    },
-    {
-      id: 'expression',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'manuscript',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 250
-    },
-    {
-      id: 'productionTimespan',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 250
-    },
-    {
-      id: 'collection',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 200
-    },
-    {
-      id: 'source',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 200
     }
   ]
 }
 
-const perspective2 = (state = INITIAL_STATE, action) => {
-  if (action.resultClass === 'perspective2') {
+const resultClasses = new Set([
+  'categories'
+])
+
+const categories = (state = INITIAL_STATE, action) => {
+  if (resultClasses.has(action.resultClass)) {
     switch (action.type) {
       case FETCH_RESULTS:
       case FETCH_PAGINATED_RESULTS:
@@ -160,10 +127,12 @@ const perspective2 = (state = INITIAL_STATE, action) => {
         return updateRowsPerPage(state, action)
       case UPDATE_PERSPECTIVE_HEADER_EXPANDED:
         return updateHeaderExpanded(state, action)
+      case UPDATE_URL:
+        return (state)
       default:
         return state
     }
   } else return state
 }
 
-export default perspective2
+export default categories

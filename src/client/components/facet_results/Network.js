@@ -42,10 +42,19 @@ class Network extends React.Component {
   }
 
   componentDidMount = () => {
-    this.props.fetchResults({
-      resultClass: this.props.resultClass,
-      facetClass: this.props.facetClass
-    })
+    if (this.props.pageType === 'instancePage') {
+      this.props.fetchNetworkById({ 
+        resultClass: this.props.resultClass,
+        id: this.props.id,
+        limit: 100,
+        optimize: 1.0
+      })
+    } else {
+      this.props.fetchResults({
+        resultClass: this.props.resultClass,
+        facetClass: this.props.facetClass
+      })
+    }
     this.cy = cytoscape({
       container: this.cyRef.current,
 
@@ -54,7 +63,7 @@ class Network extends React.Component {
           selector: 'node',
           style: {
             'background-color': ele => ele.data('class') === 'http://erlangen-crm.org/efrbroo/F4_Manifestation_Singleton'
-              ? '#666' : '#000',
+              ? '#000' : '#666',
             label: 'data(prefLabel)'
           }
         },
@@ -64,7 +73,7 @@ class Network extends React.Component {
             // 'width': 'data(weight)',
             'line-color': '#999',
             'curve-style': 'bezier',
-            content: 'data(prefLabel)',
+            content: ' data(prefLabel) ',
             'target-arrow-shape': 'triangle',
             'target-arrow-color': '#999',
             color: '#555',
@@ -73,7 +82,7 @@ class Network extends React.Component {
             'text-halign': 'center',
             'edge-text-rotation': 'autorotate',
             'text-background-opacity': 1,
-            'text-background-color': '#FFF',
+            'text-background-color': '#BDBDBD',
             'text-background-shape': 'roundrectangle'
           }
         }
@@ -81,11 +90,19 @@ class Network extends React.Component {
     })
   }
 
-  componentDidUpdate = () => {
-    if (this.props.results !== null) {
-      // console.log(this.props.results.elements);
-      this.cy.add(this.props.results.elements)
+  componentDidUpdate = prevProps => {
+    if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
+      // this.cy.add(this.props.results.elements)
+      this.cy.elements().remove(); 
+      this.cy.add(this.props.results.elements);
       this.cy.layout(layout).run()
+    }
+    // check if filters have changed
+    if (prevProps.facetUpdateID !== this.props.facetUpdateID) {
+      this.props.fetchResults({
+        resultClass: this.props.resultClass,
+        facetClass: this.props.facetClass
+      })
     }
   }
 
@@ -101,9 +118,12 @@ class Network extends React.Component {
 Network.propTypes = {
   classes: PropTypes.object.isRequired,
   results: PropTypes.object,
-  fetchResults: PropTypes.func.isRequired,
+  fetchResults: PropTypes.func,
+  fetchNetworkById: PropTypes.func,
   resultClass: PropTypes.string.isRequired,
-  facetClass: PropTypes.string.isRequired
+  facetClass: PropTypes.string,
+  facetUpdateID: PropTypes.number,
+  resultUpdateID: PropTypes.number.isRequired
 }
 
 export default withStyles(styles)(Network)

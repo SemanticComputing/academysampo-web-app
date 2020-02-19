@@ -683,6 +683,160 @@ export default {
           `
         }
       }
+    },
+    nations: {
+      label: 'Student Nation',
+      facetResultsType: 'nations',
+      shortDescription: 'Student Nation description',
+      longDescription: `
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          Use this perspective to access data related to events associated with the
+          histories of manuscripts and manuscript collections over the centuries.
+          See <a href="/instructions">instructions</a> for using the filters.
+          The result view can be selected using the tabs:
+        </p>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes all events in the MMM data.
+          </li>
+          <li>
+            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
+          </li>
+          <li>
+            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            table view into YASGUI query editor.
+          </li>
+        </ul>
+      `,
+      instancePage: {
+        label: 'Student Nation',
+        description: `
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            Events refer to various activities related to Manuscripts and Actors. Event
+            types include Production, Transfer of Custody, and Activity events.
+            Production events refer to the production of the physical manuscript.
+            Transfer of Custody events indicate a change of ownership that involved
+            a transaction of some kind, usually through an auction house or bookseller.
+            The generic Activity event type covers all other types of events.
+          </p>
+        `
+      },
+      properties: {
+        prefLabel: {
+          label: "label",
+          description: ''
+        },
+        altLabel: {
+          label: "alternative labels",
+          description: 'List of alternative labels or abbreviations.'
+        },
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier.'
+        },
+        related: {
+          label: 'Related titles',
+          description: `
+            Related occupational titles.
+          `
+        },
+        person: {
+          label: 'People',
+          description: `
+            People associated with this title.
+          `
+        },
+        externalLink: {
+          label: 'External link',
+          description: `
+            The links to external databases.
+          `
+        },
+        eventTimespan: {
+          label: 'Date',
+          description: `
+            The date or time period associated with the event.
+          `
+        },
+        place: {
+          label: 'Related place',
+          description: `
+            The specific place(s) associated with the title.
+          `
+        }
+      }
+    },
+    categories: {
+      label: 'Categories',
+      facetResultsType: 'categories',
+      shortDescription: 'Category description',
+      longDescription: `
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          Use this perspective to access data related to events associated with the
+          histories of manuscripts and manuscript collections over the centuries.
+          See <a href="/instructions">instructions</a> for using the filters.
+          The result view can be selected using the tabs:
+        </p>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes all events in the MMM data.
+          </li>
+          <li>
+            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
+          </li>
+          <li>
+            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            table view into YASGUI query editor.
+          </li>
+        </ul>
+      `,
+      instancePage: {
+        label: 'Category',
+        description: `
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            Events refer to various activities related to Manuscripts and Actors. Event
+            types include Production, Transfer of Custody, and Activity events.
+            Production events refer to the production of the physical manuscript.
+            Transfer of Custody events indicate a change of ownership that involved
+            a transaction of some kind, usually through an auction house or bookseller.
+            The generic Activity event type covers all other types of events.
+          </p>
+        `
+      },
+      properties: {
+        prefLabel: {
+          label: "label",
+          description: ''
+        },
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier.'
+        },
+        person: {
+          label: 'People',
+          description: `
+            People associated with this category.
+          `
+        },
+        broader: {
+          label: 'Parent Category',
+          description: `
+          A larger category in which a place is contained.
+          `
+        },
+        narrower: {
+          label: 'Subcategories',
+          description: `
+          A subcategory.
+          `
+        },
+        place: {
+          label: 'Related place',
+          description: `
+            The specific place(s) associated with the title.
+          `
+        }
+      }
     }
   },
   aboutThePortal: `

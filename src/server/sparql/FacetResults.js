@@ -97,11 +97,6 @@ export const getAllResults = ({
       q = networkLinksQuery
       filterTarget = 'person'
       break
-    case 'familyNetwork':
-      q = networkFamilyRelationQuery
-      console.log(q)
-      filterTarget = 'person'
-      break
   }
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
@@ -115,7 +110,7 @@ export const getAllResults = ({
     }))
   }
   if (resultClass === 'peopleNetwork') {
-    console.log(q)
+    // console.log(q)
     return runNetworkQuery({
       endpoint,
       prefixes,
@@ -290,15 +285,8 @@ export const getByURI = ({
       q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
       q = q.replace('<RELATED_INSTANCES>', actorsAt)
       break
-    case 'placesMsProduced':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', manuscriptsProducedAt)
-      break
-    case 'lastKnownLocations':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', lastKnownLocationsAt)
+    case 'familyNetwork':
+      q = networkFamilyRelationQuery
       break
     case 'placesEvents':
       q = instanceQuery
@@ -318,11 +306,20 @@ export const getByURI = ({
     }))
   }
   q = q.replace('<ID>', `<${uri}>`)
-  console.log(prefixes + q)
-  return runSelectQuery({
-    query: prefixes + q,
-    endpoint,
-    resultMapper: makeObjectList,
-    resultFormat
-  })
+  // console.log(prefixes + q)
+  if (resultClass==='familyNetwork') {
+    return runNetworkQuery({
+      endpoint,
+      prefixes,
+      links: q,
+      nodes: networkNodesQuery
+    })
+  } else {
+    return runSelectQuery({
+      query: prefixes + q,
+      endpoint,
+      resultMapper: makeObjectList,
+      resultFormat
+    })
+  }
 }

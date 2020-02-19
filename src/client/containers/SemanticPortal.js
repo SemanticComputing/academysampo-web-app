@@ -29,24 +29,15 @@ import Places from '../components/perspectives/as/Places'
 import Categories from '../components/perspectives/as/Categories'
 // import Perspective3 from '../components/perspectives/sampo/Perspective3'
 import All from '../components/perspectives/mmm/All'
-<<<<<<< HEAD
-import InstanceHomePage from '../components/main_layout/InstanceHomePage'
-import TextPage from '../components/main_layout/TextPage'
 import { perspectiveConfig } from '../configs/as/PerspectiveConfig' 
 import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
-import InfoHeader from '../components/main_layout/InfoHeader'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { has } from 'lodash'
-=======
-import { perspectiveConfig } from '../configs/sampo/PerspectiveConfig'
-import { perspectiveConfigOnlyInfoPages } from '../configs/sampo/PerspectiveConfigOnlyInfoPages'
-import { rootUrl } from '../configs/sampo/GeneralConfig'
->>>>>>> upstream/master
+import { rootUrl } from '../configs/as/GeneralConfig'
 import {
   fetchResultCount,
   fetchPaginatedResults,
   fetchResults,
   fetchResultsClientSide,
+  fetchNetworkById,
   clearResults,
   fetchByURI,
   fetchFacet,
@@ -214,6 +205,7 @@ const SemanticPortal = props => {
             fetchResults={props.fetchResults}
             fetchGeoJSONLayers={props.fetchGeoJSONLayers}
             fetchByURI={props.fetchByURI}
+            fetchNetworkById={props.fetchNetworkById}
             updatePage={props.updatePage}
             updateRowsPerPage={props.updateRowsPerPage}
             updateFacetOption={props.updateFacetOption}
@@ -469,10 +461,13 @@ const SemanticPortal = props => {
                                 <InstanceHomePage
                                   rootUrl={rootUrl}
                                   fetchByURI={props.fetchByURI}
+                                  fetchNetworkById={props.fetchNetworkById}
                                   resultClass={perspective.id}
+                                  resultUpdateID={props[perspective.id].resultUpdateID}
                                   properties={props[perspective.id].properties}
                                   tabs={perspective.instancePageTabs}
                                   data={props[perspective.id].instance}
+                                  networkData={props[perspective.id].instanceNetworkData}
                                   sparqlQuery={props[perspective.id].instanceSparqlQuery}
                                   isLoading={props[perspective.id].fetching}
                                   routeProps={routeProps}
@@ -513,6 +508,9 @@ const SemanticPortal = props => {
                           <InstanceHomePage
                             rootUrl={rootUrl}
                             fetchByURI={props.fetchByURI}
+                            fetchNetworkById={props.fetchNetworkById}
+                            networkData={props[perspective.id].instanceNetworkData}
+                            resultUpdateID={props[perspective.id].resultUpdateID}
                             resultClass={perspective.id}
                             properties={props[perspective.id].properties}
                             tabs={perspective.instancePageTabs}
@@ -560,7 +558,6 @@ const SemanticPortal = props => {
 
 const mapStateToProps = state => {
   return {
-<<<<<<< HEAD
     people: state.people,
     peopleFacets: state.peopleFacets,
     relatives: state.relatives,
@@ -570,17 +567,6 @@ const mapStateToProps = state => {
     nations: state.nations,
     categories: state.categories,
     // perspective3Facets: state.perspective3Facets,
-=======
-    perspective1: state.perspective1,
-    perspective1Facets: state.perspective1Facets,
-    perspective1FacetsConstrainSelf: state.perspective1FacetsConstrainSelf,
-    perspective2: state.perspective2,
-    perspective2Facets: state.perspective2Facets,
-    perspective3: state.perspective3,
-    perspective3Facets: state.perspective3Facets,
-    places: state.places,
-    leafletMapLayers: state.leafletMapLayers,
->>>>>>> upstream/master
     clientSideFacetedSearch: state.clientSideFacetedSearch,
     animationValue: state.animation.value,
     options: state.options,
@@ -597,6 +583,7 @@ const mapDispatchToProps = ({
   fetchFacet,
   fetchFacetConstrainSelf,
   fetchGeoJSONLayers,
+  fetchNetworkById,
   sortResults,
   clearResults,
   updateFacetOption,
@@ -613,7 +600,6 @@ SemanticPortal.propTypes = {
   theme: PropTypes.object.isRequired,
   options: PropTypes.object.isRequired,
   error: PropTypes.object.isRequired,
-<<<<<<< HEAD
   people: PropTypes.object.isRequired,
   peopleFacets: PropTypes.object.isRequired,
   relatives: PropTypes.object.isRequired,
@@ -624,17 +610,6 @@ SemanticPortal.propTypes = {
   places: PropTypes.object.isRequired,
   // perspective3: PropTypes.object.isRequired,
   // perspective3Facets: PropTypes.object.isRequired,
-=======
-  perspective1: PropTypes.object.isRequired,
-  perspective1Facets: PropTypes.object.isRequired,
-  perspective1FacetsConstrainSelf: PropTypes.object.isRequired,
-  perspective2: PropTypes.object.isRequired,
-  perspective2Facets: PropTypes.object.isRequired,
-  perspective3: PropTypes.object.isRequired,
-  perspective3Facets: PropTypes.object.isRequired,
-  places: PropTypes.object.isRequired,
-  leafletMapLayers: PropTypes.object.isRequired,
->>>>>>> upstream/master
   animationValue: PropTypes.array.isRequired,
   fetchResults: PropTypes.func.isRequired,
   fetchResultCount: PropTypes.func.isRequired,

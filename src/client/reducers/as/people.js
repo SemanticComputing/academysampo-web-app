@@ -13,7 +13,8 @@ import {
   UPDATE_ROWS_PER_PAGE,
   SORT_RESULTS,
   UPDATE_PERSPECTIVE_HEADER_EXPANDED,
-  UPDATE_URL
+  UPDATE_URL,
+  UPDATE_INSTANCE_NETWORK_DATA
 } from '../../actions'
 import {
   fetchResults,
@@ -24,6 +25,7 @@ import {
   updateResults,
   updatePaginatedResults,
   updateInstance,
+  updateInstanceNetworkData,
   updatePage,
   updateRowsPerPage,
   updateHeaderExpanded
@@ -31,10 +33,12 @@ import {
 
 export const INITIAL_STATE = {
   results: null,
+  resultUpdateID: 0,
   resultsSparqlQuery: null,
   paginatedResults: [],
   paginatedResultsSparqlQuery: null,
   instance: null,
+  instanceNetworkData: null,
   instanceSparqlQuery: null,
   resultCount: 0,
   page: -1,
@@ -273,6 +277,8 @@ const people = (state = INITIAL_STATE, action) => {
         return updatePaginatedResults(state, action)
       case UPDATE_INSTANCE:
         return updateInstance(state, action)
+      case UPDATE_INSTANCE_NETWORK_DATA:
+        return updateInstanceNetworkData(state, action)
       case UPDATE_PAGE:
         return updatePage(state, action)
       case UPDATE_ROWS_PER_PAGE:

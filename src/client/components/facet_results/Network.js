@@ -37,16 +37,24 @@ const layout = {
 
 class Network extends React.Component {
   constructor (props) {
-    console.log('fetchResults', props.fetchResults)
     super(props)
     this.cyRef = React.createRef()
   }
 
   componentDidMount = () => {
-    this.props.fetchResults({
-      resultClass: this.props.resultClass,
-      facetClass: this.props.facetClass
-    })
+    if (this.props.pageType === 'instancePage') {
+      this.props.fetchNetworkById({ 
+        resultClass: this.props.resultClass,
+        id: this.props.id,
+        limit: 100,
+        optimize: 1.0
+      })
+    } else {
+      this.props.fetchResults({
+        resultClass: this.props.resultClass,
+        facetClass: this.props.facetClass
+      })
+    }
     this.cy = cytoscape({
       container: this.cyRef.current,
 
@@ -84,7 +92,6 @@ class Network extends React.Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
-      // console.log(this.props.results.elements);
       // this.cy.add(this.props.results.elements)
       this.cy.elements().remove(); 
       this.cy.add(this.props.results.elements);
@@ -111,10 +118,11 @@ class Network extends React.Component {
 Network.propTypes = {
   classes: PropTypes.object.isRequired,
   results: PropTypes.object,
-  fetchResults: PropTypes.func.isRequired,
+  fetchResults: PropTypes.func,
+  fetchNetworkById: PropTypes.func,
   resultClass: PropTypes.string.isRequired,
-  facetClass: PropTypes.string.isRequired,
-  facetUpdateID: PropTypes.number.isRequired,
+  facetClass: PropTypes.string,
+  facetUpdateID: PropTypes.number,
   resultUpdateID: PropTypes.number.isRequired
 }
 

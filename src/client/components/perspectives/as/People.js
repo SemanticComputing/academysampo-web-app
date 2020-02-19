@@ -59,6 +59,8 @@ const People = props => {
         render={() =>
           <Network
             results={props.people.results}
+            facetUpdateID={props.facetData.facetUpdateID}
+            resultUpdateID={props.people.resultUpdateID}
             fetchResults={props.fetchResults}
             resultClass='peopleNetwork'
             facetClass='people'

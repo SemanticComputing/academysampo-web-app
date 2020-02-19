@@ -9,6 +9,7 @@ import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
 
 const Perspective1 = props => {
+  const { rootUrl, perspective } = props
   return (
     <>
       <PerspectiveTabs
@@ -17,11 +18,11 @@ const Perspective1 = props => {
         screenSize={props.screenSize}
       />
       <Route
-        exact path='/perspective1/faceted-search'
-        render={() => <Redirect to='/perspective1/faceted-search/table' />}
+        exact path={`${rootUrl}/${perspective.id}/faceted-search`}
+        render={() => <Redirect to={`${rootUrl}/${perspective.id}/faceted-search/table`} />}
       />
       <Route
-        path='/perspective1/faceted-search/table'
+        path={`${props.rootUrl}/${perspective.id}/faceted-search/table`}
         render={routeProps =>
           <ResultTable
             data={props.perspective1}
@@ -36,10 +37,11 @@ const Perspective1 = props => {
           />}
       />
       <Route
-        path='/perspective1/faceted-search/production_places'
+        path={`${rootUrl}/${perspective.id}/faceted-search/production_places`}
         render={() =>
           <LeafletMap
             results={props.places.results}
+            layers={props.leafletMapLayers}
             pageType='facetResults'
             facetUpdateID={props.facetData.facetUpdateID}
             facet={props.facetData.facets.productionPlace}
@@ -49,14 +51,16 @@ const Perspective1 = props => {
             mapMode='cluster'
             instance={props.places.instance}
             fetchResults={props.fetchResults}
+            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             fetching={props.places.fetching}
             showInstanceCountInClusters
             updateFacetOption={props.updateFacetOption}
+            showExternalLayers
           />}
       />
       <Route
-        path='/perspective1/faceted-search/last_known_locations'
+        path={`${rootUrl}/${perspective.id}/faceted-search/last_known_locations`}
         render={() =>
           <LeafletMap
             results={props.places.results}
@@ -69,6 +73,7 @@ const Perspective1 = props => {
             mapMode='cluster'
             instance={props.places.instance}
             fetchResults={props.fetchResults}
+            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             fetching={props.places.fetching}
             showInstanceCountInClusters
@@ -76,17 +81,19 @@ const Perspective1 = props => {
           />}
       />
       <Route
-        path='/perspective1/faceted-search/statistics'
+        path={`${rootUrl}/${perspective.id}/faceted-search/network`}
         render={() =>
           <Network
             results={props.perspective1.results}
+            resultUpdateID={props.perspective1.resultUpdateID}
             fetchResults={props.fetchResults}
             resultClass='perspective1Network'
             facetClass='perspective1'
+            facetUpdateID={props.facetData.facetUpdateID}
           />}
       />
       <Route
-        path='/perspective1/faceted-search/migrations'
+        path={`${rootUrl}/${perspective.id}/faceted-search/migrations`}
         render={() =>
           <Deck
             results={props.places.results}
@@ -103,18 +110,13 @@ const Perspective1 = props => {
           />}
       />
       <Route
-        path='/perspective1/faceted-search/export'
+        path={`${rootUrl}/${perspective.id}/faceted-search/export`}
         render={() =>
           <Export
             sparqlQuery={props.perspective1.paginatedResultsSparqlQuery}
             pageType='facetResults'
           />}
       />
-      {/* <Route
-        path='/perspective1/faceted-search/network'
-        render={() =>
-          <Network />}
-      /> */}
     </>
   )
 }
@@ -122,8 +124,10 @@ const Perspective1 = props => {
 Perspective1.propTypes = {
   perspective1: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
+  leafletMapLayers: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
   fetchResults: PropTypes.func.isRequired,
+  fetchGeoJSONLayers: PropTypes.func.isRequired,
   fetchPaginatedResults: PropTypes.func.isRequired,
   fetchByURI: PropTypes.func.isRequired,
   updatePage: PropTypes.func.isRequired,
@@ -134,7 +138,8 @@ Perspective1.propTypes = {
   perspective: PropTypes.object.isRequired,
   animationValue: PropTypes.array.isRequired,
   animateMap: PropTypes.func.isRequired,
-  screenSize: PropTypes.string.isRequired
+  screenSize: PropTypes.string.isRequired,
+  rootUrl: PropTypes.string.isRequired
 }
 
 export default Perspective1

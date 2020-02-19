@@ -80,6 +80,7 @@ export const updateFacetOption = (state, action) => {
     'textFilter',
     'timespanFilter',
     'integerFilter',
+    'dateFilter',
     'integerFilterRange'
   ]
   if (filterTypes.includes(action.option)) {
@@ -129,7 +130,7 @@ const updateFacetFilter = (state, action) => {
       ...state.facets[facetID],
       textFilter: value
     }
-  } else if (oldFacet.filterType === 'timespanFilter') {
+  } else if (oldFacet.filterType === 'timespanFilter' || oldFacet.filterType === 'dateFilter') {
     if (value == null) {
       newFacet = {
         ...state.facets[facetID],
@@ -186,7 +187,8 @@ export const updateResults = (state, action) => {
     ...state,
     results: action.data,
     resultsSparqlQuery: action.sparqlQuery,
-    fetching: false
+    fetching: false,
+    resultUpdateID: ++state.resultUpdateID
   }
 }
 

@@ -37,7 +37,7 @@ const layout = {
 
 class Network extends React.Component {
   constructor (props) {
-    // console.log(props)
+    console.log('fetchResults', props.fetchResults)
     super(props)
     this.cyRef = React.createRef()
   }
@@ -85,7 +85,9 @@ class Network extends React.Component {
   componentDidUpdate = () => {
     if (this.props.results !== null) {
       // console.log(this.props.results.elements);
-      this.cy.add(this.props.results.elements)
+      // this.cy.add(this.props.results.elements)
+      this.cy.elements().remove(); 
+      this.cy.add(this.props.results.elements);
       this.cy.layout(layout).run()
     }
   }

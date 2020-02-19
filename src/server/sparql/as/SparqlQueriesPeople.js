@@ -77,14 +77,14 @@ UNION
 UNION
 {
   { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
-OPTIONAL { ?title__id skos:prefLabel ?title__prefLabel }
-BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
+  OPTIONAL { ?title__id skos:prefLabel ?title__prefLabel }
+  BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
 }
 UNION
 {
-?id :has_event/schema:place ?place__id .
-?place__id skos:prefLabel ?place__prefLabel .
-BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
+  ?id :has_event/schema:place ?place__id .
+  ?place__id skos:prefLabel ?place__prefLabel .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
 }
 UNION 
 {
@@ -132,8 +132,8 @@ UNION
 } 
 UNION
 {
-?id ^:supervisor/a :Study .
-BIND("Supervisor" as ?role)
+  ?id ^:supervisor/a :Study .
+  BIND("Supervisor" as ?role)
 }
 UNION
 {
@@ -287,7 +287,6 @@ export const peoplePropertiesFacetResults =
   { ?id dct:source ?source__id .
     ?source__id skos:prefLabel ?source__prefLabel .
   }
-
 `
 
 export const peopleEventPlacesQuery = `
@@ -312,6 +311,7 @@ export const peopleEventPlacesQuery = `
   }
   GROUP BY ?id ?lat ?long
 `
+
 // # https://github.com/uber/deck.gl/blob/master/docs/layers/arc-layer.md
 export const peopleMigrationsQuery = `
 SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
@@ -347,10 +347,10 @@ export const networkLinksQuery = `
 `
 
 export const networkFamilyRelationQuery = `
-  SELECT DISTINCT (?person as ?source) ?target ?prefLabel
+  SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   WHERE {
-    <FILTER> 
-    ?person bioc:has_family_relation [ a ?rel ; bioc:inheres_in ?target ] .
+    VALUES ?source { <ID> }
+    ?source bioc:has_family_relation [ a ?rel ; bioc:inheres_in ?target ] .
     OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
   } 
 `

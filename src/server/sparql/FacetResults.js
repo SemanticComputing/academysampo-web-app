@@ -99,6 +99,7 @@ export const getAllResults = ({
       break
     case 'familyNetwork':
       q = networkFamilyRelationQuery
+      console.log(q)
       filterTarget = 'person'
       break
   }
@@ -114,6 +115,7 @@ export const getAllResults = ({
     }))
   }
   if (resultClass === 'peopleNetwork') {
+    console.log(q)
     return runNetworkQuery({
       endpoint,
       prefixes,

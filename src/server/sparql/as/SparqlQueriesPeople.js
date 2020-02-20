@@ -350,10 +350,18 @@ export const networkLinksQuery = `
 export const networkFamilyRelationQuery = `
   SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   WHERE {
-    VALUES ?source { <ID> }
-    ?source bioc:has_family_relation [ a ?rel ; bioc:inheres_in ?target ] .
+    VALUES ?source { <ID> } 
+    #{ 
+    ?source bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] . 
+    #}
+    #UNION
+    #{ 
+    #  ?target bioc:has_family_relation [ a ?rel ; a/rels:level ?neg_level ; bioc:inheres_in ?source ] .
+    #  BIND(0-?neg_level AS ?level)
+    #}
     OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
-  }
+  } 
+  ORDER BY ?level 
 `
 
 //  query on person page tab "ACADEMIC RELATIONS"
@@ -367,7 +375,11 @@ SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   	}
   	UNION
   	{ 
-    	?target :has_event/:supervisor ?source . BIND("ohjaaja" AS ?prefLabel) 
+    	?target :has_event/:supervisor ?source . BIND("oppilas" AS ?prefLabel) 
+    }
+    UNION
+  	{
+    	?source :has_event/:supervisor ?target . BIND("ohjaaja" AS ?prefLabel) 
   	}
 } 
 `
@@ -375,10 +387,13 @@ SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
 export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size 
   WHERE {
-    VALUES (?class ?color ?size) { (:Person "blue" "16px") (:ReferencedPerson "red" "12px") }
+    VALUES (?class ?size) { (:Person "16px") (:ReferencedPerson "12px") }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
         skos:prefLabel ?prefLabel .
-    OPTIONAL { ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi") }
+    OPTIONAL { 
+      ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi") 
+      VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
+    }
   }
 `

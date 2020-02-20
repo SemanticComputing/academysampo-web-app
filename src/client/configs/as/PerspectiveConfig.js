@@ -54,8 +54,13 @@ export const perspectiveConfig = [
         icon: <BubbleChartIcon />
       },
       {
-        id: 'export',
+        id: 'academicNetwork',
         value: 2,
+        icon: <BubbleChartIcon />
+      },
+      {
+        id: 'export',
+        value: 3,
         icon: <CloudDownloadIcon />
       }
     ]

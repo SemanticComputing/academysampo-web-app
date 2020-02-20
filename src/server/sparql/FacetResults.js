@@ -8,7 +8,8 @@ import {
   peopleMigrationsQuery,
   networkLinksQuery,
   networkNodesQuery,
-  networkFamilyRelationQuery
+  networkFamilyRelationQuery,
+  networkAcademicRelationQuery
 } from './as/SparqlQueriesPeople'
 import {
   relativesPropertiesInstancePage,
@@ -118,6 +119,7 @@ export const getAllResults = ({
       nodes: networkNodesQuery
     })
   }
+  /** 
   if (resultClass === 'familyNetwork') {
     return runNetworkQuery({
       // id: 
@@ -127,6 +129,16 @@ export const getAllResults = ({
       nodes: networkNodesQuery
     })
   }
+  if (resultClass === 'academicNetwork') {
+    return runNetworkQuery({
+      // id: 
+      endpoint,
+      prefixes,
+      links: q,
+      nodes: networkNodesQuery
+    })
+  }
+  */
   return runSelectQuery({
     query: prefixes + q,
     endpoint,
@@ -291,8 +303,9 @@ export const getByURI = ({
       q = q.replace('<RELATED_INSTANCES>', '')
       break
   }
-  
+
   if (resultClass==='familyNetwork') {
+    // console.log(uri, networkFamilyRelationQuery)
     return runNetworkQuery({
       endpoint,
       prefixes,
@@ -301,7 +314,18 @@ export const getByURI = ({
       nodes: networkNodesQuery
     })
   }
-  
+
+  if (resultClass==='academicNetwork') {
+    // console.log(uri, networkAcademicRelationQuery)
+    return runNetworkQuery({
+      endpoint,
+      prefixes,
+      links: networkAcademicRelationQuery,
+      id: uri, 
+      nodes: networkNodesQuery
+    })
+  }
+
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
   } else {

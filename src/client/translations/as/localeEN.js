@@ -40,6 +40,7 @@ export default {
     migrations: 'migrations',
     network: 'network',
     familyNetwork: 'Family relations',
+    academicNetwork: 'Academic relations',
     export: 'export',
     'by-period': 'by period'
   },

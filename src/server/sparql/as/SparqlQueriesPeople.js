@@ -337,22 +337,39 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
     BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
   } 
 `
-
+//  query on facet page
 export const networkLinksQuery = `
   SELECT DISTINCT (?person as ?source) ?target ("Teacher" as ?prefLabel)
   WHERE {
     <FILTER>
-    ?person :has_event [ :supervisor ?target ]
+    ?person :has_event/:supervisor ?target .
   }
 `
 
+//  query on person page tab "FAMILY RELATIONS"
 export const networkFamilyRelationQuery = `
   SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   WHERE {
     VALUES ?source { <ID> }
     ?source bioc:has_family_relation [ a ?rel ; bioc:inheres_in ?target ] .
     OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
-  } 
+  }
+`
+
+//  query on person page tab "ACADEMIC RELATIONS"
+export const networkAcademicRelationQuery = `
+SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
+  WHERE {
+  	VALUES ?source { <ID> }
+  	{
+    	?source bioc:has_person_relation [ a ?rel ; bioc:inheres_in ?target ] 
+   		OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+  	}
+  	UNION
+  	{ 
+    	?target :has_event/:supervisor ?source . BIND("ohjaaja" AS ?prefLabel) 
+  	}
+} 
 `
 
 export const networkNodesQuery = `

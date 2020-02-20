@@ -305,7 +305,6 @@ export const getByURI = ({
   }
 
   if (resultClass==='familyNetwork') {
-    // console.log(uri, networkFamilyRelationQuery)
     return runNetworkQuery({
       endpoint,
       prefixes,
@@ -321,7 +320,7 @@ export const getByURI = ({
       endpoint,
       prefixes,
       links: networkAcademicRelationQuery,
-      id: uri, 
+      id: uri,
       nodes: networkNodesQuery
     })
   }

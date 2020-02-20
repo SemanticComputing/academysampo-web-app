@@ -358,7 +358,7 @@ export const networkFamilyRelationQuery = `
 
 //  query on person page tab "ACADEMIC RELATIONS"
 export const networkAcademicRelationQuery = `
-SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
+SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight) 
   WHERE {
   	VALUES ?source { <ID> }
   	{
@@ -375,7 +375,7 @@ SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
 export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size 
   WHERE {
-    VALUES (?class ?color ?size) { (:Person "red" "16px") (:ReferencedPerson "blue" "12px") }
+    VALUES (?class ?color ?size) { (:Person "blue" "16px") (:ReferencedPerson "red" "12px") }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
         skos:prefLabel ?prefLabel .

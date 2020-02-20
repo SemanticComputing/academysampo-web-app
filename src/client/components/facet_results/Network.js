@@ -66,8 +66,8 @@ class Network extends React.Component {
             "font-size": '12',
             'background-color': ele => ele.data('color') || '#666',
             label: ' data(prefLabel)',
-					  "height": ele => ele.data('size') || '16px',
-	      		"width": ele => ele.data('size') || '16px'
+					  "height": ele => (16/(ele.data('distance')+1)) || ele.data('size') || '16px',
+	      		"width": ele =>  (16/(ele.data('distance')+1)) || ele.data('size') || '16px'
           }
         },
         {
@@ -96,6 +96,7 @@ class Network extends React.Component {
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
       // this.cy.add(this.props.results.elements)
+      console.log(this.props.results.elements);
       this.cy.elements().remove(); 
       this.cy.add(this.props.results.elements);
       this.cy.layout(layout).run()

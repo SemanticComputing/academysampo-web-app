@@ -39,6 +39,8 @@ export default {
     last_known_locations: 'last known locations',
     migrations: 'migrations',
     network: 'network',
+    familyNetwork: 'Family relations',
+    academicNetwork: 'Academic relations',
     export: 'export',
     'by-period': 'by period'
   },

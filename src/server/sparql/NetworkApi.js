@@ -4,15 +4,16 @@ export const runNetworkQuery = async ({
   endpoint,
   prefixes,
   links,
-  nodes
+  nodes,
+  id
 }) => {
   const payload = {
     endpoint,
     prefixes,
     links,
     nodes,
-    limit: 50
-    // id: 'http://ldf.fi/mmm/actor/bodley_person_51697938'
+    limit: 100,
+    id
   }
   // console.log("payload", payload)
   

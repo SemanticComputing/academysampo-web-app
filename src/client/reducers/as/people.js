@@ -252,7 +252,8 @@ export const INITIAL_STATE = {
 const resultClasses = new Set([
   'people',
   'peopleNetwork',
-  'familyNetwork'
+  'familyNetwork',
+  'academicNetwork'
 ])
 
 const people = (state = INITIAL_STATE, action) => {

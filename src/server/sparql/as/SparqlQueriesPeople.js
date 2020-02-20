@@ -337,30 +337,74 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
     BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
   } 
 `
-
+//  query on facet page
 export const networkLinksQuery = `
   SELECT DISTINCT (?person as ?source) ?target ("Teacher" as ?prefLabel)
   WHERE {
     <FILTER>
-    ?person :has_event [ :supervisor ?target ]
+    ?person :has_event/:supervisor ?target .
   }
 `
 
+//  query on person page tab "FAMILY RELATIONS"
 export const networkFamilyRelationQuery = `
   SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   WHERE {
-    VALUES ?source { <ID> }
-    ?source bioc:has_family_relation [ a ?rel ; bioc:inheres_in ?target ] .
+    VALUES ?source { <ID> } 
+    ?source bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] . 
     OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
   } 
+  ORDER BY ?level 
+`
+/** Double sided query need some checking
+export const networkFamilyRelationQuery = `
+  SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
+  WHERE {
+    VALUES ?source { <ID> } 
+    { 
+    ?source bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] . 
+    }
+    UNION
+    { 
+      ?target bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?source ] .
+      # BIND(0-?neg_level AS ?level)
+    }
+    OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+  } 
+  ORDER BY ?level 
+`
+*/
+
+//  query on person page tab "ACADEMIC RELATIONS"
+export const networkAcademicRelationQuery = `
+SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight) 
+  WHERE {
+  	VALUES ?source { <ID> }
+  	{
+    	?source bioc:has_person_relation [ a ?rel ; bioc:inheres_in ?target ] 
+   		OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+  	}
+  	UNION
+  	{ 
+    	?target :has_event/:supervisor ?source . BIND("oppilas" AS ?prefLabel) 
+    }
+    UNION
+  	{
+    	?source :has_event/:supervisor ?target . BIND("ohjaaja" AS ?prefLabel) 
+  	}
+} 
 `
 
 export const networkNodesQuery = `
-  SELECT DISTINCT ?id ?prefLabel ?class
+  SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size 
   WHERE {
-    VALUES ?class { :Person :ReferencedPerson }
+    VALUES (?class ?size) { (:Person "16px") (:ReferencedPerson "12px") }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
         skos:prefLabel ?prefLabel .
+    OPTIONAL { 
+      ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi") 
+      VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
+    }
   }
 `

@@ -351,18 +351,29 @@ export const networkFamilyRelationQuery = `
   SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   WHERE {
     VALUES ?source { <ID> } 
-    #{ 
     ?source bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] . 
-    #}
-    #UNION
-    #{ 
-    #  ?target bioc:has_family_relation [ a ?rel ; a/rels:level ?neg_level ; bioc:inheres_in ?source ] .
-    #  BIND(0-?neg_level AS ?level)
-    #}
     OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
   } 
   ORDER BY ?level 
 `
+/** Double sided query need some checking
+export const networkFamilyRelationQuery = `
+  SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
+  WHERE {
+    VALUES ?source { <ID> } 
+    { 
+    ?source bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] . 
+    }
+    UNION
+    { 
+      ?target bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?source ] .
+      # BIND(0-?neg_level AS ?level)
+    }
+    OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+  } 
+  ORDER BY ?level 
+`
+*/
 
 //  query on person page tab "ACADEMIC RELATIONS"
 export const networkAcademicRelationQuery = `

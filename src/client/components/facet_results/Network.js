@@ -76,7 +76,7 @@ class Network extends React.Component {
             'width': ele => ele.data('weight') || 1,
             'line-color': ele => ele.data('color') || '#BBB',
             'curve-style': 'bezier',
-            content: 'data(prefLabel) ',
+            content: ' data(prefLabel) ',
             'target-arrow-shape': 'triangle',
             'target-arrow-color': '#999',
             color: '#555',
@@ -96,7 +96,6 @@ class Network extends React.Component {
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
       // this.cy.add(this.props.results.elements)
-      console.log(this.props.results.elements);
       this.cy.elements().remove(); 
       this.cy.add(this.props.results.elements);
       this.cy.layout(layout).run()

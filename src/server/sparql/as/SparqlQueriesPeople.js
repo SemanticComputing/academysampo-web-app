@@ -356,11 +356,12 @@ export const networkFamilyRelationQuery = `
 `
 
 export const networkNodesQuery = `
-  SELECT DISTINCT ?id ?prefLabel ?class
+  SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size 
   WHERE {
-    VALUES ?class { :Person :ReferencedPerson }
+    VALUES (?class ?color ?size) { (:Person "red" "16px") (:ReferencedPerson "blue" "12px") }
     VALUES ?id { <ID_SET> }
     ?id a ?class ;
         skos:prefLabel ?prefLabel .
+    OPTIONAL { ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi") }
   }
 `

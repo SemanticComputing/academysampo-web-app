@@ -47,7 +47,7 @@ class Network extends React.Component {
         resultClass: this.props.resultClass,
         id: this.props.id,
         limit: 100,
-        optimize: 1.0
+        optimize: 1.5
       })
     } else {
       this.props.fetchResults({
@@ -62,27 +62,30 @@ class Network extends React.Component {
         {
           selector: 'node',
           style: {
-            'background-color': ele => ele.data('class') === 'http://erlangen-crm.org/efrbroo/F4_Manifestation_Singleton'
-              ? '#000' : '#666',
-            label: 'data(prefLabel)'
+            "shape": 'ellipse',
+            "font-size": '12',
+            'background-color': ele => ele.data('color') || '#666',
+            label: ' data(prefLabel)',
+					  "height": ele => ele.data('size') || '16px',
+	      		"width": ele => ele.data('size') || '16px'
           }
         },
         {
           selector: 'edge',
           style: {
-            // 'width': 'data(weight)',
-            'line-color': '#999',
+            'width': ele => ele.data('weight') || 1,
+            'line-color': ele => ele.data('color') || '#BBB',
             'curve-style': 'bezier',
-            content: ' data(prefLabel) ',
+            content: 'data(prefLabel) ',
             'target-arrow-shape': 'triangle',
             'target-arrow-color': '#999',
             color: '#555',
-            'font-size': '9',
+            'font-size': '6',
             'text-valign': 'top',
             'text-halign': 'center',
             'edge-text-rotation': 'autorotate',
             'text-background-opacity': 1,
-            'text-background-color': '#BDBDBD',
+            'text-background-color': 'white',
             'text-background-shape': 'roundrectangle'
           }
         }

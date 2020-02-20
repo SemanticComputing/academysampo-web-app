@@ -214,7 +214,7 @@ export default {
           `
         },
         related: {
-          label: 'Related people',
+          label: 'Academic Relations',
           description: `
             This list of related people contains students, teachers, supervisors, and namesakes of a person.
           `

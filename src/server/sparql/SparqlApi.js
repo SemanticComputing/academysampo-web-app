@@ -1,6 +1,9 @@
 import axios from 'axios'
 import querystring from 'querystring'
-import { endpointUseAuth } from './as/FacetConfigsAs'
+// const defaultConstructHeaders = {
+//   'Content-Type': 'application/x-www-form-urlencoded',
+//   'Accept': 'text/turtle'
+// };
 
 export const runSelectQuery = async ({
   query,
@@ -14,10 +17,8 @@ export const runSelectQuery = async ({
     : 'text/csv; charset=utf-8'
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    Accept: MIMEtype
-  }
-  if (endpointUseAuth) {
-    headers.Authorization = `Basic ${process.env.SPARQL_ENDPOINT_BASIC_AUTH}`
+    Accept: MIMEtype,
+    'Authorization': 'Basic c2Vjbzpsb2dvczAz'
   }
   const q = querystring.stringify({ query })
   try {
@@ -40,10 +41,8 @@ export const runSelectQuery = async ({
     if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
-      console.log(`Response status: ${error.response.status}\n`)
-      console.log('Response data: \n')
       console.log(error.response.data)
-      console.log('\n')
+    // console.log(error.response.status);
     // console.log(error.response.headers);
     } else if (error.request) {
       // The request was made but no response was received
@@ -54,10 +53,6 @@ export const runSelectQuery = async ({
     // Something happened in setting up the request that triggered an Error
       console.log('Error', error.message)
     }
-    // console.log(error.config)
-    return {
-      data: null,
-      sparqlQuery: query
-    }
+    console.log(error.config)
   }
 }

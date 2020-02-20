@@ -27,15 +27,14 @@ import Nations from '../components/perspectives/as/Nations'
 import Relatives from '../components/perspectives/as/Relatives'
 import Places from '../components/perspectives/as/Places'
 import Categories from '../components/perspectives/as/Categories'
-// import Perspective3 from '../components/perspectives/sampo/Perspective3'
 import All from '../components/perspectives/mmm/All'
 import { perspectiveConfig } from '../configs/as/PerspectiveConfig' 
 import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
 import { rootUrl } from '../configs/as/GeneralConfig'
 import {
-  fetchResultCount,
   fetchPaginatedResults,
   fetchResults,
+  fetchResultCount, 
   fetchResultsClientSide,
   fetchNetworkById,
   clearResults,

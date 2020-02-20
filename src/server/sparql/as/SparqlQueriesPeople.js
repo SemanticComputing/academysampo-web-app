@@ -386,17 +386,18 @@ SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   	}
   	UNION
   	{ 
-    	?target :has_event/:supervisor ?source . BIND("oppilas" AS ?prefLabel) 
+     	?target :has_event/:supervisor ?source . BIND("oppilas" AS ?prefLabel) 
     }
     UNION
   	{
     	?source :has_event/:supervisor ?target . BIND("ohjaaja" AS ?prefLabel) 
+    	# ?target (^:has_event)/(^:supervisor) ?source . BIND("oppilas" AS ?prefLabel) 
   	}
 } 
 `
 
 export const networkNodesQuery = `
-  SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size 
+  SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size ?href
   WHERE {
     VALUES (?class ?size) { (:Person "16px") (:ReferencedPerson "12px") }
     VALUES ?id { <ID_SET> }
@@ -406,5 +407,6 @@ export const networkNodesQuery = `
       ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi") 
       VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
     }
+    BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/academicNetwork") AS ?href)
   }
 `

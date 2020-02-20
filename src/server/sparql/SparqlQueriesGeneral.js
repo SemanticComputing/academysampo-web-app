@@ -34,10 +34,17 @@ export const jenaQuery = `
     }
     UNION
     {
-      ?id a :ReferencedPerson .
+      ?id a :Title .
       ?id skos:prefLabel ?prefLabel__id .
       BIND(?prefLabel__id as ?prefLabel__prefLabel)
-      BIND(CONCAT("/relatives/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+      BIND(CONCAT("/titles/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+    }
+    UNION
+    {
+      ?id a :Category .
+      ?id skos:prefLabel ?prefLabel__id .
+      BIND(?prefLabel__id as ?prefLabel__prefLabel)
+      BIND(CONCAT("/categories/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
     }
   }
 `

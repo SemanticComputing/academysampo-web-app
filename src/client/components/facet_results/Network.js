@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+// import { useHistory } from "react-router-dom";
 import cytoscape from 'cytoscape'
 
 const styles = theme => ({
   root: {
     height: 400,
     [theme.breakpoints.up('md')]: {
-      height: 'calc(100% - 72px)'
+      height: 'calc(100% - 21px)'
     }
   },
   cyContainer: {
@@ -29,7 +30,7 @@ const layout = {
   edgeElasticity: 100,
   nestingFactor: 5,
   gravity: 80,
-  numIter: 1000,
+  numIter: 1347,
   initialTemp: 200,
   coolingFactor: 0.95,
   minTemp: 1.0
@@ -90,7 +91,23 @@ class Network extends React.Component {
           }
         }
       ]
-    })
+    });
+    
+    this.cy.on('tap', 'node', function(){
+	  try { // your browser may block popups
+	  	if (this.data('href')) {
+	  		console.log(this.data('href'))
+	  		//	TODO: find the correct React way to do this
+		  	// let history = useHistory();
+	  		// history.push(this.data('href'))
+	    	window.location.href = this.data('href');
+	    	}
+	  	} catch(e){ // fall back on url change
+	  		console.log('Fail', e)
+	    	// window.location.href = this.data('href');
+  		}
+});     
+    
   }
 
   componentDidUpdate = prevProps => {

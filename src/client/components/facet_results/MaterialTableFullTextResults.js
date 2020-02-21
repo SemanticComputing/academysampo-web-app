@@ -90,8 +90,8 @@ class MaterialTableFullTextResults extends React.Component {
               PreviousPage: ChevronLeftIcon
             }}
             options={{
-              pageSize: 5,
-              pageSizeOptions: [5, 10, 15, 20, 25]
+              pageSize: 10,
+              pageSizeOptions: [10, 20, 30, 40, 50]
             }}
             style={{
               height: '100%',

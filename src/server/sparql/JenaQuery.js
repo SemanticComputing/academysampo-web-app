@@ -18,6 +18,5 @@ export const queryJenaIndex = async ({
     resultMapper: makeObjectList,
     resultFormat
   })
-  console.log(results)
   return results
 };

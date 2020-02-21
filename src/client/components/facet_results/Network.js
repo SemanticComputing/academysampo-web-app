@@ -94,20 +94,19 @@ class Network extends React.Component {
     });
     
     this.cy.on('tap', 'node', function(){
-	  try { // your browser may block popups
-	  	if (this.data('href')) {
-	  		console.log(this.data('href'))
-	  		//	TODO: find the correct React way to do this
-		  	// let history = useHistory();
-	  		// history.push(this.data('href'))
-	    	window.location.href = this.data('href');
-	    	}
-	  	} catch(e){ // fall back on url change
-	  		console.log('Fail', e)
-	    	// window.location.href = this.data('href');
-  		}
-});     
-    
+      try {
+        if (this.data('href')) {
+          console.log(this.data('href'))
+          //	TODO: find the correct React way to do this
+          // let history = useHistory();
+          // history.push(this.data('href'))
+          window.location.href = this.data('href');
+          }
+      } catch(e) { // fall back on url change
+        console.log('Fail', e)
+        console.log(this.data())
+      }
+    });
   }
 
   componentDidUpdate = prevProps => {

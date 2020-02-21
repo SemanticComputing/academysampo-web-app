@@ -337,6 +337,7 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
     BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
   } 
 `
+
 //  query on facet page
 export const networkLinksQuery = `
   SELECT DISTINCT (?person as ?source) ?target ("Teacher" as ?prefLabel)
@@ -350,48 +351,41 @@ export const networkLinksQuery = `
 export const networkFamilyRelationQuery = `
   SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   WHERE {
-    VALUES ?source { <ID> } 
-    ?source bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] . 
-    OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
-  } 
-  ORDER BY ?level 
-`
-/** Double sided query need some checking
-export const networkFamilyRelationQuery = `
-  SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
-  WHERE {
-    VALUES ?source { <ID> } 
-    { 
-    ?source bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] . 
+    VALUES ?id { <ID> } 
+    {
+      ?id bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] . 
+      OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+      BIND(?id AS ?source)
     }
     UNION
-    { 
-      ?target bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?source ] .
-      # BIND(0-?neg_level AS ?level)
+    {
+      ?source bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?id ] . 
+      OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+      BIND(?id AS ?target)
     }
-    OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
   } 
   ORDER BY ?level 
 `
-*/
 
 //  query on person page tab "ACADEMIC RELATIONS"
 export const networkAcademicRelationQuery = `
 SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight) 
   WHERE {
-  	VALUES ?source { <ID> }
+  	VALUES ?id { <ID> }
   	{
-    	?source bioc:has_person_relation [ a ?rel ; bioc:inheres_in ?target ] 
-   		OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+    	?id bioc:has_person_relation [ a ?rel ; bioc:inheres_in ?target ] 
+       OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
+       BIND (?id AS ?source)
   	}
   	UNION
   	{ 
-     	?target :has_event/:supervisor ?source . BIND("oppilas" AS ?prefLabel) 
+      ?id :has_event/:supervisor ?source . BIND("oppilas" AS ?prefLabel) 
+      BIND (?id AS ?target)
     }
     UNION
   	{
-    	?source :has_event/:supervisor ?target . BIND("ohjaaja" AS ?prefLabel) 
-    	# ?target (^:has_event)/(^:supervisor) ?source . BIND("oppilas" AS ?prefLabel) 
+    	?target :has_event/:supervisor ?id . BIND("oppilas" AS ?prefLabel) 
+      BIND (?id AS ?source)
   	}
 } 
 `

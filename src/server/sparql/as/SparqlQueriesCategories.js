@@ -23,6 +23,12 @@ UNION
 }
 UNION
 {
+  ?id schema:place ?place__id .
+	?place__id skos:prefLabel ?place__prefLabel .
+	BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
+}
+UNION
+{
   ?person__id :has_category ?id ;
     a :Person ;
     skos:prefLabel ?person__prefLabel .

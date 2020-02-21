@@ -19,6 +19,11 @@ export const jenaQuery = `
   SELECT *
   WHERE {
     <QUERY>
+    
+    ?id a ?type__id .
+    ?type__id skos:prefLabel ?type__prefLabel_ .
+    BIND(STR(?type__prefLabel_) AS ?type__prefLabel)  # ignore language tags
+  
     {
       ?id a :Place .
       ?id skos:prefLabel ?prefLabel__id .

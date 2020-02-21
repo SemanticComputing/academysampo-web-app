@@ -75,23 +75,6 @@ class MaterialTableFullTextResults extends React.Component {
                     container='div'
                     expanded
                   />
-              },
-              {
-                title: 'Source',
-                field: 'source',
-                render: data =>
-                  <ResultTableCell
-                    columnId='source'
-                    data={data.source}
-                    valueType='object'
-                    makeLink
-                    externalLink
-                    sortValues
-                    numberedList={false}
-                    minWidth={150}
-                    container='div'
-                    expanded
-                  />
               }
             ]}
             data={results}

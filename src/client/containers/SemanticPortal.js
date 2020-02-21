@@ -27,7 +27,7 @@ import Nations from '../components/perspectives/as/Nations'
 import Relatives from '../components/perspectives/as/Relatives'
 import Places from '../components/perspectives/as/Places'
 import Categories from '../components/perspectives/as/Categories'
-import All from '../components/perspectives/mmm/All'
+import All from '../components/perspectives/as/All'
 import { perspectiveConfig } from '../configs/as/PerspectiveConfig' 
 import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
 import { rootUrl } from '../configs/as/GeneralConfig'
@@ -386,6 +386,7 @@ const SemanticPortal = props => {
                   <Grid item xs={12} className={classes.resultsContainer}>
                     <All
                       clientSideFacetedSearch={props.clientSideFacetedSearch}
+                      screenSize={screenSize}
                       routeProps={routeProps}
                     />
                   </Grid>

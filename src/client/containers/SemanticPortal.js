@@ -388,6 +388,7 @@ const SemanticPortal = props => {
                       clientSideFacetedSearch={props.clientSideFacetedSearch}
                       screenSize={screenSize}
                       routeProps={routeProps}
+                      screenSize={screenSize}
                     />
                   </Grid>
                 </Grid>}

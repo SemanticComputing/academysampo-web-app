@@ -19,46 +19,7 @@ export const jenaQuery = `
   SELECT *
   WHERE {
     <QUERY>
-    
-    ?id a ?type__id .
-    ?type__id skos:prefLabel ?type__prefLabel_ .
-    BIND(STR(?type__prefLabel_) AS ?type__prefLabel)  # ignore language tags
-  
-    {
-      ?id a :Person .
-      ?id skos:prefLabel ?prefLabel__id .
-      BIND(?prefLabel__id as ?prefLabel__prefLabel)
-      BIND(CONCAT("/people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-    }
-    UNION
-    {
-      ?id a :Place .
-      FILTER EXISTS { [] schema:place ?id }
-      ?id skos:prefLabel ?prefLabel__id .
-      BIND(?prefLabel__id as ?prefLabel__prefLabel)
-      BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-    }
-    UNION
-    {
-      ?id a :Title .
-      ?id skos:prefLabel ?prefLabel__id .
-      BIND(?prefLabel__id as ?prefLabel__prefLabel)
-      BIND(CONCAT("/titles/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-    }
-    UNION
-    {
-      ?id a :Category .
-      ?id skos:prefLabel ?prefLabel__id .
-      BIND(?prefLabel__id as ?prefLabel__prefLabel)
-      BIND(CONCAT("/categories/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-    }
-    UNION
-    {
-      ?id a :StudentNation .
-      ?id skos:prefLabel ?prefLabel__id .
-      BIND(?prefLabel__id as ?prefLabel__prefLabel)
-      BIND(CONCAT("/categories/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-    }
+    <RESULT_SET_PROPERTIES>
   }
 `
 

@@ -12,7 +12,7 @@ import peopleFacets from './as/peopleFacets'
 import categories from './as/categories'
 import perspective3Facets from './sampo/perspective3Facets'
 import animation from './mmm/animation'
-import clientSideFacetedSearch from './mmm/clientSideFacetedSearch'
+import clientSideFacetedSearch from './sampo/clientSideFacetedSearch'
 
 const reducer = combineReducers({
   people,

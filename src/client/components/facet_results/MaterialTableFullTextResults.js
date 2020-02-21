@@ -91,7 +91,8 @@ class MaterialTableFullTextResults extends React.Component {
             }}
             options={{
               pageSize: 10,
-              pageSizeOptions: [10, 20, 30, 40, 50]
+              pageSizeOptions: [10, 20, 30, 40, 50],
+              search: false
             }}
             style={{
               height: '100%',

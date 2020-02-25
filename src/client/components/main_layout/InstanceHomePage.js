@@ -61,16 +61,16 @@ class InstanceHomePage extends React.Component {
     this.setState({ localID: localID })
     switch (this.props.resultClass) {
       case 'people':
-        uri = `${base}/${localID}`
+        uri = `${base}/people/${localID}`
         break
       case 'relatives':
-        uri = `${base}/${localID}`
+        uri = `${base}/people/${localID}`
         break
       case 'titles':
         uri = `${base}/titles/${localID}`
         break
       case 'nations':
-        uri = `${base}/${localID}` // TODO unify urls
+        uri = `${base}/nations/${localID}` // TODO unify urls
         break
       case 'categories':
           uri = `${base}/categories/${localID}`

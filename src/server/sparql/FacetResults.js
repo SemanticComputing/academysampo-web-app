@@ -234,7 +234,6 @@ const getPaginatedData = ({
       resultSetProperties = ''
   }
   q = q.replace('<RESULT_SET_PROPERTIES>', resultSetProperties)
-  // console.log(prefixes + q);
   return runSelectQuery({
     query: prefixes + q,
     endpoint,
@@ -337,6 +336,7 @@ export const getByURI = ({
     }))
   }
   q = q.replace('<ID>', `<${uri}>`)
+  console.log(q);
   return runSelectQuery({
     query: prefixes + q,
     endpoint,

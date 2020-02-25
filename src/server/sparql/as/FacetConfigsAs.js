@@ -9,7 +9,7 @@ const invalidTitles = `
 
 export const facetConfigs = {
   people: {
-    facetClass: '<http://ldf.fi/yoma/schema/Person>',
+    facetClass: '<http://ldf.fi/schema/yoma/Person>',
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',
@@ -108,7 +108,7 @@ export const facetConfigs = {
     }
   },
   relatives: {
-    facetClass: '<http://ldf.fi/yoma/schema/ReferencedPerson>',
+    facetClass: '<http://ldf.fi/schema/yoma/ReferencedPerson>',
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',
@@ -187,7 +187,7 @@ export const facetConfigs = {
     }
   },
   places: {
-    facetClass: '<http://ldf.fi/yoma/schema/Place>',
+    facetClass: '<http://ldf.fi/schema/yoma/Place>',
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',
@@ -197,7 +197,7 @@ export const facetConfigs = {
     }
   },
   titles: {
-    facetClass: '<http://ldf.fi/yoma/schema/Title> skos:Concept',
+    facetClass: '<http://ldf.fi/schema/yoma/Title> skos:Concept',
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',
@@ -207,7 +207,7 @@ export const facetConfigs = {
     }
   },
   nations: {
-    facetClass: '<http://ldf.fi/yoma/schema/StudentNation>',
+    facetClass: '<http://ldf.fi/schema/yoma/StudentNation>',
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',
@@ -217,7 +217,7 @@ export const facetConfigs = {
     }
   },
   categories: {
-    facetClass: '<http://ldf.fi/yoma/schema/Category>',
+    facetClass: '<http://ldf.fi/schema/yoma/Category>',
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { networkQueryHeaders } from './SparqlApi'
 
 export const runNetworkQuery = async ({
   endpoint,
@@ -13,7 +14,9 @@ export const runNetworkQuery = async ({
     links,
     nodes,
     limit: 100,
-    id
+    id,
+    optimize: 1.2,
+    customHttpHeaders:  networkQueryHeaders
   }
   // console.log("payload", payload)
   

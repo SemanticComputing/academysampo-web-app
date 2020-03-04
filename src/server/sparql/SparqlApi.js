@@ -5,6 +5,8 @@ import querystring from 'querystring'
 //   'Accept': 'text/turtle'
 // };
 
+export const networkQueryHeaders = {'Authorization': 'Basic c2Vjbzpsb2dvczAz'}
+
 export const runSelectQuery = async ({
   query,
   endpoint,

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { networkQueryHeaders } from './SparqlApi'
 
 export const runNetworkQuery = async ({
   endpoint,
@@ -16,10 +15,10 @@ export const runNetworkQuery = async ({
     limit: 100,
     id,
     optimize: 1.2,
-    customHttpHeaders:  networkQueryHeaders
+    customHttpHeaders: `{'Authorization': 'Basic ${process.env.SPARQL_ENDPOINT_BASIC_AUTH}'}`
   }
   // console.log("payload", payload)
-  
+
   const url = 'http://127.0.0.1:5000/query'
   const config = {
     headers: {
@@ -28,7 +27,7 @@ export const runNetworkQuery = async ({
   }
   try {
     const response = await axios.post(url, payload, config)
-    return { 
+    return {
       data: response.data
     }
   } catch (error) {

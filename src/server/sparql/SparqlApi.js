@@ -1,11 +1,6 @@
 import axios from 'axios'
 import querystring from 'querystring'
-// const defaultConstructHeaders = {
-//   'Content-Type': 'application/x-www-form-urlencoded',
-//   'Accept': 'text/turtle'
-// };
-
-export const networkQueryHeaders = {'Authorization': 'Basic c2Vjbzpsb2dvczAz'}
+import { endpointUseAuth } from './as/FacetConfigs'
 
 export const runSelectQuery = async ({
   query,
@@ -19,8 +14,10 @@ export const runSelectQuery = async ({
     : 'text/csv; charset=utf-8'
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    Accept: MIMEtype,
-    'Authorization': 'Basic c2Vjbzpsb2dvczAz'
+    Accept: MIMEtype
+  }
+  if (endpointUseAuth) {
+    headers.Authorization = `Basic ${process.env.SPARQL_ENDPOINT_BASIC_AUTH}`
   }
   const q = querystring.stringify({ query })
   try {

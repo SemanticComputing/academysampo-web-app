@@ -7,8 +7,8 @@ export const mapPlaces = sparqlBindings => {
   const results = sparqlBindings.map(b => {
     return {
       id: b.id.value,
-      lat: b.lat.value,
-      long: b.long.value,
+      lat: b.lat ? b.lat.value : null,
+      long: b.long ? b.long.value : null,
       instanceCount: b.instanceCount.value
     }
   })

@@ -15,7 +15,8 @@
   },
   "author": "Esko Ikkala",
   "contributors": [
-    "Erkki Heino"
+    "Erkki Heino",
+    "Heikki Rantala"
   ],
   "license": "MIT",
   "devDependencies": {
@@ -38,7 +39,7 @@
     "enzyme-adapter-react-16": "^1.6.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.7",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "react-test-renderer": "^16.6.1",
     "standard": "^14.3.1",
     "style-loader": "^0.20.3",
@@ -66,7 +67,6 @@
     "leaflet": "^1.6.0",
     "leaflet-draw": "^1.0.4",
     "leaflet-fullscreen": "^1.0.2",
-    "leaflet.heat": "^0.2.0",
     "leaflet.markercluster": "^1.4.1",
     "leaflet.zoominfo": "git+https://github.com/SemanticComputing/Leaflet.zoominfo.git",
     "lodash": "^4.17.15",
@@ -74,7 +74,7 @@
     "moment": "^2.24.0",
     "moment-range": "^4.0.2",
     "node-sass": "^4.13.1",
-    "react": "^16.8.6",
+    "react": "^16.13.0",
     "react-compound-slider": "^1.2.2",
     "react-csv": "^1.0.18",
     "react-dom": "^16.8.6",

@@ -12,9 +12,9 @@ import {
   networkAcademicRelationQuery
 } from './as/SparqlQueriesPeople'
 import {
-  relativesPropertiesInstancePage,
-  relativesPropertiesFacetResults,
-  relativesPlacesQuery
+  relativesPropertiesInstancePage
+  // relativesPropertiesFacetResults,
+  // relativesPlacesQuery
 } from './as/SparqlQueriesRelatives'
 import {
   titlesPropertiesInstancePage
@@ -27,12 +27,10 @@ import {
 } from './as/SparqlQueriesCategories'
 import {
   placePropertiesInstancePage,
-  placePropertiesFacetResults,
+  // placePropertiesFacetResults,
   placePropertiesInfoWindow,
-  manuscriptsProducedAt,
-  lastKnownLocationsAt,
   actorsAt,
-  allPlacesQuery,
+  // allPlacesQuery,
   peopleRelatedTo
 } from './as/SparqlQueriesPlaces'
 import {
@@ -80,15 +78,17 @@ export const getAllResults = ({
   resultClass,
   facetClass,
   constraints,
-  resultFormat
+  resultFormat,
+  groupBy
 }) => {
   let q = ''
   let filterTarget = ''
-  const mapper = makeObjectList
+  let mapper = makeObjectList
   switch (resultClass) {
     case 'peoplePlaces':
       q = peopleEventPlacesQuery
       filterTarget = 'person'
+      mapper = mapPlaces
       break
     case 'peopleMigrations':
       q = peopleMigrationsQuery
@@ -119,10 +119,10 @@ export const getAllResults = ({
       nodes: networkNodesQuery
     })
   }
-  /** 
+  /**
   if (resultClass === 'familyNetwork') {
     return runNetworkQuery({
-      // id: 
+      // id:
       endpoint,
       prefixes,
       links: q,
@@ -131,7 +131,7 @@ export const getAllResults = ({
   }
   if (resultClass === 'academicNetwork') {
     return runNetworkQuery({
-      // id: 
+      // id:
       endpoint,
       prefixes,
       links: q,
@@ -224,12 +224,12 @@ const getPaginatedData = ({
     case 'people':
       resultSetProperties = peoplePropertiesFacetResults
       break
-    case 'perspective2':
-      resultSetProperties = workProperties
-      break
-    case 'perspective3':
-      resultSetProperties = eventProperties
-      break
+    // case 'perspective2':
+    //   resultSetProperties = workProperties
+    //   break
+    // case 'perspective3':
+    //   resultSetProperties = eventProperties
+    //   break
     default:
       resultSetProperties = ''
   }
@@ -257,30 +257,30 @@ export const getByURI = ({
       q = q.replace('<RELATED_INSTANCES>', '')
       break
     case 'relatives':
-        q = instanceQuery
-        q = q.replace('<PROPERTIES>', relativesPropertiesInstancePage)
-        q = q.replace('<RELATED_INSTANCES>', '')
-        break
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', relativesPropertiesInstancePage)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
     case 'places':
       q = instanceQuery
       q = q.replace('<PROPERTIES>', placePropertiesInstancePage)
       q = q.replace('<RELATED_INSTANCES>', '')
       break
     case 'titles':
-        q = instanceQuery
-        q = q.replace('<PROPERTIES>', titlesPropertiesInstancePage)
-        q = q.replace('<RELATED_INSTANCES>', '')
-        break
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', titlesPropertiesInstancePage)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
     case 'nations':
-        q = instanceQuery
-        q = q.replace('<PROPERTIES>', nationsPropertiesInstancePage)
-        q = q.replace('<RELATED_INSTANCES>', '')
-        break
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', nationsPropertiesInstancePage)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
     case 'categories':
-        q = instanceQuery
-        q = q.replace('<PROPERTIES>', categoriesPropertiesInstancePage)
-        q = q.replace('<RELATED_INSTANCES>', '')
-        break
+      q = instanceQuery
+      q = q.replace('<PROPERTIES>', categoriesPropertiesInstancePage)
+      q = q.replace('<RELATED_INSTANCES>', '')
+      break
     case 'peoplePlaces':
       q = instanceQuery
       q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
@@ -303,17 +303,17 @@ export const getByURI = ({
       break
   }
 
-  if (resultClass==='familyNetwork') {
+  if (resultClass === 'familyNetwork') {
     return runNetworkQuery({
       endpoint,
       prefixes,
       links: networkFamilyRelationQuery,
-      id: uri, 
+      id: uri,
       nodes: networkNodesQuery
     })
   }
 
-  if (resultClass==='academicNetwork') {
+  if (resultClass === 'academicNetwork') {
     // console.log(uri, networkAcademicRelationQuery)
     return runNetworkQuery({
       endpoint,

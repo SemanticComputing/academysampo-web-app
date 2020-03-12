@@ -7,6 +7,8 @@ import LeafletMap from '../../facet_results/LeafletMap'
 import Deck from '../../facet_results/Deck'
 import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
+import MigrationsMapLegend from '../mmm/MigrationsMapLegend'
+import { MAPBOX_ACCESS_TOKEN } from '../../../configs/sampo/GeneralConfig'
 
 const Perspective1 = props => {
   const { rootUrl, perspective } = props
@@ -48,7 +50,8 @@ const Perspective1 = props => {
             facetID='productionPlace'
             resultClass='placesMsProduced'
             facetClass='perspective1'
-            mapMode='heatmap'
+            mapMode='cluster'
+            showMapModeControl={false}
             instance={props.places.instance}
             fetchResults={props.fetchResults}
             fetchGeoJSONLayers={props.fetchGeoJSONLayers}
@@ -100,13 +103,11 @@ const Perspective1 = props => {
             facetUpdateID={props.facetData.facetUpdateID}
             resultClass='placesMsMigrations'
             facetClass='perspective1'
-            mapMode='cluster'
-            instance={props.places.instance}
             fetchResults={props.fetchResults}
-            fetchByURI={props.fetchByURI}
             fetching={props.places.fetching}
-            showInstanceCountInClusters
-            updateFacetOption={props.updateFacetOption}
+            legendComponent={<MigrationsMapLegend />}
+            layerType='arcLayer'
+            mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
           />}
       />
       <Route

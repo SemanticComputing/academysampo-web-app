@@ -88,7 +88,6 @@ export const getAllResults = ({
     case 'peoplePlaces':
       q = peopleEventPlacesQuery
       filterTarget = 'person'
-      console.log(q)
       mapper = mapPlaces
       break
     case 'peopleMigrations':

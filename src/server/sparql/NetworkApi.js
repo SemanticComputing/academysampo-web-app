@@ -15,9 +15,8 @@ export const runNetworkQuery = async ({
     limit: 100,
     id,
     optimize: 1.2,
-    customHttpHeaders: `{'Authorization': 'Basic ${process.env.SPARQL_ENDPOINT_BASIC_AUTH}'}`
+    customHttpHeaders: { Authorization: `Basic ${process.env.SPARQL_ENDPOINT_BASIC_AUTH}` }
   }
-  // console.log("payload", payload)
 
   const url = 'http://127.0.0.1:5000/query'
   const config = {

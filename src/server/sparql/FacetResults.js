@@ -38,7 +38,7 @@ import {
   facetResultSetQuery,
   instanceQuery
 } from './SparqlQueriesGeneral'
-import { facetConfigs, endpoint } from './as/FacetConfigsAs'
+import { facetConfigs, endpoint } from './as/FacetConfigs'
 import { mapCount, mapPlaces } from './Mappers'
 import { makeObjectList } from './SparqlObjectMapper'
 import { generateConstraintsBlock } from './Filters'
@@ -88,6 +88,7 @@ export const getAllResults = ({
     case 'peoplePlaces':
       q = peopleEventPlacesQuery
       filterTarget = 'person'
+      console.log(q)
       mapper = mapPlaces
       break
     case 'peopleMigrations':

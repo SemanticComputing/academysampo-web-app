@@ -320,20 +320,20 @@ SELECT DISTINCT ?id ?person__id ?person__prefLabel ?person__dataProviderUrl
   WHERE {
     <FILTER> 
     ?person__id (:has_birth|:has_baptism)/schema:place ?from__id ;
-  			(:has_death|:has_burial)/schema:place ?to__id ;
-    		skos:prefLabel ?person__prefLabel .
+      (:has_death|:has_burial)/schema:place ?to__id ;
+      skos:prefLabel ?person__prefLabel .
     BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
     ?from__id skos:prefLabel ?from__prefLabel ;
               geo:lat ?from__lat ;
               geo:long ?from__long .
-	FILTER (lang(?from__prefLabel)="fi")
+    FILTER (lang(?from__prefLabel)="fi")
     BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
     
     ?to__id skos:prefLabel ?to__prefLabel ;
             geo:lat ?to__lat ;
             geo:long ?to__long .
     FILTER (lang(?to__prefLabel)="fi")
-  	BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
+    BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
     BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
   } 
 `
@@ -371,22 +371,22 @@ export const networkFamilyRelationQuery = `
 export const networkAcademicRelationQuery = `
 SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight) 
   WHERE {
-  	VALUES ?id { <ID> }
-  	{
-    	?id bioc:has_person_relation [ a ?rel ; bioc:inheres_in ?target ] 
+    VALUES ?id { <ID> }
+    {
+      ?id bioc:has_person_relation [ a ?rel ; bioc:inheres_in ?target ] 
        OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
        BIND (?id AS ?source)
-  	}
-  	UNION
-  	{ 
+    }
+    UNION
+    { 
       ?id :has_event/:supervisor ?source . BIND("oppilas" AS ?prefLabel) 
       BIND (?id AS ?target)
     }
     UNION
-  	{
-    	?target :has_event/:supervisor ?id . BIND("oppilas" AS ?prefLabel) 
+    {
+      ?target :has_event/:supervisor ?id . BIND("oppilas" AS ?prefLabel) 
       BIND (?id AS ?source)
-  	}
+    }
 } 
 `
 

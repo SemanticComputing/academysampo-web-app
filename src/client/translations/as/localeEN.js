@@ -2,10 +2,9 @@ export default {
   languageLabel: 'English',
   appTitle: {
     short: 'AcademySampo',
-    long: 'AcademySampo Semantic Portal',
+    long: 'AcademySampo',
     subheading: `
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-      doloremque laudantium unde
+      Finnish Academic People 1640&ndash;1899
     `
   },
   appDescription: `
@@ -643,11 +642,11 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: "label",
+          label: 'label',
           description: ''
         },
         altLabel: {
-          label: "alternative labels",
+          label: 'alternative labels',
           description: 'List of alternative labels or abbreviations.'
         },
         uri: {
@@ -725,11 +724,11 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: "label",
+          label: 'label',
           description: ''
         },
         altLabel: {
-          label: "alternative labels",
+          label: 'alternative labels',
           description: 'List of alternative labels or abbreviations.'
         },
         uri: {
@@ -807,7 +806,7 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: "label",
+          label: 'label',
           description: ''
         },
         uri: {

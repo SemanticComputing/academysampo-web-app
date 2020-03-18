@@ -133,6 +133,13 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
+      id: 'organization',
+      valueType: 'object',
+      sortValues: true,
+      numberedList: false,
+      minWidth: 220
+    },
+    {
       id: 'gender',
       valueType: 'object',
       makeLink: false,

@@ -99,6 +99,12 @@ UNION
   ?category__id skos:prefLabel ?category__prefLabel .
   BIND(CONCAT("/categories/page/", REPLACE(STR(?category__id), "^.*\\\\/(.+)", "$1")) AS ?category__dataProviderUrl)
 }
+UNION 
+{
+  ?id :has_event/:organization ?organization__id .
+  ?organization__id skos:prefLabel ?organization__prefLabel .
+  FILTER (LANG(?organization__prefLabel)='fi')
+}
 UNION
 { 
   ?id :wikidata ?externalLink__id. 
@@ -251,6 +257,12 @@ export const peoplePropertiesFacetResults =
   ?place__id skos:prefLabel ?place__prefLabel .
   BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
   }
+  UNION
+  {
+	?id :has_event/:organization ?organization__id .
+	?organization__id skos:prefLabel ?organization__prefLabel .
+	FILTER (LANG(?organization__prefLabel)='fi')
+  }	
   UNION
   {
     ?id :has_event/:student_nation ?studentnation__id .

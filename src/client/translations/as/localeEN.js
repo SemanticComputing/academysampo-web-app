@@ -200,6 +200,12 @@ export default {
             The category of the actor. This list is available only for the people in the 1640–1853 dataset.
           `
         },
+        organization: {
+          label: 'Organization',
+          description: `
+            An organization related to the actor. The organizations are extracted from the descriptions texts using language technology methods.
+          `
+        },
         title: {
           label: 'Title',
           description: `

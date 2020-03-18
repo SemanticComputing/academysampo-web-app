@@ -67,6 +67,13 @@ export const facetConfigs = {
       parentPredicate: ':has_category/skos:broader+',
       type: 'hierarchical'
     },
+    organization: {
+      id: 'organization',
+      facetValueFilter: '',
+      predicate: ':has_event/:organization',
+      labelPath: ':has_event/:organization/skos:prefLabel',
+      type: 'list'
+    },
     source: {
       id: 'source',
       facetValueFilter: '',

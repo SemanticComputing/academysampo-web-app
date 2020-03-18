@@ -176,13 +176,12 @@ export const INITIAL_STATE = {
       sortButton: true,
       spatialFilterButton: false,
       isFetching: false,
-      searchField: false,
+      searchField: true,
       containerClass: 'five',
       filterType: 'uriFilter',
       uriFilter: null,
       priority: 6
     },
-    
     gender: {
       id: 'gender',
       // predicate: defined in backend

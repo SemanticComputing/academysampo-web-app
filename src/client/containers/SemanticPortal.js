@@ -27,6 +27,7 @@ import Nations from '../components/perspectives/as/Nations'
 import Relatives from '../components/perspectives/as/Relatives'
 import Places from '../components/perspectives/as/Places'
 import Categories from '../components/perspectives/as/Categories'
+import Organizations from '../components/perspectives/as/Organizations'
 import All from '../components/perspectives/as/All'
 import { perspectiveConfig } from '../configs/as/PerspectiveConfig' 
 import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
@@ -295,10 +296,29 @@ const SemanticPortal = props => {
                 screenSize={screenSize}
               />
             break
-      case 'categories':
+      case 'organizations':
               perspectiveElement =
                 <Categories
-                  categories={props.categories}
+                  organizations={props.organizations}
+                  facetData={props.nationsFacets}
+                  fetchPaginatedResults={props.fetchPaginatedResults}
+                  fetchResults={props.fetchResults}
+                  fetchByURI={props.fetchByURI}
+                  updatePage={props.updatePage}
+                  updateRowsPerPage={props.updateRowsPerPage}
+                  updateFacetOption={props.updateFacetOption}
+                  sortResults={props.sortResults}
+                  routeProps={routeProps}
+                  perspective={perspective}
+                  animationValue={props.animationValue}
+                  animateMap={props.animateMap}
+                  screenSize={screenSize}
+                />
+              break
+      case 'categories':
+              perspectiveElement =
+                <organizations
+                  organizations={props.organizations}
                   facetData={props.nationsFacets}
                   fetchPaginatedResults={props.fetchPaginatedResults}
                   fetchResults={props.fetchResults}
@@ -567,6 +587,7 @@ const mapStateToProps = state => {
     titles: state.titles,
     nations: state.nations,
     categories: state.categories,
+    organizations: state.organizations,
     // perspective3Facets: state.perspective3Facets,
     clientSideFacetedSearch: state.clientSideFacetedSearch,
     animationValue: state.animation.value,
@@ -607,6 +628,7 @@ SemanticPortal.propTypes = {
   titles: PropTypes.object.isRequired,
   nations: PropTypes.object.isRequired,
   categories: PropTypes.object.isRequired,
+  organizations: PropTypes.object.isRequired,
   placesFacets: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   // perspective3: PropTypes.object.isRequired,

@@ -135,6 +135,8 @@ export const INITIAL_STATE = {
     {
       id: 'organization',
       valueType: 'object',
+      makeLink: true,
+      externalLink: false,
       sortValues: true,
       numberedList: false,
       minWidth: 220

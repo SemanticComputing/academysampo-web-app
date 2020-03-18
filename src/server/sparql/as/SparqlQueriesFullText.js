@@ -36,6 +36,13 @@ UNION
   ?id a :StudentNation .
   ?id skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
-  BIND(CONCAT("/categories/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  BIND(CONCAT("/nations/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+}
+UNION
+{
+  ?id a :Organization .
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(CONCAT("/organizations/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 }
 `

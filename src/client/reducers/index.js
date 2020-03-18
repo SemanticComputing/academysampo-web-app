@@ -10,6 +10,7 @@ import titles from './as/titles'
 import nations from './as/nations'
 import peopleFacets from './as/peopleFacets'
 import categories from './as/categories'
+import organizations from './as/organizations'
 import perspective3Facets from './sampo/perspective3Facets'
 import animation from './mmm/animation'
 import clientSideFacetedSearch from './sampo/clientSideFacetedSearch'
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   titles,
   nations,
   categories,
+  organizations,
   peopleFacets,
   placesFacets,
   perspective3Facets,

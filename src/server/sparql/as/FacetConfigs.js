@@ -232,5 +232,15 @@ export const facetConfigs = {
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
     }
+  },
+  organization: {
+    facetClass: '<http://ldf.fi/schema/yoma/Organization>',
+    prefLabel: {
+      id: 'prefLabel',
+      labelPath: 'skos:prefLabel',
+      textQueryPredicate: '', // empty for querying the facetClass
+      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
+      type: 'text'
+    }
   }
 }

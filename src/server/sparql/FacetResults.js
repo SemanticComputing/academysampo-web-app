@@ -8,6 +8,8 @@ import {
   peopleMigrationsQuery,
   networkLinksQuery,
   networkNodesQuery,
+  academicNetworkNodesQuery,
+  familyNetworkNodesQuery,
   networkFamilyRelationQuery,
   networkAcademicRelationQuery
 } from './as/SparqlQueriesPeople'
@@ -317,7 +319,7 @@ export const getByURI = ({
       prefixes,
       links: networkFamilyRelationQuery,
       id: uri,
-      nodes: networkNodesQuery
+      nodes: familyNetworkNodesQuery
     })
   }
 
@@ -328,7 +330,7 @@ export const getByURI = ({
       prefixes,
       links: networkAcademicRelationQuery,
       id: uri,
-      nodes: networkNodesQuery
+      nodes: academicNetworkNodesQuery
     })
   }
 

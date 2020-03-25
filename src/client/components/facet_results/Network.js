@@ -44,7 +44,7 @@ class Network extends React.Component {
 
   componentDidMount = () => {
     if (this.props.pageType === 'instancePage') {
-      this.props.fetchNetworkById({ 
+      this.props.fetchNetworkById({
         resultClass: this.props.resultClass,
         id: this.props.id,
         limit: 100,
@@ -92,11 +92,11 @@ class Network extends React.Component {
         }
       ]
     });
-    
+
     this.cy.on('tap', 'node', function(){
       try {
         if (this.data('href')) {
-          console.log(this.data('href'))
+          // console.log(this.data('href'))
           //	TODO: find the correct React way to do this
           // let history = useHistory();
           // history.push(this.data('href'))
@@ -111,8 +111,8 @@ class Network extends React.Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
-      // this.cy.add(this.props.results.elements)
-      this.cy.elements().remove(); 
+      //  console.log(this.props.results.elements);
+      this.cy.elements().remove();
       this.cy.add(this.props.results.elements);
       this.cy.layout(layout).run()
     }

@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import { has } from 'lodash'
-import DeckGL, { ArcLayer } from 'deck.gl'
+import DeckGL from '@deck.gl/react'
+import { ArcLayer } from '@deck.gl/layers'
+import { HeatmapLayer, HexagonLayer } from '@deck.gl/aggregation-layers'
 import ReactMapGL, { NavigationControl, FullscreenControl, HTMLOverlay } from 'react-map-gl'
 import MigrationsMapDialog from '../perspectives/mmm/MigrationsMapDialog'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -47,7 +48,7 @@ class Deck extends React.Component {
     viewport: {
       longitude: 10.37,
       latitude: 22.43,
-      zoom: 1,
+      zoom: 2,
       pitch: 0,
       bearing: 0,
       width: 100,
@@ -79,8 +80,6 @@ class Deck extends React.Component {
     }
   }
 
-  parseCoordinates = coords => [+coords.long, +coords.lat]
-
   setDialog = info =>
     this.setState({
       dialog: {
@@ -111,14 +110,12 @@ class Deck extends React.Component {
     return null
   }
 
-  createArcLayer = data => {
-    let arcData = []
-    if (has(data[0], 'to')) {
-      arcData = data
-    }
-    return new ArcLayer({
+  parseCoordinates = data => [+data.long, +data.lat]
+
+  createArcLayer = data =>
+    new ArcLayer({
       id: 'arc-layer',
-      data: arcData,
+      data,
       pickable: true,
       getWidth: 3,
       getSourceColor: [0, 0, 255, 255],
@@ -127,19 +124,57 @@ class Deck extends React.Component {
       getTargetPosition: d => this.parseCoordinates(d.to),
       onClick: info => this.setDialog(info)
     })
-  }
+
+  createHeatmapLayer = data =>
+    new HeatmapLayer({
+      id: 'heatmapLayer',
+      data,
+      radiusPixels: 40,
+      threshold: 0.025,
+      getPosition: d => [+d.long, +d.lat],
+      getWeight: d => +d.instanceCount
+    })
+
+  createHexagonLayer = data =>
+    new HexagonLayer({
+      id: 'hexagon-layer',
+      data,
+      extruded: true,
+      radius: 2000,
+      elevationScale: 100,
+      getPosition: d => [+d.long, +d.lat]
+    /* onHover: ({ object, x, y }) => {
+      const tooltip = `${object.centroid.join(', ')}\nCount: ${object.points.length}`
+    Update tooltip
+       http://deck.gl/#/documentation/developer-guide/adding-interactivity?section=example-display-a-tooltip-for-hovered-object
+
+    } */
+    })
 
   render () {
-    const { classes, mapBoxAccessToken, layerType, results } = this.props
+    const { classes, mapBoxAccessToken, mapBoxStyle, layerType, results } = this.props
+    const hasData = results && results.length > 0
+
     /* It's OK to create a new Layer instance on every render
        https://github.com/uber/deck.gl/blob/master/docs/developer-guide/using-layers.md#should-i-be-creating-new-layers-on-every-render
     */
     let layer = null
-    switch (layerType) {
-      case 'arcLayer':
-        layer = this.createArcLayer(results)
+    if (hasData) {
+      switch (layerType) {
+        case 'arcLayer':
+          layer = this.createArcLayer(results)
+          break
+        case 'heatmapLayer':
+          layer = this.createHeatmapLayer(results)
+          break
+        case 'hexagonLayer':
+          layer = this.createHexagonLayer(results)
+          break
+        default:
+          layer = this.createHeatmapLayer(results)
+          break
+      }
     }
-
     return (
       <div className={classes.root}>
         <ReactMapGL
@@ -147,7 +182,7 @@ class Deck extends React.Component {
           width='100%'
           height='100%'
           reuseMaps
-          mapStyle='mapbox://styles/mapbox/light-v9'
+          mapStyle={`mapbox://styles/mapbox/${mapBoxStyle}`}
           preventStyleDiffing
           mapboxApiAccessToken={mapBoxAccessToken}
           onViewportChange={this.handleOnViewportChange}
@@ -181,6 +216,7 @@ Deck.propTypes = {
   classes: PropTypes.object.isRequired,
   results: PropTypes.array.isRequired,
   mapBoxAccessToken: PropTypes.string.isRequired,
+  mapBoxStyle: PropTypes.string.isRequired,
   facetUpdateID: PropTypes.number,
   fetchResults: PropTypes.func,
   resultClass: PropTypes.string,

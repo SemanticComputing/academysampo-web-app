@@ -8,7 +8,7 @@ import Deck from '../../facet_results/Deck'
 import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
 import MigrationsMapLegend from '../mmm/MigrationsMapLegend'
-import { MAPBOX_ACCESS_TOKEN } from '../../../configs/sampo/GeneralConfig'
+import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/sampo/GeneralConfig'
 
 const Perspective1 = props => {
   const { rootUrl, perspective } = props
@@ -63,6 +63,22 @@ const Perspective1 = props => {
           />}
       />
       <Route
+        path={`${rootUrl}/${perspective.id}/faceted-search/production_places_heatmap`}
+        render={() =>
+          <Deck
+            results={props.places.results}
+            facetUpdateID={props.facetData.facetUpdateID}
+            resultClass='placesMsProduced'
+            facetClass='perspective1'
+            fetchResults={props.fetchResults}
+            fetching={props.places.fetching}
+            legendComponent={<MigrationsMapLegend />}
+            layerType='heatmapLayer'
+            mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
+            mapBoxStyle={MAPBOX_STYLE}
+          />}
+      />
+      <Route
         path={`${rootUrl}/${perspective.id}/faceted-search/last_known_locations`}
         render={() =>
           <LeafletMap
@@ -108,6 +124,7 @@ const Perspective1 = props => {
             legendComponent={<MigrationsMapLegend />}
             layerType='arcLayer'
             mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
+            mapBoxStyle={MAPBOX_STYLE}
           />}
       />
       <Route

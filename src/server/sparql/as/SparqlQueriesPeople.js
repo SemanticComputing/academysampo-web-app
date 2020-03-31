@@ -13,15 +13,6 @@ BIND(?id as ?uri__prefLabel)
 }
 UNION
 {
-  ?id skosxl:prefLabel/schema:familyName ?fname .
-}
-UNION
-{
-  ?id skosxl:prefLabel/schema:givenName ?gname__prefLabel .
-  BIND(?gname__prefLabel AS ?gname__id)
-}
-UNION
-{
   ?id a :Person .
   BIND ("Matrikkelissa mainittu ylioppilas" AS ?type)
 }
@@ -108,14 +99,14 @@ UNION
 }
 UNION
 {
-  ?id :wikidata ?externalLink__id.
-  BIND ("Wikidata" AS ?externalLink__prefLabel)
+  ?id schema:relatedLink ?externalLink__id.
+  BIND ("Ylioppilasmatrikkeli" AS ?externalLink__prefLabel)
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 UNION
 {
-  ?id schema:relatedLink ?externalLink__id.
-  BIND ("Ylioppilasmatrikkeli" AS ?externalLink__prefLabel)
+  ?id :wikidata ?externalLink__id.
+  BIND ("Wikidata" AS ?externalLink__prefLabel)
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 UNION
@@ -128,7 +119,23 @@ UNION
 { ?id dct:source ?source__id .
   ?source__id
     skos:prefLabel ?source__prefLabel ;
-    skos:related ?source__dataProviderUrl .
+    skos:related ?source__dataProviderUrl ;
+    dct:author ?source__author ;
+    dct:description ?source__desc .
+
+    OPTIONAL {
+      ?id schema:relatedLink ?source__link ;
+      skosxl:prefLabel/skos:prefLabel ?fullname .
+    }
+
+    BIND (CONCAT(?source__author, ', <em>',
+          ?source__prefLabel, ': ',
+          REPLACE(?fullname, "^([^,]+), (.*)$", "$2 $1"), '</em>. ',
+          ?source__desc,
+          ' &lt;', str(?source__link), '&gt;. ',
+          REPLACE(STR(NOW()), "^([0-9]{4})[-]0*([0-9]{1,2})[-]0*([0-9]{1,2}).+$", "Luettu $3.$2.$1.")
+          )
+        AS ?sourcereference)
 }
 UNION
 {

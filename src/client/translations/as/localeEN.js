@@ -8,9 +8,9 @@ export default {
     `
   },
   appDescription: `
-    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
-    nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea 
-    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
+    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+    nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
     voluptas nulla pariatur.
   `,
   selectPerspective: 'Select a perspective to search and browse the data:',
@@ -52,7 +52,7 @@ export default {
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         This landing page provides a human-readable summary of the data points that link
         to this {entity}. The data included in this summary reflect only those data points
-        used in the MMM Portal. Click the Open in Linked Data Browser on button on the
+        used in the AcademySampo Portal. Click the Open in Linked Data Browser on button on the
         Export tab to view the complete set of classes and properties linked to this record.
       </p>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -67,7 +67,7 @@ export default {
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         The same or similar data may appear within a single data field multiple times.
         This repetition occurs due to the merging of multiple records from different datasets
-        to create the MMM record.
+        to create the AcademySampo record.
       </p>
     `
   },
@@ -87,7 +87,7 @@ export default {
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
             <strong>TABLE</STRONG> view includes all manuscripts in
-            the MMM data. One table row is equivalent to one manuscript.
+            the AcademySampo data. One table row is equivalent to one manuscript.
           </li>
           <li>
             <strong>PRODUCTION PLACES</STRONG> view visualizes the connection
@@ -107,11 +107,11 @@ export default {
         label: 'Person',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            MMM’s Manuscript entity corresponds to
+            AcademySampo’s Manuscript entity corresponds to
             <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo’s</a>
             Manifestation Singleton, defined as "physical objects that each carry an instance of
             [an Expression], and that were produced as unique objects..." The various types
-            of records that describe manuscripts in each of the three contributing MMM
+            of records that describe manuscripts in each of the three contributing AcademySampo
             datasets have been mapped to this entity.
           </p>
           <h6 class="MuiTypography-root MuiTypography-h6">
@@ -193,6 +193,10 @@ export default {
           description: `
             List of used references
           `
+        },
+        sourcereference: {
+          label: 'Reference to the source',
+          description: 'Reference to the source'
         },
         category: {
           label: 'Category',
@@ -301,7 +305,7 @@ export default {
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
             <strong>TABLE</STRONG> view includes all manuscripts in
-            the MMM data. One table row is equivalent to one manuscript.
+            the AcademySampo data. One table row is equivalent to one manuscript.
           </li>
           <li>
             <strong>PRODUCTION PLACES</STRONG> view visualizes the connection
@@ -321,11 +325,11 @@ export default {
         label: 'Referenced Person',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            MMM’s Manuscript entity corresponds to
+            AcademySampo’s Manuscript entity corresponds to
             <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo’s</a>
             Manifestation Singleton, defined as "physical objects that each carry an instance of
             [an Expression], and that were produced as unique objects..." The various types
-            of records that describe manuscripts in each of the three contributing MMM
+            of records that describe manuscripts in each of the three contributing AcademySampo
             datasets have been mapped to this entity.
           </p>
           <h6 class="MuiTypography-root MuiTypography-h6">
@@ -494,7 +498,7 @@ export default {
       shortDescription: 'Places description',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to Works. The MMM data model follows
+          Use this perspective to access data related to Works. The AcademySampo data model follows
           the <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo</a>
           definition of a work, which refers to “distinct concepts or combinations
           of concepts identified in artistic and intellectual expressions.” Works
@@ -519,7 +523,7 @@ export default {
         label: 'Place',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            The MMM data model follows the
+            The AcademySampo data model follows the
             <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo</a>
             definition of a work, which refers to
             “distinct concepts or combinations of concepts identified in artistic and
@@ -529,7 +533,7 @@ export default {
             the FRBRoo conception of an Expression. The SDBM does not have a work concept
             at all, recording only the titles of the texts as given in its various sources,
             without normalizing that data or linking it directly to author information.
-            Works were generated within the MMM dataset by manually creating links across
+            Works were generated within the AcademySampo dataset by manually creating links across
             the three datasets’ various conceptions of the relationship between authors
             and their creations. This process was not able to reconcile every work
             contained within the combined dataset.
@@ -622,7 +626,7 @@ export default {
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all events in the MMM data.
+            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
           </li>
           <li>
             <strong>MAP</STRONG> view visualizes the events that have location information on a map.
@@ -704,7 +708,7 @@ export default {
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all events in the MMM data.
+            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
           </li>
           <li>
             <strong>MAP</STRONG> view visualizes the events that have location information on a map.
@@ -786,7 +790,7 @@ export default {
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all events in the MMM data.
+            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
           </li>
           <li>
             <strong>MAP</STRONG> view visualizes the events that have location information on a map.
@@ -844,7 +848,7 @@ export default {
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all events in the MMM data.
+            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
           </li>
           <li>
             <strong>MAP</STRONG> view visualizes the events that have location information on a map.
@@ -909,7 +913,7 @@ export default {
       About the Portal
     </h1>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      Mapping Manuscript Migrations (MMM) Portal has been developed with funding from the Trans-Atlantic
+      AcademySampo Portal has been developed with funding from the Trans-Atlantic
       Platform under its Digging into Data Challenge (2017-2019). The partners in this project are
       the University of Oxford, the University of Pennsylvania, Aalto University,
       and the Institut de recherche et d’histoire des textes.
@@ -918,14 +922,14 @@ export default {
       Agence nationale de la recherche.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      MMM Portal is intended to enable large-scale exploration of data relating to the history and provenance
+      AcademySampo Portal is intended to enable large-scale exploration of data relating to the history and provenance
       of (primarily) Western European medieval and early modern manuscripts.
     </p>
     <h2 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom">
       Data
     </h2>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      MMM Portal combines data from three specialist databases:
+      AcademySampo Portal combines data from three specialist databases:
     </p>
     <ul class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom">
       <li>
@@ -961,33 +965,33 @@ export default {
       Features
     </h2>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The MMM Portal enables you to browse and search through most of the data assembled by the MMM project
-      from the three source databases. If you want to inspect the full raw data for any individual
+      The AcademySampo Portal enables you to browse and search through most of the data assembled by the AcademySampo project
+      from the two source databases. If you want to inspect the full raw data for any individual
       manuscript or other entity, please click on the “Open in Linked Data browser” button on
       the “Export” tab of the landing-page for that entity.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The MMM Portal also provides map-based visualizations for a selection of the data relating to
+      The AcademySampo Portal also provides map-based visualizations for a selection of the data relating to
       Manuscripts, Actors, and Places. The data resulting from a search or a filtered browse can be
       exported in the form of a CSV file. Click on the “Export” tab and then on the button
       “Open SPARQL query in yasgui.org”.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       If you want to search all the underlying data using the SPARQL query language, the endpoint is
-      available here: <a href="http://ldf.fi/mmm-cidoc/sparql" target='_blank' rel='noopener noreferrer'>
-      http://ldf.fi/mmm-cidoc/sparql</a>.
+      available here: <a href="http://ldf.fi/yoma/sparql" target='_blank' rel='noopener noreferrer'>
+      http://ldf.fi/yoma/sparql</a>.
     </p>
     <h2 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom">
       Data Reuse
     </h2>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The MMM data are made available for reuse under a
+      The AcademySampo data are made available for reuse under a
       <a href="https://creativecommons.org/licenses/by-nc/4.0/" target='_blank' rel='noopener noreferrer'>CC-BY-NC 4.0 licence</a>.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       You must give appropriate credit, provide a link to the license, and indicate if changes
       were made. You may do so in any reasonable manner, but not in any way that suggests the
-      MMM project or its partner institutions endorses you or your use.
+      AcademySampo project or its partner institutions endorses you or your use.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       You may not use the data for commercial purposes.
@@ -996,7 +1000,7 @@ export default {
       More Information
     </h2>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The MMM project has its own
+      The AcademySampo project has its own
       <a href="https://github.com/mapping-manuscript-migrations" target='_blank' rel='noopener noreferrer'>GitHub site</a>.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -1008,7 +1012,7 @@ export default {
       Instructions
     </h1>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The search functionality of the MMM portal is based on the
+      The search functionality of the AcademySampo portal is based on the
       <a href="https://doi.org/10.2200/S00190ED1V01Y200904ICR005" target='_blank' rel='noopener noreferrer'>
       faceted search</a> paradigm. By default each perspective displays
       all results from the corresponding class (Manuscripts, Works, Events, Actors, or Places).

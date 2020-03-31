@@ -60,13 +60,90 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
-      id: 'title',
+      id: 'enrollmentTimespan',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 100
+    },
+    {
+      id: 'altLabel',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 180
+      minWidth: 220,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'externalLink',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 150
+    },
+    {
+      id: 'entryText',
+      valueType: 'string',
+      renderAsHTML: true,
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'relativeText',
+      valueType: 'string',
+      renderAsHTML: true,
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'referenceText',
+      valueType: 'string',
+      renderAsHTML: true,
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'sourcereference',
+      valueType: 'string',
+      renderAsHTML: true,
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'source',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 150
+    },
+    {
+      id: 'gender',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 80
     },
     {
       id: 'birthDateTimespan',
@@ -81,15 +158,6 @@ export const INITIAL_STATE = {
       id: 'birthPlace',
       valueType: 'object',
       makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 100
-    },
-    {
-      id: 'enrollmentTimespan',
-      valueType: 'object',
-      makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: false,
@@ -111,16 +179,25 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 100 
+      minWidth: 100
     },
     {
-      id: 'altLabel',
+      id: 'title',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220,
+      minWidth: 180
+    },
+    {
+      id: 'place',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 180,
       onlyOnInstancePage: true
     },
     {
@@ -142,55 +219,6 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
-      id: 'gender',
-      valueType: 'object',
-      makeLink: false,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 80
-    },
-    {
-      id: 'entryText',
-      valueType: 'string',
-      renderAsHTML: true, 
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'relativeText',
-      valueType: 'string',
-      renderAsHTML: true, 
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'referenceText',
-      valueType: 'string',
-      renderAsHTML: true, 
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'place',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 180,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'studentnation',
       valueType: 'object',
       makeLink: true,
@@ -198,33 +226,6 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 180
-    },
-    {
-      id: 'uri',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
-      id: 'externalLink',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
-    },
-    {
-      id: 'source',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
     },
     {
       id: 'relative',
@@ -244,7 +245,7 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       onlyOnInstancePage: true
-    }, 
+    },
     {
       id: 'similar',
       valueType: 'object',
@@ -252,6 +253,15 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       sortBy: 'distance',
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
+      id: 'uri',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
       numberedList: false,
       onlyOnInstancePage: true
     }

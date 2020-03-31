@@ -29,13 +29,13 @@ import Places from '../components/perspectives/as/Places'
 import Categories from '../components/perspectives/as/Categories'
 import Organizations from '../components/perspectives/as/Organizations'
 import All from '../components/perspectives/as/All'
-import { perspectiveConfig } from '../configs/as/PerspectiveConfig' 
+import { perspectiveConfig } from '../configs/as/PerspectiveConfig'
 import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
 import { rootUrl } from '../configs/as/GeneralConfig'
 import {
   fetchPaginatedResults,
   fetchResults,
-  fetchResultCount, 
+  fetchResultCount,
   fetchResultsClientSide,
   fetchNetworkById,
   clearResults,
@@ -298,7 +298,7 @@ const SemanticPortal = props => {
             break
       case 'organizations':
               perspectiveElement =
-                <Categories
+                <Organizations
                   organizations={props.organizations}
                   facetData={props.nationsFacets}
                   fetchPaginatedResults={props.fetchPaginatedResults}
@@ -317,7 +317,7 @@ const SemanticPortal = props => {
               break
       case 'categories':
               perspectiveElement =
-                <organizations
+                <Categories
                   organizations={props.organizations}
                   facetData={props.nationsFacets}
                   fetchPaginatedResults={props.fetchPaginatedResults}

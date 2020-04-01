@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-// import { useHistory } from "react-router-dom";
+import history from '../../History'
 import cytoscape from 'cytoscape'
 
 const styles = theme => ({
@@ -96,11 +96,11 @@ class Network extends React.Component {
     this.cy.on('tap', 'node', function(){
       try {
         if (this.data('href')) {
-          // console.log(this.data('href'))
-          //	TODO: find the correct React way to do this
-          // let history = useHistory();
-          // history.push(this.data('href'))
-          window.location.href = this.data('href');
+          history.push(this.data('href'))
+          /* history.push({
+            pathname: this.data('href'),
+            search: `?page=${page}`
+          }) */
           }
       } catch(e) { // fall back on url change
         console.log('Fail', e)

@@ -14,6 +14,8 @@ export const documentFinderAPIUrl = 'https://data.finlex.fi/document-finder-back
 
 export const backendErrorText = 'The database is not available. Please try again later.'
 
+export const yasguiBaseUrl = 'https://yasgui.triply.cc'
+
 export const yasguiParams = {
   contentTypeConstruct: 'text/turtle',
   contentTypeSelect: 'application/sparql-results+json',

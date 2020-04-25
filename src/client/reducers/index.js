@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux'
 import { reducer as toastrReducer } from 'react-redux-toastr'
+// general reducers:
 import error from './error'
 import options from './options'
+import animation from './animation'
+import leafletMap from './leafletMap'
+// portal spefic reducers:
 import people from './as/people'
 import relatives from './as/relatives'
 import places from './as/places'
@@ -11,9 +15,6 @@ import nations from './as/nations'
 import peopleFacets from './as/peopleFacets'
 import categories from './as/categories'
 import organizations from './as/organizations'
-import perspective3Facets from './sampo/perspective3Facets'
-import animation from './mmm/animation'
-import clientSideFacetedSearch from './sampo/clientSideFacetedSearch'
 
 const reducer = combineReducers({
   people,
@@ -25,11 +26,10 @@ const reducer = combineReducers({
   organizations,
   peopleFacets,
   placesFacets,
-  perspective3Facets,
+  leafletMap,
   animation,
   options,
   error,
-  clientSideFacetedSearch,
   toastr: toastrReducer
 })
 

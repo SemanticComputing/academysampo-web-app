@@ -1,6 +1,6 @@
 # AcademySampo &ndash; Finnish Academic People 1640 &ndash; 1899
 
-Based on [Sampo-UI - A framework for implementing semantic portals](https://github.com/SemanticComputing/sampo-ui)
+Based on [Sampo-UI - A framework for building semantic portal user interfaces](https://github.com/SemanticComputing/sampo-ui)
 
 ## Requirements
 

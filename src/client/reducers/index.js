@@ -15,6 +15,7 @@ import nations from './as/nations'
 import peopleFacets from './as/peopleFacets'
 import categories from './as/categories'
 import organizations from './as/organizations'
+import fullTextSearch from './as/fullTextSearch'
 
 const reducer = combineReducers({
   people,
@@ -26,6 +27,7 @@ const reducer = combineReducers({
   organizations,
   peopleFacets,
   placesFacets,
+  fullTextSearch,
   leafletMap,
   animation,
   options,

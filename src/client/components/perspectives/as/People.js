@@ -7,10 +7,11 @@ import LeafletMap from '../../facet_results/LeafletMap'
 import Deck from '../../facet_results/Deck'
 import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
-import MigrationsMapLegend from '../mmm/MigrationsMapLegend'
+import MigrationsMapLegend from '../sampo/MigrationsMapLegend'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
 
 const People = props => {
+  const { rootUrl, perspective } = props
   return (
     <>
       <PerspectiveTabs
@@ -19,11 +20,11 @@ const People = props => {
         screenSize={props.screenSize}
       />
       <Route
-        exact path='/people/faceted-search'
-        render={() => <Redirect to='/people/faceted-search/table' />}
+        exact path={`${rootUrl}/${perspective.id}/faceted-search`}
+        render={() => <Redirect to={`${rootUrl}/${perspective.id}/faceted-search/table`} />}
       />
       <Route
-        path='/people/faceted-search/table'
+        path={`${rootUrl}/${perspective.id}/faceted-search/table`}
         render={routeProps =>
           <ResultTable
             data={props.people}
@@ -35,16 +36,20 @@ const People = props => {
             updateRowsPerPage={props.updateRowsPerPage}
             sortResults={props.sortResults}
             routeProps={routeProps}
+            rootUrl={rootUrl}
           />}
       />
       <Route
-        path='/people/faceted-search/map'
+        path={`${rootUrl}/${perspective.id}/faceted-search/map`}
         render={() =>
           <LeafletMap
+            center={[22.43, 10.37]}
+            zoom={2}
             results={props.places.results}
+            layers={props.leafletMapLayers}
             pageType='facetResults'
             facetUpdateID={props.facetData.facetUpdateID}
-            facetID='productionPlace'
+            facetID=''
             resultClass='peoplePlaces'
             facetClass='people'
             mapMode='cluster'
@@ -54,10 +59,11 @@ const People = props => {
             fetching={props.places.fetching}
             showInstanceCountInClusters
             updateFacetOption={props.updateFacetOption}
+            showExternalLayers={false}
           />}
       />
       <Route
-        path='/people/faceted-search/network'
+        path={`${rootUrl}/${perspective.id}/faceted-search/network`}
         render={() =>
           <Network
             results={props.people.results}
@@ -69,7 +75,7 @@ const People = props => {
           />}
       />
       <Route
-        path='/people/faceted-search/migrations'
+        path={`${rootUrl}/${perspective.id}/faceted-search/migrations`}
         render={() =>
           <Deck
             results={props.places.results}
@@ -85,7 +91,7 @@ const People = props => {
           />}
       />
       <Route
-        path='/people/faceted-search/export'
+        path={`${rootUrl}/${perspective.id}/faceted-search/export`}
         render={() =>
           <Export
             sparqlQuery={props.people.paginatedResultsSparqlQuery}
@@ -99,6 +105,7 @@ const People = props => {
 
 People.propTypes = {
   people: PropTypes.object.isRequired,
+  leafletMapLayers: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
   fetchResults: PropTypes.func.isRequired,

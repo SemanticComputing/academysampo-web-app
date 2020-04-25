@@ -13,7 +13,7 @@ import Export from '../facet_results/Export'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
 
-const styles = () => ({ 
+const styles = () => ({
   root: {
     width: '100%',
     height: '100%'
@@ -73,19 +73,14 @@ class InstanceHomePage extends React.Component {
         uri = `${base}/nations/${localID}` // TODO unify urls
         break
       case 'categories':
-          uri = `${base}/categories/${localID}`
+        uri = `${base}/categories/${localID}`
         break
       case 'organizations':
-          uri = `${base}/organizations/${localID}`
+        uri = `${base}/organizations/${localID}`
         break
       case 'places':
         uri = `${base}/places/${localID}`
         break
-      /*
-      case 'perspective3':
-        uri = `${base}/event/${localID}`
-        break
-       */
     }
     this.props.fetchByURI({
       resultClass: this.props.resultClass,
@@ -136,9 +131,9 @@ class InstanceHomePage extends React.Component {
   }
 
   render = () => {
-    const { classes, data, isLoading, resultClass } = this.props
+    const { classes, data, isLoading, resultClass, rootUrl } = this.props
     const hasData = data !== null && Object.values(data).length >= 1
-    
+
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -160,11 +155,11 @@ class InstanceHomePage extends React.Component {
           {hasData &&
             <>
               <Route
-                exact path={`/${resultClass}/page/${this.state.localID}`}
-                render={() => <Redirect to={`/${resultClass}/page/${this.state.localID}/table`} />}
+                exact path={`${rootUrl}/${resultClass}/page/${this.state.localID}`}
+                render={() => <Redirect to={`${rootUrl}/${resultClass}/page/${this.state.localID}/table`} />}
               />
               <Route
-                path={`/${resultClass}/page/${this.state.localID}/table`}
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/table`}
                 render={() =>
                   <InstanceHomePageTable
                     resultClass={resultClass}
@@ -173,7 +168,7 @@ class InstanceHomePage extends React.Component {
                   />}
               />
               <Route
-                path={`/${resultClass}/page/${this.state.localID}/map`}
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/map`}
                 render={() =>
                   <LeafletMap
                     results={this.createPlaceArray(data.event)}
@@ -187,42 +182,31 @@ class InstanceHomePage extends React.Component {
                   />}
               />
               <Route
-                path={`/${resultClass}/page/${this.state.localID}/network`}
-                render={() =>
-                  <Network
-                    /* results={this.props.people.results} */
-                    fetchResults={this.props.fetchResults} 
-                    resultClass='peopleNetwork'
-                    facetClass='people'
-                    id={data.id}
-                  />}
-              />
-              <Route
-                path={`/${resultClass}/page/${this.state.localID}/familyNetwork`}
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/familyNetwork`}
                 render={() =>
                   <Network
                     pageType='instancePage'
                     results={this.props.networkData}
                     resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById} 
+                    fetchNetworkById={this.props.fetchNetworkById}
                     resultClass='familyNetwork'
                     id={data.id}
                   />}
               />
               <Route
-                path={`/${resultClass}/page/${this.state.localID}/academicNetwork`}
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/academicNetwork`}
                 render={() =>
                   <Network
                     pageType='instancePage'
                     results={this.props.networkData}
                     resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById} 
+                    fetchNetworkById={this.props.fetchNetworkById}
                     resultClass='academicNetwork'
                     id={data.id}
                   />}
               />
               <Route
-                path={`/${resultClass}/page/${this.state.localID}/export`}
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/export`}
                 render={() =>
                   <Export
                     sparqlQuery={this.props.sparqlQuery}

@@ -267,10 +267,10 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-	?id :has_event/:organization ?organization__id .
-	?organization__id skos:prefLabel ?organization__prefLabel .
-	FILTER (LANG(?organization__prefLabel)='fi')
-	BIND(CONCAT("/organizations/page/", REPLACE(STR(?organization__id), "^.*\\\\/(.+)", "$1")) AS ?organization__dataProviderUrl)
+    ?id :has_event/:organization ?organization__id .
+    ?organization__id skos:prefLabel ?organization__prefLabel . 
+    FILTER (LANG(?organization__prefLabel)='fi')
+    BIND(CONCAT("/organizations/page/", REPLACE(STR(?organization__id), "^.*\\\\/(.+)", "$1")) AS ?organization__dataProviderUrl)
   }
   UNION
   {

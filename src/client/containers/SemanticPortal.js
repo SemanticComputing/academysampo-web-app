@@ -31,9 +31,9 @@ import All from '../components/perspectives/as/All'
 // import ClientFSPerspective from '../components/perspectives/sampo/client_fs/ClientFSPerspective'
 // import ClientFSMain from '../components/perspectives/sampo/client_fs/ClientFSMain'
 import Footer from '../components/perspectives/sampo/Footer'
-import { perspectiveConfig } from '../configs/sampo/PerspectiveConfig'
-import { perspectiveConfigOnlyInfoPages } from '../configs/sampo/PerspectiveConfigOnlyInfoPages'
-import { rootUrl } from '../configs/sampo/GeneralConfig'
+import { perspectiveConfig } from '../configs/as/PerspectiveConfig'
+import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
+import { rootUrl } from '../configs/as/GeneralConfig'
 import {
   fetchPaginatedResults,
   fetchResults,
@@ -403,7 +403,7 @@ const SemanticPortal = props => {
           <>
             <TopBar
               rootUrl={rootUrlWithLang}
-              search={props.clientSideFacetedSearch}
+              search={props.fullTextSearch}
               fetchResultsClientSide={props.fetchResultsClientSide}
               clearResults={props.clearResults}
               perspectives={perspectiveConfig}
@@ -445,7 +445,7 @@ const SemanticPortal = props => {
                 <Grid container spacing={1} className={classes.mainContainer}>
                   <Grid item xs={12} className={classes.resultsContainer}>
                     <All
-                      clientSideFacetedSearch={props.clientSideFacetedSearch}
+                      clientSideFacetedSearch={props.fullTextSearch}
                       screenSize={screenSize}
                       routeProps={routeProps}
                     />
@@ -527,10 +527,13 @@ const SemanticPortal = props => {
                                   <InstanceHomePage
                                     rootUrl={rootUrlWithLang}
                                     fetchByURI={props.fetchByURI}
+                                    fetchNetworkById={props.fetchNetworkById}
                                     resultClass={perspective.id}
+                                    resultUpdateID={props[perspective.id].resultUpdateID}
                                     properties={props[perspective.id].properties}
                                     tabs={perspective.instancePageTabs}
                                     data={props[perspective.id].instance}
+                                    networkData={props[perspective.id].instanceNetworkData}
                                     sparqlQuery={props[perspective.id].instanceSparqlQuery}
                                     isLoading={props[perspective.id].fetching}
                                     routeProps={routeProps}
@@ -576,10 +579,13 @@ const SemanticPortal = props => {
                             <InstanceHomePage
                               rootUrl={rootUrlWithLang}
                               fetchByURI={props.fetchByURI}
+                              fetchNetworkById={props.fetchNetworkById}
                               resultClass={perspective.id}
+                              resultUpdateID={props[perspective.id].resultUpdateID}
                               properties={props[perspective.id].properties}
                               tabs={perspective.instancePageTabs}
                               data={props[perspective.id].instance}
+                              networkData={props[perspective.id].instanceNetworkData}
                               sparqlQuery={props[perspective.id].instanceSparqlQuery}
                               isLoading={props[perspective.id].fetching}
                               routeProps={routeProps}
@@ -677,7 +683,8 @@ const mapStateToProps = state => {
     nations: state.nations,
     categories: state.categories,
     organizations: state.organizations,
-    clientSideFacetedSearch: state.clientSideFacetedSearch,
+    fullTextSearch: state.fullTextSearch,
+    leafletMap: state.leafletMap,
     animationValue: state.animation.value,
     options: state.options,
     error: state.error
@@ -747,13 +754,14 @@ SemanticPortal.propTypes = {
   updateMapBounds: PropTypes.func.isRequired,
   loadLocales: PropTypes.func.isRequired,
   animateMap: PropTypes.func.isRequired,
-  clientFS: PropTypes.object.isRequired,
+  clientFS: PropTypes.object,
   clientFSToggleDataset: PropTypes.func.isRequired,
   clientFSFetchResults: PropTypes.func.isRequired,
   clientFSClearResults: PropTypes.func.isRequired,
   clientFSSortResults: PropTypes.func.isRequired,
   clientFSUpdateQuery: PropTypes.func.isRequired,
-  clientFSUpdateFacet: PropTypes.func.isRequired
+  clientFSUpdateFacet: PropTypes.func.isRequired,
+  fullTextSearch: PropTypes.object.isRequired
 }
 
 export default compose(

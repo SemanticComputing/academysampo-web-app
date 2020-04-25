@@ -63,18 +63,18 @@ class Network extends React.Component {
         {
           selector: 'node',
           style: {
-            "shape": 'ellipse',
-            "font-size": '12',
+            shape: 'ellipse',
+            'font-size': '12',
             'background-color': ele => ele.data('color') || '#666',
             label: ' data(prefLabel)',
-					  "height": ele => (16/(ele.data('distance')+1)) || ele.data('size') || '16px',
-	      		"width": ele =>  (16/(ele.data('distance')+1)) || ele.data('size') || '16px'
+            height: ele => (16 / (ele.data('distance') + 1)) || ele.data('size') || '16px',
+            width: ele => (16 / (ele.data('distance') + 1)) || ele.data('size') || '16px'
           }
         },
         {
           selector: 'edge',
           style: {
-            'width': ele => ele.data('weight') || 1,
+            width: ele => ele.data('weight') || 1,
             'line-color': ele => ele.data('color') || '#BBB',
             'curve-style': 'bezier',
             content: ' data(prefLabel) ',
@@ -91,29 +91,25 @@ class Network extends React.Component {
           }
         }
       ]
-    });
+    })
 
-    this.cy.on('tap', 'node', function(){
+    this.cy.on('tap', 'node', function () {
       try {
         if (this.data('href')) {
           history.push(this.data('href'))
-          /* history.push({
-            pathname: this.data('href'),
-            search: `?page=${page}`
-          }) */
-          }
-      } catch(e) { // fall back on url change
+        }
+      } catch (e) { // fall back on url change
         console.log('Fail', e)
         console.log(this.data())
       }
-    });
+    })
   }
 
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
       //  console.log(this.props.results.elements);
-      this.cy.elements().remove();
-      this.cy.add(this.props.results.elements);
+      this.cy.elements().remove()
+      this.cy.add(this.props.results.elements)
       this.cy.layout(layout).run()
     }
     // check if filters have changed

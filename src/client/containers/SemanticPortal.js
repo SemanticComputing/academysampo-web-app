@@ -555,11 +555,11 @@ const SemanticPortal = props => {
             {perspectiveConfigOnlyInfoPages.map(perspective =>
               <Switch key={perspective.id}>
                 <Redirect
-                  from={`/${perspective.id}/page/:id`}
+                  from={`${rootUrl}/${perspective.id}/page/:id`}
                   to={`${rootUrlWithLang}/${perspective.id}/page/:id`}
                 />
                 <Route
-                  path={`/${perspective.id}/page/:id`}
+                  path={`${rootUrlWithLang}/${perspective.id}/page/:id`}
                   render={routeProps => {
                     return (
                       <>

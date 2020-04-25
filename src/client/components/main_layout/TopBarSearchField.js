@@ -71,7 +71,7 @@ class TopBarSearchField extends React.Component {
         jenaIndex: 'text',
         query: this.state.value
       })
-      history.push({ pathname: '/all/table' })
+      history.push({ pathname: `${this.props.rootUrl}/all/table` })
     }
   };
 
@@ -116,7 +116,8 @@ TopBarSearchField.propTypes = {
   classes: PropTypes.object.isRequired,
   fetchResultsClientSide: PropTypes.func.isRequired,
   clearResults: PropTypes.func.isRequired,
-  xsScreen: PropTypes.bool.isRequired
+  xsScreen: PropTypes.bool.isRequired,
+  rootUrl: PropTypes.string.isRequired
 }
 
 export default withStyles(styles)(TopBarSearchField)

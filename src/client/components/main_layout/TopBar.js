@@ -211,6 +211,7 @@ class TopBar extends React.Component {
               fetchResultsClientSide={this.props.fetchResultsClientSide}
               clearResults={this.props.clearResults}
               xsScreen={this.props.xsScreen}
+              rootUrl={this.props.rootUrl}
             />
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

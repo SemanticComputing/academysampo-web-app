@@ -6,7 +6,8 @@ import MaterialTableFullTextResults from '../../facet_results/MaterialTableFullT
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 
 const All = props => {
-  const perspectiveUrl = '/all'
+  const { rootUrl } = props
+  const perspectiveID = 'all'
   return (
     <>
       <PerspectiveTabs
@@ -20,11 +21,11 @@ const All = props => {
         }]}
       />
       <Route
-        exact path={perspectiveUrl}
-        render={() => <Redirect to={`${perspectiveUrl}/table`} />}
+        exact path={`${rootUrl}/${perspectiveID}`}
+        render={() => <Redirect to={`${rootUrl}/${perspectiveID}/table`} />}
       />
       <Route
-        path={`${perspectiveUrl}/table`}
+        path={`${rootUrl}/${perspectiveID}/table`}
         render={() => {
           return (
             <MaterialTableFullTextResults
@@ -43,7 +44,8 @@ All.propTypes = {
   clientSideFacetedSearch: PropTypes.object.isRequired,
   updatePage: PropTypes.func,
   sortResults: PropTypes.func,
-  routeProps: PropTypes.object.isRequired
+  routeProps: PropTypes.object.isRequired,
+  rootUrl: PropTypes.string.isRequired
 }
 
 export default All

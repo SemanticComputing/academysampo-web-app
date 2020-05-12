@@ -8,7 +8,7 @@ export default {
     `
   },
   appDescription: `
-  
+
   `,
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Image licene text',
@@ -37,6 +37,7 @@ export default {
     network: 'network',
     familyNetwork: 'Family relations',
     academicNetwork: 'Academic relations',
+    relationNetwork: 'Relations',
     export: 'export',
     'by-period': 'by period'
   },
@@ -225,6 +226,12 @@ export default {
           label: 'Academic Relations',
           description: `
             This list of related people contains students, teachers, supervisors, and namesakes of a person.
+          `
+        },
+        relations: {
+          label: 'Relations',
+          description: `
+            Todo, add description.
           `
         },
         similar: {

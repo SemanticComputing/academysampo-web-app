@@ -9,9 +9,11 @@ import {
   networkLinksQuery,
   networkNodesQuery,
   academicNetworkNodesQuery,
+  relationNetworkNodesQuery,
   familyNetworkNodesQuery,
   networkFamilyRelationQuery,
-  networkAcademicRelationQuery
+  networkAcademicRelationQuery,
+  networkRelationQuery
 } from './as/SparqlQueriesPeople'
 import {
   relativesPropertiesInstancePage
@@ -331,6 +333,16 @@ export const getByURI = ({
       links: networkAcademicRelationQuery,
       id: uri,
       nodes: academicNetworkNodesQuery
+    })
+  }
+
+  if (resultClass === 'relationNetwork') {
+    return runNetworkQuery({
+      endpoint,
+      prefixes,
+      links: networkRelationQuery,
+      id: uri,
+      nodes: relationNetworkNodesQuery
     })
   }
 

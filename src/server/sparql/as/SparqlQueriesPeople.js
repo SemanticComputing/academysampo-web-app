@@ -268,7 +268,7 @@ export const peoplePropertiesFacetResults =
   UNION
   {
     ?id :has_event/:organization ?organization__id .
-    ?organization__id skos:prefLabel ?organization__prefLabel . 
+    ?organization__id skos:prefLabel ?organization__prefLabel .
     FILTER (LANG(?organization__prefLabel)='fi')
     BIND(CONCAT("/organizations/page/", REPLACE(STR(?organization__id), "^.*\\\\/(.+)", "$1")) AS ?organization__dataProviderUrl)
   }
@@ -411,6 +411,21 @@ SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
 }
 `
 
+//  query on person page tab "TODO"
+export const networkRelationQuery = `
+SELECT DISTINCT ?source ?target ("" AS ?name) (1 AS ?weight)
+WHERE {
+		  VALUES ?source { <ID> }
+		  VALUES ?prop { schema:date schema:place skos:broader
+		    bioc:inheres_in # :has_baptism :has_birth :has_burial :has_death
+
+        :has_title :has_event :has_category :has_enrollment :related_occupation :student_nation :organization }
+		  ?source ?prop ?target .
+		  FILTER ISURI(?target)
+		  OPTIONAL { ?prop skos:prefLabel ?label . FILTER (LANG(?label)="fi") }
+}
+`
+
 export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size ?href
   WHERE {
@@ -442,6 +457,26 @@ export const academicNetworkNodesQuery = `
     }
     BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/academicNetwork") AS ?href)
   }
+`
+
+export const relationNetworkNodesQuery = `
+SELECT DISTINCT ?id ?prefLabel ?size ?cls ?color ?href
+  WHERE {
+    VALUES ?id { <ID_SET> }
+    ?id skos:prefLabel ?prefLabel ; a ?cls .
+    OPTIONAL { VALUES (?cls ?_color ?_size ?href_start ?href_end)
+      { (:Person    "red"       25 "../" "/relationNetwork")
+        (:Place     "blue"      15 "../../../places/page/" "/table")
+        (:Title     "green"     15 "../../../titles/page/" "/table")
+        (:Category  "green"     15 "../../../categories/page/" "/table")
+        (:Organization "black"  15 "../../../organizations/page/" "/table")
+        (:StudentNation "black" 15 "../../../nations/page/" "/table")
+      }
+    }
+    BIND(COALESCE(?_color, 'grey') AS ?color)
+    BIND(COALESCE(?_size, 12) AS ?size)
+    BIND(CONCAT(?href_start, REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"), ?href_end) AS ?href)
+}
 `
 
 export const familyNetworkNodesQuery = `

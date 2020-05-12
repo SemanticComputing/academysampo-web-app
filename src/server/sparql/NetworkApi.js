@@ -12,7 +12,7 @@ export const runNetworkQuery = async ({
     prefixes,
     links,
     nodes,
-    limit: 100,
+    limit: 200,
     id,
     optimize: 1.2,
     customHttpHeaders: { Authorization: `Basic ${process.env.SPARQL_ENDPOINT_BASIC_AUTH}` }

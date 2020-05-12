@@ -67,8 +67,8 @@ class Network extends React.Component {
             'font-size': '12',
             'background-color': ele => ele.data('color') || '#666',
             label: ' data(prefLabel)',
-            height: ele => (16 / (ele.data('distance') + 1)) || ele.data('size') || '16px',
-            width: ele => (16 / (ele.data('distance') + 1)) || ele.data('size') || '16px'
+            height: ele =>  (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px'),
+            width: ele =>   (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px')
           }
         },
         {
@@ -96,6 +96,7 @@ class Network extends React.Component {
     this.cy.on('tap', 'node', function () {
       try {
         if (this.data('href')) {
+          console.log(this.data('href'))
           history.push(this.data('href'))
         }
       } catch (e) { // fall back on url change

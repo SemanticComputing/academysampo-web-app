@@ -13,7 +13,9 @@ import {
   familyNetworkNodesQuery,
   networkFamilyRelationQuery,
   networkAcademicRelationQuery,
-  networkRelationQuery
+  networkRelationQuery,
+  pointCloudLinksQuery,
+  pointCloudNodesQuery
 } from './as/SparqlQueriesPeople'
 import {
   relativesPropertiesInstancePage
@@ -105,6 +107,10 @@ export const getAllResults = ({
       q = networkLinksQuery
       filterTarget = 'person'
       break
+    case 'peoplePointCloud':
+      q = pointCloudLinksQuery
+      filterTarget = 'person'
+      break
   }
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
@@ -122,8 +128,20 @@ export const getAllResults = ({
     return runNetworkQuery({
       endpoint,
       prefixes,
+      limit: 200,
       links: q,
+      optimize: 1.2,
       nodes: networkNodesQuery
+    })
+  }
+  if (resultClass === 'peoplePointCloud') {
+    return runNetworkQuery({
+      endpoint,
+      prefixes,
+      limit: 500,
+      links: q,
+      optimize: 1,
+      nodes: pointCloudNodesQuery
     })
   }
   /**
@@ -319,6 +337,8 @@ export const getByURI = ({
     return runNetworkQuery({
       endpoint,
       prefixes,
+      limit: 200,
+      optimize: 1.2,
       links: networkFamilyRelationQuery,
       id: uri,
       nodes: familyNetworkNodesQuery
@@ -331,6 +351,8 @@ export const getByURI = ({
       endpoint,
       prefixes,
       links: networkAcademicRelationQuery,
+      limit: 200,
+      optimize: 1.2,
       id: uri,
       nodes: academicNetworkNodesQuery
     })
@@ -340,6 +362,8 @@ export const getByURI = ({
     return runNetworkQuery({
       endpoint,
       prefixes,
+      limit: 200,
+      optimize: 1.2,
       links: networkRelationQuery,
       id: uri,
       nodes: relationNetworkNodesQuery

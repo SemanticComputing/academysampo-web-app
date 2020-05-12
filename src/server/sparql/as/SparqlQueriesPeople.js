@@ -426,6 +426,7 @@ WHERE {
 }
 `
 
+
 export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size ?href
   WHERE {
@@ -437,7 +438,7 @@ export const networkNodesQuery = `
       ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi")
       VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
     }
-    BIND(CONCAT("../../people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/academicNetwork") AS ?href)
+    OPTIONAL { ?id :coordinate [ :x ?x ; :y ?y ]}
   }
 `
 
@@ -491,5 +492,31 @@ export const familyNetworkNodesQuery = `
       VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
     }
     BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/familyNetwork") AS ?href)
+  }
+`
+
+//  query for point cloud 'links'
+export const pointCloudLinksQuery = `
+  SELECT DISTINCT (?person as ?source) ?target ("?" as ?prefLabel)
+  WHERE {
+    <FILTER>
+    ?person ^rels:relates_to [ a :Distance ; rels:relates_to ?target ]
+    FILTER (?person != ?target)
+  }
+`
+
+export const pointCloudNodesQuery = `
+  SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size ?href ?x ?y
+  WHERE {
+    VALUES (?class ?size) { (:Person "16px") (:ReferencedPerson "12px") }
+    VALUES ?id { <ID_SET> }
+    ?id a ?class ;
+        skos:prefLabel ?prefLabel .
+    OPTIONAL {
+      ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi")
+      VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
+    }
+    OPTIONAL { ?id :coordinate [ :x ?x ; :y ?y ]}
+    BIND(CONCAT("../../people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/academicNetwork") AS ?href)
   }
 `

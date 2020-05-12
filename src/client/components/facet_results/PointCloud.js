@@ -17,45 +17,22 @@ const styles = theme => ({
   }
 })
 
-const layout = {
-  name: 'cose',
-  idealEdgeLength: 100,
-  nodeOverlap: 20,
-  refresh: 20,
-  fit: true,
-  padding: 30,
-  randomize: false,
-  componentSpacing: 100,
-  nodeRepulsion: 400000,
-  edgeElasticity: 100,
-  nestingFactor: 5,
-  gravity: 80,
-  numIter: 1347,
-  initialTemp: 200,
-  coolingFactor: 0.95,
-  minTemp: 1.0
-}
 
-class Network extends React.Component {
+class PointCloud extends React.Component {
   constructor (props) {
     super(props)
     this.cyRef = React.createRef()
   }
 
   componentDidMount = () => {
-    if (this.props.pageType === 'instancePage') {
-      this.props.fetchNetworkById({
-        resultClass: this.props.resultClass,
-        id: this.props.id,
-        limit: 100,
-        optimize: 1.5
-      })
-    } else {
-      this.props.fetchResults({
-        resultClass: this.props.resultClass,
-        facetClass: this.props.facetClass
-      })
-    }
+
+    this.props.fetchResults({
+      resultClass: this.props.resultClass,
+      facetClass: this.props.facetClass,
+      limit: 500,
+      optimize: 1
+    })
+
     this.cy = cytoscape({
       container: this.cyRef.current,
 
@@ -70,10 +47,11 @@ class Network extends React.Component {
             height: ele =>  (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px'),
             width: ele =>   (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px')
           }
-        },
+        }/**,
         {
           selector: 'edge',
           style: {
+
             width: ele => ele.data('weight') || 1,
             'line-color': ele => ele.data('color') || '#BBB',
             'curve-style': 'bezier',
@@ -88,8 +66,9 @@ class Network extends React.Component {
             'text-background-opacity': 1,
             'text-background-color': 'white',
             'text-background-shape': 'roundrectangle'
+
           }
-        }
+        }*/
       ]
     })
 
@@ -108,10 +87,14 @@ class Network extends React.Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
-      // console.log(this.props.results.elements);
+      let nodes = this.props.results.elements.nodes.map(function(ob) { return { data:ob.data , position: {x: 15*parseFloat(ob.data.x), y: 15*parseFloat(ob.data.y) }};})
+      // console.log(nodes)
+      this.props.results.elements.nodes = nodes
+      this.props.results.elements.edges = []
+
       this.cy.elements().remove()
       this.cy.add(this.props.results.elements)
-      this.cy.layout(layout).run()
+      this.cy.fit()
     }
     // check if filters have changed
     if (prevProps.facetUpdateID !== this.props.facetUpdateID) {
@@ -131,7 +114,7 @@ class Network extends React.Component {
   }
 }
 
-Network.propTypes = {
+PointCloud.propTypes = {
   classes: PropTypes.object.isRequired,
   results: PropTypes.object,
   fetchResults: PropTypes.func,
@@ -142,4 +125,4 @@ Network.propTypes = {
   resultUpdateID: PropTypes.number.isRequired
 }
 
-export default withStyles(styles)(Network)
+export default withStyles(styles)(PointCloud)

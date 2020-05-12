@@ -37,8 +37,13 @@ export const perspectiveConfig = [
         icon: <BubbleChartIcon />
       },
       {
-        id: 'export',
+        id: 'pointcloud',
         value: 4,
+        icon: <BubbleChartIcon />
+      },
+      {
+        id: 'export',
+        value: 5,
         icon: <CloudDownloadIcon />
       }
     ],

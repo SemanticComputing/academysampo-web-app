@@ -1,56 +1,16 @@
+import { has } from 'lodash'
 import { runSelectQuery } from './SparqlApi'
-import { runNetworkQuery } from './NetworkApi'
-import { prefixes } from './as/SparqlQueriesPrefixes'
-import {
-  peoplePropertiesInstancePage,
-  peoplePropertiesFacetResults,
-  peopleEventPlacesQuery,
-  peopleMigrationsQuery,
-  networkLinksQuery,
-  networkNodesQuery,
-  academicNetworkNodesQuery,
-  relationNetworkNodesQuery,
-  familyNetworkNodesQuery,
-  networkFamilyRelationQuery,
-  networkAcademicRelationQuery,
-  networkRelationQuery
-} from './as/SparqlQueriesPeople'
-import {
-  relativesPropertiesInstancePage
-  // relativesPropertiesFacetResults,
-  // relativesPlacesQuery
-} from './as/SparqlQueriesRelatives'
-import {
-  titlesPropertiesInstancePage
-} from './as/SparqlQueriesTitles'
-import {
-  nationsPropertiesInstancePage
-} from './as/SparqlQueriesNations'
-import {
-  categoriesPropertiesInstancePage
-} from './as/SparqlQueriesCategories'
-import {
-  organizationsPropertiesInstancePage
-} from './as/SparqlQueriesOrganizations'
-import {
-  placePropertiesInstancePage,
-  // placePropertiesFacetResults,
-  placePropertiesInfoWindow,
-  actorsAt,
-  // allPlacesQuery,
-  peopleRelatedTo
-} from './as/SparqlQueriesPlaces'
+import { makeObjectList } from './SparqlObjectMapper'
+import { mapCount } from './Mappers'
+import { generateConstraintsBlock } from './Filters'
 import {
   countQuery,
   facetResultSetQuery,
   instanceQuery
 } from './SparqlQueriesGeneral'
-import { facetConfigs, endpoint } from './as/FacetConfigs'
-import { mapCount, mapPlaces } from './Mappers'
-import { makeObjectList } from './SparqlObjectMapper'
-import { generateConstraintsBlock } from './Filters'
 
 export const getPaginatedResults = async ({
+  backendSearchConfig,
   resultClass,
   page,
   pagesize,
@@ -60,6 +20,7 @@ export const getPaginatedResults = async ({
   resultFormat
 }) => {
   const response = await getPaginatedData({
+    backendSearchConfig,
     resultClass,
     page,
     pagesize,
@@ -82,34 +43,27 @@ export const getPaginatedResults = async ({
 }
 
 export const getAllResults = ({
+  backendSearchConfig,
   resultClass,
   facetClass,
   constraints,
   resultFormat,
   groupBy
 }) => {
-  let q = ''
-  let filterTarget = ''
-  let mapper = makeObjectList
-  switch (resultClass) {
-    case 'peoplePlaces':
-      q = peopleEventPlacesQuery
-      filterTarget = 'person'
-      mapper = mapPlaces
-      break
-    case 'peopleMigrations':
-      q = peopleMigrationsQuery
-      filterTarget = 'person__id'
-      break
-    case 'peopleNetwork':
-      q = networkLinksQuery
-      filterTarget = 'person'
-      break
+  const config = backendSearchConfig[resultClass]
+  let endpoint
+  if (has(config, 'endpoint')) {
+    endpoint = config.endpoint
+  } else {
+    endpoint = backendSearchConfig[config.perspectiveID].endpoint
   }
+  const { filterTarget, resultMapper } = config
+  let { q } = config
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
   } else {
     q = q.replace('<FILTER>', generateConstraintsBlock({
+      backendSearchConfig,
       resultClass: resultClass,
       facetClass: facetClass,
       constraints: constraints,
@@ -117,54 +71,35 @@ export const getAllResults = ({
       facetID: null
     }))
   }
-  if (resultClass === 'peopleNetwork') {
-    // console.log(q)
-    return runNetworkQuery({
-      endpoint,
-      prefixes,
-      links: q,
-      nodes: networkNodesQuery
-    })
-  }
-  /**
-  if (resultClass === 'familyNetwork') {
-    return runNetworkQuery({
-      // id:
-      endpoint,
-      prefixes,
-      links: q,
-      nodes: networkNodesQuery
-    })
-  }
-  if (resultClass === 'academicNetwork') {
-    return runNetworkQuery({
-      // id:
-      endpoint,
-      prefixes,
-      links: q,
-      nodes: networkNodesQuery
-    })
-  }
-  */
   return runSelectQuery({
-    query: prefixes + q,
-    endpoint,
-    resultMapper: mapper,
+    query: endpoint.prefixes + q,
+    endpoint: endpoint.url,
+    useAuth: endpoint.useAuth,
+    resultMapper,
     resultFormat
   })
 }
 
 export const getResultCount = async ({
+  backendSearchConfig,
   resultClass,
   constraints,
   resultFormat
 }) => {
   let q = countQuery
-  q = q.replace('<FACET_CLASS>', facetConfigs[resultClass].facetClass)
+  const config = backendSearchConfig[resultClass]
+  let endpoint
+  if (has(config, 'endpoint')) {
+    endpoint = config.endpoint
+  } else {
+    endpoint = backendSearchConfig[config.perspectiveID].endpoint
+  }
+  q = q.replace('<FACET_CLASS>', config.facetClass)
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
   } else {
     q = q.replace('<FILTER>', generateConstraintsBlock({
+      backendSearchConfig,
       resultClass: resultClass,
       facetClass: resultClass,
       constraints: constraints,
@@ -173,8 +108,9 @@ export const getResultCount = async ({
     }))
   }
   const response = await runSelectQuery({
-    query: prefixes + q,
-    endpoint,
+    query: endpoint.prefixes + q,
+    endpoint: endpoint.url,
+    useAuth: endpoint.useAuth,
     resultMapper: mapCount,
     resultFormat
   })
@@ -186,6 +122,7 @@ export const getResultCount = async ({
 }
 
 const getPaginatedData = ({
+  backendSearchConfig,
   resultClass,
   page,
   pagesize,
@@ -195,11 +132,18 @@ const getPaginatedData = ({
   resultFormat
 }) => {
   let q = facetResultSetQuery
-  const facetConfig = facetConfigs[resultClass]
+  const config = backendSearchConfig[resultClass]
+  let endpoint
+  if (has(config, 'endpoint')) {
+    endpoint = config.endpoint
+  } else {
+    endpoint = backendSearchConfig[config.perspectiveID].endpoint
+  }
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
   } else {
     q = q.replace('<FILTER>', generateConstraintsBlock({
+      backendSearchConfig,
       resultClass: resultClass,
       facetClass: resultClass,
       constraints: constraints,
@@ -207,7 +151,7 @@ const getPaginatedData = ({
       facetID: null
     }))
   }
-  q = q.replace('<FACET_CLASS>', facetConfig.facetClass)
+  q = q.replace('<FACET_CLASS>', config.facetClass)
   if (sortBy == null) {
     q = q.replace('<ORDER_BY_TRIPLE>', '')
     q = q.replace('<ORDER_BY>', '# no sorting')
@@ -215,10 +159,10 @@ const getPaginatedData = ({
     let sortByPredicate = ''
     if (sortBy.endsWith('Timespan')) {
       sortByPredicate = sortDirection === 'asc'
-        ? facetConfig[sortBy].sortByAscPredicate
-        : facetConfig[sortBy].sortByDescPredicate
+        ? config.facets[sortBy].sortByAscPredicate
+        : config.facets[sortBy].sortByDescPredicate
     } else {
-      sortByPredicate = facetConfig[sortBy].labelPath
+      sortByPredicate = config.facets[sortBy].labelPath
     }
     q = q.replace('<ORDER_BY_TRIPLE>',
       `OPTIONAL { ?id ${sortByPredicate} ?orderBy }`)
@@ -226,130 +170,40 @@ const getPaginatedData = ({
       `ORDER BY (!BOUND(?orderBy)) ${sortDirection}(?orderBy)`)
   }
   q = q.replace('<PAGE>', `LIMIT ${pagesize} OFFSET ${page * pagesize}`)
-  let resultSetProperties
-  switch (resultClass) {
-    case 'people':
-      resultSetProperties = peoplePropertiesFacetResults
-      break
-    // case 'perspective2':
-    //   resultSetProperties = workProperties
-    //   break
-    // case 'perspective3':
-    //   resultSetProperties = eventProperties
-    //   break
-    default:
-      resultSetProperties = ''
-  }
-  q = q.replace('<RESULT_SET_PROPERTIES>', resultSetProperties)
+  q = q.replace('<RESULT_SET_PROPERTIES>', config.paginatedResults.properties)
   return runSelectQuery({
-    query: prefixes + q,
-    endpoint,
+    query: endpoint.prefixes + q,
+    endpoint: endpoint.url,
+    useAuth: endpoint.useAuth,
     resultMapper: makeObjectList,
     resultFormat
   })
 }
 
 export const getByURI = ({
+  backendSearchConfig,
   resultClass,
   facetClass,
   constraints,
   uri,
   resultFormat
 }) => {
-  let q
-  switch (resultClass) {
-    case 'people':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', peoplePropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'relatives':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', relativesPropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'places':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'titles':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', titlesPropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'nations':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', nationsPropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'categories':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', categoriesPropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'organizations':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', organizationsPropertiesInstancePage)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'peoplePlaces':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', peopleRelatedTo)
-      break
-    case 'placesAll':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
-    case 'placesActors':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', actorsAt)
-      break
-    case 'placesEvents':
-      q = instanceQuery
-      q = q.replace('<PROPERTIES>', placePropertiesInfoWindow)
-      q = q.replace('<RELATED_INSTANCES>', '')
-      break
+  const config = backendSearchConfig[resultClass]
+  const { properties, relatedInstances } = config.instance
+  let q = instanceQuery
+  let endpoint
+  if (has(config, 'endpoint')) {
+    endpoint = config.endpoint
+  } else {
+    endpoint = backendSearchConfig[config.perspectiveID].endpoint
   }
-
-  if (resultClass === 'familyNetwork') {
-    return runNetworkQuery({
-      endpoint,
-      prefixes,
-      links: networkFamilyRelationQuery,
-      id: uri,
-      nodes: familyNetworkNodesQuery
-    })
-  }
-
-  if (resultClass === 'academicNetwork') {
-    // console.log(uri, networkAcademicRelationQuery)
-    return runNetworkQuery({
-      endpoint,
-      prefixes,
-      links: networkAcademicRelationQuery,
-      id: uri,
-      nodes: academicNetworkNodesQuery
-    })
-  }
-
-  if (resultClass === 'relationNetwork') {
-    return runNetworkQuery({
-      endpoint,
-      prefixes,
-      links: networkRelationQuery,
-      id: uri,
-      nodes: relationNetworkNodesQuery
-    })
-  }
-
+  q = q.replace('<PROPERTIES>', properties)
+  q = q.replace('<RELATED_INSTANCES>', relatedInstances)
   if (constraints == null) {
     q = q.replace('<FILTER>', '# no filters')
   } else {
     q = q.replace('<FILTER>', generateConstraintsBlock({
+      backendSearchConfig,
       resultClass: resultClass,
       facetClass: facetClass,
       constraints: constraints,
@@ -358,10 +212,10 @@ export const getByURI = ({
     }))
   }
   q = q.replace('<ID>', `<${uri}>`)
-  // console.log(q);
   return runSelectQuery({
-    query: prefixes + q,
-    endpoint,
+    query: endpoint.prefixes + q,
+    endpoint: endpoint.url,
+    useAuth: endpoint.useAuth,
     resultMapper: makeObjectList,
     resultFormat
 

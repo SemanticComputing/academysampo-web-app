@@ -8,7 +8,6 @@ import purple from '@material-ui/core/colors/purple'
 import PerspectiveTabs from './PerspectiveTabs'
 import InstanceHomePageTable from './InstanceHomePageTable'
 import LeafletMap from '../facet_results/LeafletMap'
-import Network from '../facet_results/Network'
 import Export from '../facet_results/Export'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
@@ -32,6 +31,9 @@ const styles = () => ({
   }
 })
 
+/**
+ * A component for generating a landing page for a single entity.
+ */
 class InstanceHomePage extends React.Component {
   constructor (props) {
     super(props)
@@ -133,7 +135,6 @@ class InstanceHomePage extends React.Component {
   render = () => {
     const { classes, data, isLoading, resultClass, rootUrl } = this.props
     const hasData = data !== null && Object.values(data).length >= 1
-
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -159,7 +160,7 @@ class InstanceHomePage extends React.Component {
                 render={() => <Redirect to={`${rootUrl}/${resultClass}/page/${this.state.localID}/table`} />}
               />
               <Route
-                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/table`}
+                path={[`${rootUrl}/${resultClass}/page/${this.state.localID}/table`, '/iframe.html']} // support also rendering in Storybook
                 render={() =>
                   <InstanceHomePageTable
                     resultClass={resultClass}
@@ -179,42 +180,6 @@ class InstanceHomePage extends React.Component {
                     fetchByURI={this.props.fetchByURI}
                     fetching={this.props.isLoading}
                     showInstanceCountInClusters
-                  />}
-              />
-              <Route
-                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/familyNetwork`}
-                render={() =>
-                  <Network
-                    pageType='instancePage'
-                    results={this.props.networkData}
-                    resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById}
-                    resultClass='familyNetwork'
-                    id={data.id}
-                  />}
-              />
-              <Route
-                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/academicNetwork`}
-                render={() =>
-                  <Network
-                    pageType='instancePage'
-                    results={this.props.networkData}
-                    resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById}
-                    resultClass='academicNetwork'
-                    id={data.id}
-                  />}
-              />
-              <Route
-                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/relationNetwork`}
-                render={() =>
-                  <Network
-                    pageType='instancePage'
-                    results={this.props.networkData}
-                    resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById}
-                    resultClass='relationNetwork'
-                    id={data.id}
                   />}
               />
               <Route
@@ -243,7 +208,10 @@ InstanceHomePage.propTypes = {
   tabs: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
   routeProps: PropTypes.object.isRequired,
-  screenSize: PropTypes.string.isRequired
+  screenSize: PropTypes.string.isRequired,
+  rootUrl: PropTypes.string.isRequired
 }
+
+export const InstanceHomePageComponent = InstanceHomePage
 
 export default withStyles(styles)(InstanceHomePage)

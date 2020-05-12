@@ -27,11 +27,11 @@ const reducer = combineReducers({
   organizations,
   peopleFacets,
   placesFacets,
-  fullTextSearch,
   leafletMap,
   animation,
   options,
   error,
+  fullTextSearch,
   toastr: toastrReducer
 })
 

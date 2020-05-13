@@ -35,6 +35,7 @@ export default {
     last_known_locations: 'last known locations',
     migrations: 'migrations',
     network: 'network',
+    pointcloud: 'point cloud',
     familyNetwork: 'Family relations',
     academicNetwork: 'Academic relations',
     relationNetwork: 'Relations',

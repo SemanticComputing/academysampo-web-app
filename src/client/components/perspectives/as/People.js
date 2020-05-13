@@ -6,6 +6,7 @@ import ResultTable from '../../facet_results/ResultTable'
 import LeafletMap from '../../facet_results/LeafletMap'
 import Deck from '../../facet_results/Deck'
 import Network from '../../facet_results/Network'
+import PointCloud from '../../facet_results/PointCloud'
 import Export from '../../facet_results/Export'
 import MigrationsMapLegend from '../sampo/MigrationsMapLegend'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
@@ -71,6 +72,18 @@ const People = props => {
             resultUpdateID={props.facetResults.resultUpdateID}
             fetchResults={props.fetchResults}
             resultClass='peopleNetwork'
+            facetClass='people'
+          />}
+      />
+      <Route
+        path={`${rootUrl}/${perspective.id}/faceted-search/pointcloud`}
+        render={() =>
+          <PointCloud
+            results={props.people.results}
+            facetUpdateID={props.facetData.facetUpdateID}
+            resultUpdateID={props.people.resultUpdateID}
+            fetchResults={props.fetchResults}
+            resultClass='peoplePointCloud'
             facetClass='people'
           />}
       />

@@ -273,6 +273,7 @@ const resultClasses = new Set([
   'peopleNetwork',
   'familyNetwork',
   'academicNetwork',
+  'peoplePointCloud',
   'relationNetwork'
 ])
 

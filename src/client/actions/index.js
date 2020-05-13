@@ -153,13 +153,13 @@ export const fetchNetworkById = ({ resultClass, id, limit, optimize }) => ({
   type: FETCH_NETWORK_BY_ID,
   resultClass,
   id,
-  limit, 
+  limit,
   optimize
 })
 export const fetchNetworkByIdFailed = ({ resultClass, id, error, message }) => ({
   type: FETCH_NETWORK_BY_ID_FAILED,
   resultClass,
-  error, 
+  error,
   message
 })
 export const fetchSimilarDocumentsByIdFailed = (resultClass, id, error, message) => ({

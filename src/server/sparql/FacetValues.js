@@ -91,6 +91,7 @@ export const getFacet = async ({
   if (facetConfig.type === 'hierarchical') {
     const { parentPredicate } = facetConfig
     parentBlock = generateParentBlock({
+      backendSearchConfig,
       facetClass,
       facetID,
       constraints,

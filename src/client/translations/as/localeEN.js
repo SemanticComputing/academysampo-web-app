@@ -11,7 +11,7 @@ export default {
 
   `,
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
-  mainPageImageLicence: 'Image licene text',
+  mainPageImageLicence: 'Images used under license from Shutterstock.com',
   topBar: {
     feedback: 'feedback',
     info: {

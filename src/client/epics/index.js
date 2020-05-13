@@ -415,8 +415,8 @@ const fetchNetworkByURIEpic = (action$, state$) => action$.pipe(
   withLatestFrom(state$),
   mergeMap(([action]) => {
     const { resultClass, id, limit, optimize } = action
-    const params = { id, limit, optimize }
-    const requestUrl = `${apiUrl}${resultClass}/instance/${encodeURIComponent(id)}?${querystring.stringify(params)}`
+    const params = { limit, optimize }
+    const requestUrl = `${apiUrl}/${resultClass}/network/${encodeURIComponent(id)}?${querystring.stringify(params)}`
     return ajax.getJSON(requestUrl).pipe(
       map(response => updateInstanceNetworkData({
         resultClass: resultClass,

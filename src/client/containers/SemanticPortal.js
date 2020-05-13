@@ -16,7 +16,6 @@ import Grid from '@material-ui/core/Grid'
 
 // ** General components **
 import TopBar from '../components/main_layout/TopBar'
-import InstanceHomePage from '../components/main_layout/InstanceHomePage'
 import InfoHeader from '../components/main_layout/InfoHeader'
 import TextPage from '../components/main_layout/TextPage'
 import Message from '../components/main_layout/Message'
@@ -25,11 +24,12 @@ import FacetBar from '../components/facet_bar/FacetBar'
 // ** General components end **
 
 // ** Portal specific components and configs **
-import FacetedSearchPerspective from '../components/perspectives/sampo/FacetedSearchPerspective'
-import FullTextSearch from '../components/perspectives/sampo/FullTextSearch'
-import Footer from '../components/perspectives/sampo/Footer'
-import { perspectiveConfig } from '../configs/sampo/PerspectiveConfig'
-import { perspectiveConfigOnlyInfoPages } from '../configs/sampo/PerspectiveConfigOnlyInfoPages'
+import FacetedSearchPerspective from '../components/perspectives/as/FacetedSearchPerspective'
+import InstanceHomePage from '../components/perspectives/as/InstanceHomePage'
+import FullTextSearch from '../components/perspectives/as/FullTextSearch'
+import Footer from '../components/perspectives/as/Footer'
+import { perspectiveConfig } from '../configs/as/PerspectiveConfig'
+import { perspectiveConfigOnlyInfoPages } from '../configs/as/PerspectiveConfigOnlyInfoPages'
 import { rootUrl } from '../configs/sampo/GeneralConfig'
 // ** Portal specific components and configs end **
 

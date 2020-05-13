@@ -6,7 +6,7 @@ import RedoIcon from '@material-ui/icons/Redo'
 import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import manuscriptsImage from '../../img/main_page/manuscripts-452x262.jpg'
-import worksImage from '../../img/main_page/works-452x262_2.jpg'
+import worksImage from '../../img/main_page/works-452x262.jpg'
 // import eventsImage from '../../img/events-452x262.jpg'
 
 export const perspectiveConfig = [

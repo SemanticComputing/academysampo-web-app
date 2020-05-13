@@ -25,7 +25,7 @@ const Places = props => {
         path={`${rootUrl}/${perspective.id}/faceted-search/table`}
         render={routeProps =>
           <ResultTable
-            data={props.places}
+            data={props.facetResults}
             facetUpdateID={props.facetData.facetUpdateID}
             resultClass='places'
             facetClass='places'
@@ -43,7 +43,7 @@ const Places = props => {
           <LeafletMap
             center={[22.43, 10.37]}
             zoom={2}
-            results={props.places.results}
+            results={props.facetResults.results}
             layers={props.leafletMapLayers}
             pageType='facetResults'
             facetUpdateID={props.facetData.facetUpdateID}
@@ -51,10 +51,10 @@ const Places = props => {
             resultClass='peoplePlaces'
             facetClass='places'
             mapMode='cluster'
-            instance={props.places.instance}
+            instance={props.facetResults.instance}
             fetchResults={props.fetchResults}
             fetchByURI={props.fetchByURI}
-            fetching={props.places.fetching}
+            fetching={props.facetResults.fetching}
             showInstanceCountInClusters
             updateFacetOption={props.updateFacetOption}
           />}
@@ -63,7 +63,7 @@ const Places = props => {
         path={`${rootUrl}/${perspective.id}/faceted-search/export`}
         render={() =>
           <Export
-            sparqlQuery={props.places.paginatedResultsSparqlQuery}
+            sparqlQuery={props.facetResults.paginatedResultsSparqlQuery}
             pageType='facetResults'
           />}
       />
@@ -72,10 +72,11 @@ const Places = props => {
 }
 
 Places.propTypes = {
-  places: PropTypes.object.isRequired,
+  facetResults: PropTypes.object.isRequired,
   leafletMapLayers: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
   fetchResults: PropTypes.func.isRequired,
+  fetchGeoJSONLayers: PropTypes.func.isRequired,
   fetchPaginatedResults: PropTypes.func.isRequired,
   fetchByURI: PropTypes.func.isRequired,
   updatePage: PropTypes.func.isRequired,
@@ -86,7 +87,8 @@ Places.propTypes = {
   perspective: PropTypes.object.isRequired,
   animationValue: PropTypes.array.isRequired,
   animateMap: PropTypes.func.isRequired,
-  screenSize: PropTypes.string.isRequired
+  screenSize: PropTypes.string.isRequired,
+  rootUrl: PropTypes.string.isRequired
 }
 
 export default Places

@@ -27,7 +27,7 @@ const People = props => {
         path={`${rootUrl}/${perspective.id}/faceted-search/table`}
         render={routeProps =>
           <ResultTable
-            data={props.people}
+            data={props.facetResults}
             facetUpdateID={props.facetData.facetUpdateID}
             resultClass='people'
             facetClass='people'
@@ -45,7 +45,7 @@ const People = props => {
           <LeafletMap
             center={[22.43, 10.37]}
             zoom={2}
-            results={props.places.results}
+            results={props.placesResults.results}
             layers={props.leafletMapLayers}
             pageType='facetResults'
             facetUpdateID={props.facetData.facetUpdateID}
@@ -53,10 +53,10 @@ const People = props => {
             resultClass='peoplePlaces'
             facetClass='people'
             mapMode='cluster'
-            instance={props.places.instance}
+            instance={props.placesResults.instance}
             fetchResults={props.fetchResults}
             fetchByURI={props.fetchByURI}
-            fetching={props.places.fetching}
+            fetching={props.placesResults.fetching}
             showInstanceCountInClusters
             updateFacetOption={props.updateFacetOption}
             showExternalLayers={false}
@@ -66,9 +66,9 @@ const People = props => {
         path={`${rootUrl}/${perspective.id}/faceted-search/network`}
         render={() =>
           <Network
-            results={props.people.results}
+            results={props.facetResults.results}
             facetUpdateID={props.facetData.facetUpdateID}
-            resultUpdateID={props.people.resultUpdateID}
+            resultUpdateID={props.facetResults.resultUpdateID}
             fetchResults={props.fetchResults}
             resultClass='peopleNetwork'
             facetClass='people'
@@ -78,12 +78,12 @@ const People = props => {
         path={`${rootUrl}/${perspective.id}/faceted-search/migrations`}
         render={() =>
           <Deck
-            results={props.places.results}
+            results={props.placesResults.results}
             facetUpdateID={props.facetData.facetUpdateID}
             resultClass='peopleMigrations'
             facetClass='people'
             fetchResults={props.fetchResults}
-            fetching={props.places.fetching}
+            fetching={props.placesResults.fetching}
             legendComponent={<MigrationsMapLegend />}
             layerType='arcLayer'
             mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
@@ -94,7 +94,7 @@ const People = props => {
         path={`${rootUrl}/${perspective.id}/faceted-search/export`}
         render={() =>
           <Export
-            sparqlQuery={props.people.paginatedResultsSparqlQuery}
+            sparqlQuery={props.facetResults.paginatedResultsSparqlQuery}
             pageType='facetResults'
           />}
       />
@@ -104,11 +104,12 @@ const People = props => {
 }
 
 People.propTypes = {
-  people: PropTypes.object.isRequired,
+  facetResults: PropTypes.object.isRequired,
+  placesResults: PropTypes.object.isRequired,
   leafletMapLayers: PropTypes.object.isRequired,
-  places: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
   fetchResults: PropTypes.func.isRequired,
+  fetchGeoJSONLayers: PropTypes.func.isRequired,
   fetchPaginatedResults: PropTypes.func.isRequired,
   fetchByURI: PropTypes.func.isRequired,
   updatePage: PropTypes.func.isRequired,
@@ -119,7 +120,8 @@ People.propTypes = {
   perspective: PropTypes.object.isRequired,
   animationValue: PropTypes.array.isRequired,
   animateMap: PropTypes.func.isRequired,
-  screenSize: PropTypes.string.isRequired
+  screenSize: PropTypes.string.isRequired,
+  rootUrl: PropTypes.string.isRequired
 }
 
 export default People

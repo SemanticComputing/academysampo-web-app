@@ -5,9 +5,12 @@ import PerspectiveTabs from '../../main_layout/PerspectiveTabs'
 import MaterialTableFullTextResults from '../../facet_results/MaterialTableFullTextResults'
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 
-const All = props => {
+/**
+ * A component for displaying full text search results.
+ */
+const FullTextSearch = props => {
   const { rootUrl } = props
-  const perspectiveID = 'all'
+  const perspectiveUrl = `${rootUrl}/full-text-search`
   return (
     <>
       <PerspectiveTabs
@@ -21,17 +24,17 @@ const All = props => {
         }]}
       />
       <Route
-        exact path={`${rootUrl}/${perspectiveID}`}
-        render={() => <Redirect to={`${rootUrl}/${perspectiveID}/table`} />}
+        exact path={perspectiveUrl}
+        render={() => <Redirect to={`${perspectiveUrl}/table`} />}
       />
       <Route
-        path={`${rootUrl}/${perspectiveID}/table`}
+        path={`${perspectiveUrl}/table`}
         render={() => {
           return (
             <MaterialTableFullTextResults
-              data={props.clientSideFacetedSearch.results}
-              query={props.clientSideFacetedSearch.query}
-              fetching={props.clientSideFacetedSearch.textResultsFetching}
+              data={props.fullTextSearch.results || []}
+              query={props.fullTextSearch.query}
+              fetching={props.fullTextSearch.fetching}
             />
           )
         }}
@@ -40,12 +43,11 @@ const All = props => {
   )
 }
 
-All.propTypes = {
-  clientSideFacetedSearch: PropTypes.object.isRequired,
-  updatePage: PropTypes.func,
-  sortResults: PropTypes.func,
+FullTextSearch.propTypes = {
+  fullTextSearch: PropTypes.object.isRequired,
   routeProps: PropTypes.object.isRequired,
+  screenSize: PropTypes.string.isRequired,
   rootUrl: PropTypes.string.isRequired
 }
 
-export default All
+export default FullTextSearch

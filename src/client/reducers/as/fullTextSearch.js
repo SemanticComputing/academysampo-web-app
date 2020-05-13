@@ -1,42 +1,32 @@
 import {
-  FETCH_RESULTS_CLIENT_SIDE,
+  FETCH_FULL_TEXT_RESULTS,
   UPDATE_RESULTS,
   CLEAR_RESULTS
 } from '../../actions'
 
 export const INITIAL_STATE = {
   query: '',
-  results: [],
-  textResultsFetching: false,
-  spatialResultsFetching: false
+  results: null,
+  fetching: false
 }
 
 const fullTextSearch = (state = INITIAL_STATE, action) => {
-  if (action.resultClass === 'all') {
+  if (action.resultClass === 'fullText') {
     switch (action.type) {
-      case FETCH_RESULTS_CLIENT_SIDE:
+      case FETCH_FULL_TEXT_RESULTS:
         return {
           ...state,
-          [`${action.jenaIndex}ResultsFetching`]: true
+          fetching: true
         }
       case UPDATE_RESULTS:
         return {
           ...state,
           query: action.query,
           results: action.data,
-          [`${action.jenaIndex}ResultsFetching`]: false
+          fetching: false
         }
       case CLEAR_RESULTS:
-        return {
-          ...state,
-          results: null,
-          fetchingResults: false,
-          query: '',
-          resultsFilter: {
-            prefLabel: new Set(),
-            type: new Set()
-          }
-        }
+        return INITIAL_STATE
       default:
         return state
     }

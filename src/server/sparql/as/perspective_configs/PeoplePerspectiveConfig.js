@@ -1,15 +1,28 @@
-export const endpoint = 'http://ldf.fi/yoma/sparql'
-// export const endpoint = 'http://localhost:3050/ds/sparql';
-
-export const endpointUseAuth = true
+import {
+  peoplePropertiesInstancePage,
+  peoplePropertiesFacetResults
+} from '../sparql_queries/SparqlQueriesPeople'
+import { prefixes } from '../sparql_queries/SparqlQueriesPrefixes'
 
 const invalidTitles = `
         <http://ldf.fi/ammo/ylioppilas>
 `
 
-export const facetConfigs = {
-  people: {
-    facetClass: '<http://ldf.fi/schema/yoma/Person>',
+export const peoplePerspectiveConfig = {
+  endpoint: {
+    url: 'http://ldf.fi/yoma/sparql',
+    prefixes,
+    useAuth: true
+  },
+  facetClass: '<http://ldf.fi/schema/yoma/Person>',
+  paginatedResults: {
+    properties: peoplePropertiesFacetResults
+  },
+  instance: {
+    properties: peoplePropertiesInstancePage,
+    relatedInstances: ''
+  },
+  facets: {
     prefLabel: {
       id: 'prefLabel',
       labelPath: 'skos:prefLabel',
@@ -191,56 +204,6 @@ export const facetConfigs = {
       startProperty: 'gvp:estStart',
       endProperty: 'gvp:estEnd',
       type: 'timespan'
-    }
-  },
-  places: {
-    facetClass: '<http://ldf.fi/schema/yoma/Place>',
-    prefLabel: {
-      id: 'prefLabel',
-      labelPath: 'skos:prefLabel',
-      textQueryPredicate: '', // empty for querying the facetClass
-      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
-      type: 'text'
-    }
-  },
-  titles: {
-    facetClass: '<http://ldf.fi/schema/yoma/Title> skos:Concept',
-    prefLabel: {
-      id: 'prefLabel',
-      labelPath: 'skos:prefLabel',
-      textQueryPredicate: '', // empty for querying the facetClass
-      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
-      type: 'text'
-    }
-  },
-  nations: {
-    facetClass: '<http://ldf.fi/schema/yoma/StudentNation>',
-    prefLabel: {
-      id: 'prefLabel',
-      labelPath: 'skos:prefLabel',
-      textQueryPredicate: '', // empty for querying the facetClass
-      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
-      type: 'text'
-    }
-  },
-  categories: {
-    facetClass: '<http://ldf.fi/schema/yoma/Category>',
-    prefLabel: {
-      id: 'prefLabel',
-      labelPath: 'skos:prefLabel',
-      textQueryPredicate: '', // empty for querying the facetClass
-      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
-      type: 'text'
-    }
-  },
-  organization: {
-    facetClass: '<http://ldf.fi/schema/yoma/Organization>',
-    prefLabel: {
-      id: 'prefLabel',
-      labelPath: 'skos:prefLabel',
-      textQueryPredicate: '', // empty for querying the facetClass
-      textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
-      type: 'text'
     }
   }
 }

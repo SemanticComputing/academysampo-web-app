@@ -127,7 +127,7 @@ export const backendSearchConfig = {
     useNetworkAPI: true
   },
   jenaText: {
-    perspectiveID: 'perspective1',
+    perspectiveID: 'people', // use endpoint config from people
     properties: fullTextSearchProperties
   }
 }

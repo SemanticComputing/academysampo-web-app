@@ -196,6 +196,8 @@ export const getByURI = ({
   facetClass,
   constraints,
   uri,
+  limit, // only used with NetworkAPI
+  optimize, // only used with NetworkAPI
   resultFormat
 }) => {
   const config = backendSearchConfig[resultClass]
@@ -211,7 +213,9 @@ export const getByURI = ({
       prefixes: endpoint.prefixes,
       id: uri,
       links: config.links,
-      nodes: config.nodes
+      nodes: config.nodes,
+      limit,
+      optimize
     })
   }
   const { properties, relatedInstances } = config.instance

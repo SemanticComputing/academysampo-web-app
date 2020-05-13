@@ -144,12 +144,14 @@ new OpenApiValidator({
     })
 
     app.get(`${apiPath}/:resultClass/network/:id`, async (req, res, next) => {
-      const { params } = req
+      const { params, query } = req
       try {
         const data = await getByURI({
           backendSearchConfig,
           resultClass: params.resultClass,
           uri: params.id,
+          limit: query.limit,
+          optimize: query.optimize,
           constraints: null,
           resultFormat: 'json'
         })

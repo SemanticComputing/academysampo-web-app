@@ -47,13 +47,15 @@ class Network extends React.Component {
       this.props.fetchNetworkById({
         resultClass: this.props.resultClass,
         id: this.props.id,
-        limit: 100,
-        optimize: 1.5
+        limit: this.props.limit,
+        optimize: this.props.optimize
       })
     } else {
       this.props.fetchResults({
         resultClass: this.props.resultClass,
-        facetClass: this.props.facetClass
+        facetClass: this.props.facetClass,
+        limit: this.props.limit,
+        optimize: this.props.optimize
       })
     }
     this.cy = cytoscape({
@@ -67,8 +69,8 @@ class Network extends React.Component {
             'font-size': '12',
             'background-color': ele => ele.data('color') || '#666',
             label: ' data(prefLabel)',
-            height: ele =>  (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px'),
-            width: ele =>   (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px')
+            height: ele => (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px'),
+            width: ele => (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px')
           }
         },
         {
@@ -96,7 +98,7 @@ class Network extends React.Component {
     this.cy.on('tap', 'node', function () {
       try {
         if (this.data('href')) {
-          console.log(this.data('href'))
+          // console.log(this.data('href'))
           history.push(this.data('href'))
         }
       } catch (e) { // fall back on url change
@@ -139,7 +141,9 @@ Network.propTypes = {
   resultClass: PropTypes.string.isRequired,
   facetClass: PropTypes.string,
   facetUpdateID: PropTypes.number,
-  resultUpdateID: PropTypes.number.isRequired
+  resultUpdateID: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  optimize: PropTypes.number.isRequired
 }
 
 export default withStyles(styles)(Network)

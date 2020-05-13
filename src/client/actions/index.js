@@ -62,10 +62,12 @@ export const fetchPaginatedResultsFailed = (resultClass, error, message) => ({
   error,
   message
 })
-export const fetchResults = ({ resultClass, facetClass }) => ({
+export const fetchResults = ({ resultClass, facetClass, limit, optimize }) => ({
   type: FETCH_RESULTS,
   resultClass,
-  facetClass
+  facetClass,
+  limit,
+  optimize
 })
 export const fetchResultCount = ({ resultClass, facetClass }) => ({
   type: FETCH_RESULT_COUNT,
@@ -149,7 +151,7 @@ export const fetchSimilarDocumentsById = ({ resultClass, id, modelName, resultSi
   modelName,
   resultSize
 })
-export const fetchNetworkById = ({ resultClass, id, limit, optimize }) => ({
+export const fetchNetworkById = ({ resultClass, id, limit = null, optimize = null }) => ({
   type: FETCH_NETWORK_BY_ID,
   resultClass,
   id,

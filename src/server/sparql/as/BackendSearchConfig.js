@@ -10,7 +10,9 @@ import {
   familyNetworkNodesQuery,
   networkFamilyRelationQuery,
   networkAcademicRelationQuery,
-  networkRelationQuery
+  networkRelationQuery,
+  pointCloudLinksQuery,
+  pointCloudNodesQuery
 } from './sparql_queries/SparqlQueriesPeople'
 import {
   placePropertiesInfoWindow,
@@ -92,6 +94,14 @@ export const backendSearchConfig = {
     perspectiveID: 'people', // use endpoint config from people
     q: networkLinksQuery,
     nodes: networkNodesQuery,
+    filterTarget: 'person',
+    useNetworkAPI: true
+  },
+  // Point cloud tab in people facet results
+  peoplePointCloud: {
+    perspectiveID: 'people', // use endpoint config from people
+    q: pointCloudLinksQuery,
+    nodes: pointCloudNodesQuery,
     filterTarget: 'person',
     useNetworkAPI: true
   },

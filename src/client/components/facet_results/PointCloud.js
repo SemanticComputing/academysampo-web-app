@@ -17,7 +17,6 @@ const styles = theme => ({
   }
 })
 
-
 class PointCloud extends React.Component {
   constructor (props) {
     super(props)
@@ -25,12 +24,11 @@ class PointCloud extends React.Component {
   }
 
   componentDidMount = () => {
-
     this.props.fetchResults({
       resultClass: this.props.resultClass,
       facetClass: this.props.facetClass,
-      limit: 500,
-      optimize: 1
+      limit: this.props.limit,
+      optimize: this.props.optimize
     })
 
     this.cy = cytoscape({
@@ -44,10 +42,10 @@ class PointCloud extends React.Component {
             'font-size': '12',
             'background-color': ele => ele.data('color') || '#666',
             label: ' data(prefLabel)',
-            height: ele =>  (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px'),
-            width: ele =>   (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px')
+            height: ele => (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px'),
+            width: ele => (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px')
           }
-        }/**,
+        }/** ,
         {
           selector: 'edge',
           style: {
@@ -68,14 +66,14 @@ class PointCloud extends React.Component {
             'text-background-shape': 'roundrectangle'
 
           }
-        }*/
+        } */
       ]
     })
 
     this.cy.on('tap', 'node', function () {
       try {
         if (this.data('href')) {
-          console.log(this.data('href'))
+          // console.log(this.data('href'))
           history.push(this.data('href'))
         }
       } catch (e) { // fall back on url change
@@ -87,7 +85,7 @@ class PointCloud extends React.Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
-      let nodes = this.props.results.elements.nodes.map(function(ob) { return { data:ob.data , position: {x: 15*parseFloat(ob.data.x), y: 15*parseFloat(ob.data.y) }};})
+      const nodes = this.props.results.elements.nodes.map(function (ob) { return { data: ob.data, position: { x: 15 * parseFloat(ob.data.x), y: 15 * parseFloat(ob.data.y) } } })
       // console.log(nodes)
       this.props.results.elements.nodes = nodes
       this.props.results.elements.edges = []
@@ -122,7 +120,9 @@ PointCloud.propTypes = {
   resultClass: PropTypes.string.isRequired,
   facetClass: PropTypes.string,
   facetUpdateID: PropTypes.number,
-  resultUpdateID: PropTypes.number.isRequired
+  resultUpdateID: PropTypes.number.isRequired,
+  limit: PropTypes.number.isRequired,
+  optimize: PropTypes.number.isRequired
 }
 
 export default withStyles(styles)(PointCloud)

@@ -7,7 +7,7 @@ export const runNetworkQuery = async ({
   limit,
   nodes,
   id,
-  optimize,
+  optimize
 }) => {
   const payload = {
     endpoint,

@@ -73,18 +73,22 @@ const People = props => {
             fetchResults={props.fetchResults}
             resultClass='peopleNetwork'
             facetClass='people'
+            limit={200}
+            optimize={1.2}
           />}
       />
       <Route
         path={`${rootUrl}/${perspective.id}/faceted-search/pointcloud`}
         render={() =>
           <PointCloud
-            results={props.people.results}
+            results={props.facetResults.results}
             facetUpdateID={props.facetData.facetUpdateID}
-            resultUpdateID={props.people.resultUpdateID}
+            resultUpdateID={props.facetResults.resultUpdateID}
             fetchResults={props.fetchResults}
             resultClass='peoplePointCloud'
             facetClass='people'
+            limit={500}
+            optimize={1.0}
           />}
       />
       <Route

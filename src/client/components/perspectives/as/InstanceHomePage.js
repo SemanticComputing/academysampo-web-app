@@ -151,6 +151,8 @@ class InstanceHomePage extends React.Component {
                     fetchNetworkById={this.props.fetchNetworkById}
                     resultClass='familyNetwork'
                     id={data.id}
+                    limit={200}
+                    optimize={1.2}
                   />}
               />
               <Route
@@ -163,6 +165,8 @@ class InstanceHomePage extends React.Component {
                     fetchNetworkById={this.props.fetchNetworkById}
                     resultClass='academicNetwork'
                     id={data.id}
+                    limit={200}
+                    optimize={1.2}
                   />}
               />
               <Route
@@ -175,6 +179,8 @@ class InstanceHomePage extends React.Component {
                     fetchNetworkById={this.props.fetchNetworkById}
                     resultClass='relationNetwork'
                     id={data.id}
+                    limit={200}
+                    optimize={1.2}
                   />}
               />
               <Route

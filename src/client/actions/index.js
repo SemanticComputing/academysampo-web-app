@@ -25,6 +25,7 @@ export const FETCH_FACET = 'FETCH_FACET'
 export const FETCH_FACET_CONSTRAIN_SELF = 'FETCH_FACET_CONSTRAIN_SELF'
 export const FETCH_FACET_FAILED = 'FETCH_FACET_FAILED'
 export const FETCH_FACET_CONSTRAIN_SELF_FAILED = 'FETCH_FACET_CONSTRAIN_SELF_FAILED'
+export const CLEAR_FACET = 'CLEAR_FACET'
 export const UPDATE_FACET_VALUES = 'UPDATE_FACET_VALUES'
 export const UPDATE_FACET_VALUES_CONSTRAIN_SELF = 'UPDATE_FACET_VALUES_CONSTRAIN_SELF'
 export const UPDATE_FACET_OPTION = 'UPDATE_FACET_OPTION'
@@ -190,6 +191,11 @@ export const updateInstanceNetworkData = ({ resultClass, data }) => ({
 })
 export const fetchFacet = ({ facetClass, facetID }) => ({
   type: FETCH_FACET,
+  facetClass,
+  facetID
+})
+export const clearFacet = ({ facetClass, facetID }) => ({
+  type: CLEAR_FACET,
   facetClass,
   facetID
 })

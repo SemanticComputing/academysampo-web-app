@@ -665,6 +665,10 @@ SemanticPortal.propTypes = {
    */
   fetchByURI: PropTypes.func.isRequired,
   /**
+   * Redux action for fetching network of a single entity.
+   */
+  fetchNetworkById: PropTypes.func.isRequired,
+  /**
    * Redux action for loading external GeoJSON layers.
    */
   fetchGeoJSONLayers: PropTypes.func.isRequired,

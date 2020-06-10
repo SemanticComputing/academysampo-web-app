@@ -64,7 +64,7 @@ export const fetchPaginatedResultsFailed = (resultClass, error, message) => ({
   error,
   message
 })
-export const fetchResults = ({ resultClass, facetClass, limit, optimize }) => ({
+export const fetchResults = ({ resultClass, facetClass, limit = null, optimize = null }) => ({
   type: FETCH_RESULTS,
   resultClass,
   facetClass,

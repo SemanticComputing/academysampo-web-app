@@ -521,6 +521,7 @@ export const pointCloudNodesQuery = `
   }
 `
 
+// https://api.triplydb.com/s/Jr-nZL_tR
 export const enrollmentByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?person__id) AS ?count) WHERE {
   <FILTER>

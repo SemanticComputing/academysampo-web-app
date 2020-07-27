@@ -18,14 +18,19 @@ const FacetedSearchPerspective = props => {
             placesResults={props.placesResults}
             leafletMapLayers={props.leafletMap}
             facetData={props.facetData}
+            facetDataConstrainSelf={props.facetDataConstrainSelf}
             fetchPaginatedResults={props.fetchPaginatedResults}
             fetchResults={props.fetchResults}
+            fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
             fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+            fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
+            clearGeoJSONLayers={props.clearGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             updatePage={props.updatePage}
             updateRowsPerPage={props.updateRowsPerPage}
             updateFacetOption={props.updateFacetOption}
             sortResults={props.sortResults}
+            showError={props.showError}
             routeProps={props.routeProps}
             perspective={props.perspective}
             animationValue={props.animationValue}
@@ -41,14 +46,19 @@ const FacetedSearchPerspective = props => {
             placesResults={props.placesResults}
             leafletMapLayers={props.leafletMap}
             facetData={props.facetData}
+            facetDataConstrainSelf={props.facetDataConstrainSelf}
             fetchPaginatedResults={props.fetchPaginatedResults}
             fetchResults={props.fetchResults}
+            fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
             fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+            fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
+            clearGeoJSONLayers={props.clearGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             updatePage={props.updatePage}
             updateRowsPerPage={props.updateRowsPerPage}
             updateFacetOption={props.updateFacetOption}
             sortResults={props.sortResults}
+            showError={props.showError}
             routeProps={props.routeProps}
             perspective={props.perspective}
             animationValue={props.animationValue}
@@ -64,14 +74,19 @@ const FacetedSearchPerspective = props => {
             placesResults={props.placesResults}
             leafletMapLayers={props.leafletMap}
             facetData={props.facetData}
+            facetDataConstrainSelf={props.facetDataConstrainSelf}
             fetchPaginatedResults={props.fetchPaginatedResults}
             fetchResults={props.fetchResults}
+            fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
             fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+            fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
+            clearGeoJSONLayers={props.clearGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             updatePage={props.updatePage}
             updateRowsPerPage={props.updateRowsPerPage}
             updateFacetOption={props.updateFacetOption}
             sortResults={props.sortResults}
+            showError={props.showError}
             routeProps={props.routeProps}
             perspective={props.perspective}
             animationValue={props.animationValue}
@@ -107,6 +122,10 @@ FacetedSearchPerspective.propTypes = {
    */
   facetData: PropTypes.object.isRequired,
   /**
+   * Facet values where facets constrain themselves, used for statistics.
+   */
+  facetDataConstrainSelf: PropTypes.object.isRequired,
+  /**
    * Leaflet map config and external layers.
    */
   leafletMap: PropTypes.object.isRequired,
@@ -119,9 +138,21 @@ FacetedSearchPerspective.propTypes = {
    */
   fetchResults: PropTypes.func.isRequired,
   /**
+   * Redux action for fetching facet values for statistics.
+   */
+  fetchFacetConstrainSelf: PropTypes.func.isRequired,
+  /**
    * Redux action for loading external GeoJSON layers.
    */
   fetchGeoJSONLayers: PropTypes.func.isRequired,
+  /**
+   * Redux action for loading external GeoJSON layers via backend.
+   */
+  fetchGeoJSONLayersBackend: PropTypes.func.isRequired,
+  /**
+   * Redux action for clearing external GeoJSON layers.
+   */
+  clearGeoJSONLayers: PropTypes.func.isRequired,
   /**
    * Redux action for fetching information about a single entity.
    */
@@ -140,6 +171,10 @@ FacetedSearchPerspective.propTypes = {
   sortResults: PropTypes.func.isRequired,
   /**
    * Redux action for updating the active selection or config of a facet.
+   */
+  showError: PropTypes.func.isRequired,
+  /**
+   * Redux action for showing an error
    */
   updateFacetOption: PropTypes.func.isRequired,
   /**

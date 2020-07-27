@@ -12,6 +12,7 @@ import MigrationsMapLegend from '../sampo/MigrationsMapLegend'
 import ApexChart from '../../facet_results/ApexChart'
 import { createApexLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
+import { coseLayout, cytoscapeStyle } from '../../../configs/as/Cytoscape.js/NetworkConfig'
 
 const People = props => {
   const { rootUrl, perspective } = props
@@ -77,6 +78,8 @@ const People = props => {
             facetClass='people'
             limit={200}
             optimize={1.2}
+            style={cytoscapeStyle}
+            layout={coseLayout}
           />}
       />
       <Route

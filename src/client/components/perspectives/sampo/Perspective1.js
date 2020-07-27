@@ -8,6 +8,8 @@ import Deck from '../../facet_results/Deck'
 import Export from '../../facet_results/Export'
 import MigrationsMapLegend from './MigrationsMapLegend'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/sampo/GeneralConfig'
+import ApexChart from '../../facet_results/ApexChart'
+import { createApexLineChartData } from '../../../configs/sampo/ApexCharts/LineChartConfig'
 
 const Perspective1 = props => {
   const { rootUrl, perspective } = props
@@ -44,6 +46,8 @@ const Perspective1 = props => {
           <LeafletMap
             center={[22.43, 10.37]}
             zoom={2}
+            // center={[60.17, 24.81]}
+            // zoom={14}
             results={props.placesResults.results}
             layers={props.leafletMapLayers}
             pageType='facetResults'
@@ -56,12 +60,14 @@ const Perspective1 = props => {
             showMapModeControl={false}
             instance={props.placesResults.instance}
             fetchResults={props.fetchResults}
-            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+            fetchGeoJSONLayers={props.fetchGeoJSONLayersBackend}
+            clearGeoJSONLayers={props.clearGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             fetching={props.placesResults.fetching}
             showInstanceCountInClusters
             updateFacetOption={props.updateFacetOption}
             showExternalLayers
+            showError={props.showError}
           />}
       />
       <Route
@@ -98,12 +104,14 @@ const Perspective1 = props => {
             showMapModeControl={false}
             instance={props.placesResults.instance}
             fetchResults={props.fetchResults}
-            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+            fetchGeoJSONLayers={props.fetchGeoJSONLayersBackend}
+            clearGeoJSONLayers={props.clearGeoJSONLayers}
             fetchByURI={props.fetchByURI}
             fetching={props.placesResults.fetching}
             showInstanceCountInClusters
             updateFacetOption={props.updateFacetOption}
             showExternalLayers
+            showError={props.showError}
           />}
       />
       <Route
@@ -123,6 +131,21 @@ const Perspective1 = props => {
           />}
       />
       <Route
+        path={`${rootUrl}/${perspective.id}/faceted-search/production_dates`}
+        render={() =>
+          <ApexChart
+            pageType='facetResults'
+            rawData={props.facetResults.results}
+            rawDataUpdateID={props.facetResults.resultUpdateID}
+            facetUpdateID={props.facetData.facetUpdateID}
+            fetching={props.facetResults.fetching}
+            fetchData={props.fetchResults}
+            createChartData={createApexLineChartData}
+            resultClass='productionTimespanLineChart'
+            facetClass='perspective1'
+          />}
+      />
+      <Route
         path={`${rootUrl}/${perspective.id}/faceted-search/export`}
         render={() =>
           <Export
@@ -139,8 +162,11 @@ Perspective1.propTypes = {
   placesResults: PropTypes.object.isRequired,
   leafletMapLayers: PropTypes.object.isRequired,
   facetData: PropTypes.object.isRequired,
+  facetDataConstrainSelf: PropTypes.object,
   fetchResults: PropTypes.func.isRequired,
+  clearGeoJSONLayers: PropTypes.func.isRequired,
   fetchGeoJSONLayers: PropTypes.func.isRequired,
+  fetchGeoJSONLayersBackend: PropTypes.func.isRequired,
   fetchPaginatedResults: PropTypes.func.isRequired,
   fetchByURI: PropTypes.func.isRequired,
   updatePage: PropTypes.func.isRequired,
@@ -152,7 +178,8 @@ Perspective1.propTypes = {
   animationValue: PropTypes.array.isRequired,
   animateMap: PropTypes.func.isRequired,
   screenSize: PropTypes.string.isRequired,
-  rootUrl: PropTypes.string.isRequired
+  rootUrl: PropTypes.string.isRequired,
+  showError: PropTypes.func.isRequired
 }
 
 export default Perspective1

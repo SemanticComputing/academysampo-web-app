@@ -9,6 +9,8 @@ import Network from '../../facet_results/Network'
 import PointCloud from '../../facet_results/PointCloud'
 import Export from '../../facet_results/Export'
 import MigrationsMapLegend from '../sampo/MigrationsMapLegend'
+import ApexChart from '../../facet_results/ApexChart'
+import { createApexLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
 
 const People = props => {
@@ -105,6 +107,25 @@ const People = props => {
             layerType='arcLayer'
             mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
             mapBoxStyle={MAPBOX_STYLE}
+          />}
+      />
+      <Route
+        path={`${rootUrl}/${perspective.id}/faceted-search/by_year`}
+        render={routeProps =>
+          <ApexChart
+            pageType='facetResults'
+            rawData={props.facetResults.results}
+            rawDataUpdateID={props.facetResults.resultUpdateID}
+            facetUpdateID={props.facetData.facetUpdateID}
+            fetching={props.facetResults.fetching}
+            fetchData={props.fetchResults}
+            createChartData={createApexLineChartData}
+            title='Enrollments by year'
+            xaxisTitle='Year'
+            yaxisTitle='Number of enrollments'
+            seriesTitle='Number of enrollments'
+            resultClass='enrollmentByYear'
+            facetClass='people'
           />}
       />
       <Route

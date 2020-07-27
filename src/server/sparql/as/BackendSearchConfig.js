@@ -12,7 +12,8 @@ import {
   networkAcademicRelationQuery,
   networkRelationQuery,
   pointCloudLinksQuery,
-  pointCloudNodesQuery
+  pointCloudNodesQuery,
+  enrollmentByYearQuery
 } from './sparql_queries/SparqlQueriesPeople'
 import {
   placePropertiesInfoWindow,
@@ -26,7 +27,7 @@ import { categoriesPropertiesInstancePage } from './sparql_queries/SparqlQueries
 import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesOrganizations'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { makeObjectList } from '../SparqlObjectMapper'
-import { mapPlaces } from '../Mappers'
+import { mapPlaces, mapLineChart } from '../Mappers'
 
 export const backendSearchConfig = {
   people: peoplePerspectiveConfig,
@@ -129,5 +130,11 @@ export const backendSearchConfig = {
   jenaText: {
     perspectiveID: 'people', // use endpoint config from people
     properties: fullTextSearchProperties
-  }
+  },
+  enrollmentByYear: {
+    perspectiveID: 'perspective2',
+    q: enrollmentByYearQuery, 
+    filterTarget: 'id',
+    resultMapper: mapLineChart
+  },
 }

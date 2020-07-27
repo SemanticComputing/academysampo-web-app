@@ -520,3 +520,15 @@ export const pointCloudNodesQuery = `
     BIND(CONCAT("../../people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/academicNetwork") AS ?href)
   }
 `
+
+export const enrollmentByYearQuery = `
+SELECT DISTINCT ?category (COUNT(DISTINCT ?id) AS ?count) WHERE {
+  <FILTER>
+  ?id a :Person ;
+	  :has_enrollment/schema:date/gvp:estStart ?time_0 ;
+	  :has_enrollment/schema:date/gvp:estEnd ?time_1 .
+  FILTER (year(?time_0)=year(?time_1))
+  BIND (STR(year(?time_0)) AS ?category)
+  
+} GROUP BY ?category ORDER BY ?category 
+`

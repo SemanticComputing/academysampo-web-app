@@ -39,6 +39,7 @@ export default {
     familyNetwork: 'Family relations',
     academicNetwork: 'Academic relations',
     relationNetwork: 'Relations',
+    by_year: 'by year',
     export: 'export',
     'by-period': 'by period'
   },

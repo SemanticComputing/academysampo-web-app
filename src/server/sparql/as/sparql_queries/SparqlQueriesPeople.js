@@ -522,11 +522,13 @@ export const pointCloudNodesQuery = `
 `
 
 export const enrollmentByYearQuery = `
-SELECT DISTINCT ?category (COUNT(DISTINCT ?id) AS ?count) WHERE {
+SELECT DISTINCT ?category (COUNT(DISTINCT ?person__id) AS ?count) WHERE {
   <FILTER>
-  ?id a :Person ;
-	  :has_enrollment/schema:date/gvp:estStart ?time_0 ;
-	  :has_enrollment/schema:date/gvp:estEnd ?time_1 .
+  ?person__id a :Person ;
+	  :has_enrollment/schema:date [ 
+      gvp:estStart ?time_0 ;
+      gvp:estEnd ?time_1 ] 
+      .
   FILTER (year(?time_0)=year(?time_1))
   BIND (STR(year(?time_0)) AS ?category)
   

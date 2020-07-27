@@ -44,12 +44,12 @@ export const perspectiveConfig = [
       },
       {
         id: 'by_year',
-        value: 6,
+        value: 5,
         icon: <LineChartIcon />
       },
       {
         id: 'export',
-        value: 9,
+        value: 6,
         icon: <CloudDownloadIcon />
       }
     ],

@@ -132,9 +132,9 @@ export const backendSearchConfig = {
     properties: fullTextSearchProperties
   },
   enrollmentByYear: {
-    perspectiveID: 'perspective2',
+    perspectiveID: 'people',
     q: enrollmentByYearQuery, 
-    filterTarget: 'id',
+    filterTarget: 'person__id',
     resultMapper: mapLineChart
   },
 }

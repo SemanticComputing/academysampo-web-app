@@ -5,7 +5,7 @@ import error from './error'
 import options from './options'
 import animation from './animation'
 import leafletMap from './leafletMap'
-// portal spefic reducers:
+// portal spefic reducers: 
 import people from './as/people'
 import relatives from './as/relatives'
 import places from './as/places'

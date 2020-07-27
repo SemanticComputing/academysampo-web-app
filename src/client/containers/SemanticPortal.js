@@ -251,7 +251,7 @@ const SemanticPortal = props => {
   const lgScreen = useMediaQuery(theme => theme.breakpoints.between('lg', 'xl'))
   const xlScreen = useMediaQuery(theme => theme.breakpoints.up('xl'))
   let screenSize = ''
-  if (xsScreen) { screenSize = 'xs' }
+  if (xsScreen) { screenSize = 'xs' } 
   if (smScreen) { screenSize = 'sm' }
   if (mdScreen) { screenSize = 'md' }
   if (lgScreen) { screenSize = 'lg' }

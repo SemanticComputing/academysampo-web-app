@@ -27,7 +27,7 @@ import { categoriesPropertiesInstancePage } from './sparql_queries/SparqlQueries
 import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesOrganizations'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { makeObjectList } from '../SparqlObjectMapper'
-import { mapPlaces, mapLineChart } from '../Mappers'
+import { mapPlaces, mapMultipleLineChart } from '../Mappers'
 
 export const backendSearchConfig = {
   people: peoplePerspectiveConfig,
@@ -135,6 +135,6 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     q: enrollmentByYearQuery, 
     filterTarget: 'person__id',
-    resultMapper: mapLineChart
+    resultMapper: mapMultipleLineChart
   },
 }

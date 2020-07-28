@@ -125,23 +125,26 @@ export const peopleRelatedTo = `
     }
 `
 
-export const lastKnownLocationsAt = `
-    OPTIONAL {
-      <FILTER>
-      ?related__id mmm-schema:last_known_location ?id .
-      ?related__id skos:prefLabel ?related__prefLabel .
-      BIND(CONCAT("/manuscripts/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
-    }
-`
-
-export const actorsAt = `
-    OPTIONAL {
-      { ?related__id crm:P98i_was_born/crm:P7_took_place_at ?id }
-      UNION
-      { ?related__id crm:P100i_died_in/crm:P7_took_place_at ?id }
-      UNION
-      { ?related__id ^crm:P11_had_participant/crm:P7_took_place_at ?id }
-      ?related__id skos:prefLabel ?related__prefLabel .
-      BIND(CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
-    }
-`
+/**
+ export const lastKnownLocationsAt = `
+ OPTIONAL {
+   <FILTER>
+   ?related__id mmm-schema:last_known_location ?id .
+   ?related__id skos:prefLabel ?related__prefLabel .
+   BIND(CONCAT("/manuscripts/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+  }
+  `
+  
+  export const actorsAt = `
+  OPTIONAL {
+    { ?related__id crm:P98i_was_born/crm:P7_took_place_at ?id }
+    UNION
+    { ?related__id crm:P100i_died_in/crm:P7_took_place_at ?id }
+    UNION
+    { ?related__id ^crm:P11_had_participant/crm:P7_took_place_at ?id }
+    ?related__id skos:prefLabel ?related__prefLabel .
+    BIND(CONCAT("/actors/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+  }
+  `
+*/
+  

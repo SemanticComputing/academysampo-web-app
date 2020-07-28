@@ -98,6 +98,22 @@ export const mapLineChart = sparqlBindings => {
   }
 }
 
+// for academysampo, Petri
+export const mapMultipleLineChart = sparqlBindings => {
+  const res = {}
+  sparqlBindings.forEach(b => {
+    for (const p in b) {
+      res[p] = []
+    }
+  })
+  sparqlBindings.forEach(b => {
+    for (const p in b) {
+      res[p].push(b[p].value)
+    }
+  })
+  return res
+}
+
 const mapFacetValues = sparqlBindings => {
   const results = sparqlBindings.map(b => {
     try {

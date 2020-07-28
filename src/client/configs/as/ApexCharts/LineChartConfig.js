@@ -5,19 +5,26 @@ export const createApexLineChartData = ({
   yaxisTitle,
   seriesTitle
 }) => {
+  let categories = []
+  const series = []
+  for (const p in rawData) {
+    if (p=='category') {
+      categories = rawData[p]
+    } else {
+      series.push({
+        name: p,
+        data: rawData[p]
+      })
+    }
+  }
   const apexChartOptionsWithData = {
     ...apexLineChartOptions,
-    series: [
-      {
-        name: seriesTitle,
-        data: rawData.seriesData
-      }
-    ],
+    series: series,
     title: {
       text: title
     },
     xaxis: {
-      categories: rawData.categoriesData,
+      categories: categories,
       labels: {
         rotate: 0
       },

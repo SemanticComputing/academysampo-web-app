@@ -521,17 +521,31 @@ export const pointCloudNodesQuery = `
   }
 `
 
-// https://api.triplydb.com/s/Jr-nZL_tR
+// https://api.triplydb.com/s/Jr-nZL_tR 
 export const enrollmentByYearQuery = `
-SELECT DISTINCT ?category (COUNT(DISTINCT ?person__id) AS ?count) WHERE {
+  SELECT DISTINCT ?category 
+    (COUNT(?enrol_date) AS ?Enrollment) 
+    (COUNT(?birth_date) AS ?Birth) 
+    (COUNT(?death_date) AS ?Death) 
+  WHERE {
   <FILTER>
-  ?person__id a :Person ;
-	  :has_enrollment/schema:date [ 
-      gvp:estStart ?time_0 ;
-      gvp:estEnd ?time_1 ] 
-      .
+  ?person__id a :Person .
+  { 
+    ?person__id :has_enrollment/schema:date ?enrol_date . 
+      ?enrol_date gvp:estStart ?time_0 ;
+      gvp:estEnd ?time_1 .
+  } UNION {
+  ?person__id (:has_birth|:has_baptism)/schema:date ?birth_date .
+    ?birth_date gvp:estStart ?time_0 ;
+      gvp:estEnd ?time_1 .
+  } UNION {
+  ?person__id (:has_death|:has_burial)/schema:date ?death_date .
+    ?death_date gvp:estStart ?time_0 ;
+      gvp:estEnd ?time_1 
+  }
+
   FILTER (year(?time_0)=year(?time_1))
   BIND (STR(year(?time_0)) AS ?category)
-  
-} GROUP BY ?category ORDER BY ?category 
+
+  } GROUP BY ?category ORDER BY ?category
 `

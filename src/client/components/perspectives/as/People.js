@@ -123,10 +123,10 @@ const People = props => {
             fetching={props.facetResults.fetching}
             fetchData={props.fetchResults}
             createChartData={createApexLineChartData}
-            title='Enrollments by year'
+            title='People by year'
             xaxisTitle='Year'
-            yaxisTitle='Number of enrollments'
-            seriesTitle='Number of enrollments'
+            yaxisTitle='Number of people'
+            seriesTitle={'Enrollments', 'Births', 'Deaths'}
             resultClass='enrollmentByYear'
             facetClass='people'
           />}

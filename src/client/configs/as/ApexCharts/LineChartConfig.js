@@ -7,6 +7,7 @@ export const createApexLineChartData = ({
 }) => {
   let categories = []
   const series = []
+  // console.log(rawData)
   for (const p in rawData) {
     if (p=='category') {
       categories = rawData[p]
@@ -23,8 +24,10 @@ export const createApexLineChartData = ({
     title: {
       text: title
     },
+    dataLabels: {
+      enabled: false
+    },
     xaxis: {
-      categories: categories,
       labels: {
         rotate: 0
       },
@@ -38,8 +41,19 @@ export const createApexLineChartData = ({
       }
     },
     stroke: {
-      width: 2 
-    }
+      curve: 'straight',
+      width: 2
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+          shadeIntensity: 1,
+          inverseColors: false,
+          opacityFrom: 0.6,
+          opacityTo: 0.05,
+          stops: [20, 60, 100, 100]
+        },
+    },
   }
   return apexChartOptionsWithData
 }
@@ -47,7 +61,7 @@ export const createApexLineChartData = ({
 const apexLineChartOptions = {
   // see https://apexcharts.com/docs --> Options
   chart: {
-    type: 'line',
+    type: 'area',
     width: '100%',
     height: '100%',
     fontFamily: 'Roboto'

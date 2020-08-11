@@ -127,7 +127,7 @@ const People = props => {
             xaxisTitle='Year'
             yaxisTitle='Number of people'
             seriesTitle={'Enrollments', 'Births', 'Deaths'}
-            resultClass='enrollmentByYear'
+            resultClass='eventsByYear'
             facetClass='people'
           />}
       />

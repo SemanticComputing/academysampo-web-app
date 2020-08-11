@@ -98,19 +98,42 @@ export const mapLineChart = sparqlBindings => {
   }
 }
 
-// for academysampo, Petri
+// for Academysampo, Petri
+//  data processing as in:
+//  https://github.com/apexcharts/apexcharts.js/blob/master/samples/vue/area/timeseries-with-irregular-data.html
+const trimResult = arr => {
+  //  trim zero values from array start and end
+  //  trim start of array
+  let i=0
+  while (i<arr.length && arr[i][1]==0) i++
+
+  //  end of array
+  let j=arr.length-1
+  while (i<j && arr[j][1]==0) j--
+  // console.log(i, j)
+  return arr.slice(i, j+1)
+}
+
 export const mapMultipleLineChart = sparqlBindings => {
-  const res = {}
+  let res = {}
   sparqlBindings.forEach(b => {
     for (const p in b) {
-      res[p] = []
+      if (p != 'category') {
+        res[p] = []
+      }
     }
   })
-  sparqlBindings.forEach(b => {
+  const category = sparqlBindings.map(p => parseFloat(p.category.value))
+  sparqlBindings.forEach((b, i) => {
     for (const p in b) {
-      res[p].push(b[p].value)
+      if (p != 'category') {
+        res[p].push([ category[i], parseFloat(b[p].value) ])
+      }
     }
   })
+  for (const p in res) {
+    res[p] = trimResult(res[p])
+  }
   return res
 }
 

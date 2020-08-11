@@ -10,7 +10,7 @@ import PointCloud from '../../facet_results/PointCloud'
 import Export from '../../facet_results/Export'
 import MigrationsMapLegend from '../sampo/MigrationsMapLegend'
 import ApexChart from '../../facet_results/ApexChart'
-import { createApexLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
+import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
 import { coseLayout, cytoscapeStyle } from '../../../configs/as/Cytoscape.js/NetworkConfig'
 
@@ -122,11 +122,10 @@ const People = props => {
             facetUpdateID={props.facetData.facetUpdateID}
             fetching={props.facetResults.fetching}
             fetchData={props.fetchResults}
-            createChartData={createApexLineChartData}
+            createChartData={createMultipleLineChartData}
             title='People by year'
             xaxisTitle='Year'
             yaxisTitle='Number of people'
-            seriesTitle={'Enrollments', 'Births', 'Deaths'}
             resultClass='eventsByYear'
             facetClass='people'
           />}

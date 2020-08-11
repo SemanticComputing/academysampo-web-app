@@ -56,6 +56,11 @@ export default {
     rowsPerPage: 'Rows per page',
     of: 'of'
   },
+  lineChart: {
+    Birth: 'Birth',
+    Enrollment: 'Enrollment',
+    Death: 'Death'
+  },
   exportToYasgui: 'open the result table query in yasgui sparql editor',
   openInLinkedDataBrowser: 'open in linked data browser',
   instancePageGeneral: {

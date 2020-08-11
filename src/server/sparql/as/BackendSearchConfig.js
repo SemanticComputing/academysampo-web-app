@@ -13,7 +13,7 @@ import {
   networkRelationQuery,
   pointCloudLinksQuery,
   pointCloudNodesQuery,
-  enrollmentByYearQuery
+  eventsByYearQuery
 } from './sparql_queries/SparqlQueriesPeople'
 import {
   placePropertiesInfoWindow,
@@ -131,9 +131,9 @@ export const backendSearchConfig = {
     perspectiveID: 'people', // use endpoint config from people
     properties: fullTextSearchProperties
   },
-  enrollmentByYear: {
+  eventsByYear: {
     perspectiveID: 'people',
-    q: enrollmentByYearQuery, 
+    q: eventsByYearQuery, 
     filterTarget: 'person__id',
     resultMapper: mapMultipleLineChart
   },

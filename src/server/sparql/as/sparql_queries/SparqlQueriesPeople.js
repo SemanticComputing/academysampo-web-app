@@ -522,10 +522,10 @@ export const pointCloudNodesQuery = `
 `
 
 // https://api.triplydb.com/s/Jr-nZL_tR 
-export const enrollmentByYearQuery = `
+export const eventsByYearQuery = `
   SELECT DISTINCT ?category 
-    (COUNT(?enrol_date) AS ?Enrollment) 
-    (COUNT(?birth_date) AS ?Birth) 
+  (COUNT(?birth_date) AS ?Birth) 
+  (COUNT(?enrol_date) AS ?Enrollment) 
     (COUNT(?death_date) AS ?Death) 
   WHERE {
   <FILTER>

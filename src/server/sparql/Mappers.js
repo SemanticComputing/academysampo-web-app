@@ -98,27 +98,11 @@ export const mapLineChart = sparqlBindings => {
   }
 }
 
-// for Academysampo, Petri
-//  data processing as in:
-//  https://github.com/apexcharts/apexcharts.js/blob/master/samples/vue/area/timeseries-with-irregular-data.html
-const trimResult = arr => {
-  //  trim zero values from array start and end
-  //  trim start of array
-  let i=0
-  while (i<arr.length && arr[i][1]==0) i++
-
-  //  end of array
-  let j=arr.length-1
-  while (i<j && arr[j][1]==0) j--
-  // console.log(i, j)
-  return arr.slice(i, j+1)
-}
-
 export const mapMultipleLineChart = sparqlBindings => {
-  let res = {}
+  const res = {}
   sparqlBindings.forEach(b => {
     for (const p in b) {
-      if (p != 'category') {
+      if (p !== 'category') {
         res[p] = []
       }
     }
@@ -126,8 +110,8 @@ export const mapMultipleLineChart = sparqlBindings => {
   const category = sparqlBindings.map(p => parseFloat(p.category.value))
   sparqlBindings.forEach((b, i) => {
     for (const p in b) {
-      if (p != 'category') {
-        res[p].push([ category[i], parseFloat(b[p].value) ])
+      if (p !== 'category') {
+        res[p].push([category[i], parseFloat(b[p].value)])
       }
     }
   })
@@ -135,6 +119,22 @@ export const mapMultipleLineChart = sparqlBindings => {
     res[p] = trimResult(res[p])
   }
   return res
+}
+
+/* Data processing as in:
+*  https://github.com/apexcharts/apexcharts.js/blob/master/samples/vue/area/timeseries-with-irregular-data.html
+*  Trim zero values from array start and end
+*/
+const trimResult = arr => {
+  //  trim start of array
+  let i = 0
+  while (i < arr.length && arr[i][1] === 0) i++
+
+  //  end of array
+  let j = arr.length - 1
+  while (i < j && arr[j][1] === 0) j--
+
+  return arr.slice(i, j + 1)
 }
 
 const mapFacetValues = sparqlBindings => {

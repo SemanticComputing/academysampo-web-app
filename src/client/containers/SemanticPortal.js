@@ -439,6 +439,12 @@ const SemanticPortal = props => {
                                     isLoading={props[perspective.id].fetching}
                                     routeProps={routeProps}
                                     screenSize={screenSize}
+                                    fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
+                                    fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+                                    fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
+                                    clearGeoJSONLayers={props.clearGeoJSONLayers}
+                                    leafletMap={props.leafletMap}
+                                    showError={props.showError}
                                   />
                                 </Grid>
                               </Grid>
@@ -492,6 +498,12 @@ const SemanticPortal = props => {
                               isLoading={props[perspective.id].fetching}
                               routeProps={routeProps}
                               screenSize={screenSize}
+                              fetchFacetConstrainSelf={props.fetchFacetConstrainSelf}
+                              fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+                              fetchGeoJSONLayersBackend={props.fetchGeoJSONLayersBackend}
+                              clearGeoJSONLayers={props.clearGeoJSONLayers}
+                              leafletMap={props.leafletMap}
+                              showError={props.showError}
                             />
                           </Grid>
                         </Grid>

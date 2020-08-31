@@ -66,7 +66,6 @@ class Network extends React.Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
-      // console.log(this.props.results.elements)
       this.cy.elements().remove()
       this.cy.add(this.props.results.elements)
       this.cy.layout(this.props.layout).run()

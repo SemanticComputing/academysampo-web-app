@@ -8,9 +8,10 @@ import purple from '@material-ui/core/colors/purple'
 import PerspectiveTabs from '../../main_layout/PerspectiveTabs'
 import InstanceHomePageTable from '../../main_layout/InstanceHomePageTable'
 import Network from '../../facet_results/Network'
-import LeafletMap from '../../facet_results/LeafletMap'
+import ApexChart from '../../facet_results/ApexChart'
 import Export from '../../facet_results/Export'
 import { coseLayout, cytoscapeStyle } from '../../../configs/sampo/Cytoscape.js/NetworkConfig'
+import { createMultipleLineChartData } from '../../../configs/sampo/ApexCharts/LineChartConfig'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
 
@@ -35,7 +36,6 @@ const styles = () => ({
 
 /**
  * A component for generating a landing page for a single entity.
- * Customized for MMM data
  */
 class InstanceHomePage extends React.Component {
   constructor (props) {
@@ -95,6 +95,18 @@ class InstanceHomePage extends React.Component {
       case 'places':
         uri = `${base}/place/${localID}`
         break
+      case 'finds':
+        uri = `http://ldf.fi/findsampo/finds/${localID}`
+        break
+      case 'emloActors':
+        uri = `http://emlo.bodleian.ox.ac.uk/id/${localID}`
+        break
+      case 'emloLetters':
+        uri = `http://emlo.bodleian.ox.ac.uk/id/${localID}`
+        break
+      case 'emloPlaces':
+        uri = `http://emlo.bodleian.ox.ac.uk/id/${localID}`
+        break
     }
     this.props.fetchByURI({
       resultClass: this.props.resultClass,
@@ -104,37 +116,9 @@ class InstanceHomePage extends React.Component {
     })
   }
 
-  createPlaceArray = events => {
-    let places = {}
-    events = Array.isArray(events) ? events : [events]
-    events.map(event => {
-      if (has(event, 'place')) {
-        const eventPlaces = Array.isArray(event.place) ? event.place : [event.place]
-        eventPlaces.map(place => {
-          if (!has(places, place.id)) {
-            places[place.id] = {
-              id: place.id,
-              prefLabel: place.prefLabel,
-              lat: place.lat,
-              long: place.long,
-              events: [event] // gather events here
-            }
-          } else {
-            places[place.id].events.push(event)
-          }
-        })
-      }
-    })
-    places = Object.values(places)
-    places.forEach(place => {
-      place.instanceCount = place.events.length
-    })
-    return places
-  }
-
   getVisibleRows = rows => {
     const visibleRows = []
-    const instanceClass = this.props.data.type ? this.props.data.type.id : ''
+    const instanceClass = this.props.tableData.type ? this.props.tableData.type.id : ''
     rows.map(row => {
       if ((has(row, 'onlyForClass') && row.onlyForClass === instanceClass) ||
        !has(row, 'onlyForClass')) {
@@ -145,8 +129,8 @@ class InstanceHomePage extends React.Component {
   }
 
   render = () => {
-    const { classes, data, isLoading, resultClass, rootUrl } = this.props
-    const hasData = data !== null && Object.values(data).length >= 1
+    const { classes, tableData, isLoading, resultClass, rootUrl } = this.props
+    const hasData = tableData !== null && Object.values(tableData).length >= 1
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -176,7 +160,7 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <InstanceHomePageTable
                     resultClass={resultClass}
-                    data={data}
+                    data={tableData}
                     properties={this.getVisibleRows(this.props.properties)}
                   />}
               />
@@ -185,11 +169,11 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <Network
                     pageType='instancePage'
-                    results={this.props.networkData}
+                    results={this.props.results}
                     resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById}
+                    fetchResults={this.props.fetchResults}
                     resultClass='manuscriptInstancePageNetwork'
-                    id={data.id}
+                    uri={tableData.id}
                     limit={200}
                     optimize={1.2}
                     style={cytoscapeStyle}
@@ -197,17 +181,36 @@ class InstanceHomePage extends React.Component {
                   />}
               />
               <Route
-                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/map`}
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/emloLetterNetwork`}
                 render={() =>
-                  <LeafletMap
-                    results={this.createPlaceArray(data.event)}
-                    resultClass='instanceEvents'
+                  <Network
                     pageType='instancePage'
-                    mapMode='cluster'
-                    instance={null}
-                    fetchByURI={this.props.fetchByURI}
-                    fetching={this.props.isLoading}
-                    showInstanceCountInClusters
+                    results={this.props.results}
+                    resultUpdateID={this.props.resultUpdateID}
+                    fetchResults={this.props.fetchResults}
+                    resultClass='emloLetterNetwork'
+                    uri={tableData.id}
+                    limit={100}
+                    optimize={5.0}
+                    style={cytoscapeStyle}
+                    layout={coseLayout}
+                  />}
+              />
+              <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/emloSentReceived`}
+                render={() =>
+                  <ApexChart
+                    pageType='instancePage'
+                    rawData={this.props.results}
+                    rawDataUpdateID={this.props.resultUpdateID}
+                    fetching={isLoading}
+                    fetchData={this.props.fetchResults}
+                    uri={tableData.id}
+                    createChartData={createMultipleLineChartData}
+                    title='Letters by year'
+                    xaxisTitle='Year'
+                    yaxisTitle='Number of letters'
+                    resultClass='emloSentReceived'
                   />}
               />
               <Route
@@ -216,7 +219,7 @@ class InstanceHomePage extends React.Component {
                   <Export
                     sparqlQuery={this.props.sparqlQuery}
                     pageType='instancePage'
-                    id={data.id}
+                    id={tableData.id}
                   />}
               />
             </>}
@@ -229,9 +232,12 @@ class InstanceHomePage extends React.Component {
 InstanceHomePage.propTypes = {
   classes: PropTypes.object.isRequired,
   fetchByURI: PropTypes.func.isRequired,
+  fetchResults: PropTypes.func.isRequired,
   resultClass: PropTypes.string.isRequired,
-  data: PropTypes.object,
-  networkData: PropTypes.object,
+  tableData: PropTypes.object,
+  tableExternalData: PropTypes.object,
+  results: PropTypes.object,
+  resultUpdateID: PropTypes.number.isRequired,
   sparqlQuery: PropTypes.string,
   properties: PropTypes.array.isRequired,
   tabs: PropTypes.array.isRequired,

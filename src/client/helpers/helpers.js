@@ -11,6 +11,7 @@ export const stateToUrl = ({
   resultFormat = null,
   constrainSelf = null,
   groupBy = null,
+  uri = null,
   limit = null,
   optimize = null
 }) => {
@@ -23,6 +24,7 @@ export const stateToUrl = ({
   if (resultFormat !== null) { params.resultFormat = resultFormat }
   if (constrainSelf !== null) { params.constrainSelf = constrainSelf }
   if (groupBy !== null) { params.groupBy = groupBy }
+  if (uri !== null) { params.uri = uri }
   if (limit !== null) { params.limit = limit }
   if (optimize !== null) { params.optimize = optimize }
   if (facets !== null) {

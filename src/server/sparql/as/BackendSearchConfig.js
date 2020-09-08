@@ -133,8 +133,8 @@ export const backendSearchConfig = {
   },
   eventsByYear: {
     perspectiveID: 'people',
-    q: eventsByYearQuery, 
+    q: eventsByYearQuery,
     filterTarget: 'person__id',
     resultMapper: mapMultipleLineChart
-  },
+  }
 }

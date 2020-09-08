@@ -420,14 +420,14 @@ SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
 export const networkRelationQuery = `
 SELECT DISTINCT ?source ?target ("" AS ?name) (1 AS ?weight)
 WHERE {
-		  VALUES ?source { <ID> }
-		  VALUES ?prop { schema:date schema:place skos:broader
-		    bioc:inheres_in # :has_baptism :has_birth :has_burial :has_death
+  VALUES ?source { <ID> }
+  VALUES ?prop { schema:date schema:place skos:broader
+    bioc:inheres_in # :has_baptism :has_birth :has_burial :has_death
 
-        :has_title :has_event :has_category :has_enrollment :related_occupation :student_nation :organization }
-		  ?source ?prop ?target .
-		  FILTER ISURI(?target)
-		  OPTIONAL { ?prop skos:prefLabel ?label . FILTER (LANG(?label)="fi") }
+    :has_title :has_event :has_category :has_enrollment :related_occupation :student_nation :organization }
+  ?source ?prop ?target .
+  FILTER ISURI(?target)
+  OPTIONAL { ?prop skos:prefLabel ?label . FILTER (LANG(?label)="fi") }
 }
 `
 

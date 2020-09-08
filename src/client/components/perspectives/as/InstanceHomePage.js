@@ -96,7 +96,7 @@ class InstanceHomePage extends React.Component {
 
   getVisibleRows = rows => {
     const visibleRows = []
-    const instanceClass = this.props.data.type ? this.props.data.type.id : ''
+    const instanceClass = this.props.tableData.type ? this.props.tableData.type.id : ''
     rows.map(row => {
       if ((has(row, 'onlyForClass') && row.onlyForClass === instanceClass) ||
        !has(row, 'onlyForClass')) {
@@ -107,8 +107,8 @@ class InstanceHomePage extends React.Component {
   }
 
   render = () => {
-    const { classes, data, isLoading, resultClass, rootUrl } = this.props
-    const hasData = data !== null && Object.values(data).length >= 1
+    const { classes, tableData, isLoading, resultClass, rootUrl } = this.props
+    const hasData = tableData !== null && Object.values(tableData).length >= 1
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -138,7 +138,7 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <InstanceHomePageTable
                     resultClass={resultClass}
-                    data={data}
+                    data={tableData}
                     properties={this.getVisibleRows(this.props.properties)}
                   />}
               />
@@ -147,11 +147,11 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <Network
                     pageType='instancePage'
-                    results={this.props.networkData}
+                    results={this.props.results}
                     resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById}
+                    fetchResults={this.props.fetchResults}
                     resultClass='familyNetwork'
-                    id={data.id}
+                    uri={tableData.id}
                     limit={200}
                     optimize={1.2}
                     style={cytoscapeStyle}
@@ -163,11 +163,11 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <Network
                     pageType='instancePage'
-                    results={this.props.networkData}
+                    results={this.props.results}
                     resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById}
+                    fetchResults={this.props.fetchResults}
                     resultClass='academicNetwork'
-                    id={data.id}
+                    uri={tableData.id}
                     limit={200}
                     optimize={1.2}
                     style={cytoscapeStyle}
@@ -179,11 +179,11 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <Network
                     pageType='instancePage'
-                    results={this.props.networkData}
+                    results={this.props.results}
                     resultUpdateID={this.props.resultUpdateID}
-                    fetchNetworkById={this.props.fetchNetworkById}
+                    fetchResults={this.props.fetchResults}
                     resultClass='relationNetwork'
-                    id={data.id}
+                    uri={tableData.id}
                     limit={200}
                     optimize={1.2}
                     style={cytoscapeStyle}
@@ -196,7 +196,7 @@ class InstanceHomePage extends React.Component {
                   <Export
                     sparqlQuery={this.props.sparqlQuery}
                     pageType='instancePage'
-                    id={data.id}
+                    id={tableData.id}
                   />}
               />
             </>}
@@ -209,8 +209,12 @@ class InstanceHomePage extends React.Component {
 InstanceHomePage.propTypes = {
   classes: PropTypes.object.isRequired,
   fetchByURI: PropTypes.func.isRequired,
+  fetchResults: PropTypes.func.isRequired,
   resultClass: PropTypes.string.isRequired,
-  data: PropTypes.object,
+  tableData: PropTypes.object,
+  tableExternalData: PropTypes.object,
+  results: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  resultUpdateID: PropTypes.number.isRequired,
   sparqlQuery: PropTypes.string,
   properties: PropTypes.array.isRequired,
   tabs: PropTypes.array.isRequired,

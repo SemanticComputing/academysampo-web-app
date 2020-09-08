@@ -51,7 +51,7 @@ const Places = props => {
             resultClass='peoplePlaces'
             facetClass='places'
             mapMode='cluster'
-            instance={props.facetResults.instance}
+            instance={props.facetResults.instanceTableData}
             fetchResults={props.fetchResults}
             fetchByURI={props.fetchByURI}
             fetching={props.facetResults.fetching}

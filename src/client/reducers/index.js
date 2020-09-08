@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import { reducer as toastrReducer } from 'react-redux-toastr'
 // general reducers:
-import error from './error'
-import options from './options'
-import animation from './animation'
-import leafletMap from './leafletMap'
-// portal spefic reducers: 
+import error from './general/error'
+import options from './general/options'
+import animation from './general/animation'
+import leafletMap from './general/leafletMap'
+// portal spefic reducers:
 import people from './as/people'
 import relatives from './as/relatives'
 import places from './as/places'

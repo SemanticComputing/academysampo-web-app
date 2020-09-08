@@ -3,13 +3,12 @@ import { getTreeFromFlatData } from 'react-sortable-tree'
 // import { makeObjectList } from './SparqlObjectMapper';
 
 export const mapPlaces = sparqlBindings => {
-  // console.log(sparqlBindings);
   const results = sparqlBindings.map(b => {
     return {
       id: b.id.value,
-      lat: b.lat ? b.lat.value : null,
-      long: b.long ? b.long.value : null,
-      instanceCount: b.instanceCount.value
+      lat: b.lat.value,
+      long: b.long.value,
+      ...(Object.prototype.hasOwnProperty.call(b, 'instanceCount') && { instanceCount: b.instanceCount.value })
     }
   })
   return results

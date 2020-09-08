@@ -329,6 +329,10 @@ export const peopleEventPlacesQuery = `
     }
     BIND (COALESCE(?lat1, ?lat2) AS ?lat)
     BIND (COALESCE(?long1, ?long2) AS ?long)
+    
+    # skip all places with missing coordinates:
+    FILTER(BOUND(?lat)) 
+    FILTER(BOUND(?long))
   }
   GROUP BY ?id ?lat ?long
 `
@@ -427,7 +431,6 @@ WHERE {
 }
 `
 
-
 export const networkNodesQuery = `
   SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size ?href
   WHERE {
@@ -522,7 +525,7 @@ export const pointCloudNodesQuery = `
   }
 `
 
-// https://api.triplydb.com/s/Jr-nZL_tR 
+// https://api.triplydb.com/s/Jr-nZL_tR
 export const eventsByYearQuery = `
   SELECT DISTINCT ?category 
   (COUNT(?birth_date) AS ?Birth) 

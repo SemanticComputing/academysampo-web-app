@@ -109,21 +109,21 @@ export const backendSearchConfig = {
   // Family relations tab in person page
   familyNetwork: {
     perspectiveID: 'people', // use endpoint config from people
-    links: networkFamilyRelationQuery,
+    q: networkFamilyRelationQuery,
     nodes: familyNetworkNodesQuery,
     useNetworkAPI: true
   },
   // Academic relations tab in person page
   academicNetwork: {
     perspectiveID: 'people', // use endpoint config from people
-    links: networkAcademicRelationQuery,
+    q: networkAcademicRelationQuery,
     nodes: academicNetworkNodesQuery,
     useNetworkAPI: true
   },
   // Relations tab in person page
   relationNetwork: {
     perspectiveID: 'people', // use endpoint config from people
-    links: networkRelationQuery,
+    q: networkRelationQuery,
     nodes: relationNetworkNodesQuery,
     useNetworkAPI: true
   },

@@ -12,7 +12,7 @@ import MigrationsMapLegend from '../as/MigrationsMapLegend'
 import ApexChart from '../../facet_results/ApexChart'
 import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
-import { coseLayout, cytoscapeStyle } from '../../../configs/as/Cytoscape.js/NetworkConfig'
+import { coseLayout, cytoscapeStyle, preprocess } from '../../../configs/as/Cytoscape.js/NetworkConfig'
 
 const People = props => {
   const { rootUrl, perspective } = props
@@ -80,6 +80,7 @@ const People = props => {
             optimize={1.2}
             style={cytoscapeStyle}
             layout={coseLayout}
+            preprocess={preprocess}
           />}
       />
       <Route

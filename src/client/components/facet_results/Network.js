@@ -67,6 +67,9 @@ class Network extends React.Component {
   componentDidUpdate = prevProps => {
     if (prevProps.resultUpdateID !== this.props.resultUpdateID) {
       this.cy.elements().remove()
+      if (this.props.preprocess) {
+        this.props.preprocess(this.props.results.elements)
+      }
       this.cy.add(this.props.results.elements)
       this.cy.layout(this.props.layout).run()
     }
@@ -101,7 +104,8 @@ Network.propTypes = {
   limit: PropTypes.number.isRequired,
   optimize: PropTypes.number.isRequired,
   style: PropTypes.array.isRequired,
-  layout: PropTypes.object.isRequired
+  layout: PropTypes.object.isRequired,
+  preprocess: PropTypes.func
 }
 
 export default withStyles(styles)(Network)

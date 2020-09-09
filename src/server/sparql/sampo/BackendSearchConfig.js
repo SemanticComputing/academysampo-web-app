@@ -13,7 +13,8 @@ import {
   productionsByDecadeQuery,
   eventsByDecadeQuery,
   manuscriptNetworkLinksQuery,
-  manuscriptNetworkNodesQuery
+  manuscriptNetworkNodesQuery,
+  knowledgeGraphMetadataQuery
 } from './sparql_queries/SparqlQueriesPerspective1'
 import {
   workProperties
@@ -34,7 +35,8 @@ import {
 import {
   findPropertiesInstancePage,
   findsPlacesQuery,
-  findsTimelineQuery
+  findsTimelineQuery,
+  nearbyFindsQuery
 } from './sparql_queries/SparqlQueriesFinds'
 import {
   emloLetterLinksQuery,
@@ -180,6 +182,15 @@ export const backendSearchConfig = {
     filterTarget: 'find',
     resultMapper: makeObjectList
   },
+  nearbyFinds: {
+    perspectiveID: 'finds', // use endpoint config from finds
+    q: nearbyFindsQuery,
+    resultMapper: mapPlaces,
+    instance: {
+      properties: findPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
   emloPlacesActors: {
     perspectiveID: 'emloActors',
     q: emloPeopleEventPlacesQuery,
@@ -201,6 +212,11 @@ export const backendSearchConfig = {
     q: emloSentReceivedQuery,
     // filterTarget: 'id',
     resultMapper: mapMultipleLineChart
+  },
+  perspective1KnowledgeGraphMetadata: {
+    perspectiveID: 'perspective1',
+    q: knowledgeGraphMetadataQuery,
+    resultMapper: makeObjectList
   },
   jenaText: {
     perspectiveID: 'perspective1',

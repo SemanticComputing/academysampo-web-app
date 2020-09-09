@@ -10,6 +10,7 @@ import InstanceHomePageTable from '../../main_layout/InstanceHomePageTable'
 import Network from '../../facet_results/Network'
 import ApexChart from '../../facet_results/ApexChart'
 import Export from '../../facet_results/Export'
+import Recommendations from './Recommendations'
 import { coseLayout, cytoscapeStyle } from '../../../configs/sampo/Cytoscape.js/NetworkConfig'
 import { createMultipleLineChartData } from '../../../configs/sampo/ApexCharts/LineChartConfig'
 import { Route, Redirect } from 'react-router-dom'
@@ -214,6 +215,26 @@ class InstanceHomePage extends React.Component {
                   />}
               />
               <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/recommendations`}
+                render={() =>
+                  <Recommendations
+                    rootUrl={this.props.rootUrl}
+                    routeProps={this.props.routeProps}
+                    results={this.props.results}
+                    resultUpdateID={this.props.resultUpdateID}
+                    isLoading={isLoading}
+                    tableData={tableData}
+                    properties={this.props.properties}
+                    leafletMap={this.props.leafletMap}
+                    fetchResults={this.props.fetchResults}
+                    fetchGeoJSONLayers={this.props.fetchGeoJSONLayers}
+                    fetchGeoJSONLayersBackend={this.props.fetchGeoJSONLayersBackend}
+                    clearGeoJSONLayers={this.props.clearGeoJSONLayers}
+                    fetchByURI={this.props.fetchByURI}
+                    showError={this.props.showError}
+                  />}
+              />
+              <Route
                 path={`${rootUrl}/${resultClass}/page/${this.state.localID}/export`}
                 render={() =>
                   <Export
@@ -236,7 +257,7 @@ InstanceHomePage.propTypes = {
   resultClass: PropTypes.string.isRequired,
   tableData: PropTypes.object,
   tableExternalData: PropTypes.object,
-  results: PropTypes.object,
+  results: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   resultUpdateID: PropTypes.number.isRequired,
   sparqlQuery: PropTypes.string,
   properties: PropTypes.array.isRequired,
@@ -244,7 +265,12 @@ InstanceHomePage.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   routeProps: PropTypes.object.isRequired,
   screenSize: PropTypes.string.isRequired,
-  rootUrl: PropTypes.string.isRequired
+  rootUrl: PropTypes.string.isRequired,
+  fetchGeoJSONLayers: PropTypes.func.isRequired,
+  fetchGeoJSONLayersBackend: PropTypes.func.isRequired,
+  clearGeoJSONLayers: PropTypes.func.isRequired,
+  leafletMap: PropTypes.object.isRequired,
+  showError: PropTypes.func.isRequired
 }
 
 export const InstanceHomePageComponent = InstanceHomePage

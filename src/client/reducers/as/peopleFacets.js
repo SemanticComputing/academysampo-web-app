@@ -125,6 +125,22 @@ export const INITIAL_STATE = {
       selectAlsoSubconcepts: true,
       priority: 6
     },
+    gender: {
+      id: 'gender',
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'instanceCount',
+      sortDirection: 'desc',
+      sortButton: false,
+      spatialFilterButton: false,
+      isFetching: false,
+      searchField: false,
+      containerClass: 'five',
+      filterType: 'uriFilter',
+      uriFilter: null,
+      priority: 6
+    },
     title: {
       id: 'title',
       // predicate: defined in backend
@@ -178,19 +194,18 @@ export const INITIAL_STATE = {
       uriFilter: null,
       priority: 6
     },
-    gender: {
-      id: 'gender',
-      // predicate: defined in backend
+    studentnation: {
+      id: 'studentnation',
       distinctValueCount: 0,
       values: [],
       flatValues: [],
-      sortBy: 'instanceCount',
-      sortDirection: 'desc',
-      sortButton: false,
+      sortBy: 'prefLabel',
+      sortDirection: 'asc',
+      sortButton: true,
       spatialFilterButton: false,
       isFetching: false,
-      searchField: false,
-      containerClass: 'five',
+      searchField: true,
+      containerClass: 'ten',
       filterType: 'uriFilter',
       uriFilter: null,
       priority: 6

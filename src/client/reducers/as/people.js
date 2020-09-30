@@ -156,7 +156,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 180
     },
     {
@@ -165,7 +165,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 180,
       onlyOnInstancePage: true
     },
@@ -175,7 +175,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 220
     },
     {
@@ -184,7 +184,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 220
     },
     {
@@ -193,7 +193,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 180
     },
     {
@@ -212,7 +212,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       onlyOnInstancePage: true
     },
     {
@@ -222,7 +222,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       sortBy: 'distance',
-      numberedList: false,
+      numberedList: true,
       onlyOnInstancePage: true
     },
     {

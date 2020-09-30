@@ -46,7 +46,6 @@ export const perspectiveConfigOnlyInfoPages = [
         value: 0,
         icon: <CalendarViewDayIcon />
       },
-
       {
         id: 'export',
         value: 1,
@@ -58,7 +57,7 @@ export const perspectiveConfigOnlyInfoPages = [
     id: 'organizations',
     perspectiveDescHeight: 160,
     instancePageTabs: [
-      { 
+      {
         id: 'table',
         value: 0,
         icon: <CalendarViewDayIcon />
@@ -74,7 +73,7 @@ export const perspectiveConfigOnlyInfoPages = [
     id: 'categories',
     perspectiveDescHeight: 160,
     instancePageTabs: [
-      { 
+      {
         id: 'table',
         value: 0,
         icon: <CalendarViewDayIcon />

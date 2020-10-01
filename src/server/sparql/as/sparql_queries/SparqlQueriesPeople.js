@@ -1,3 +1,5 @@
+// todo: add ys:wikipedia link
+
 export const peoplePropertiesInstancePage = `
 
 ?id skos:prefLabel ?prefLabel__id .
@@ -107,6 +109,12 @@ UNION
 {
   ?id :wikidata ?externalLink__id.
   BIND ("Wikidata" AS ?externalLink__prefLabel)
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+}
+UNION
+{
+  ?id :wikipedia ?externalLink__id.
+  BIND ("Wikipedia" AS ?externalLink__prefLabel)
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 UNION
@@ -283,6 +291,12 @@ export const peoplePropertiesFacetResults =
   {
     ?id :wikidata ?externalLink__id.
     BIND ("Wikidata" AS ?externalLink__prefLabel)
+    BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id :wikipedia ?externalLink__id.
+    BIND ("Wikipedia" AS ?externalLink__prefLabel)
     BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
   }
   UNION

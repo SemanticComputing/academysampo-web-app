@@ -68,6 +68,12 @@ UNION
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 UNION
+{ 
+  ?id :wikipedia ?externalLink__id. 
+  BIND ("Wikipedia" AS ?externalLink__prefLabel)
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+}
+UNION
 {
   ?id schema:relatedLink ?externalLink__id. 
   BIND ("Ylioppilasmatrikkeli" AS ?externalLink__prefLabel)

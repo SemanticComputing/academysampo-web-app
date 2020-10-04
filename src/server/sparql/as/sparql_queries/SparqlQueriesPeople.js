@@ -31,19 +31,16 @@ UNION
 { ?id :relative_text ?relativeText }
 UNION
 {
-  ?id :has_birth|:has_baptism ?bir
-  OPTIONAL {
-      ?bir schema:place ?birthPlace__id .
-      ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
-      FILTER (LANG(?birthPlace__prefLabel)="fi")
-      BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
-  }
-  OPTIONAL {
-      ?bir schema:date ?birthDateTimespan__id .
-      ?birthDateTimespan__id skos:prefLabel ?birthDateTimespan__prefLabel .
-      OPTIONAL { ?birthDateTimespan__id gvp:estStart ?birthDateTimespan__start }
-      OPTIONAL { ?birthDateTimespan__id gvp:estEnd ?birthDateTimespan__end }
-  }
+  ?id :place_of_origin ?birthPlace__id .
+  ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
+  FILTER (LANG(?birthPlace__prefLabel)="fi")
+  BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
+}
+UNION {
+  ?id :date_of_origin ?birthDateTimespan__id .
+  ?birthDateTimespan__id skos:prefLabel ?birthDateTimespan__prefLabel .
+  OPTIONAL { ?birthDateTimespan__id gvp:estStart ?birthDateTimespan__start }
+  OPTIONAL { ?birthDateTimespan__id gvp:estEnd ?birthDateTimespan__end }
 }
 UNION
 {
@@ -53,19 +50,17 @@ OPTIONAL { ?enrollmentTimespan__id gvp:estEnd ?enrollmentTimespan__end }
 }
 UNION
 {
-  ?id :has_death|:has_burial ?dea
-  OPTIONAL {
-      ?dea schema:place ?deathPlace__id .
-      ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
-      FILTER (LANG(?deathPlace__prefLabel)="fi")
-      BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
-  }
-  OPTIONAL {
-      ?dea schema:date ?deathDateTimespan__id .
-      ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
-      OPTIONAL { ?deathDateTimespan__id gvp:estStart ?deathDateTimespan__start }
-      OPTIONAL { ?deathDateTimespan__id gvp:estEnd ?deathDateTimespan__end }
-  }
+  ?id :place_of_end ?deathPlace__id .
+  ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
+  FILTER (LANG(?deathPlace__prefLabel)="fi")
+  BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
+}
+UNION 
+{
+  ?id :date_of_end ?deathDateTimespan__id .
+  ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
+  OPTIONAL { ?deathDateTimespan__id gvp:estStart ?deathDateTimespan__start }
+  OPTIONAL { ?deathDateTimespan__id gvp:estEnd ?deathDateTimespan__end }
 }
 UNION
 {
@@ -220,18 +215,16 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id :has_birth ?bir
-    OPTIONAL {
-        ?bir schema:place ?birthPlace__id .
-        ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
-        BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
-    }
-    OPTIONAL {
-        ?bir schema:date ?birthDateTimespan__id .
-        ?birthDateTimespan__id skos:prefLabel ?birthDateTimespan__prefLabel .
-        OPTIONAL { ?birthDateTimespan__id gvp:estStart ?birthDateTimespan__start }
-        OPTIONAL { ?birthDateTimespan__id gvp:estEnd ?birthDateTimespan__end }
-    }
+    ?id :place_of_origin ?birthPlace__id .
+    ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
+    FILTER (LANG(?birthPlace__prefLabel)="fi")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?birthPlace__id), "^.*\\\\/(.+)", "$1")) AS ?birthPlace__dataProviderUrl)
+  }
+  UNION {
+    ?id :date_of_origin ?birthDateTimespan__id .
+    ?birthDateTimespan__id skos:prefLabel ?birthDateTimespan__prefLabel .
+    OPTIONAL { ?birthDateTimespan__id gvp:estStart ?birthDateTimespan__start }
+    OPTIONAL { ?birthDateTimespan__id gvp:estEnd ?birthDateTimespan__end }
   }
   UNION
   {
@@ -241,18 +234,17 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id :has_death ?dea
-    OPTIONAL {
-        ?dea schema:place ?deathPlace__id .
-        ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
-        BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
-    }
-    OPTIONAL {
-        ?dea schema:date ?deathDateTimespan__id .
-        ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
-        OPTIONAL { ?deathDateTimespan__id gvp:estStart ?deathDateTimespan__start }
-        OPTIONAL { ?deathDateTimespan__id gvp:estEnd ?deathDateTimespan__end }
-    }
+    ?id :place_of_end ?deathPlace__id .
+    ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
+    FILTER (LANG(?deathPlace__prefLabel)="fi")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
+  }
+  UNION 
+  {
+    ?id :date_of_end ?deathDateTimespan__id .
+    ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
+    OPTIONAL { ?deathDateTimespan__id gvp:estStart ?deathDateTimespan__start }
+    OPTIONAL { ?deathDateTimespan__id gvp:estEnd ?deathDateTimespan__end }
   }
   UNION
   {
@@ -354,41 +346,41 @@ export const peopleEventPlacesQuery = `
 // # https://github.com/uber/deck.gl/blob/master/docs/layers/arc-layer.md
 export const peopleMigrationsQuery = `
 SELECT DISTINCT ?id ?person__id ?person__dataProviderUrl
-    (SAMPLE(?_person__prefLabel) AS ?person__prefLabel)
-    ?from__id 
-    (SAMPLE(?_from__prefLabel) AS ?from__prefLabel)
-    (SAMPLE(?_from__lat) AS ?from__lat)
-    (SAMPLE(?_from__long) AS ?from__long)
-    ?to__id 
-    (SAMPLE(?_to__prefLabel) AS ?to__prefLabel)
-    (SAMPLE(?_to__lat) AS ?to__lat)
-    (SAMPLE(?_to__long) AS ?to__long)
-  WHERE {
-    <FILTER>
-    ?person__id a :Person ;
-      :has_birth/schema:place ?from__id ;
-      :has_death/schema:place ?to__id ;
-      skos:prefLabel ?_person__prefLabel .
-    BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
-    ?from__id skos:prefLabel ?_from__prefLabel ;
-              geo:lat ?_from__lat ;
-              geo:long ?_from__long .
-    FILTER (lang(?_from__prefLabel)="fi")
-    BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+  (SAMPLE(?_person__prefLabel) AS ?person__prefLabel)
+  ?from__id 
+  (SAMPLE(?_from__prefLabel) AS ?from__prefLabel)
+  (SAMPLE(?_from__lat) AS ?from__lat)
+  (SAMPLE(?_from__long) AS ?from__long)
+  ?to__id 
+  (SAMPLE(?_to__prefLabel) AS ?to__prefLabel)
+  (SAMPLE(?_to__lat) AS ?to__lat)
+  (SAMPLE(?_to__long) AS ?to__long) 
+WHERE {
+  <FILTER>
+  ?person__id a :Person ;
+    :place_of_origin ?from__id ;
+    :place_of_end ?to__id ;
+    skos:prefLabel ?_person__prefLabel .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+  ?from__id skos:prefLabel ?_from__prefLabel ;
+            geo:lat ?_from__lat ;
+            geo:long ?_from__long .
+  FILTER (lang(?_from__prefLabel)="fi")
+  BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
 
-    ?to__id skos:prefLabel ?_to__prefLabel ;
-            geo:lat ?_to__lat ;
-            geo:long ?_to__long .
-    FILTER (lang(?_to__prefLabel)="fi")
-    BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
-    BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
-  }
+  ?to__id skos:prefLabel ?_to__prefLabel ;
+          geo:lat ?_to__lat ;
+          geo:long ?_to__long .
+  FILTER (lang(?_to__prefLabel)="fi")
+  BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
+  BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
+} 
 GROUP BY ?id ?person__id ?person__dataProviderUrl
   ?from__id ?from__dataProviderUrl 
   ?to__id  ?to__dataProviderUrl
 `
 
-//  query on facet page
+//  TODO: where is this query used or?
 export const networkLinksQuery = `
   SELECT DISTINCT (?person as ?source) ?target ("Teacher" as ?prefLabel)
   WHERE {
@@ -440,7 +432,7 @@ SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
 }
 `
 
-//  query on person page tab "TODO"
+//  query on person page tab relationNetwork
 export const networkRelationQuery = `
 SELECT DISTINCT ?source ?target ("" AS ?name) (1 AS ?weight)
 WHERE {
@@ -554,26 +546,24 @@ export const eventsByYearQuery = `
   SELECT DISTINCT ?category 
   (COUNT(?birth_date) AS ?Birth) 
   (COUNT(?enrol_date) AS ?Enrollment) 
-    (COUNT(?death_date) AS ?Death) 
-  WHERE {
+  (COUNT(?death_date) AS ?Death) 
+WHERE {
   <FILTER>
   ?person__id a :Person .
   { 
     ?person__id :has_enrollment/schema:date ?enrol_date . 
-      ?enrol_date gvp:estStart ?time_0 ;
-      gvp:estEnd ?time_1 .
+    ?enrol_date gvp:estStart ?time_0 ;
+      gvp:estEnd ?time_1
   } UNION {
-  ?person__id (:has_birth|:has_baptism)/schema:date ?birth_date .
+    ?person__id :date_of_origin ?birth_date .
     ?birth_date gvp:estStart ?time_0 ;
-      gvp:estEnd ?time_1 .
+      gvp:estEnd ?time_1
   } UNION {
-  ?person__id (:has_death|:has_burial)/schema:date ?death_date .
+    ?person__id :date_of_end ?death_date .
     ?death_date gvp:estStart ?time_0 ;
-      gvp:estEnd ?time_1 
+      gvp:estEnd ?time_1
   }
-
   FILTER (year(?time_0)=year(?time_1))
   BIND (STR(year(?time_0)) AS ?category)
-
-  } GROUP BY ?category ORDER BY ?category
+} GROUP BY ?category ORDER BY ?category
 `

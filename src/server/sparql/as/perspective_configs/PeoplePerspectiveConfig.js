@@ -33,9 +33,9 @@ export const peoplePerspectiveConfig = {
     birthDateTimespan: {
       id: 'birthDateTimespan',
       facetValueFilter: '',
-      sortByAscPredicate: ':has_birth/schema:date/gvp:estStart',
-      sortByDescPredicate: ':has_birth/schema:date/gvp:estEnd',
-      predicate: ':has_birth/schema:date',
+      sortByAscPredicate: ':date_of_origin/gvp:estStart',
+      sortByDescPredicate: ':date_of_origin/gvp:estEnd',
+      predicate: ':date_of_origin',
       startProperty: 'gvp:estStart',
       endProperty: 'gvp:estEnd',
       type: 'timespan'
@@ -56,19 +56,19 @@ export const peoplePerspectiveConfig = {
     birthPlace: {
       id: 'birthPlace',
       facetValueFilter: '',
-      predicate: ':has_birth/schema:place',
-      labelPath: ':has_birth/schema:place/skos:prefLabel',
+      predicate: ':place_of_origin',
+      labelPath: ':place_of_origin/skos:prefLabel',
       parentProperty: 'skos:broader',
-      parentPredicate: ':has_birth/schema:place/skos:broader+',
+      parentPredicate: ':place_of_origin/skos:broader+',
       type: 'hierarchical'
     },
     deathPlace: {
       id: 'deathPlace',
       facetValueFilter: '',
-      predicate: ':has_death/schema:place',
-      labelPath: ':has_death/schema:place/skos:prefLabel',
+      predicate: ':place_of_end',
+      labelPath: ':place_of_end/skos:prefLabel',
       parentProperty: 'skos:broader',
-      parentPredicate: ':has_death/schema:place/skos:broader+',
+      parentPredicate: ':place_of_end/skos:broader+',
       type: 'hierarchical'
     },
     category: {
@@ -128,9 +128,9 @@ export const peoplePerspectiveConfig = {
     deathDateTimespan: {
       id: 'deathDateTimespan',
       facetValueFilter: '',
-      sortByAscPredicate: ':has_death/schema:date/gvp:estStart',
-      sortByDescPredicate: ':has_death/schema:date/gvp:estEnd',
-      predicate: ':has_death/schema:date',
+      sortByAscPredicate: ':date_of_end/gvp:estStart',
+      sortByDescPredicate: ':date_of_end/gvp:estEnd',
+      predicate: ':date_of_end',
       startProperty: 'gvp:estStart',
       endProperty: 'gvp:estEnd',
       type: 'timespan'
@@ -148,9 +148,9 @@ export const peoplePerspectiveConfig = {
     birthDateTimespan: {
       id: 'birthDateTimespan',
       facetValueFilter: '',
-      sortByAscPredicate: ':has_birth/schema:date/gvp:estStart',
-      sortByDescPredicate: ':has_birth/schema:date/gvp:estEnd',
-      predicate: ':has_birth/schema:date',
+      sortByAscPredicate: ':date_of_origin/gvp:estStart',
+      sortByDescPredicate: ':date_of_origin/gvp:estEnd',
+      predicate: ':date_of_origin',
       startProperty: 'gvp:estStart',
       endProperty: 'gvp:estEnd',
       type: 'timespan'
@@ -171,19 +171,19 @@ export const peoplePerspectiveConfig = {
     birthPlace: {
       id: 'birthPlace',
       facetValueFilter: '',
-      predicate: ':has_birth/schema:place',
-      labelPath: ':has_birth/schema:place/skos:prefLabel',
+      predicate: ':place_of_origin',
+      labelPath: ':place_of_origin/skos:prefLabel',
       parentProperty: 'skos:broader',
-      parentPredicate: ':has_birth/schema:place/skos:broader+',
+      parentPredicate: ':place_of_origin/skos:broader+',
       type: 'hierarchical'
     },
     deathPlace: {
       id: 'deathPlace',
       facetValueFilter: '',
-      predicate: ':has_death/schema:place',
-      labelPath: ':has_death/schema:place/skos:prefLabel',
+      predicate: ':place_of_end',
+      labelPath: ':place_of_end/skos:prefLabel',
       parentProperty: 'skos:broader',
-      parentPredicate: ':has_death/schema:place/skos:broader+',
+      parentPredicate: ':place_of_end/skos:broader+',
       type: 'hierarchical'
     },
     source: {
@@ -207,9 +207,9 @@ export const peoplePerspectiveConfig = {
     deathDateTimespan: {
       id: 'deathDateTimespan',
       facetValueFilter: '',
-      sortByAscPredicate: ':has_death/schema:date/gvp:estStart',
-      sortByDescPredicate: ':has_death/schema:date/gvp:estEnd',
-      predicate: ':has_death/schema:date',
+      sortByAscPredicate: ':date_of_end/gvp:estStart',
+      sortByDescPredicate: ':date_of_end/gvp:estEnd',
+      predicate: ':date_of_end',
       startProperty: 'gvp:estStart',
       endProperty: 'gvp:estEnd',
       type: 'timespan'

@@ -52,7 +52,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 170
     },
     {
@@ -61,7 +61,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 250,
       onlyOnInstancePage: true
     },
@@ -71,7 +71,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 250,
       onlyOnInstancePage: true
     },
@@ -81,7 +81,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 250,
       onlyOnInstancePage: true
     },
@@ -91,7 +91,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 250,
       onlyOnInstancePage: true
     },
@@ -101,7 +101,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 250,
       onlyOnInstancePage: true
     },
@@ -111,7 +111,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 250,
       onlyOnInstancePage: true
     },

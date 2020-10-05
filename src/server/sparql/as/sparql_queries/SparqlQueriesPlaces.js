@@ -31,6 +31,12 @@ export const placePropertiesInstancePage = `
       } 
       UNION 
       { 
+        ?id :wikipedia ?externalLink__id . 
+        BIND ("Wikipedia" AS ?externalLink__prefLabel)
+        BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+      } 
+      UNION 
+      { 
         ?id :yso ?externalLink__id . 
         BIND ("YSO" AS ?externalLink__prefLabel)
         BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
@@ -70,7 +76,7 @@ export const placePropertiesInstancePage = `
           skos:prefLabel ?peopleBuried__prefLabel .
         BIND(CONCAT("/people/page/", REPLACE(STR(?peopleBuried__id), "^.*\\\\/(.+)", "$1")) AS ?peopleBuried__dataProviderUrl)
       } 
-      UNION 
+      UNION
       { 
         { ?peopleActive__id :has_event/schema:place ?id }
         UNION

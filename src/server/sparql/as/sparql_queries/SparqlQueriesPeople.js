@@ -380,7 +380,7 @@ GROUP BY ?id ?person__id ?person__dataProviderUrl
   ?to__id  ?to__dataProviderUrl
 `
 
-//  TODO: where is this query used or?
+//  query on people facet page tab 'Network'
 export const networkLinksQuery = `
   SELECT DISTINCT (?person as ?source) ?target ("Teacher" as ?prefLabel)
   WHERE {
@@ -458,7 +458,7 @@ export const networkNodesQuery = `
       ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi")
       VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
     }
-    OPTIONAL { ?id :coordinate [ :x ?x ; :y ?y ]}
+    BIND(CONCAT("../page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/academicNetwork") AS ?href)
   }
 `
 

@@ -182,23 +182,30 @@ UNION
                 bioc:inheres_in ?related__personUrl .
   BIND(CONCAT("/people/page/", REPLACE(STR(?related__personUrl), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
 }
-UNION
+uNION
 {
   ?id :has_event ?related__id .
   ?related__id :supervisor ?related__personUrl ;  skos:prefLabel ?related__prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?related__personUrl), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
 }
-UNION
+UNIoN
 {
   ?related__id :has_event [ :supervisor ?id ; skos:prefLabel ?evt_label ] ;
       skos:prefLabel ?prs_label .
       BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
       BIND (CONCAT(REPLACE(STR(?prs_label), '[(][^)]+[)]',''),': ',?evt_label) AS ?related__prefLabel)
 }
-UNION
+UnION
 {
 ?id :has_event/a :RectorPeriod .
 BIND("Rector" as ?role)
+}
+UNiON
+{
+  ?id schema:image ?image__id ;
+    skos:prefLabel ?image__description ;
+    skos:prefLabel ?image__title .
+  BIND(URI(CONCAT(STR(?image__id), "?width=300")) as ?image__url)
 }
 `
 
@@ -212,6 +219,13 @@ export const peoplePropertiesFacetResults =
 
   {
     ?id skosxl:prefLabel/schema:familyName ?fname .
+  }
+  UNION
+  {
+    ?id schema:image ?image__id ;
+      skos:prefLabel ?image__description ;
+      skos:prefLabel ?image__title .
+    BIND(URI(CONCAT(STR(?image__id), "?width=300")) as ?image__url)
   }
   UNION
   {

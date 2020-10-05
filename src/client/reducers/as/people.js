@@ -29,6 +29,17 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
+      id: 'image',
+      valueType: 'image',
+      previewImageHeight: 160,
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 120,
+      hideHeader: false
+    },
+    {
       id: 'enrollmentTimespan',
       valueType: 'object',
       makeLink: false,

@@ -174,6 +174,12 @@ export default {
             corporation, or family (Group)
           `
         },
+        image: {
+          label: 'Image',
+          description: `
+            A possible image of the person.
+          `
+        },
         gender: {
           label: 'Gender',
           description: `

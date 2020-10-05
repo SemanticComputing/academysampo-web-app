@@ -1,7 +1,4 @@
-// todo: add ys:wikipedia link
-
 export const peoplePropertiesInstancePage = `
-
 ?id skos:prefLabel ?prefLabel__id .
 BIND(?prefLabel__id AS ?prefLabel__prefLabel)
 
@@ -205,7 +202,7 @@ UNiON
   ?id schema:image ?image__id ;
     skos:prefLabel ?image__description ;
     skos:prefLabel ?image__title .
-  BIND(URI(CONCAT(STR(?image__id), "?width=300")) as ?image__url)
+    BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=300")) as ?image__url)
 }
 `
 
@@ -225,7 +222,7 @@ export const peoplePropertiesFacetResults =
     ?id schema:image ?image__id ;
       skos:prefLabel ?image__description ;
       skos:prefLabel ?image__title .
-    BIND(URI(CONCAT(STR(?image__id), "?width=300")) as ?image__url)
+    BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=300")) as ?image__url)
   }
   UNION
   {

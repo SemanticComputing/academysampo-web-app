@@ -116,6 +116,12 @@ UNION
   BIND (REPLACE(STR(?externalLink__id) , "^.+nbf/(p.+)$", "http://biografiasampo.fi/henkilo/$1") AS ?externalLink__dataProviderUrl )
 }
 UNION
+{
+  ?id :kb ?externalLink__id.
+  BIND ("Kansallisbiografia" AS ?externalLink__prefLabel)
+  BIND (CONCAT("https://kansallisbiografia.fi/kansallisbiografia/henkilo/", STR(?externalLink__id)) AS ?externalLink__dataProviderUrl )
+}
+UNION
 { ?id dct:source ?source__id .
   ?source__id
     skos:prefLabel ?source__prefLabel ;
@@ -313,6 +319,12 @@ export const peoplePropertiesFacetResults =
     ?id :nbf ?externalLink__id.
     BIND ("Biografiasampo" AS ?externalLink__prefLabel)
     BIND (REPLACE(STR(?externalLink__id) , "^.+nbf/(p.+)$", "http://biografiasampo.fi/henkilo/$1") AS ?externalLink__dataProviderUrl )
+  }
+  UNION
+  {
+    ?id :kb ?externalLink__id.
+    BIND ("Kansallisbiografia" AS ?externalLink__prefLabel)
+    BIND (CONCAT("https://kansallisbiografia.fi/kansallisbiografia/henkilo/", STR(?externalLink__id)) AS ?externalLink__dataProviderUrl )
   }
   UNION
   {

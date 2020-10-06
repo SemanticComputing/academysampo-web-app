@@ -7,10 +7,11 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import purple from '@material-ui/core/colors/purple'
 import PerspectiveTabs from '../../main_layout/PerspectiveTabs'
 import InstanceHomePageTable from '../../main_layout/InstanceHomePageTable'
-// import LeafletMap from '../facet_results/LeafletMap'
 import Network from '../../facet_results/Network'
+import ApexChart from '../../facet_results/ApexChart'
 import Export from '../../facet_results/Export'
 import { coseLayout, cytoscapeStyle, preprocess } from '../../../configs/as/Cytoscape.js/NetworkConfig'
+import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
 
@@ -109,6 +110,7 @@ class InstanceHomePage extends React.Component {
   render = () => {
     const { classes, tableData, isLoading, resultClass, rootUrl } = this.props
     const hasData = tableData !== null && Object.values(tableData).length >= 1
+    console.log(this.props)
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -191,6 +193,24 @@ class InstanceHomePage extends React.Component {
                     style={cytoscapeStyle}
                     layout={coseLayout}
                     preprocess={preprocess}
+                  />}
+              />
+              <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/placeByYear`}
+                render={() =>
+                  <ApexChart
+                    pageType='instancePage'
+                    results={this.props.results}
+                    resultUpdateID={this.props.resultUpdateID}
+                    fetchResults={this.props.fetchResults}
+                    fetching={`${true}`}
+                    fetchData={this.props.fetchResults}
+                    resultClass='placeByYear'
+                    createChartData={createMultipleLineChartData}
+                    uri={tableData.id}
+                    title='Events by year'
+                    xaxisTitle='Year'
+                    yaxisTitle='Number of events'
                   />}
               />
               <Route

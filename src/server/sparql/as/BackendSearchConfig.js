@@ -18,7 +18,8 @@ import {
 import {
   placePropertiesInfoWindow,
   actorsAt,
-  peopleRelatedTo
+  peopleRelatedTo,
+  placeByYearQuery
 } from './sparql_queries/SparqlQueriesPlaces'
 import { relativesPropertiesInstancePage } from './sparql_queries/SparqlQueriesRelatives'
 import { titlesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTitles'
@@ -135,6 +136,11 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     q: eventsByYearQuery,
     filterTarget: 'person__id',
+    resultMapper: mapMultipleLineChart
+  },
+  placeByYear: {
+    perspectiveID: 'places',
+    q: placeByYearQuery,
     resultMapper: mapMultipleLineChart
   }
 }

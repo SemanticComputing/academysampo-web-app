@@ -128,3 +128,28 @@ OPTIONAL {
   BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
 }
 `
+
+// https://api.triplydb.com/s/fyCIq_tlO
+export const placeByYearQuery = `
+SELECT DISTINCT ?category 
+  (SUM(?birth) AS ?Births)
+  (SUM(?death) AS ?Deaths)
+  (SUM(?event) AS ?Events)
+WHERE {
+  VALUES ?id { <ID> }
+  VALUES (?evt__class ?birth ?death ?event) {
+    (:Birth 1 0 0)
+    (:Baptism 1 0 0)
+    (:Death 0 1 0)
+    (:Burial 0 1 0)
+    (:Career 0 0 1)
+    (:Event 0 0 1)
+    (:Study 0 0 1)
+  }
+  ?evt schema:place/skos:broader* ?id ;
+    schema:date/gvp:estStart ?evt__time ;
+    a ?evt__class .
+  
+  BIND (STR(year(?evt__time)) AS ?category)
+} GROUP BY ?category ORDER BY ?category 
+`

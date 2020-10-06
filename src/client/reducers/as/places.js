@@ -128,7 +128,7 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'peoplePlaces', 'places', 'peopleMigrations'
+  'peoplePlaces', 'places', 'peopleMigrations', 'placeByYear'
 ])
 
 const places = (state = INITIAL_STATE, action) => {

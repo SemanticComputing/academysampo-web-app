@@ -110,8 +110,13 @@ export const perspectiveConfig = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'export',
+        id: 'placeByYear',
         value: 1,
+        icon: <LineChartIcon />
+      },
+      {
+        id: 'export',
+        value: 2,
         icon: <CloudDownloadIcon />
       }
     ]

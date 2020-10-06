@@ -49,6 +49,7 @@ export default {
     academicNetwork: 'Academic relations',
     relationNetwork: 'Relations',
     by_year: 'by year',
+    placeByYear: 'Timeline of events',
     export: 'export',
     'by-period': 'by period'
   },

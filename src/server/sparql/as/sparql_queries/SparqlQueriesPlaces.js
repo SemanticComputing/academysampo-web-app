@@ -132,12 +132,12 @@ OPTIONAL {
 // https://api.triplydb.com/s/fyCIq_tlO
 export const placeByYearQuery = `
 SELECT DISTINCT ?category 
-  (SUM(?birth) AS ?Births)
-  (SUM(?death) AS ?Deaths)
-  (SUM(?event) AS ?Events)
+  (SUM(?bir) AS ?Birth)
+  (SUM(?dea) AS ?Death)
+  (SUM(?eve) AS ?Event)
 WHERE {
   VALUES ?id { <ID> }
-  VALUES (?evt__class ?birth ?death ?event) {
+  VALUES (?evt__class ?bir ?dea ?eve) {
     (:Birth 1 0 0)
     (:Baptism 1 0 0)
     (:Death 0 1 0)

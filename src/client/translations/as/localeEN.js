@@ -60,7 +60,8 @@ export default {
   lineChart: {
     Birth: 'Birth',
     Enrollment: 'Enrollment',
-    Death: 'Death'
+    Death: 'Death',
+    Event: 'Event'
   },
   exportToYasgui: 'open the result table query in yasgui sparql editor',
   openInLinkedDataBrowser: 'open in linked data browser',

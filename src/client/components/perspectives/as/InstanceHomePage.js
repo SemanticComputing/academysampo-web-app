@@ -110,7 +110,6 @@ class InstanceHomePage extends React.Component {
   render = () => {
     const { classes, tableData, isLoading, resultClass, rootUrl } = this.props
     const hasData = tableData !== null && Object.values(tableData).length >= 1
-    console.log(this.props)
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -200,14 +199,13 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <ApexChart
                     pageType='instancePage'
-                    results={this.props.results}
-                    resultUpdateID={this.props.resultUpdateID}
-                    fetchResults={this.props.fetchResults}
-                    fetching={`${true}`}
+                    rawData={this.props.results}
+                    rawDataUpdateID={this.props.resultUpdateID}
+                    fetching={isLoading}
                     fetchData={this.props.fetchResults}
-                    resultClass='placeByYear'
-                    createChartData={createMultipleLineChartData}
                     uri={tableData.id}
+                    createChartData={createMultipleLineChartData}
+                    resultClass='placeByYear'
                     title='Events by year'
                     xaxisTitle='Year'
                     yaxisTitle='Number of events'

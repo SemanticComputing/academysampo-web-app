@@ -32,6 +32,20 @@ export const cytoscapeStyle = [
   }
 ]
 
+export const cytoscapeStylePointCloud = [
+  {
+    selector: 'node',
+    style: {
+      shape: 'ellipse',
+      'font-size': '12',
+      'background-color': ele => ele.data('color') || '#666',
+      label: ' data(prefLabel)',
+      height: ele => (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px'),
+      width: ele => (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px')
+    }
+  }
+]
+
 // https://js.cytoscape.org/#layouts
 export const coseLayout = {
   name: 'cose',
@@ -61,6 +75,20 @@ export const preprocess = elements => {
   const a = (wmax - wmin) / (valmax - valmin)
   const b = wmin - valmin * (wmax - wmin) / (valmax - valmin)
   elements.edges.forEach((ele, i) => { ele.data.weight = vals[i] * a + b })
+}
+
+export const preprocessPointCloud = elements => {
+  const nodes = elements.nodes.map(ob => {
+    return {
+      data: ob.data,
+      position: {
+        x: 15 * parseFloat(ob.data.x),
+        y: 15 * parseFloat(ob.data.y)
+      }
+    }
+  })
+  elements.nodes = nodes
+  elements.edges = []
 }
 
 const maxEdgeWidth = 8

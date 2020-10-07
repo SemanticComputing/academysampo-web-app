@@ -6,13 +6,18 @@ import ResultTable from '../../facet_results/ResultTable'
 import LeafletMap from '../../facet_results/LeafletMap'
 import Deck from '../../facet_results/Deck'
 import Network from '../../facet_results/Network'
-import PointCloud from '../../facet_results/PointCloud'
 import Export from '../../facet_results/Export'
 import MigrationsMapLegend from '../as/MigrationsMapLegend'
 import ApexChart from '../../facet_results/ApexChart'
 import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
-import { coseLayout, cytoscapeStyle, preprocess } from '../../../configs/as/Cytoscape.js/NetworkConfig'
+import {
+  coseLayout,
+  cytoscapeStyle,
+  cytoscapeStylePointCloud,
+  preprocess,
+  preprocessPointCloud
+} from '../../../configs/as/Cytoscape.js/NetworkConfig'
 
 const People = props => {
   const { rootUrl, perspective } = props
@@ -74,6 +79,7 @@ const People = props => {
             facetUpdateID={props.facetData.facetUpdateID}
             resultUpdateID={props.facetResults.resultUpdateID}
             fetchResults={props.fetchResults}
+            fetching={props.facetResults.fetching}
             resultClass='peopleNetwork'
             facetClass='people'
             limit={200}
@@ -81,9 +87,10 @@ const People = props => {
             style={cytoscapeStyle}
             layout={coseLayout}
             preprocess={preprocess}
+            pageType='facetResults'
           />}
       />
-      <Route
+      {/* <Route
         path={`${rootUrl}/${perspective.id}/faceted-search/pointcloud`}
         render={() =>
           <PointCloud
@@ -95,6 +102,25 @@ const People = props => {
             facetClass='people'
             limit={500}
             optimize={1.0}
+          />}
+      /> */}
+      <Route
+        path={`${rootUrl}/${perspective.id}/faceted-search/pointcloud`}
+        render={() =>
+          <Network
+            results={props.facetResults.results}
+            facetUpdateID={props.facetData.facetUpdateID}
+            resultUpdateID={props.facetResults.resultUpdateID}
+            fetchResults={props.fetchResults}
+            fetching={props.facetResults.fetching}
+            resultClass='peoplePointCloud'
+            facetClass='people'
+            limit={500}
+            optimize={1.0}
+            style={cytoscapeStylePointCloud}
+            preprocess={preprocessPointCloud}
+            fitLayout
+            pageType='facetResults'
           />}
       />
       <Route

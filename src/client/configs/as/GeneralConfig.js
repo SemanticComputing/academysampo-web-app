@@ -4,8 +4,6 @@ export const defaultLocale = 'en'
 
 export const showLanguageButton = true
 
-export const publishedPort = 3006
-
 export const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoicHRsZXNraW4iLCJhIjoiY2s4ZTk2aGtjMTI1NjNucGVyazZvenVlZCJ9.jSq3iYrWOoDphMhxfnpX6w'
 
 export const MAPBOX_STYLE = 'light-v10' // https://docs.mapbox.com/api/maps/#styles

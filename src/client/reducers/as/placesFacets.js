@@ -21,6 +21,27 @@ export const INITIAL_STATE = {
       filterType: 'textFilter',
       textFilter: null,
       priority: 1
+    },
+    broader: {
+      id: 'broader',
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'prefLabel',
+      sortDirection: 'asc',
+      sortButton: false,
+      spatialFilterButton: false,
+      spatialFilterTab: '',
+      isFetching: false,
+      searchField: true,
+      containerClass: 'ten',
+      filterType: 'uriFilter',
+      uriFilter: null,
+      patialFilter: null,
+      type: 'hierarchical',
+      selectAlsoSubconceptsButton: true,
+      selectAlsoSubconcepts: true,
+      priority: 6
     }
   }
 }

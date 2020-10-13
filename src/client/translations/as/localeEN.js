@@ -179,7 +179,7 @@ export default {
         image: {
           label: 'Image',
           description: `
-            A possible image of the person.
+            A possible image of the person. Source: Wikimedia Commons.
           `
         },
         gender: {
@@ -625,6 +625,12 @@ export default {
           label: 'Place of Burial',
           description: `
             List of people buried here. Notice that this information is available only for a few people.
+          `
+        },
+        image: {
+          label: 'Image',
+          description: `
+            A possible image of the place. Source: Wikimedia Commons.
           `
         },
         title: {

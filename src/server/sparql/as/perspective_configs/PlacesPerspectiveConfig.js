@@ -25,6 +25,15 @@ export const placesPerspectiveConfig = {
       textQueryPredicate: '', // empty for querying the facetClass
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
+    },
+    broader: {
+      id: 'broader',
+      facetValueFilter: '',
+      predicate: 'skos:broader',
+      labelPath: 'skos:broader/skos:prefLabel',
+      parentProperty: 'skos:broader',
+      parentPredicate: 'skos:broader+',
+      type: 'hierarchical'
     }
   }
 }

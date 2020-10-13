@@ -40,10 +40,9 @@ UNION
   BIND ("YSO" AS ?externalLink__prefLabel)
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 } 
-UNION 
-{ 
-  ?id owl:sameAs ?externalLink__id . 
-  FILTER (REGEX(STR(?externalLink__id), 'geonames.org'))
+UNION
+{
+  ?id :geonames ?externalLink__id . 
   BIND ("Geonames" AS ?externalLink__prefLabel)
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
@@ -89,14 +88,26 @@ UNION
     a :Title ;
     skos:prefLabel ?title__prefLabel .
   BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
-} 
+}
+UNiON
+{
+  ?id schema:image ?image__id ;
+    skos:prefLabel ?image__description ;
+    skos:prefLabel ?image__title .
+    BIND(URI(CONCAT(REPLACE(STR(?image__id), "^https*:", ""), "?width=300")) as ?image__url)
+}
 `
 
 export const placePropertiesFacetResults = `
+?id skos:prefLabel ?prefLabel__id .
+BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+
 {
-  ?id skos:prefLabel ?prefLabel__id .
-  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  ?id skos:broader ?broader__id .
+  ?broader__id skos:prefLabel ?broader__prefLabel .
+  FILTER (LANG(?broader__prefLabel)="fi")
+  BIND(CONCAT("/places/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
 }
 `
 

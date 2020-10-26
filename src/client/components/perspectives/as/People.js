@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import intl from 'react-intl-universal'
 import { Route, Redirect } from 'react-router-dom'
 import PerspectiveTabs from '../../main_layout/PerspectiveTabs'
 import ResultTable from '../../facet_results/ResultTable'
@@ -7,7 +8,6 @@ import LeafletMap from '../../facet_results/LeafletMap'
 import Deck from '../../facet_results/Deck'
 import Network from '../../facet_results/Network'
 import Export from '../../facet_results/Export'
-import MigrationsMapLegend from '../as/MigrationsMapLegend'
 import ApexChart from '../../facet_results/ApexChart'
 import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
@@ -119,8 +119,16 @@ const People = props => {
             facetClass='people'
             fetchResults={props.fetchResults}
             fetching={props.placesResults.fetching}
-            legendComponent={<MigrationsMapLegend />}
             layerType='arcLayer'
+            fromText={intl.get('deckGlMap.peopleMigrations.from')}
+            toText={intl.get('deckGlMap.peopleMigrations.to')}
+            legendTitle={intl.get('deckGlMap.peopleMigrations.legendTitle')}
+            legendFromText={intl.get('deckGlMap.peopleMigrations.legendFrom')}
+            legendToText={intl.get('deckGlMap.peopleMigrations.legendTo')}
+            showMoreText={intl.get('deckGlMap.showMoreInformation')}
+            listHeadingSingleInstance={intl.get('deckGlMap.peopleMigrations.listHeadingSingleInstance')}
+            listHeadingMultipleInstances={intl.get('deckGlMap.peopleMigrations.listHeadingMultipleInstances')}
+            showTooltips
             mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
             mapBoxStyle={MAPBOX_STYLE}
           />}

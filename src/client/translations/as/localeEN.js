@@ -143,7 +143,7 @@ export default {
     people: {
       label: 'People',
       facetResultsType: 'people',
-      shortDescription: 'People description',
+      shortDescription: 'Browse the data of 28000 students and their relatives',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to physical manuscript objects.
@@ -373,7 +373,7 @@ export default {
     relatives: {
       label: 'Relatives',
       facetResultsType: 'people',
-      shortDescription: 'People description',
+      shortDescription: 'Browse the data of 28000 students and their relatives.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to physical manuscript objects.
@@ -575,7 +575,7 @@ export default {
     places: {
       label: 'Places',
       facetResultsType: 'places',
-      shortDescription: 'Places description',
+      shortDescription: 'Browse the data of related places',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to Works. The AcademySampo data model follows

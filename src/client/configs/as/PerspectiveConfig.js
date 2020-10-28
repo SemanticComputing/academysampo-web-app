@@ -6,14 +6,13 @@ import RedoIcon from '@material-ui/icons/Redo'
 import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import LineChartIcon from '@material-ui/icons/ShowChart'
-import manuscriptsImage from '../../img/main_page/manuscripts-452x262.jpg'
-import worksImage from '../../img/main_page/works-452x262.jpg'
-// import eventsImage from '../../img/events-452x262.jpg'
+import studentsImage from '../../img/main_page/promootio_452x262.jpg'
+import placesImage from '../../img/main_page/senaatti_452x262.jpg'
 
 export const perspectiveConfig = [
   {
     id: 'people',
-    frontPageImage: manuscriptsImage,
+    frontPageImage: studentsImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set(['prefLabel']),
     tabs: [
@@ -83,7 +82,7 @@ export const perspectiveConfig = [
   },
   {
     id: 'places',
-    frontPageImage: worksImage,
+    frontPageImage: placesImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set(['prefLabel']),
     tabs: [

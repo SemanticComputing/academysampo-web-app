@@ -11,6 +11,7 @@ export const placesPerspectiveConfig = {
     useAuth: true
   },
   facetClass: '<http://ldf.fi/schema/yoma/Place>',
+  defaultConstraint: 'FILTER EXISTS { [] schema:place <SUBJECT> }',
   paginatedResults: {
     properties: placePropertiesInstancePage
   },

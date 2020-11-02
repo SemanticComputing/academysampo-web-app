@@ -1,5 +1,4 @@
 export const categoriesPropertiesInstancePage = `
-
 {
   ?id skos:prefLabel ?prefLabel__id .
   FILTER (LANG(?prefLabel__id)="fi")
@@ -10,8 +9,13 @@ export const categoriesPropertiesInstancePage = `
   BIND(?id as ?uri__prefLabel)
 } 
 UNION
+{ ?id skos:related ?related__id 
+  BIND("Search page at ylioppilasmatrikkeli.helsinki.fi" AS ?related__prefLabel)
+  BIND(?related__id AS ?related__dataProviderUrl)
+}
+UNION
 { 
-  ?id skos:broader+ ?broader__id . 
+  ?id skos:broader+ ?broader__id .
   ?broader__id skos:prefLabel ?broader__prefLabel .
   BIND(CONCAT("/categories/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
 }
@@ -24,8 +28,8 @@ UNION
 UNION
 {
   ?id schema:place ?place__id .
-	?place__id skos:prefLabel ?place__prefLabel .
-	BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
+  ?place__id skos:prefLabel ?place__prefLabel .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
 }
 UNION
 {
@@ -33,8 +37,4 @@ UNION
     a :Person ;
     skos:prefLabel ?person__prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
-}
-
-`
-
-
+} `

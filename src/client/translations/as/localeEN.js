@@ -990,6 +990,12 @@ export default {
           description: `
             The specific place(s) associated with the title.
           `
+        },
+        related: {
+          label: 'See also',
+          description: `
+            Reference page at ylioppilasmatrikkeli.helsinki.fi, in Finnish only.
+          `
         }
       }
     }

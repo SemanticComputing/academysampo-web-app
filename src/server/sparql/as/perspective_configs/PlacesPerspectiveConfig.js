@@ -1,6 +1,5 @@
 import {
   placePropertiesInstancePage
-  // placePropertiesFacetResults,
 } from '../sparql_queries/SparqlQueriesPlaces'
 import { prefixes } from '../sparql_queries/SparqlQueriesPrefixes'
 

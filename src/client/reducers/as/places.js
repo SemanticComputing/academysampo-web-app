@@ -49,6 +49,15 @@ export const INITIAL_STATE = {
       hideHeader: false
     },
     {
+      id: 'altLabel',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 170
+    },
+    {
       id: 'broader',
       valueType: 'object',
       makeLink: true,

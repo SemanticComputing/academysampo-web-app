@@ -627,7 +627,11 @@ export default {
         },
         prefLabel: {
           label: 'Title',
-          description: 'The name or title of the Work.'
+          description: 'The name or title of the place.'
+        },
+        altLabel: {
+          label: 'Altertavite Labels',
+          description: 'The name or title of the place.'
         },
         broader: {
           label: 'Parent Place',

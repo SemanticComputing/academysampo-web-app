@@ -9,6 +9,10 @@ export const placePropertiesInstancePage = `
   BIND(?id as ?uri__prefLabel)
 }
 UNION
+{
+  ?id skos:altLabel ?altLabel .
+}
+UNION
 { 
   ?id skos:broader+ ?broader__id . 
   ?broader__id skos:prefLabel ?broader__prefLabel .

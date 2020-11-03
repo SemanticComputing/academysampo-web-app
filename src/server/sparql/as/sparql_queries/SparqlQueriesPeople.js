@@ -7,8 +7,7 @@ BIND(?id as ?uri__dataProviderUrl)
 BIND(?id as ?uri__prefLabel)
 
 {
-  ?id skosxl:altLabel/skos:prefLabel ?altLabel__id .
-  BIND (?altLabel__id AS ?altLabel__prefLabel )
+  ?id skosxl:altLabel/skos:prefLabel ?altLabel 
 }
 UNION
 {

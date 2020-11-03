@@ -34,7 +34,7 @@ export const INITIAL_STATE = {
       previewImageHeight: 160,
       makeLink: true,
       externalLink: true,
-      sortValues: true,
+      sortValues: false,
       numberedList: false,
       minWidth: 120,
       hideHeader: false
@@ -50,11 +50,11 @@ export const INITIAL_STATE = {
     },
     {
       id: 'altLabel',
-      valueType: 'object',
+      valueType: 'string',
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 220,
       onlyOnInstancePage: true
     },

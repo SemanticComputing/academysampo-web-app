@@ -35,6 +35,23 @@ export const placesPerspectiveConfig = {
       parentProperty: 'skos:broader',
       parentPredicate: 'skos:broader+',
       type: 'hierarchical'
+    },
+    image: {
+      labelPath: 'schema:image'
+    },
+    altLabel: {
+      labelPath: 'skos:altLabel'
+    },
+    externalLink: {
+      orderByPattern: `
+      {
+        SELECT ?id (COUNT(?link) AS ?orderBy) WHERE {
+          VALUES ?facetClass { <FACET_CLASS> }
+          ?id a <FACET_CLASS> .
+          OPTIONAL { ?id :yso|:geonames|:wikidata|:wikipedia ?link }
+        } GROUP BY ?id 
+      }
+      `
     }
   }
 }

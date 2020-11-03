@@ -630,7 +630,7 @@ export default {
           description: 'The name or title of the place.'
         },
         altLabel: {
-          label: 'Altertavite Labels',
+          label: 'Alternative Labels',
           description: 'The name or title of the place.'
         },
         broader: {

@@ -134,6 +134,20 @@ export const peoplePerspectiveConfig = {
       startProperty: 'gvp:estStart',
       endProperty: 'gvp:estEnd',
       type: 'timespan'
+    },
+    image: {
+      labelPath: 'schema:image'
+    },
+    externalLink: {
+      orderByPattern: `
+      {
+        SELECT ?id (COUNT(?link) AS ?orderBy) WHERE {
+          VALUES ?facetClass { <FACET_CLASS> }
+          ?id a <FACET_CLASS> .
+          OPTIONAL { ?id :nbf|:kb|:wikidata|:wikipedia ?link }
+        } GROUP BY ?id 
+      }
+      `
     }
   },
   relatives: {

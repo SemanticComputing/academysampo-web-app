@@ -48,7 +48,7 @@ export const INITIAL_STATE = {
 
 const placesFacets = (state = INITIAL_STATE, action) => {
   if (action.facetClass === 'places') {
-    return handleFacetAction(state, action)
+    return handleFacetAction(state, action, INITIAL_STATE)
   } else return state
 }
 

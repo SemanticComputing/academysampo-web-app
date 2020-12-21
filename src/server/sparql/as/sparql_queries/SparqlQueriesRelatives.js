@@ -118,5 +118,11 @@ UNION
     BIND(CONCAT("/relatives/page/", REPLACE(STR(?relative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
   }
 }
-
+UNION
+{
+  ?id schema:image ?image__id ;
+    skos:prefLabel ?image__description ;
+    skos:prefLabel ?image__title .
+    BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
+}
 `

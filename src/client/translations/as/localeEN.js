@@ -477,6 +477,12 @@ export default {
           Alternative names.
           `
         },
+        image: {
+          label: 'Image',
+          description: `
+            A possible image of the place. Source: Wikimedia Commons.
+          `
+        },
         referer: {
           label: 'Referenced with',
           description: `

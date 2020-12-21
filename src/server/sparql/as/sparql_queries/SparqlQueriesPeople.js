@@ -160,13 +160,17 @@ UNION
   OPTIONAL { ?relative__id a/rels:level ?relative__level }
   ?relative__id skos:prefLabel ?relative__prefLabel ;
                 bioc:inheres_in ?relative__personUrl .
-  {
-    ?relative__personUrl a :Person .
-    BIND(CONCAT("/people/page/", REPLACE(STR(?relative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
-  } UNION {
-    ?relative__personUrl a :ReferencedPerson .
-    BIND(CONCAT("/relatives/page/", REPLACE(STR(?relative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
-  }
+  ?relative__personUrl a :Person .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?relative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?relative__dataProviderUrl)
+}
+UNION
+{
+  ?id bioc:has_family_relation  ?otherrelative__id .
+  OPTIONAL { ?otherrelative__id a/rels:level ?otherrelative__level }
+  ?otherrelative__id skos:prefLabel ?otherrelative__prefLabel ;
+                bioc:inheres_in ?otherrelative__personUrl .
+  ?otherrelative__personUrl a :ReferencedPerson .
+  BIND(CONCAT("/relatives/page/", REPLACE(STR(?otherrelative__personUrl), "^.*\\\\/(.+)", "$1")) AS ?otherrelative__dataProviderUrl)
 }
 UNION
 {

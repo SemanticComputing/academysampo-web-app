@@ -79,6 +79,16 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
+      id: 'otherrelative',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      sortBy: 'level',
+      numberedList: false,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'gender',
       valueType: 'object',
       makeLink: false,

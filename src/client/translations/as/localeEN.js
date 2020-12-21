@@ -294,9 +294,16 @@ export default {
           `
         },
         relative: {
-          label: 'Relatives',
+          label: 'Relatives in student registry',
           description: `
-            This list of relatives is generated from the data.
+            A list of relatives that are also students of the University.
+          `
+        },
+        otherrelative: {
+          label: 'Other Relatives',
+          description: `
+            A list of relatives that are mentioned in the description texts.
+            NB: this list is computationally generated from the texts, so there might be errors. 
           `
         },
         related: {
@@ -514,9 +521,16 @@ export default {
           `
         },
         relative: {
-          label: 'Relatives',
+          label: 'Relatives in student registry',
           description: `
-            This list of relatives is generated from the data.
+            A list of relatives that are also students of the University.
+          `
+        },
+        otherrelative: {
+          label: 'Other Relatives',
+          description: `
+            A list of relatives that are mentioned in the description texts.
+            NB: this list is computationally generated from the texts, so there might be errors. 
           `
         },
         similar: {

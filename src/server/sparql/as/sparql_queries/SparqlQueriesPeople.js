@@ -85,6 +85,12 @@ UNION
 }
 UNION
 {
+  ?id :has_reference ?reference__id .
+  ?reference__id skos:prefLabel ?reference__prefLabel .
+  BIND(CONCAT("/categories/page/", REPLACE(STR(?reference__id), "^.*\\\\/(.+)", "$1")) AS ?reference__dataProviderUrl)
+}
+UNION
+{
   ?id :has_event/:organization ?organization__id .
   ?organization__id skos:prefLabel ?organization__prefLabel .
   FILTER (LANG(?organization__prefLabel)='fi')
@@ -247,6 +253,12 @@ export const peoplePropertiesFacetResults =
     ?id :has_category ?category__id .
     ?category__id skos:prefLabel ?category__prefLabel .
     BIND(CONCAT("/categories/page/", REPLACE(STR(?category__id), "^.*\\\\/(.+)", "$1")) AS ?category__dataProviderUrl)
+  }
+  UNION
+  {
+    ?id :has_reference ?reference__id .
+    ?reference__id skos:prefLabel ?reference__prefLabel .
+    BIND(CONCAT("/categories/page/", REPLACE(STR(?reference__id), "^.*\\\\/(.+)", "$1")) AS ?reference__dataProviderUrl)
   }
   UNION
   {

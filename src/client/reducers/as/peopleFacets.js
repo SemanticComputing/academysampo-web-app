@@ -176,6 +176,23 @@ export const INITIAL_STATE = {
       type: 'hierarchical',
       priority: 6
     },
+    reference: {
+      id: 'reference',
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'prefLabel',
+      sortDirection: 'asc',
+      sortButton: true,
+      spatialFilterButton: false,
+      isFetching: false,
+      searchField: true,
+      containerClass: 'ten',
+      filterType: 'uriFilter',
+      uriFilter: null,
+      type: 'hierarchical',
+      priority: 6
+    },
     database: {
       id: 'database',
       distinctValueCount: 0,

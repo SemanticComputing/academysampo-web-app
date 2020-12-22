@@ -80,6 +80,15 @@ export const peoplePerspectiveConfig = {
       parentPredicate: ':has_category/skos:broader+',
       type: 'hierarchical'
     },
+    reference: {
+      id: 'reference',
+      facetValueFilter: '',
+      predicate: ':has_reference',
+      labelPath: ':has_reference/skos:prefLabel',
+      parentProperty: 'skos:broader',
+      parentPredicate: ':has_reference/skos:broader+',
+      type: 'hierarchical'
+    },
     organization: {
       id: 'organization',
       facetValueFilter: '',

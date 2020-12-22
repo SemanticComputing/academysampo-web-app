@@ -193,6 +193,15 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
+      id: 'reference',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 220
+    },
+    {
       id: 'organization',
       valueType: 'object',
       makeLink: true,

@@ -161,7 +161,6 @@ export const INITIAL_STATE = {
     },
     category: {
       id: 'category',
-      // predicate: defined in backend
       distinctValueCount: 0,
       values: [],
       flatValues: [],
@@ -175,6 +174,22 @@ export const INITIAL_STATE = {
       filterType: 'uriFilter',
       uriFilter: null,
       type: 'hierarchical',
+      priority: 6
+    },
+    database: {
+      id: 'database',
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'instanceCount',
+      sortDirection: 'desc',
+      sortButton: false,
+      spatialFilterButton: false,
+      isFetching: false,
+      searchField: false,
+      containerClass: 'five',
+      filterType: 'uriFilter',
+      uriFilter: null,
       priority: 6
     },
     organization: {

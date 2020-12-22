@@ -96,6 +96,13 @@ export const peoplePerspectiveConfig = {
       labelPath: ':has_event/:student_nation/skos:prefLabel',
       type: 'list'
     },
+    database: {
+      id: 'database',
+      facetValueFilter: '',
+      predicate: 'schema:sameAs/skos:prefLabel',
+      labelPath: 'schema:sameAs/skos:prefLabel',
+      type: 'list'
+    },
     source: {
       id: 'source',
       facetValueFilter: '',

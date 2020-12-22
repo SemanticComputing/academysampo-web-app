@@ -92,33 +92,9 @@ UNION
 }
 UNION
 {
-  ?id schema:relatedLink ?externalLink__id.
-  BIND ("Ylioppilasmatrikkeli" AS ?externalLink__prefLabel)
+  ?id schema:sameAs ?externalLink__id .
+  ?externalLink__id skos:prefLabel ?externalLink__prefLabel .
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-}
-UNION
-{
-  ?id :wikidata ?externalLink__id.
-  BIND ("Wikidata" AS ?externalLink__prefLabel)
-  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-}
-UNION
-{
-  ?id :wikipedia ?externalLink__id.
-  BIND ("Wikipedia" AS ?externalLink__prefLabel)
-  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-}
-UNION
-{
-  ?id :nbf ?externalLink__id.
-  BIND ("Biografiasampo" AS ?externalLink__prefLabel)
-  BIND (REPLACE(STR(?externalLink__id) , "^.+nbf/(p.+)$", "http://biografiasampo.fi/henkilo/$1") AS ?externalLink__dataProviderUrl )
-}
-UNION
-{
-  ?id :kb ?externalLink__id.
-  BIND ("Kansallisbiografia" AS ?externalLink__prefLabel)
-  BIND (CONCAT("https://kansallisbiografia.fi/kansallisbiografia/henkilo/", STR(?externalLink__id)) AS ?externalLink__dataProviderUrl )
 }
 UNION
 { ?id dct:source ?source__id .
@@ -301,33 +277,9 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id :wikidata ?externalLink__id.
-    BIND ("Wikidata" AS ?externalLink__prefLabel)
+    ?id schema:sameAs ?externalLink__id .
+    ?externalLink__id skos:prefLabel ?externalLink__prefLabel .
     BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-  }
-  UNION
-  {
-    ?id :wikipedia ?externalLink__id.
-    BIND ("Wikipedia" AS ?externalLink__prefLabel)
-    BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-  }
-  UNION
-  {
-    ?id schema:relatedLink ?externalLink__id.
-    BIND ("Ylioppilasmatrikkeli" AS ?externalLink__prefLabel)
-    BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-  }
-  UNION
-  {
-    ?id :nbf ?externalLink__id.
-    BIND ("Biografiasampo" AS ?externalLink__prefLabel)
-    BIND (REPLACE(STR(?externalLink__id) , "^.+nbf/(p.+)$", "http://biografiasampo.fi/henkilo/$1") AS ?externalLink__dataProviderUrl )
-  }
-  UNION
-  {
-    ?id :kb ?externalLink__id.
-    BIND ("Kansallisbiografia" AS ?externalLink__prefLabel)
-    BIND (CONCAT("https://kansallisbiografia.fi/kansallisbiografia/henkilo/", STR(?externalLink__id)) AS ?externalLink__dataProviderUrl )
   }
   UNION
   {

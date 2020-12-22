@@ -27,27 +27,9 @@ UNION
   FILTER (LANG(?narrower__prefLabel)='fi')
 }
 UNION 
-{ 
-  ?id :wikidata ?externalLink__id . 
-  BIND ("Wikidata" AS ?externalLink__prefLabel)
-  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-} 
-UNION 
-{ 
-  ?id :wikipedia ?externalLink__id . 
-  BIND ("Wikipedia" AS ?externalLink__prefLabel)
-  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-} 
-UNION 
-{ 
-  ?id :yso ?externalLink__id . 
-  BIND ("YSO" AS ?externalLink__prefLabel)
-  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-} 
-UNION
 {
-  ?id :geonames ?externalLink__id . 
-  BIND ("Geonames" AS ?externalLink__prefLabel)
+  ?id schema:sameAs ?externalLink__id .
+  ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 UNION 

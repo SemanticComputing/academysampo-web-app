@@ -19,7 +19,7 @@ UNION
   ?broader__id skos:prefLabel ?broader__prefLabel .
   BIND(CONCAT("/references/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
 }
-UNION 
+UNION
 { 
   ?narrower__id skos:broader ?id ;
     skos:prefLabel ?narrower__prefLabel .
@@ -28,7 +28,7 @@ UNION
 UNION
 {
   ?person__id :has_reference ?id ;
-    a :Person ;
+      a :Person ;
     skos:prefLabel ?person__prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
 } `

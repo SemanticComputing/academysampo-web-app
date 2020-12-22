@@ -25,6 +25,7 @@ import { relativesPropertiesInstancePage } from './sparql_queries/SparqlQueriesR
 import { titlesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTitles'
 import { nationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesNations'
 import { categoriesPropertiesInstancePage } from './sparql_queries/SparqlQueriesCategories'
+import { referencesPropertiesInstancePage } from './sparql_queries/SparqlQueriesReferences'
 import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesOrganizations'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { makeObjectList } from '../SparqlObjectMapper'
@@ -48,21 +49,28 @@ export const backendSearchConfig = {
     }
   },
   nations: {
-    perspectiveID: 'people', // use endpoint config from people
+    perspectiveID: 'people',
     instance: {
       properties: nationsPropertiesInstancePage,
       relatedInstances: ''
     }
   },
   categories: {
-    perspectiveID: 'people', // use endpoint config from people
+    perspectiveID: 'people',
     instance: {
       properties: categoriesPropertiesInstancePage,
       relatedInstances: ''
     }
   },
+  references: {
+    perspectiveID: 'people',
+    instance: {
+      properties: referencesPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
   organizations: {
-    perspectiveID: 'people', // use endpoint config from people
+    perspectiveID: 'people',
     instance: {
       properties: organizationsPropertiesInstancePage,
       relatedInstances: ''

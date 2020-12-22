@@ -281,6 +281,12 @@ export default {
             The category of the actor. This list is available only for the people in the 1640–1853 dataset.
           `
         },
+        reference: {
+          label: 'References',
+          description: `
+            The literature references for this actor. This list is available only for the people in the 1640–1853 dataset.
+          `
+        },
         organization: {
           label: 'Organization',
           description: `
@@ -328,6 +334,12 @@ export default {
           label: 'Student nation',
           description: `
             The student nation of the person.
+          `
+        },
+        database: {
+          label: 'External databases',
+          description: `
+            Person entries in external databases.
           `
         },
         birthPlace: {
@@ -1016,6 +1028,57 @@ export default {
           label: 'Related place',
           description: `
             The specific place(s) associated with the title.
+          `
+        },
+        related: {
+          label: 'See also',
+          description: `
+            Reference page at ylioppilasmatrikkeli.helsinki.fi, in Finnish only.
+          `
+        }
+      }
+    },
+    references: {
+      label: 'Referencs',
+      facetResultsType: 'references',
+      shortDescription: 'Reference description',
+      longDescription: `
+        Reference literature for the actors. 
+        This data is available only for students in the 1640-1853 dataset.
+      `,
+      instancePage: {
+        label: 'Reference',
+        description: `
+        <p>Reference literature for the actors. 
+        This data is available only for students in the 1640-1853 dataset.
+        </p>
+        `
+      },
+      properties: {
+        prefLabel: {
+          label: 'label',
+          description: ''
+        },
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier.'
+        },
+        person: {
+          label: 'People',
+          description: `
+            People associated with this category.
+          `
+        },
+        broader: {
+          label: 'Parent Category',
+          description: `
+          A larger category in which a place is contained.
+          `
+        },
+        narrower: {
+          label: 'Subcategories',
+          description: `
+          A subcategory.
           `
         },
         related: {

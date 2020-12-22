@@ -14,6 +14,7 @@ import titles from './as/titles'
 import nations from './as/nations'
 import peopleFacets from './as/peopleFacets'
 import categories from './as/categories'
+import references from './as/references'
 import organizations from './as/organizations'
 import fullTextSearch from './as/fullTextSearch'
 
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   titles,
   nations,
   categories,
+  references,
   organizations,
   peopleFacets,
   placesFacets,

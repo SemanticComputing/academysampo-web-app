@@ -87,7 +87,7 @@ UNION
 {
   ?id :has_reference ?reference__id .
   ?reference__id skos:prefLabel ?reference__prefLabel .
-  BIND(CONCAT("/categories/page/", REPLACE(STR(?reference__id), "^.*\\\\/(.+)", "$1")) AS ?reference__dataProviderUrl)
+  BIND(CONCAT("/references/page/", REPLACE(STR(?reference__id), "^.*\\\\/(.+)", "$1")) AS ?reference__dataProviderUrl)
 }
 UNION
 {
@@ -258,7 +258,7 @@ export const peoplePropertiesFacetResults =
   {
     ?id :has_reference ?reference__id .
     ?reference__id skos:prefLabel ?reference__prefLabel .
-    BIND(CONCAT("/categories/page/", REPLACE(STR(?reference__id), "^.*\\\\/(.+)", "$1")) AS ?reference__dataProviderUrl)
+    BIND(CONCAT("/references/page/", REPLACE(STR(?reference__id), "^.*\\\\/(.+)", "$1")) AS ?reference__dataProviderUrl)
   }
   UNION
   {

@@ -59,15 +59,6 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'externalLink',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
-    },
-    {
       id: 'entryText',
       valueType: 'string',
       renderAsHTML: true,
@@ -184,16 +175,16 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'category',
+      id: 'studentnation',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: true,
-      minWidth: 220
+      minWidth: 180
     },
     {
-      id: 'reference',
+      id: 'category',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
@@ -211,13 +202,22 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
-      id: 'studentnation',
+      id: 'externalLink',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 150
+    },
+    {
+      id: 'reference',
       valueType: 'object',
       makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: true,
-      minWidth: 180
+      minWidth: 220
     },
     {
       id: 'relative',

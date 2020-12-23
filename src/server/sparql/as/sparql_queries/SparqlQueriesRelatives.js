@@ -64,7 +64,7 @@ BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS 
 UNION
 {
   ?id schema:sameAs ?externalLink__id .
-  ?externalLink__id skos:prefLabel ?externalLink__prefLabel .
+  ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 UNION

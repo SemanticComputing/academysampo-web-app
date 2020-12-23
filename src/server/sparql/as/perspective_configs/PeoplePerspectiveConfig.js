@@ -107,9 +107,11 @@ export const peoplePerspectiveConfig = {
     },
     database: {
       id: 'database',
-      facetValueFilter: '',
-      predicate: 'schema:sameAs/skos:prefLabel',
-      labelPath: 'schema:sameAs/skos:prefLabel',
+      facetValueFilter: `
+      FILTER EXISTS { ?id skos:prefLabel [] }
+      `,
+      predicate: 'schema:sameAs/rdf:type',
+      labelPath: 'schema:sameAs/rdf:type/skos:prefLabel',
       type: 'list'
     },
     source: {

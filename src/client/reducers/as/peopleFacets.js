@@ -187,7 +187,7 @@ export const INITIAL_STATE = {
       spatialFilterButton: false,
       isFetching: false,
       searchField: false,
-      containerClass: 'five',
+      containerClass: 'ten',
       filterType: 'uriFilter',
       uriFilter: null,
       priority: 6

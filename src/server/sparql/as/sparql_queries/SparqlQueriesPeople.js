@@ -111,8 +111,10 @@ UNION
     dct:description ?source__desc .
 
     OPTIONAL {
-      ?id schema:relatedLink ?source__link ;
-      skosxl:prefLabel/skos:prefLabel ?fullname .
+      ?id schema:sameAs ?source__link ;
+        skosxl:prefLabel/skos:prefLabel ?fullname .
+      VALUES ?source__class { <http://ldf.fi/yoma/external/D1640> <http://ldf.fi/yoma/external/D1853> }
+      ?source__link a ?source__class .
     }
 
     BIND (CONCAT(?source__author, ', <em>',

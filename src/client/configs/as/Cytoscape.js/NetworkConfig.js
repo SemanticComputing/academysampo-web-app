@@ -150,8 +150,8 @@ export const preprocessPointCloud = elements => {
     return {
       data: ob.data,
       position: {
-        x: 15 * parseFloat(ob.data.x),
-        y: 15 * parseFloat(ob.data.y)
+        x: 360 * parseFloat(ob.data.x),
+        y: 360 * parseFloat(ob.data.y)
       }
     }
   })

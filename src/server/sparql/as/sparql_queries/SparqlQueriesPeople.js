@@ -158,12 +158,24 @@ UNION
 }
 UNION
 {
-  ?id ^rels:relates_to [ a :Distance ; rels:relates_to ?similar__id ; :value ?similar__distance ]
-  FILTER (?similar__id != ?id)
-  #?similar__id skos:prefLabel ?similar__label .
-  #BIND(CONCAT(?similar__label, STR(?similar__distance)) AS ?similar__prefLabel)
-  ?similar__id skos:prefLabel ?similar__prefLabel .
-  BIND(CONCAT("/people/page/", REPLACE(STR(?similar__id), "^.*\\\\/(.+)", "$1")) AS ?similar__dataProviderUrl)
+  SELECT DISTINCT ?id 
+  ?similar__id 
+  (CONCAT("/people/page/", REPLACE(STR(?similar__id), "^.*\\\\/(.+)", "$1")) AS ?similar__dataProviderUrl) 
+  (CONCAT(SAMPLE(?similar__label),': [', GROUP_CONCAT(DISTINCT ?link; separator="; "), ']') AS ?similar__prefLabel)
+  WHERE {
+    ?id ^rels:relates_to ?node .
+    ?node
+      a :Distance ;
+      rels:relates_to ?similar__id ;
+      :value ?similar__distance .
+    FILTER (?similar__id != ?id)
+  
+    OPTIONAL { ?node :link_by [ skos:prefLabel ?link ; a ?link_class ]
+      FILTER (REGEX(STR(?link_class), '/yoma/'))
+    }
+    ?similar__id skos:prefLabel ?similar__label .
+}
+GROUP BY ?id ?similar__id ?similar__distance ORDER BY ?similar__distance
 }
 UNION
 {

@@ -37,12 +37,14 @@ UNION {
   ?birthDateTimespan__id skos:prefLabel ?birthDateTimespan__prefLabel .
   OPTIONAL { ?birthDateTimespan__id gvp:estStart ?birthDateTimespan__start }
   OPTIONAL { ?birthDateTimespan__id gvp:estEnd ?birthDateTimespan__end }
+  BIND(CONCAT("/times/page/", REPLACE(STR(?birthDateTimespan__id), "^.*\\\\/(.+)", "$1")) AS ?birthDateTimespan__dataProviderUrl)
 }
 UNION
 {
 ?id :has_enrollment [ schema:date ?enrollmentTimespan__id ; skos:prefLabel ?enrollmentTimespan__prefLabel ]
-OPTIONAL { ?enrollmentTimespan__id gvp:estStart ?enrollmentTimespan__start }
-OPTIONAL { ?enrollmentTimespan__id gvp:estEnd ?enrollmentTimespan__end }
+BIND(CONCAT("/times/page/", REPLACE(STR(?enrollmentTimespan__id), "^.*\\\\/(.+)", "$1")) AS ?enrollmentTimespan__dataProviderUrl)
+# OPTIONAL { ?enrollmentTimespan__id gvp:estStart ?enrollmentTimespan__start }
+# OPTIONAL { ?enrollmentTimespan__id gvp:estEnd ?enrollmentTimespan__end }
 }
 UNION
 {
@@ -57,6 +59,7 @@ UNION
   ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
   OPTIONAL { ?deathDateTimespan__id gvp:estStart ?deathDateTimespan__start }
   OPTIONAL { ?deathDateTimespan__id gvp:estEnd ?deathDateTimespan__end }
+  BIND(CONCAT("/times/page/", REPLACE(STR(?deathDateTimespan__id), "^.*\\\\/(.+)", "$1")) AS ?deathDateTimespan__dataProviderUrl)
 }
 UNION
 {

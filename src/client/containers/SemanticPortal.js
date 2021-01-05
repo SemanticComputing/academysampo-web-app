@@ -608,16 +608,17 @@ const SemanticPortal = props => {
 const mapStateToProps = state => {
   // const { clientFSResults, clientFSFacetValues } = filterResults(state.clientSideFacetedSearch)
   return {
+    categories: state.categories,
+    nations: state.nations,
+    organizations: state.organizations,
     people: state.people,
     peopleFacets: state.peopleFacets,
-    relatives: state.relatives,
     places: state.places,
     placesFacets: state.placesFacets,
-    titles: state.titles,
-    nations: state.nations,
-    categories: state.categories,
     references: state.references,
-    organizations: state.organizations,
+    relatives: state.relatives,
+    times: state.times,
+    titles: state.titles,
     leafletMap: state.leafletMap,
     fullTextSearch: state.fullTextSearch,
     clientFS: state.clientSideFacetedSearch,
@@ -678,6 +679,7 @@ SemanticPortal.propTypes = {
   categories: PropTypes.object.isRequired,
   references: PropTypes.object.isRequired,
   organizations: PropTypes.object.isRequired,
+  times: PropTypes.object.isRequired,
   placesFacets: PropTypes.object.isRequired,
   places: PropTypes.object.isRequired,
   /**

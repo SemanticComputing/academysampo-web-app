@@ -20,8 +20,4 @@ UNION
     a :Person ;
     skos:prefLabel ?person__prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
-}
-
-`
-
-
+} `

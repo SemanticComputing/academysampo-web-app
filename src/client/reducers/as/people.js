@@ -42,7 +42,7 @@ export const INITIAL_STATE = {
     {
       id: 'enrollmentTimespan',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,
@@ -122,7 +122,7 @@ export const INITIAL_STATE = {
     {
       id: 'birthDateTimespan',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,
@@ -140,7 +140,7 @@ export const INITIAL_STATE = {
     {
       id: 'deathDateTimespan',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
       sortValues: true,
       numberedList: false,

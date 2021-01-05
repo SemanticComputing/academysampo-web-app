@@ -68,29 +68,32 @@ class InstanceHomePage extends React.Component {
     })
     this.setState({ localID: localID })
     switch (this.props.resultClass) {
-      case 'people':
-        uri = `${base}/people/${localID}`
-        break
-      case 'relatives':
-        uri = `${base}/people/${localID}`
-        break
-      case 'titles':
-        uri = `${base}/titles/${localID}`
-        break
-      case 'nations':
-        uri = `${base}/nations/${localID}` // TODO unify urls
-        break
       case 'categories':
         uri = `${base}/categories/${localID}`
         break
-      case 'references':
-        uri = `${base}/references/${localID}` // TODO namespace
+      case 'nations':
+        uri = `${base}/nations/${localID}` // TODO unify urls
         break
       case 'organizations':
         uri = `${base}/organizations/${localID}`
         break
       case 'places':
         uri = `${base}/places/${localID}`
+        break
+      case 'people':
+        uri = `${base}/people/${localID}`
+        break
+      case 'references':
+        uri = `${base}/references/${localID}` // TODO namespace
+        break
+      case 'relatives':
+        uri = `${base}/people/${localID}`
+        break
+      case 'times':
+        uri = `${base}/times/${localID}`
+        break
+      case 'titles':
+        uri = `${base}/titles/${localID}`
         break
     }
     this.props.fetchByURI({

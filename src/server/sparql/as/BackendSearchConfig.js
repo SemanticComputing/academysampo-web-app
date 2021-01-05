@@ -27,6 +27,7 @@ import { nationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesNat
 import { categoriesPropertiesInstancePage } from './sparql_queries/SparqlQueriesCategories'
 import { referencesPropertiesInstancePage } from './sparql_queries/SparqlQueriesReferences'
 import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesOrganizations'
+import { timesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTimes'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { makeObjectList } from '../SparqlObjectMapper'
 import { mapPlaces, mapMultipleLineChart } from '../Mappers'
@@ -73,6 +74,13 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     instance: {
       properties: organizationsPropertiesInstancePage,
+      relatedInstances: ''
+    }
+  },
+  times: {
+    perspectiveID: 'people',
+    instance: {
+      properties: timesPropertiesInstancePage,
       relatedInstances: ''
     }
   },

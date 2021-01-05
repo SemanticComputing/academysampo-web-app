@@ -392,221 +392,6 @@ export default {
         }
       }
     },
-    relatives: {
-      label: 'Relatives',
-      facetResultsType: 'people',
-      shortDescription: 'Browse the data of 28000 students and their relatives.',
-      longDescription: `
-        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to physical manuscript objects.
-          If two or more source datasets include the same manuscript and
-          this has been verified, the information from the source datasets has been merged
-          into one manuscript. See <a href="/instructions">instructions</a> for using the
-          filters. The result view can be selected using the tabs:
-        </p>
-        <ul class="MuiTypography-root MuiTypography-body1">
-          <li>
-            <strong>TABLE</STRONG> view includes all manuscripts in
-            the AcademySampo data. One table row is equivalent to one manuscript.
-          </li>
-          <li>
-            <strong>PRODUCTION PLACES</STRONG> view visualizes the connection
-            between manuscripts and the places where they were produced.
-          </li>
-          <li>
-            <strong>MIGRATIONS</strong> view visualizes the migration of a
-            manuscript from place of production to its most recently observed location.
-          </li>
-          <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
-          </li>
-        </ul>
-      `,
-      instancePage: {
-        label: 'Referenced Person',
-        description: `
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            AcademySampo’s Manuscript entity corresponds to
-            <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo’s</a>
-            Manifestation Singleton, defined as "physical objects that each carry an instance of
-            [an Expression], and that were produced as unique objects..." The various types
-            of records that describe manuscripts in each of the three contributing AcademySampo
-            datasets have been mapped to this entity.
-          </p>
-          <h6 class="MuiTypography-root MuiTypography-h6">
-            Manuscript labels
-          </h6>
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            If the Bibale or Oxford databases reference a shelf mark for the manuscript,
-            that information will appear as its label. Otherwise, an SDBM ID number will serve
-            as its label. SDBM ID numbers contain prefixes that indicate different things about
-            the type of record they contain:
-          </p>
-          <ul class="MuiTypography-root MuiTypography-body1">
-            <li>
-              SDBM_MS: SDBM Manuscript Record, which aggregates the data of two or more SDBM
-              Entries. Each Entry represents a different observation of a manuscript at a different
-              point in time, derived from various sources.
-            </li>
-            <li>
-              SDBM_MS_orphan: a single Entry in the SDBM, meaning it has not been linked to any
-              other Entries and therefore has no SDBM Manuscript Record.
-            </li>
-            <li>
-              SDBM_MS_part: a record identified as a fragment of a larger manuscript.
-            </li>
-          </ul>
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
-        `
-      },
-      properties: {
-        uri: {
-          label: 'URI',
-          description: 'Uniform Resource Identifier'
-        },
-        prefLabel: {
-          label: 'Name',
-          description: `
-            The standardized name of the actor.
-          `
-        },
-        type: {
-          label: 'Type',
-          description: `
-            Indicates whether the actor is an individual (Person) or an institution,
-            corporation, or family (Group)
-          `
-        },
-        gender: {
-          label: 'Gender',
-          description: `
-            The gender of the actor.
-          `
-        },
-        fname: {
-          label: 'Family name',
-          description: `
-            The family name of the actor.
-          `
-        },
-        altLabel: {
-          label: 'Alternative names',
-          description: `
-          Alternative names.
-          `
-        },
-        image: {
-          label: 'Image',
-          description: `
-            A possible image of the place. Source: Wikimedia Commons.
-          `
-        },
-        referer: {
-          label: 'Referenced with',
-          description: `
-            People whose biographical descriptions mention this person.
-          `
-        },
-        entryText: {
-          label: 'Entry text',
-          description: `
-            Full description.
-          `
-        },
-        relativeText: {
-          label: 'Description of relatives',
-          description: `
-            List of known relatives. This information is only available with the 1640–1853 dataset.
-          `
-        },
-        referenceText: {
-          label: 'Description of references',
-          description: `
-            List of used references. This information is only available with the 1640–1853 dataset.
-          `
-        },
-        title: {
-          label: 'Title',
-          description: `
-            The title of the actor.
-          `
-        },
-        relative: {
-          label: 'Relatives in student registry',
-          description: `
-            A list of relatives that are also students of the University.
-          `
-        },
-        otherrelative: {
-          label: 'Other Relatives',
-          description: `
-            A list of relatives that are mentioned in the description texts.
-            NB: this list is computationally generated from the texts, so there might be errors. 
-          `
-        },
-        similar: {
-          label: 'Similar people',
-          description: `
-            This list of recommended people is automatically generated from the data.
-          `
-        },
-        studentnation: {
-          label: 'Student nation',
-          description: `
-            The student nation of the person.
-          `
-        },
-        birthPlace: {
-          label: 'Birth place',
-          description: `
-            The place when the actor was born.
-          `
-        },
-        birthDateTimespan: {
-          label: 'Birth date',
-          description: `
-            The date when the actor was born.
-          `
-        },
-        externalLink: {
-          label: 'External link',
-          description: `
-            The links to external databases.
-          `
-        },
-        enrollmentTimespan: {
-          label: 'Enrollment date',
-          description: `
-            The date when the person enrolled.
-          `
-        },
-        deathDateTimespan: {
-          label: 'Death date',
-          description: `
-            The date when the actor died or dissolved.
-          `
-        },
-        deathPlace: {
-          label: 'Death place',
-          description: `
-            The place when the actor died.
-          `
-        },
-        place: {
-          label: 'Activity location',
-          description: `
-            Place(s) of activity linked to this actor.
-          `
-        },
-        source: {
-          label: 'Source',
-          description: `
-            The source of information.
-          `
-        }
-      }
-    },
     places: {
       label: 'Places',
       facetResultsType: 'places',
@@ -734,88 +519,6 @@ export default {
             The source database(s) (Schoenberg, Bibale, and Bodleian) that the Work
             occurs in. Click on the result table link to view the original record on the
             source’s website.
-          `
-        }
-      }
-    },
-    titles: {
-      label: 'Title',
-      facetResultsType: 'titles',
-      shortDescription: 'Titles description',
-      longDescription: `
-        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to events associated with the
-          histories of manuscripts and manuscript collections over the centuries.
-          See <a href="/instructions">instructions</a> for using the filters.
-          The result view can be selected using the tabs:
-        </p>
-        <ul class="MuiTypography-root MuiTypography-body1">
-          <li>
-            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
-          </li>
-          <li>
-            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
-          </li>
-          <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
-          </li>
-        </ul>
-      `,
-      instancePage: {
-        label: 'Title',
-        description: `
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Events refer to various activities related to Manuscripts and Actors. Event
-            types include Production, Transfer of Custody, and Activity events.
-            Production events refer to the production of the physical manuscript.
-            Transfer of Custody events indicate a change of ownership that involved
-            a transaction of some kind, usually through an auction house or bookseller.
-            The generic Activity event type covers all other types of events.
-          </p>
-        `
-      },
-      properties: {
-        prefLabel: {
-          label: 'label',
-          description: ''
-        },
-        altLabel: {
-          label: 'alternative labels',
-          description: 'List of alternative labels or abbreviations.'
-        },
-        uri: {
-          label: 'URI',
-          description: 'Uniform Resource Identifier.'
-        },
-        related: {
-          label: 'Related titles',
-          description: `
-            Related occupational titles.
-          `
-        },
-        person: {
-          label: 'People',
-          description: `
-            People associated with this title.
-          `
-        },
-        ammo: {
-          label: 'AMMO',
-          description: `
-            Corresponding occupation in AMMO/HISCO ontology.
-          `
-        },
-        eventTimespan: {
-          label: 'Date',
-          description: `
-            The date or time period associated with the event.
-          `
-        },
-        place: {
-          label: 'Related place',
-          description: `
-            The specific place(s) associated with the title.
           `
         }
       }
@@ -1085,6 +788,381 @@ export default {
           label: 'See also',
           description: `
             Reference page at ylioppilasmatrikkeli.helsinki.fi, in Finnish only.
+          `
+        }
+      }
+    },
+    relatives: {
+      label: 'Relatives',
+      facetResultsType: 'people',
+      shortDescription: 'Browse the data of 28000 students and their relatives.',
+      longDescription: `
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          Use this perspective to access data related to physical manuscript objects.
+          If two or more source datasets include the same manuscript and
+          this has been verified, the information from the source datasets has been merged
+          into one manuscript. See <a href="/instructions">instructions</a> for using the
+          filters. The result view can be selected using the tabs:
+        </p>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes all manuscripts in
+            the AcademySampo data. One table row is equivalent to one manuscript.
+          </li>
+          <li>
+            <strong>PRODUCTION PLACES</STRONG> view visualizes the connection
+            between manuscripts and the places where they were produced.
+          </li>
+          <li>
+            <strong>MIGRATIONS</strong> view visualizes the migration of a
+            manuscript from place of production to its most recently observed location.
+          </li>
+          <li>
+            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            table view into YASGUI query editor.
+          </li>
+        </ul>
+      `,
+      instancePage: {
+        label: 'Referenced Person',
+        description: `
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            AcademySampo’s Manuscript entity corresponds to
+            <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo’s</a>
+            Manifestation Singleton, defined as "physical objects that each carry an instance of
+            [an Expression], and that were produced as unique objects..." The various types
+            of records that describe manuscripts in each of the three contributing AcademySampo
+            datasets have been mapped to this entity.
+          </p>
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Manuscript labels
+          </h6>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            If the Bibale or Oxford databases reference a shelf mark for the manuscript,
+            that information will appear as its label. Otherwise, an SDBM ID number will serve
+            as its label. SDBM ID numbers contain prefixes that indicate different things about
+            the type of record they contain:
+          </p>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              SDBM_MS: SDBM Manuscript Record, which aggregates the data of two or more SDBM
+              Entries. Each Entry represents a different observation of a manuscript at a different
+              point in time, derived from various sources.
+            </li>
+            <li>
+              SDBM_MS_orphan: a single Entry in the SDBM, meaning it has not been linked to any
+              other Entries and therefore has no SDBM Manuscript Record.
+            </li>
+            <li>
+              SDBM_MS_part: a record identified as a fragment of a larger manuscript.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
+        `
+      },
+      properties: {
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier'
+        },
+        prefLabel: {
+          label: 'Name',
+          description: `
+            The standardized name of the actor.
+          `
+        },
+        type: {
+          label: 'Type',
+          description: `
+            Indicates whether the actor is an individual (Person) or an institution,
+            corporation, or family (Group)
+          `
+        },
+        gender: {
+          label: 'Gender',
+          description: `
+            The gender of the actor.
+          `
+        },
+        fname: {
+          label: 'Family name',
+          description: `
+            The family name of the actor.
+          `
+        },
+        altLabel: {
+          label: 'Alternative names',
+          description: `
+          Alternative names.
+          `
+        },
+        image: {
+          label: 'Image',
+          description: `
+            A possible image of the place. Source: Wikimedia Commons.
+          `
+        },
+        referer: {
+          label: 'Referenced with',
+          description: `
+            People whose biographical descriptions mention this person.
+          `
+        },
+        entryText: {
+          label: 'Entry text',
+          description: `
+            Full description.
+          `
+        },
+        relativeText: {
+          label: 'Description of relatives',
+          description: `
+            List of known relatives. This information is only available with the 1640–1853 dataset.
+          `
+        },
+        referenceText: {
+          label: 'Description of references',
+          description: `
+            List of used references. This information is only available with the 1640–1853 dataset.
+          `
+        },
+        title: {
+          label: 'Title',
+          description: `
+            The title of the actor.
+          `
+        },
+        relative: {
+          label: 'Relatives in student registry',
+          description: `
+            A list of relatives that are also students of the University.
+          `
+        },
+        otherrelative: {
+          label: 'Other Relatives',
+          description: `
+            A list of relatives that are mentioned in the description texts.
+            NB: this list is computationally generated from the texts, so there might be errors. 
+          `
+        },
+        similar: {
+          label: 'Similar people',
+          description: `
+            This list of recommended people is automatically generated from the data.
+          `
+        },
+        studentnation: {
+          label: 'Student nation',
+          description: `
+            The student nation of the person.
+          `
+        },
+        birthPlace: {
+          label: 'Birth place',
+          description: `
+            The place when the actor was born.
+          `
+        },
+        birthDateTimespan: {
+          label: 'Birth date',
+          description: `
+            The date when the actor was born.
+          `
+        },
+        externalLink: {
+          label: 'External link',
+          description: `
+            The links to external databases.
+          `
+        },
+        enrollmentTimespan: {
+          label: 'Enrollment date',
+          description: `
+            The date when the person enrolled.
+          `
+        },
+        deathDateTimespan: {
+          label: 'Death date',
+          description: `
+            The date when the actor died or dissolved.
+          `
+        },
+        deathPlace: {
+          label: 'Death place',
+          description: `
+            The place when the actor died.
+          `
+        },
+        place: {
+          label: 'Activity location',
+          description: `
+            Place(s) of activity linked to this actor.
+          `
+        },
+        source: {
+          label: 'Source',
+          description: `
+            The source of information.
+          `
+        }
+      }
+    },
+    times: {
+      label: 'Timespan',
+      facetResultsType: 'times',
+      shortDescription: 'Timespan description',
+      longDescription: `
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          Use this perspective to access data related to events associated with the
+          histories of manuscripts and manuscript collections over the centuries.
+          See <a href="/instructions">instructions</a> for using the filters.
+          The result view can be selected using the tabs:
+        </p>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
+          </li>
+          <li>
+            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
+          </li>
+          <li>
+            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            table view into YASGUI query editor.
+          </li>
+        </ul>
+      `,
+      instancePage: {
+        label: 'Timespan',
+        description: `
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            Events refer to various activities related to Manuscripts and Actors. Event
+            types include Production, Transfer of Custody, and Activity events.
+            Production events refer to the production of the physical manuscript.
+            Transfer of Custody events indicate a change of ownership that involved
+            a transaction of some kind, usually through an auction house or bookseller.
+            The generic Activity event type covers all other types of events.
+          </p>
+        `
+      },
+      properties: {
+        prefLabel: {
+          label: 'label',
+          description: ''
+        },
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier.'
+        },
+        enrolled: {
+          label: 'Enrollments',
+          description: `
+            People who enrolled the University during this timespan.
+          `
+        },
+        born: {
+          label: 'Births',
+          description: `
+            List of people born during this timespan.
+          `
+        },
+        deceased: {
+          label: 'Deceased',
+          description: `
+          List of people deceased during this timespan.
+          `
+        },
+        broader: {
+          label: 'Broader',
+          description: `
+          A wider timespan containing this.
+          `
+        },
+        narrower: {
+          label: 'Narrower',
+          description: `
+          List of shorter timespans withing this.
+          `
+        }
+      }
+    },
+    titles: {
+      label: 'Title',
+      facetResultsType: 'titles',
+      shortDescription: 'Titles description',
+      longDescription: `
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          Use this perspective to access data related to events associated with the
+          histories of manuscripts and manuscript collections over the centuries.
+          See <a href="/instructions">instructions</a> for using the filters.
+          The result view can be selected using the tabs:
+        </p>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
+          </li>
+          <li>
+            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
+          </li>
+          <li>
+            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            table view into YASGUI query editor.
+          </li>
+        </ul>
+      `,
+      instancePage: {
+        label: 'Title',
+        description: `
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            Events refer to various activities related to Manuscripts and Actors. Event
+            types include Production, Transfer of Custody, and Activity events.
+            Production events refer to the production of the physical manuscript.
+            Transfer of Custody events indicate a change of ownership that involved
+            a transaction of some kind, usually through an auction house or bookseller.
+            The generic Activity event type covers all other types of events.
+          </p>
+        `
+      },
+      properties: {
+        prefLabel: {
+          label: 'label',
+          description: ''
+        },
+        altLabel: {
+          label: 'alternative labels',
+          description: 'List of alternative labels or abbreviations.'
+        },
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier.'
+        },
+        related: {
+          label: 'Related titles',
+          description: `
+            Related occupational titles.
+          `
+        },
+        person: {
+          label: 'People',
+          description: `
+            People associated with this title.
+          `
+        },
+        ammo: {
+          label: 'AMMO',
+          description: `
+            Corresponding occupation in AMMO/HISCO ontology.
+          `
+        },
+        eventTimespan: {
+          label: 'Date',
+          description: `
+            The date or time period associated with the event.
+          `
+        },
+        place: {
+          label: 'Related place',
+          description: `
+            The specific place(s) associated with the title.
           `
         }
       }

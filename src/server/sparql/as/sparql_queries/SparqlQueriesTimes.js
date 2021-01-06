@@ -13,10 +13,13 @@ BIND(?id as ?uri__prefLabel)
   BIND(CONCAT("/times/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
 }
 UNION
-{
-  ?narrower__id skos:broader ?id ;
-    skos:prefLabel ?narrower__prefLabel .
-  BIND(CONCAT("/times/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
+{ SELECT ?id ?narrower__id ?narrower__prefLabel ?narrower__dataProviderUrl
+  WHERE {
+    ?narrower__id skos:broader ?id ;
+      skos:prefLabel ?narrower__prefLabel ;
+      gvp:estStart ?__start .
+    BIND(CONCAT("/times/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
+  } ORDER BY ?__start
 }
 UNION
 {

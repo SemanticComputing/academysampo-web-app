@@ -574,9 +574,9 @@ export default {
           description: 'Uniform Resource Identifier.'
         },
         related: {
-          label: 'Related titles',
+          label: 'Related student nations',
           description: `
-            Related occupational titles.
+            List of Student nations having some same people as members.
           `
         },
         person: {

@@ -43,3 +43,36 @@ UNION
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 `
+
+/** TODO this piece of query returns a different result than https://api.triplydb.com/s/c3WtDl3KB
+ UNION
+{
+  SELECT DISTINCT ?id ?place__id
+  (CONCAT(?place__label, ' (', STR(COUNT(DISTINCT ?prs)), ')')  AS ?place__prefLabel)
+  (CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
+  {
+
+ { ?prs :student_nation ?id }
+ UNION
+ { ?prs :has_event/:student_nation ?id }
+ ?prs a :Person ;
+         :place_of_origin ?place__id .
+ ?place__id skos:prefLabel ?place__label . FILTER(lang(?place__label)='fi')
+
+}  GROUP BY ?id ?place__id ?place__label
+  ORDER BY DESC(COUNT(DISTINCT ?prs)) LIMIT 20
+}
+*/
+
+// https://api.triplydb.com/s/v-cnFMKbM
+export const nationByYearQuery = `
+SELECT DISTINCT ?category (COUNT(DISTINCT ?person__id) AS ?Registerings)
+WHERE {
+  VALUES ?id { <ID> }
+  ?person__id :has_event [
+      :student_nation ?id ;
+      schema:date/gvp:estStart ?evt__time 
+    ]
+  BIND (STR(year(?evt__time)) AS ?category)
+} GROUP BY ?category ORDER BY ?category 
+`

@@ -47,7 +47,17 @@ export const INITIAL_STATE = {
       numberedList: true,
       minWidth: 180,
       onlyOnInstancePage: true
-    },
+    }, /**
+    {
+      id: 'place',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 180,
+      onlyOnInstancePage: true
+    }, */
     {
       id: 'related',
       valueType: 'object',
@@ -80,7 +90,8 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'nations'
+  'nations',
+  'nationByYear'
 ])
 
 const nations = (state = INITIAL_STATE, action) => {

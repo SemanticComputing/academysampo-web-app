@@ -82,6 +82,7 @@ export default {
     by_year: 'by year',
     placeByYear: 'Timeline of events',
     export: 'export',
+    nationByYear: 'by year',
     'by-period': 'by period'
   },
   table: {

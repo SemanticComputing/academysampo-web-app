@@ -72,7 +72,7 @@ class InstanceHomePage extends React.Component {
         uri = `${base}/categories/${localID}`
         break
       case 'nations':
-        uri = `${base}/nations/${localID}` // TODO unify urls
+        uri = `${base}/nations/${localID}`
         break
       case 'organizations':
         uri = `${base}/organizations/${localID}`
@@ -216,6 +216,23 @@ class InstanceHomePage extends React.Component {
                     createChartData={createMultipleLineChartData}
                     resultClass='placeByYear'
                     title='Events by year'
+                    xaxisTitle='Year'
+                    yaxisTitle='Number of events'
+                  />}
+              />
+              <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/nationByYear`}
+                render={() =>
+                  <ApexChart
+                    pageType='instancePage'
+                    rawData={this.props.results}
+                    rawDataUpdateID={this.props.resultUpdateID}
+                    fetching={isLoading}
+                    fetchData={this.props.fetchResults}
+                    uri={tableData.id}
+                    createChartData={createMultipleLineChartData}
+                    resultClass='nationByYear'
+                    title='Timeline'
                     xaxisTitle='Year'
                     yaxisTitle='Number of events'
                   />}

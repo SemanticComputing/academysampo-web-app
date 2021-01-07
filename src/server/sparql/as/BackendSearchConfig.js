@@ -23,7 +23,10 @@ import {
 } from './sparql_queries/SparqlQueriesPlaces'
 import { relativesPropertiesInstancePage } from './sparql_queries/SparqlQueriesRelatives'
 import { titlesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTitles'
-import { nationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesNations'
+import {
+  nationsPropertiesInstancePage,
+  nationByYearQuery
+} from './sparql_queries/SparqlQueriesNations'
 import { categoriesPropertiesInstancePage } from './sparql_queries/SparqlQueriesCategories'
 import { referencesPropertiesInstancePage } from './sparql_queries/SparqlQueriesReferences'
 import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesOrganizations'
@@ -152,6 +155,11 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     q: eventsByYearQuery,
     filterTarget: 'person__id',
+    resultMapper: mapMultipleLineChart
+  },
+  nationByYear: {
+    perspectiveID: 'people',
+    q: nationByYearQuery,
     resultMapper: mapMultipleLineChart
   },
   placeByYear: {

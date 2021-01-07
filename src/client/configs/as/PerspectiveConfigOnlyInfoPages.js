@@ -1,6 +1,7 @@
 import React from 'react'
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
+import LineChartIcon from '@material-ui/icons/ShowChart'
 
 export const perspectiveConfigOnlyInfoPages = [
   {
@@ -13,8 +14,13 @@ export const perspectiveConfigOnlyInfoPages = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'export',
+        id: 'nationByYear',
         value: 1,
+        icon: <LineChartIcon />
+      },
+      {
+        id: 'export',
+        value: 2,
         icon: <CloudDownloadIcon />
       }
     ]

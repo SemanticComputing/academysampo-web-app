@@ -162,36 +162,39 @@ UNION
 UNION
 {
   SELECT DISTINCT ?id 
-  ?similar__id 
-  (CONCAT("/people/page/", REPLACE(STR(?similar__id), "^.*\\\\/(.+)", "$1")) AS ?similar__dataProviderUrl) 
-  (CONCAT(SAMPLE(?similar__label),': [', GROUP_CONCAT(DISTINCT ?link; separator="; "), ']') AS ?similar__prefLabel)
-  WHERE {
-    ?id ^rels:relates_to ?node .
-    ?node
-      a :Distance ;
-      rels:relates_to ?similar__id ;
-      :value ?similar__distance .
-    FILTER (?similar__id != ?id)
-  
-    OPTIONAL { ?node :link_by [ skos:prefLabel ?link ; a ?link_class ]
-      FILTER (REGEX(STR(?link_class), '/yoma/'))
-    }
-    ?similar__id skos:prefLabel ?similar__label .
-}
-GROUP BY ?id ?similar__id ?similar__distance ORDER BY ?similar__distance
+    ?similar__id 
+    (CONCAT("/people/page/", REPLACE(STR(?similar__id), "^.*\\\\/(.+)", "$1")) AS ?similar__dataProviderUrl) 
+    (CONCAT(SAMPLE(?similar__label),': [', GROUP_CONCAT(DISTINCT ?link; separator="; "), ']') AS ?similar__prefLabel)
+    WHERE {
+      ?id ^rels:relates_to ?node .
+      ?node
+        a :Distance ;
+        rels:relates_to ?similar__id ;
+        :value ?similar__distance .
+      FILTER (?similar__id != ?id)
+    
+      OPTIONAL { ?node :link_by [ skos:prefLabel ?link ; a ?link_class ]
+        # do not show e.g. ammo hierarchy
+        FILTER (REGEX(STR(?link_class), '/yoma/'))
+      }
+      ?similar__id skos:prefLabel ?similar__label .
+  }
+  GROUP BY ?id ?similar__id ?similar__distance ORDER BY ?similar__distance
 }
 UNION
 {
-  ?id bioc:has_person_relation  ?related__id .
+  ?id bioc:has_person_relation ?related__id .
   ?related__id skos:prefLabel ?related__prefLabel ;
                 bioc:inheres_in ?related__personUrl .
   BIND(CONCAT("/people/page/", REPLACE(STR(?related__personUrl), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
 }
 uNION
 {
-  ?id :has_event ?related__id .
-  ?related__id :supervisor ?related__personUrl ;  skos:prefLabel ?related__prefLabel .
-  BIND(CONCAT("/people/page/", REPLACE(STR(?related__personUrl), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+  ?id :has_event ?related__evt .
+  ?related__evt :supervisor ?related__id ; skos:prefLabel ?related__label .
+  ?related__id skos:prefLabel ?related__personLabel .
+    BIND(CONCAT(?related__personLabel, ' (', ?related__label, ')') AS ?related__prefLabel)
+  BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
 }
 UNIoN
 {
@@ -299,7 +302,9 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id :has_event/:student_nation ?studentnation__id .
+    { ?id :has_event/:student_nation ?studentnation__id }
+    UNION
+    { ?id :student_nation ?studentnation__id }
     ?studentnation__id skos:prefLabel ?studentnation__prefLabel .
     FILTER (LANG(?studentnation__prefLabel)='fi')
     BIND(CONCAT("/nations/page/", REPLACE(STR(?studentnation__id), "^.*\\\\/(.+)", "$1")) AS ?studentnation__dataProviderUrl)

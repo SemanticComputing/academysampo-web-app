@@ -15,6 +15,8 @@ export const peoplePerspectiveConfig = {
     useAuth: true
   },
   facetClass: '<http://ldf.fi/schema/yoma/Person>',
+  langTag: 'fi',
+  langTagSecondary: 'sv',
   paginatedResults: {
     properties: peoplePropertiesFacetResults
   },
@@ -99,7 +101,7 @@ export const peoplePerspectiveConfig = {
     studentnation: {
       id: 'studentnation',
       facetValueFilter: `
-        FILTER(LANG(?prefLabel_) = 'fi')
+        FILTER(LANG(?prefLabel_) = '<LANG>')
       `,
       predicate: ':has_event/:student_nation',
       labelPath: ':has_event/:student_nation/skos:prefLabel',

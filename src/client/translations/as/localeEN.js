@@ -79,6 +79,7 @@ export default {
     familyNetwork: 'Family relations',
     academicNetwork: 'Academic relations',
     relationNetwork: 'Relations',
+    connections: 'Connections',
     by_year: 'by year',
     placeByYear: 'Timeline of events',
     export: 'export',

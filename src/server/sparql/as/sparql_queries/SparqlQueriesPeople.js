@@ -402,6 +402,22 @@ export const networkLinksQuery = `
   }
 `
 
+export const connectionLinkQuery = `
+SELECT DISTINCT ?source ?target (GROUP_CONCAT(DISTINCT ?link; separator="; ") AS ?prefLabel) (1.0-?val AS ?weight)
+WHERE {
+  VALUES ?id { <ID> }
+  ?node a :Distance ;
+    rels:relates_to ?id ;
+      rels:relates_to ?target ;
+      :value ?val .
+  FILTER (?id!=?target)
+  OPTIONAL { ?node :link_by [ skos:prefLabel ?link ; a ?link_class ] }
+  FILTER (REGEX(str(?link_class), 'yoma'))
+  BIND(?id as ?source)
+}
+GROUP BY ?source ?target ?val ORDER BY ?val
+`
+
 //  link query on person page tab "FAMILY RELATIONS"
 export const networkFamilyRelationQuery = `
   SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
@@ -420,7 +436,7 @@ export const networkFamilyRelationQuery = `
       BIND(?id AS ?target)
     }
   }
-  ORDER BY ?level
+  ORDER BY DESC(?level)
 `
 
 export const familyNetworkNodesQuery = `

@@ -10,7 +10,11 @@ import InstanceHomePageTable from '../../main_layout/InstanceHomePageTable'
 import Network from '../../facet_results/Network'
 import ApexChart from '../../facet_results/ApexChart'
 import Export from '../../facet_results/Export'
-import { coseLayout, cytoscapeStyle, preprocess, preprocessFamilytree } from '../../../configs/as/Cytoscape.js/NetworkConfig'
+import { coseLayout,
+  cytoscapeStyle,
+  preprocess,
+  preprocessConnections,
+  preprocessFamilytree } from '../../../configs/as/Cytoscape.js/NetworkConfig'
 import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
@@ -202,6 +206,23 @@ class InstanceHomePage extends React.Component {
                     style={cytoscapeStyle}
                     layout={coseLayout}
                     preprocess={preprocess}
+                  />}
+              />
+              <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/connections`}
+                render={() =>
+                  <Network
+                    pageType='instancePage'
+                    results={this.props.results}
+                    resultUpdateID={this.props.resultUpdateID}
+                    fetchResults={this.props.fetchResults}
+                    resultClass='connections'
+                    uri={tableData.id}
+                    limit={60}
+                    optimize={1.2}
+                    style={cytoscapeStyle}
+                    layout={coseLayout}
+                    preprocess={preprocessConnections}
                   />}
               />
               <Route

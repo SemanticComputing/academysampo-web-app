@@ -10,6 +10,7 @@ import {
   familyNetworkNodesQuery,
   networkFamilyRelationQuery,
   networkAcademicRelationQuery,
+  connectionLinkQuery,
   networkRelationQuery,
   pointCloudLinksQuery,
   pointCloudNodesQuery,
@@ -126,9 +127,16 @@ export const backendSearchConfig = {
     filterTarget: 'person',
     useNetworkAPI: true
   },
+  connections: {
+    perspectiveID: 'people',
+    q: connectionLinkQuery,
+    nodes: networkNodesQuery,
+    filterTarget: 'person',
+    useNetworkAPI: true
+  },
   // Family relations tab in person page
   familyNetwork: {
-    perspectiveID: 'people', // use endpoint config from people
+    perspectiveID: 'people',
     q: networkFamilyRelationQuery,
     nodes: familyNetworkNodesQuery,
     useNetworkAPI: true

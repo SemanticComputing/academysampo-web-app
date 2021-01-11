@@ -277,6 +277,7 @@ const resultClasses = new Set([
   'academicNetwork',
   'peoplePointCloud',
   'relationNetwork',
+  'connections',
   'eventsByYear'
 ])
 

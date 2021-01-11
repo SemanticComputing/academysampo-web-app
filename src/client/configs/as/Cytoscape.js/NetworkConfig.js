@@ -146,6 +146,34 @@ export const preprocess = elements => {
   elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
 }
 
+//  preprocess for person/connections
+export const preprocessConnections = elements => {
+  //  edges
+  let arr = elements.edges.map(ele => ele.data.weight)
+
+  //  edge width
+  let res = (new ValueScaler(1.0, 4.0)).fitTransform(arr)
+  elements.edges.forEach((ele, i) => { ele.data.weight = res[i] })
+
+  const maxlength = 60
+  elements.edges.forEach(ele => {
+    const st = ele.data.prefLabel
+    ele.data.prefLabel = st.length > maxlength ? st.substring(0, maxlength - 3) + '...' : st
+  })
+  // nodes by distance to ego
+  arr = elements.nodes.map(ele => ele.data.distance)
+
+  // node size
+  res = (new ColorScaler('24px', '6px')).fitTransform(arr)
+  elements.nodes.forEach((ele, i) => { ele.data.size = res[i] })
+
+  // label size
+  res = (new ValueScaler(12, 8)).fitTransform(arr)
+  elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
+
+  elements.nodes.forEach(ele => { ele.data.color = (ele.data.distance < 1) ? 'red' : 'blue' })
+}
+
 //  preprocess by ego node distance
 export const preprocessDistance = elements => {
   //  edges

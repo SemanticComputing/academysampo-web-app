@@ -101,7 +101,7 @@ const People = props => {
             fetching={props.facetResults.fetching}
             resultClass='peoplePointCloud'
             facetClass='people'
-            limit={500}
+            limit={1200}
             optimize={1.0}
             style={cytoscapeStylePointCloud}
             preprocess={preprocessPointCloud}

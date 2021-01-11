@@ -256,17 +256,17 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id :place_of_end ?deathPlace__id .
-    ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
-    FILTER (LANG(?deathPlace__prefLabel)="fi")
-    BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
+  ?id :place_of_end ?deathPlace__id .
+  ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .
+  FILTER (LANG(?deathPlace__prefLabel)="fi")
+  BIND(CONCAT("/places/page/", REPLACE(STR(?deathPlace__id), "^.*\\\\/(.+)", "$1")) AS ?deathPlace__dataProviderUrl)
   }
   UNION 
   {
-    ?id :date_of_end ?deathDateTimespan__id .
-    ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
-    OPTIONAL { ?deathDateTimespan__id gvp:estStart ?deathDateTimespan__start }
-    OPTIONAL { ?deathDateTimespan__id gvp:estEnd ?deathDateTimespan__end }
+  ?id :date_of_end ?deathDateTimespan__id .
+  ?deathDateTimespan__id skos:prefLabel ?deathDateTimespan__prefLabel .
+  OPTIONAL { ?deathDateTimespan__id gvp:estStart ?deathDateTimespan__start }
+  OPTIONAL { ?deathDateTimespan__id gvp:estEnd ?deathDateTimespan__end }
   }
   UNION
   {
@@ -276,16 +276,16 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id :has_reference ?reference__id .
-    ?reference__id skos:prefLabel ?reference__prefLabel .
-    BIND(CONCAT("/references/page/", REPLACE(STR(?reference__id), "^.*\\\\/(.+)", "$1")) AS ?reference__dataProviderUrl)
+  ?id :has_reference ?reference__id .
+  ?reference__id skos:prefLabel ?reference__prefLabel .
+  BIND(CONCAT("/references/page/", REPLACE(STR(?reference__id), "^.*\\\\/(.+)", "$1")) AS ?reference__dataProviderUrl)
   }
   UNION
   {
-    ?id :has_title ?title__id . # { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
-    # FILTER EXISTS { ?title__id :related_occupation/skos:broader [] }
-    ?title__id skos:prefLabel ?title__prefLabel .
-    BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
+  ?id :has_title ?title__id . # { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
+  # FILTER EXISTS { ?title__id :related_occupation/skos:broader [] }
+  ?title__id skos:prefLabel ?title__prefLabel .
+  BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
   }
   UNION
   {
@@ -295,10 +295,10 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id :has_event/:organization ?organization__id .
-    ?organization__id skos:prefLabel ?organization__prefLabel .
-    FILTER (LANG(?organization__prefLabel)='fi')
-    BIND(CONCAT("/organizations/page/", REPLACE(STR(?organization__id), "^.*\\\\/(.+)", "$1")) AS ?organization__dataProviderUrl)
+  ?id :has_event/:organization ?organization__id .
+  ?organization__id skos:prefLabel ?organization__prefLabel .
+  FILTER (LANG(?organization__prefLabel)='fi')
+  BIND(CONCAT("/organizations/page/", REPLACE(STR(?organization__id), "^.*\\\\/(.+)", "$1")) AS ?organization__dataProviderUrl)
   }
   UNION
   {
@@ -311,19 +311,20 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-    ?id schema:sameAs ?externalLink__id .
-    ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
-    BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+  ?id schema:sameAs ?externalLink__id .
+  ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
   }
   UNION
   {
-    ?id schema:gender ?gender__id.
-    ?gender__id skos:prefLabel ?gender__prefLabel .
-    FILTER (LANG(?gender__prefLabel)='fi')
-    BIND (?gender__id AS ?gender__dataProviderUrl)
+  ?id schema:gender ?gender__id.
+  ?gender__id skos:prefLabel ?gender__prefLabel .
+  FILTER (LANG(?gender__prefLabel)='fi')
+  BIND (?gender__id AS ?gender__dataProviderUrl)
   }
   UNION
-  { ?id dct:source ?source__id .
+  { 
+    ?id dct:source ?source__id .
     ?source__id skos:prefLabel ?source__prefLabel .
   }
 `
@@ -401,11 +402,12 @@ export const networkLinksQuery = `
   }
 `
 
-//  query on person page tab "FAMILY RELATIONS"
+//  link query on person page tab "FAMILY RELATIONS"
 export const networkFamilyRelationQuery = `
   SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   WHERE {
     VALUES ?id { <ID> }
+    VALUES ?rel { rels:f3 rels:f4 rels:f5 rels:f6 rels:f7 rels:f10 rels:f11 rels:f12 }
     {
       ?id bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] .
       OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }
@@ -419,6 +421,26 @@ export const networkFamilyRelationQuery = `
     }
   }
   ORDER BY ?level
+`
+
+export const familyNetworkNodesQuery = `
+  SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size ?href ?_y
+  WHERE {
+    VALUES (?class ?size) { (:Person "16px") (:ReferencedPerson "12px") }
+    VALUES ?id { <ID_SET> }
+    ?id a ?class ;
+        skos:prefLabel ?prefLabel .
+    OPTIONAL {
+      ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi")
+      VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
+    }
+    
+    OPTIONAL { ?id :date_of_origin/gvp:estStart ?btime }
+    OPTIONAL { ?id :date_of_end/gvp:estStart ?dtime }
+    BIND(year(COALESCE(?btime, ?dtime-"P25550DT0H0M0S"^^xsd:duration)) AS ?_y)
+
+    BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/familyNetwork") AS ?href)
+  }
 `
 
 //  query on person page tab "ACADEMIC RELATIONS"
@@ -510,21 +532,6 @@ SELECT DISTINCT ?id ?prefLabel ?size ?cls ?color ?href
     BIND(COALESCE(?_size, 12) AS ?size)
     BIND(CONCAT(?href_start, REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"), ?href_end) AS ?href)
 }
-`
-
-export const familyNetworkNodesQuery = `
-  SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size ?href
-  WHERE {
-    VALUES (?class ?size) { (:Person "16px") (:ReferencedPerson "12px") }
-    VALUES ?id { <ID_SET> }
-    ?id a ?class ;
-        skos:prefLabel ?prefLabel .
-    OPTIONAL {
-      ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi")
-      VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
-    }
-    BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/familyNetwork") AS ?href)
-  }
 `
 
 //  query for point cloud 'links'

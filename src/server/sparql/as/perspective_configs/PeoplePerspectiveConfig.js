@@ -99,8 +99,9 @@ export const peoplePerspectiveConfig = {
     studentnation: {
       id: 'studentnation',
       facetValueFilter: `
-      ?id skos:prefLabel ?_lab .
-      FILTER(LANG(?_lab)='fi')`,
+        ?id skos:prefLabel ?_lab .
+        FILTER(LANG(?_lab)='fi')
+      `,
       predicate: ':has_event/:student_nation',
       labelPath: ':has_event/:student_nation/skos:prefLabel',
       type: 'list'

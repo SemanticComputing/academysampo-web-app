@@ -10,7 +10,7 @@ import InstanceHomePageTable from '../../main_layout/InstanceHomePageTable'
 import Network from '../../facet_results/Network'
 import ApexChart from '../../facet_results/ApexChart'
 import Export from '../../facet_results/Export'
-import { coseLayout, cytoscapeStyle, preprocess } from '../../../configs/as/Cytoscape.js/NetworkConfig'
+import { coseLayout, cytoscapeStyle, preprocess, preprocessFamilytree } from '../../../configs/as/Cytoscape.js/NetworkConfig'
 import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
@@ -162,11 +162,12 @@ class InstanceHomePage extends React.Component {
                     fetchResults={this.props.fetchResults}
                     resultClass='familyNetwork'
                     uri={tableData.id}
-                    limit={200}
+                    limit={150}
                     optimize={1.2}
                     style={cytoscapeStyle}
-                    layout={coseLayout}
-                    preprocess={preprocess}
+                    fitLayout
+                    // layout={coseLayout}
+                    preprocess={preprocessFamilytree}
                   />}
               />
               <Route

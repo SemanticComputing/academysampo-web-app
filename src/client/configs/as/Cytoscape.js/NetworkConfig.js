@@ -40,8 +40,8 @@ export const cytoscapeStylePointCloud = [
       'font-size': '12',
       'background-color': ele => ele.data('color') || '#666',
       label: ' data(prefLabel)',
-      height: ele => (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px'),
-      width: ele => (ele.data('size') || 16 / (ele.data('distance') + 1) || '16px')
+      height: '16px',
+      width: '16px'
     }
   }
 ]
@@ -124,6 +124,7 @@ class ColorScaler extends ValueScaler {
 
 const maxEdgeWidth = 8
 
+//  preprocess by pagerank
 export const preprocess = elements => {
   //  edges
   let arr = elements.edges.map(ele => ele.data.weight)
@@ -145,6 +146,28 @@ export const preprocess = elements => {
   elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
 }
 
+//  preprocess by ego node distance
+export const preprocessDistance = elements => {
+  //  edges
+  let arr = elements.edges.map(ele => ele.data.weight)
+
+  //  edge width
+  let res = (new ValueScaler(1.0, maxEdgeWidth)).fitTransform(arr)
+  elements.edges.forEach((ele, i) => { ele.data.weight = res[i] })
+
+  // console.log(elements.nodes)
+  // nodes
+  arr = elements.nodes.map(ele => ele.data.distance)
+
+  // node size
+  res = (new ColorScaler('24px', '6px')).fitTransform(arr)
+  elements.nodes.forEach((ele, i) => { ele.data.size = res[i] })
+
+  //  label size
+  res = (new ValueScaler(16, 8)).fitTransform(arr)
+  elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
+}
+
 export const preprocessPointCloud = elements => {
   const nodes = elements.nodes.map(ob => {
     return {
@@ -157,6 +180,19 @@ export const preprocessPointCloud = elements => {
   })
   elements.nodes = nodes
   elements.edges = []
+}
+
+export const preprocessFamilytree = elements => {
+  const nodes = elements.nodes.map(ob => {
+    return {
+      data: ob.data,
+      position: {
+        x: 540 * parseFloat(ob.data.x),
+        y: 360 * parseFloat(ob.data.y)
+      }
+    }
+  })
+  elements.nodes = nodes
 }
 
 const constrainWidth = width => {

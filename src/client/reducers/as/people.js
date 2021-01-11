@@ -211,15 +211,6 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
-      id: 'reference',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: true,
-      minWidth: 220
-    },
-    {
       id: 'relative',
       valueType: 'object',
       makeLink: true,
@@ -257,6 +248,15 @@ export const INITIAL_STATE = {
       sortBy: 'distance',
       numberedList: true,
       onlyOnInstancePage: true
+    },
+    {
+      id: 'reference',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 220
     },
     {
       id: 'uri',

@@ -11,6 +11,7 @@ import relatives from './as/relatives'
 import places from './as/places'
 import placesFacets from './as/placesFacets'
 import titles from './as/titles'
+import titlesFacets from './as/titlesFacets'
 import times from './as/times'
 import nations from './as/nations'
 import peopleFacets from './as/peopleFacets'
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   relatives,
   places,
   titles,
+  titlesFacets,
   times,
   nations,
   categories,

@@ -1,7 +1,8 @@
 import React from 'react'
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 import AddLocationIcon from '@material-ui/icons/AddLocation'
-// import LocationOnIcon from '@material-ui/icons/LocationOn'
+import AutorenewIcon from '@material-ui/icons/Autorenew'
+import GrainIcon from '@material-ui/icons/Grain'
 import RedoIcon from '@material-ui/icons/Redo'
 import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
@@ -39,7 +40,7 @@ export const perspectiveConfig = [
       {
         id: 'pointcloud',
         value: 4,
-        icon: <BubbleChartIcon />
+        icon: <GrainIcon />
       },
       {
         id: 'by_year',
@@ -76,7 +77,7 @@ export const perspectiveConfig = [
       {
         id: 'connections',
         value: 4,
-        icon: <BubbleChartIcon />
+        icon: <AutorenewIcon />
       },
       {
         id: 'export',
@@ -115,6 +116,46 @@ export const perspectiveConfig = [
       },
       {
         id: 'placeByYear',
+        value: 1,
+        icon: <LineChartIcon />
+      },
+      {
+        id: 'export',
+        value: 2,
+        icon: <CloudDownloadIcon />
+      }
+    ]
+  },
+  {
+    id: 'titles',
+    frontPageImage: placesImage,
+    perspectiveDescHeight: 160,
+    defaultActiveFacets: new Set(['prefLabel']),
+    tabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'map',
+        value: 1,
+        icon: <AddLocationIcon />
+      },
+      {
+        id: 'export',
+        value: 1,
+        icon: <CloudDownloadIcon />
+      }
+    ],
+    instancePageTabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'titleByYear',
         value: 1,
         icon: <LineChartIcon />
       },

@@ -1,5 +1,6 @@
 import { peoplePerspectiveConfig } from './perspective_configs/PeoplePerspectiveConfig'
 import { placesPerspectiveConfig } from './perspective_configs/PlacesPerspectiveConfig'
+import { titlesPerspectiveConfig } from './perspective_configs/TitlesPerspectiveConfig'
 import {
   peopleEventPlacesQuery,
   peopleMigrationsQuery,
@@ -23,7 +24,7 @@ import {
   placeByYearQuery
 } from './sparql_queries/SparqlQueriesPlaces'
 import { relativesPropertiesInstancePage } from './sparql_queries/SparqlQueriesRelatives'
-import { titlesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTitles'
+// import { titlesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTitles'
 import {
   nationsPropertiesInstancePage,
   nationByYearQuery
@@ -39,13 +40,14 @@ import { mapPlaces, mapMultipleLineChart } from '../Mappers'
 export const backendSearchConfig = {
   people: peoplePerspectiveConfig,
   places: placesPerspectiveConfig,
+  titles: titlesPerspectiveConfig,
   relatives: {
     perspectiveID: 'people', // use endpoint config from people
     instance: {
       properties: relativesPropertiesInstancePage,
       relatedInstances: ''
     }
-  },
+  }, /**
   titles: {
     perspectiveID: 'people', // use endpoint config from people
     instance: {
@@ -53,6 +55,7 @@ export const backendSearchConfig = {
       relatedInstances: ''
     }
   },
+  */
   nations: {
     perspectiveID: 'people',
     instance: {

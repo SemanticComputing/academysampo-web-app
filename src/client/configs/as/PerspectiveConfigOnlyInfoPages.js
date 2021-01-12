@@ -24,8 +24,7 @@ export const perspectiveConfigOnlyInfoPages = [
         icon: <CloudDownloadIcon />
       }
     ]
-  },
-  {
+  }, /** {
     id: 'titles',
     perspectiveDescHeight: 160,
     instancePageTabs: [
@@ -40,7 +39,7 @@ export const perspectiveConfigOnlyInfoPages = [
         icon: <CloudDownloadIcon />
       }
     ]
-  },
+  }, */
   {
     id: 'organizations',
     perspectiveDescHeight: 160,

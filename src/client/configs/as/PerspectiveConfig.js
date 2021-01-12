@@ -9,6 +9,7 @@ import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import LineChartIcon from '@material-ui/icons/ShowChart'
 import studentsImage from '../../img/main_page/promootio_452x262.jpg'
 import placesImage from '../../img/main_page/senaatti_452x262.jpg'
+import titlesImage from '../../img/main_page/inauguration.png'
 
 export const perspectiveConfig = [
   {
@@ -128,7 +129,7 @@ export const perspectiveConfig = [
   },
   {
     id: 'titles',
-    frontPageImage: placesImage,
+    frontPageImage: titlesImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set(['prefLabel']),
     tabs: [

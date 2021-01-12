@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import People from './People'
 import Places from './Places'
+import Titles from './Titles'
 
 /**
  * A component for creating a faceted search perspective for a semantic portal.
@@ -38,6 +39,29 @@ const FacetedSearchPerspective = props => {
           <Places
             facetResults={props.facetResults}
             placesResults={props.placesResults}
+            leafletMapLayers={props.leafletMap}
+            facetData={props.facetData}
+            fetchPaginatedResults={props.fetchPaginatedResults}
+            fetchResults={props.fetchResults}
+            fetchGeoJSONLayers={props.fetchGeoJSONLayers}
+            fetchByURI={props.fetchByURI}
+            updatePage={props.updatePage}
+            updateRowsPerPage={props.updateRowsPerPage}
+            updateFacetOption={props.updateFacetOption}
+            sortResults={props.sortResults}
+            routeProps={props.routeProps}
+            perspective={props.perspective}
+            animationValue={props.animationValue}
+            animateMap={props.animateMap}
+            screenSize={props.screenSize}
+            rootUrl={props.rootUrl}
+          />
+        break
+      case 'titles':
+        perspectiveElement =
+          <Titles
+            facetResults={props.facetResults}
+            titlesResults={props.titlesResults}
             leafletMapLayers={props.leafletMap}
             facetData={props.facetData}
             fetchPaginatedResults={props.fetchPaginatedResults}

@@ -7,7 +7,6 @@ export const INITIAL_STATE = {
   facets: {
     prefLabel: {
       id: 'prefLabel',
-      // predicate: defined in backend
       distinctValueCount: 0,
       values: [],
       flatValues: [],
@@ -42,12 +41,33 @@ export const INITIAL_STATE = {
       selectAlsoSubconceptsButton: true,
       selectAlsoSubconcepts: true,
       priority: 6
+    },
+    place: {
+      id: 'place',
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'prefLabel',
+      sortDirection: 'asc',
+      sortButton: false,
+      spatialFilterButton: false,
+      spatialFilterTab: '',
+      isFetching: false,
+      searchField: true,
+      containerClass: 'ten',
+      filterType: 'uriFilter',
+      uriFilter: null,
+      patialFilter: null,
+      type: 'hierarchical',
+      selectAlsoSubconceptsButton: true,
+      selectAlsoSubconcepts: true,
+      priority: 6
     }
   }
 }
 
 const titlesFacets = (state = INITIAL_STATE, action) => {
-  if (action.facetClass === 'places') {
+  if (action.facetClass === 'titles') {
     return handleFacetAction(state, action, INITIAL_STATE)
   } else return state
 }

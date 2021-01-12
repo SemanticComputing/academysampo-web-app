@@ -1077,9 +1077,9 @@ export default {
       }
     },
     titles: {
-      label: 'Title',
+      label: 'Titles',
       facetResultsType: 'titles',
-      shortDescription: 'Titles description',
+      shortDescription: 'Collection of titles mentioned in the Student Register data.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to events associated with the
@@ -1125,6 +1125,12 @@ export default {
         uri: {
           label: 'URI',
           description: 'Uniform Resource Identifier.'
+        },
+        broader: {
+          label: 'Hierarchy',
+          description: `
+            Hierarchy of the occupational titles.
+          `
         },
         related: {
           label: 'Related titles',

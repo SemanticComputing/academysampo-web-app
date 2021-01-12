@@ -10,11 +10,13 @@ import InstanceHomePageTable from '../../main_layout/InstanceHomePageTable'
 import Network from '../../facet_results/Network'
 import ApexChart from '../../facet_results/ApexChart'
 import Export from '../../facet_results/Export'
-import { coseLayout,
+import {
+  coseLayout,
   cytoscapeStyle,
   preprocess,
   preprocessConnections,
-  preprocessFamilytree } from '../../../configs/as/Cytoscape.js/NetworkConfig'
+  preprocessFamilytree
+} from '../../../configs/as/Cytoscape.js/NetworkConfig'
 import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'

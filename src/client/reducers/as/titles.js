@@ -55,8 +55,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 180,
-      onlyOnInstancePage: true
+      minWidth: 180
     },
     {
       id: 'ammo',
@@ -64,8 +63,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
+      numberedList: false
     },
     {
       id: 'related',

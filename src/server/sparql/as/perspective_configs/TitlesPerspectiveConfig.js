@@ -1,6 +1,6 @@
 import {
-  titlePropertiesInstancePage,
-  titlePropertiesFacetResults
+  titlesPropertiesInstancePage,
+  titlesPropertiesFacetResults
 } from '../sparql_queries/SparqlQueriesTitles'
 import { prefixes } from '../sparql_queries/SparqlQueriesPrefixes'
 
@@ -14,10 +14,10 @@ export const titlesPerspectiveConfig = {
   langTag: 'fi',
   langTagSecondary: 'sv',
   paginatedResults: {
-    properties: titlePropertiesFacetResults
+    properties: titlesPropertiesFacetResults
   },
   instance: {
-    properties: titlePropertiesInstancePage,
+    properties: titlesPropertiesInstancePage,
     relatedInstances: ''
   },
   facets: {
@@ -28,13 +28,13 @@ export const titlesPerspectiveConfig = {
       textQueryProperty: 'skos:prefLabel', // limit only to prefLabels
       type: 'text'
     },
-    broad: {
-      id: 'broad',
+    broader: {
+      id: 'broader',
       facetValueFilter: '',
       predicate: ':related_occupation',
-      labelPath: ':related_occupation/skos:prefLabel',
-      parentProperty: '(:related_occupation|skos:broader)',
-      parentPredicate: ':has_title/:related_occupation/skos:broader*',
+      labelPath: ':related_occupation|skos:prefLabel',
+      parentProperty: 'skos:broader',
+      parentPredicate: ':related_occupation/skos:broader*',
       type: 'hierarchical'
     }
   }

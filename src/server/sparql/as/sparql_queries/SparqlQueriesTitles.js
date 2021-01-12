@@ -47,10 +47,11 @@ UNION
 }
 `
 
-export const titlePropertiesFacetResults =
-  `?id skos:prefLabel ?prefLabel__id .
+export const titlesPropertiesFacetResults = `
+  ?id skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id AS ?prefLabel__prefLabel)
   BIND(CONCAT("/titles/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  
   BIND(?id as ?uri__id)
   BIND(?id as ?uri__dataProviderUrl)
   BIND(?id as ?uri__prefLabel)
@@ -60,17 +61,15 @@ export const titlePropertiesFacetResults =
     BIND (?altLabel__id AS ?altLabel__prefLabel )
   }
   UNION
-  { 
-    ?id :related_occupation ?broad .
-    ?broad skos:broader* ?ammo__id .
-    ?ammo__id skos:prefLabel ?ammo__prefLabel .
-    # BIND( IF(?ammo__id=?broad, CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")), "") AS ?ammo__dataProviderUrl)
-    
-    OPTIONAL {
-        ?related__id :related_occupation ?broad .
-        FILTER (?related__id != ?id)
-        ?related__id skos:prefLabel ?related__prefLabel .
-        BIND(CONCAT("/titles/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+  {
+    ?id :related_occupation ?broader__id .
+    ?broader__id skos:prefLabel ?broader__prefLabel .
+    BIND(CONCAT("/titles/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
+
+    OPTIONAL { 
+      ?broader__id skos:broader* ?ammo__id .
+      ?ammo__id skos:prefLabel ?ammo__prefLabel .
+      BIND(CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")) AS ?ammo__dataProviderUrl)
     }
   }
   UNION

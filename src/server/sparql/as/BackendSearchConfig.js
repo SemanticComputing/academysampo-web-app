@@ -12,6 +12,7 @@ import {
   networkFamilyRelationQuery,
   networkAcademicRelationQuery,
   connectionLinkQuery,
+  connectionNodesQuery,
   networkRelationQuery,
   pointCloudLinksQuery,
   pointCloudNodesQuery,
@@ -133,7 +134,7 @@ export const backendSearchConfig = {
   connections: {
     perspectiveID: 'people',
     q: connectionLinkQuery,
-    nodes: networkNodesQuery,
+    nodes: connectionNodesQuery,
     filterTarget: 'person',
     useNetworkAPI: true
   },

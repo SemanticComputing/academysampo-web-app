@@ -359,39 +359,31 @@ export const peopleEventPlacesQuery = `
 
 // # https://github.com/uber/deck.gl/blob/master/docs/layers/arc-layer.md
 export const peopleMigrationsQuery = `
-SELECT DISTINCT ?id ?person__id ?person__dataProviderUrl
-  (SAMPLE(?_person__prefLabel) AS ?person__prefLabel)
-  ?from__id 
-  (SAMPLE(?_from__prefLabel) AS ?from__prefLabel)
-  (SAMPLE(?_from__lat) AS ?from__lat)
-  (SAMPLE(?_from__long) AS ?from__long)
-  ?to__id 
-  (SAMPLE(?_to__prefLabel) AS ?to__prefLabel)
-  (SAMPLE(?_to__lat) AS ?to__lat)
-  (SAMPLE(?_to__long) AS ?to__long) 
+SELECT DISTINCT ?id 
+  ?person__id ?person__dataProviderUrl ?person__prefLabel
+  ?from__id ?from__prefLabel ?from__lat ?from__long
+  ?to__id ?to__prefLabel ?to__lat ?to__long 
 WHERE {
   <FILTER>
   ?person__id a :Person ;
     :place_of_origin ?from__id ;
     :place_of_end ?to__id ;
-    skos:prefLabel ?_person__prefLabel .
+    skos:prefLabel ?person__prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
-  ?from__id skos:prefLabel ?_from__prefLabel ;
-            geo:lat ?_from__lat ;
-            geo:long ?_from__long .
-  FILTER (lang(?_from__prefLabel)="fi")
+  ?from__id skos:prefLabel ?from__prefLabel ;
+            geo:lat ?from__lat ;
+            geo:long ?from__long .
+  FILTER (lang(?from__prefLabel)="fi")
   BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
 
-  ?to__id skos:prefLabel ?_to__prefLabel ;
-          geo:lat ?_to__lat ;
-          geo:long ?_to__long .
-  FILTER (lang(?_to__prefLabel)="fi")
+  ?to__id skos:prefLabel ?to__prefLabel ;
+          geo:lat ?to__lat ;
+          geo:long ?to__long .
+  FILTER (lang(?to__prefLabel)="fi")
   BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
   BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
 } 
-GROUP BY ?id ?person__id ?person__dataProviderUrl
-  ?from__id ?from__dataProviderUrl 
-  ?to__id  ?to__dataProviderUrl
+
 `
 
 //  query on people facet page tab 'Network'
@@ -417,6 +409,21 @@ WHERE {
   BIND(?id as ?source)
 }
 GROUP BY ?source ?target ?val ORDER BY ?val
+`
+
+export const connectionNodesQuery = `
+  SELECT DISTINCT ?id ?prefLabel ?gender ?color ?size ?href
+  WHERE {
+    VALUES (?class ?size) { (:Person "16px") (:ReferencedPerson "12px") }
+    VALUES ?id { <ID_SET> }
+    ?id a ?class ;
+        skos:prefLabel ?prefLabel .
+    OPTIONAL {
+      ?id schema:gender/skos:prefLabel ?gender . FILTER(lang(?gender)="fi")
+      VALUES (?gender ?color) { ("Mies"@fi "blue") ("Nainen"@fi "red") }
+    }
+    BIND(CONCAT("../", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1"),"/connections") AS ?href)
+  }
 `
 
 //  link query on person page tab "FAMILY RELATIONS"

@@ -250,9 +250,10 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-  ?id :has_enrollment [ schema:date ?enrollmentTimespan__id ; skos:prefLabel ?enrollmentTimespan__prefLabel ]
-  OPTIONAL { ?enrollmentTimespan__id gvp:estStart ?enrollmentTimespan__start }
-  OPTIONAL { ?enrollmentTimespan__id gvp:estEnd ?enrollmentTimespan__end }
+    ?id :has_enrollment [ schema:date ?enrollmentTimespan__id ; skos:prefLabel ?enrollmentTimespan__prefLabel ]
+    BIND(CONCAT("/times/page/", REPLACE(STR(?enrollmentTimespan__id), "^.*\\\\/(.+)", "$1")) AS ?enrollmentTimespan__dataProviderUrl)
+    OPTIONAL { ?enrollmentTimespan__id gvp:estStart ?enrollmentTimespan__start }
+    OPTIONAL { ?enrollmentTimespan__id gvp:estEnd ?enrollmentTimespan__end }
   }
   UNION
   {

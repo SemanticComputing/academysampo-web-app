@@ -1121,11 +1121,11 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: 'label',
+          label: 'Label',
           description: ''
         },
         altLabel: {
-          label: 'alternative labels',
+          label: 'Alternative labels',
           description: 'List of alternative labels or abbreviations.'
         },
         uri: {
@@ -1138,6 +1138,12 @@ export default {
             Hierarchy of the occupational titles.
           `
         },
+        totalcount: {
+          label: 'Number of People',
+          description: `
+            Total number of students with this title.
+          `
+        },
         related: {
           label: 'Related titles',
           description: `
@@ -1148,6 +1154,7 @@ export default {
           label: 'People',
           description: `
             People associated with this title.
+            NB. this list includes both students and their relatives.
           `
         },
         ammo: {

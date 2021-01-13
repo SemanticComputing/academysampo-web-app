@@ -34,6 +34,15 @@ UNION
   BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
 }
 UNION
+{ SELECT ?id (COUNT(DISTINCT ?prs) AS ?totalcount) {
+  { ?prs :has_title ?id } 
+  UNION 
+  { ?prs :has_event/:has_title ?id }
+  VALUES ?prs_class { :Person :ReferencedPerson }
+  ?prs a ?prs_class 
+  } GROUPBY ?id
+}
+UNION
 {
   { ?person__id :has_title ?id } UNION { ?person__id :has_event/:has_title ?id }
   {
@@ -71,6 +80,15 @@ export const titlesPropertiesFacetResults = `
       ?ammo__id skos:prefLabel ?ammo__prefLabel .
       BIND(CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")) AS ?ammo__dataProviderUrl)
     }
+  }
+  UNION
+  { SELECT ?id (COUNT(DISTINCT ?prs) AS ?totalcount) {
+    { ?prs :has_title ?id }
+    UNION 
+    { ?prs :has_event/:has_title ?id }
+    VALUES ?prs_class { :Person :ReferencedPerson }
+    ?prs a ?prs_class 
+    } GROUPBY ?id
   }
   UNION
   {

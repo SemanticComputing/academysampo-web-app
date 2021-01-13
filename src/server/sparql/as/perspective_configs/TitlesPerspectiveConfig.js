@@ -45,6 +45,21 @@ export const titlesPerspectiveConfig = {
       parentProperty: 'skos:broader',
       parentPredicate: 'schema:place/skos:broader*',
       type: 'hierarchical'
+    },
+    totalcount: { // TODO: is there now an easier way to do this?
+      id: 'totalcount',
+      orderByPattern: `
+        {
+          SELECT ?id (COUNT(?prs) AS ?orderBy)
+          WHERE {
+            VALUES ?facetClass { <FACET_CLASS> }
+            ?id a ?facetClass .
+            { ?prs :has_title ?id }
+            UNION 
+            { ?prs :has_event/:has_title ?id }
+          } GROUPBY ?id 
+        }
+      `
     }
   }
 }

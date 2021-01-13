@@ -78,9 +78,9 @@ export const INITIAL_STATE = {
     {
       id: 'related',
       valueType: 'object',
-      makeLink: false,
+      makeLink: true,
       externalLink: false,
-      sortValues: true,
+      sortValues: false,
       numberedList: true,
       minWidth: 180,
       onlyOnInstancePage: true

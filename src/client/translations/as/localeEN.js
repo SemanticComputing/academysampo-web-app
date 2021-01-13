@@ -1148,7 +1148,9 @@ export default {
         related: {
           label: 'Related titles',
           description: `
-            Related occupational titles.
+            Related occupational titles. 
+            This list shows the 12 most common other titles of people with the current title. 
+            The number in parenthesis is the number of people. 
           `
         },
         person: {

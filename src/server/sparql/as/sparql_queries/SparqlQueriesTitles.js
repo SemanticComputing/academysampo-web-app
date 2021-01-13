@@ -19,13 +19,17 @@ UNION
   ?broad skos:broader* ?ammo__id .
   ?ammo__id skos:prefLabel ?ammo__prefLabel .
   # BIND( IF(?ammo__id=?broad, CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")), "") AS ?ammo__dataProviderUrl)
-  
-  OPTIONAL {
-    ?related__id :related_occupation ?broad .
-    FILTER (?related__id != ?id)
-    ?related__id skos:prefLabel ?related__prefLabel .
-    BIND(CONCAT("/titles/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
-  }
+}
+UNION
+{ SELECT DISTINCT ?id ?related__id (COUNT(?person__id) AS ?countprs)
+    (CONCAT(?related__label, ' (', STR(?countprs), ')') AS ?related__prefLabel)
+    (CONCAT("/titles/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1"), "") AS ?related__dataProviderUrl)
+  WHERE {
+    { ?person__id :has_title ?id } UNION { ?person__id :has_event/:has_title ?id }
+    { ?person__id :has_title ?related__id } UNION { ?person__id :has_event/:has_title ?related__id }
+    FILTER (?related__id!=?id)
+    ?related__id skos:prefLabel ?related__label
+  } GROUPBY ?id ?related__id ?related__label ORDER BY DESC(?countprs) LIMIT 12
 }
 UNION
 {

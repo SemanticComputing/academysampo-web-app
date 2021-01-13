@@ -37,6 +37,14 @@ UNION
   }
 }
 UNION
+  { SELECT ?id (COUNT(DISTINCT ?prs) AS ?totalcount) {
+    { ?prs :student_nation ?id }
+  UNION
+  { ?prs :has_event/:student_nation ?id }
+    ?prs a :Person 
+  } GROUPBY ?id
+  }
+UNION
 { 
   ?id :wikidata ?externalLink__id. 
   BIND ("Wikidata" AS ?externalLink__prefLabel)
@@ -69,10 +77,8 @@ export const nationByYearQuery = `
 SELECT DISTINCT ?category (COUNT(DISTINCT ?person__id) AS ?Registerings)
 WHERE {
   VALUES ?id { <ID> }
-  ?person__id :has_event [
-      :student_nation ?id ;
-      schema:date/gvp:estStart ?evt__time 
-    ]
-  BIND (STR(year(?evt__time)) AS ?category)
+  ?person__id :has_event/:student_nation ?id ;
+    :has_enrollment/schema:date/gvp:estStart ?enr__time .
+  BIND (STR(year(?enr__time)) AS ?category)
 } GROUP BY ?category ORDER BY ?category 
 `

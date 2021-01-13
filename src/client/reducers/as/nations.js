@@ -39,6 +39,16 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
+      id: 'totalcount',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: true,
+      numberedList: true,
+      minWidth: 180,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'person',
       valueType: 'object',
       makeLink: true,
@@ -47,17 +57,7 @@ export const INITIAL_STATE = {
       numberedList: true,
       minWidth: 180,
       onlyOnInstancePage: true
-    }, /**
-    {
-      id: 'place',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: true,
-      minWidth: 180,
-      onlyOnInstancePage: true
-    }, */
+    },
     {
       id: 'related',
       valueType: 'object',

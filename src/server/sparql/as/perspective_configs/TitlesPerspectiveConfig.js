@@ -32,9 +32,18 @@ export const titlesPerspectiveConfig = {
       id: 'broader',
       facetValueFilter: '',
       predicate: ':related_occupation',
-      labelPath: ':related_occupation|skos:prefLabel',
+      labelPath: ':related_occupation/skos:prefLabel',
       parentProperty: 'skos:broader',
       parentPredicate: ':related_occupation/skos:broader*',
+      type: 'hierarchical'
+    },
+    place: {
+      id: 'place',
+      facetValueFilter: '',
+      predicate: 'schema:place',
+      labelPath: 'schema:place/skos:prefLabel',
+      parentProperty: 'skos:broader',
+      parentPredicate: 'schema:place/skos:broader*',
       type: 'hierarchical'
     }
   }

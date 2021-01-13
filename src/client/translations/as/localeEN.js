@@ -565,11 +565,11 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: 'label',
+          label: 'Label',
           description: ''
         },
         altLabel: {
-          label: 'alternative labels',
+          label: 'Alternative labels',
           description: 'List of alternative labels or abbreviations.'
         },
         uri: {
@@ -586,6 +586,12 @@ export default {
           label: 'People',
           description: `
             People associated with this title.
+          `
+        },
+        totalcount: {
+          label: 'Number of People',
+          description: `
+            Total number of students related to this student nation.
           `
         },
         externalLink: {

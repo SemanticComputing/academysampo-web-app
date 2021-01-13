@@ -36,7 +36,8 @@ import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQuer
 import { timesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTimes'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { makeObjectList } from '../SparqlObjectMapper'
-import { mapPlaces, mapMultipleLineChart } from '../Mappers'
+import { mapPlaces } from '../Mappers'
+import { mapMultipleLineChart } from '../as_Mappers'
 
 export const backendSearchConfig = {
   people: peoplePerspectiveConfig,

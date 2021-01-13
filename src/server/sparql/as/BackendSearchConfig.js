@@ -25,7 +25,7 @@ import {
   placeByYearQuery
 } from './sparql_queries/SparqlQueriesPlaces'
 import { relativesPropertiesInstancePage } from './sparql_queries/SparqlQueriesRelatives'
-// import { titlesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTitles'
+import { titleByYearQuery } from './sparql_queries/SparqlQueriesTitles'
 import {
   nationsPropertiesInstancePage,
   nationByYearQuery
@@ -177,6 +177,11 @@ export const backendSearchConfig = {
   placeByYear: {
     perspectiveID: 'places',
     q: placeByYearQuery,
+    resultMapper: mapMultipleLineChart
+  },
+  titleByYear: {
+    perspectiveID: 'titles',
+    q: titleByYearQuery,
     resultMapper: mapMultipleLineChart
   }
 }

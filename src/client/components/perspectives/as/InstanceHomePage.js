@@ -245,6 +245,23 @@ class InstanceHomePage extends React.Component {
                   />}
               />
               <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/titleByYear`}
+                render={() =>
+                  <ApexChart
+                    pageType='instancePage'
+                    rawData={this.props.results}
+                    rawDataUpdateID={this.props.resultUpdateID}
+                    fetching={isLoading}
+                    fetchData={this.props.fetchResults}
+                    uri={tableData.id}
+                    createChartData={createMultipleLineChartData}
+                    resultClass='titleByYear'
+                    title='People by year'
+                    xaxisTitle='Year'
+                    yaxisTitle='Number of people'
+                  />}
+              />
+              <Route
                 path={`${rootUrl}/${resultClass}/page/${this.state.localID}/nationByYear`}
                 render={() =>
                   <ApexChart

@@ -82,6 +82,7 @@ export default {
     connections: 'Connections',
     by_year: 'by year',
     placeByYear: 'Timeline of events',
+    titleByYear: 'Timeline',
     export: 'export',
     nationByYear: 'by year',
     'by-period': 'by period'

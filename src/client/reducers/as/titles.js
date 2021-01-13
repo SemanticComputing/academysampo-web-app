@@ -78,7 +78,7 @@ export const INITIAL_STATE = {
     {
       id: 'related',
       valueType: 'object',
-      makeLink: true,
+      makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: true,
@@ -98,7 +98,7 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'titles'
+  'titles', 'titleByYear'
 ])
 
 const titles = (state = INITIAL_STATE, action) => {

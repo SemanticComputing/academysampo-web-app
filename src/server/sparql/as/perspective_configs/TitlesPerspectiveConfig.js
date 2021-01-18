@@ -34,7 +34,6 @@ export const titlesPerspectiveConfig = {
       predicate: ':related_occupation',
       labelPath: ':related_occupation/skos:prefLabel',
       parentProperty: 'skos:broader',
-      parentPredicate: ':related_occupation/skos:broader*',
       type: 'hierarchical'
     },
     place: {

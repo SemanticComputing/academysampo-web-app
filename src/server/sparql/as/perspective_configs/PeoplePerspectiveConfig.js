@@ -49,10 +49,9 @@ export const peoplePerspectiveConfig = {
         ${invalidTitles}
        ))
       `,
-      predicate: ':has_title',
+      predicate: 'a :Person ; (:has_event?)/:has_title/:related_occupation',
       labelPath: ':has_title/skos:prefLabel',
-      parentProperty: '(:related_occupation|skos:broader)',
-      parentPredicate: ':has_title/:related_occupation/skos:broader*',
+      parentProperty: 'skos:broader',
       type: 'hierarchical'
     },
     birthPlace: {
@@ -61,8 +60,10 @@ export const peoplePerspectiveConfig = {
       predicate: ':place_of_origin',
       labelPath: ':place_of_origin/skos:prefLabel',
       parentProperty: 'skos:broader',
-      parentPredicate: ':place_of_origin/skos:broader+',
-      type: 'hierarchical'
+      type: 'hierarchical',
+      facetLabelFilter: `
+        FILTER(LANG(?prefLabel_) = '<LANG>')
+      `
     },
     deathPlace: {
       id: 'deathPlace',

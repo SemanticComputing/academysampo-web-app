@@ -32,7 +32,6 @@ export const placesPerspectiveConfig = {
       predicate: 'skos:broader',
       labelPath: 'skos:broader/skos:prefLabel',
       parentProperty: 'skos:broader',
-      parentPredicate: 'skos:broader+',
       type: 'hierarchical'
     },
     image: {

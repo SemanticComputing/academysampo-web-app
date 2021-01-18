@@ -9,8 +9,8 @@ export const INITIAL_STATE = {
   resultCount: 0,
   page: -1,
   pagesize: 10,
-  sortBy: null,
-  sortDirection: null,
+  sortBy: 'num_born',
+  sortDirection: 'desc',
   fetching: false,
   fetchingResultCount: false,
   facetedSearchHeaderExpanded: false,
@@ -74,16 +74,18 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: true,
       minWidth: 170
-    }, /**
+    },
     {
-      id: 'eventcount',
+      id: 'num_born',
       valueType: 'string',
       makeLink: false,
       externalLink: false,
       sortValues: false,
       numberedList: false,
+      showSource: false,
+      sourceExternalLink: false,
       minWidth: 70
-    }, */
+    },
     {
       id: 'peopleActive',
       valueType: 'object',

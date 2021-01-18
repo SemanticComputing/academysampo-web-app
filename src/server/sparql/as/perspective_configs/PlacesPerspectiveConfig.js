@@ -53,6 +53,19 @@ export const placesPerspectiveConfig = {
         } GROUP BY ?id 
       }
       `
+    },
+    num_born: {
+      orderByPattern: `
+      {
+        SELECT ?id (COUNT(?link) AS ?orderBy) WHERE {
+          VALUES ?facetClass { <FACET_CLASS> }
+          ?id a <FACET_CLASS> .
+          OPTIONAL {
+            ?link schema:place ?id 
+          }
+        } GROUP BY ?id 
+      }
+      `
     }
   }
 }

@@ -84,8 +84,8 @@ UNiON
 }
 UNION
 {
-  SELECT DISTINCT ?id (COUNT(DISTINCT ?link) AS ?eventcount) {
-    ?link schema:place ?id
+  SELECT DISTINCT ?id (COUNT(DISTINCT ?p) AS ?num_born) {
+    ?p :place_of_origin ?id
   } GROUPBY ?id
 }
 `

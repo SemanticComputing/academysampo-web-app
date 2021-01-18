@@ -476,10 +476,16 @@ export default {
           A smaller region or geographic division contained within the place.
           `
         },
-        eventcount: {
-          label: 'Number of Events',
+        num_born: {
+          label: 'People Born',
           description: `
-            Number of events at this place.
+            Number of people born at location.
+          `
+        },
+        num_deceased: {
+          label: 'People Deceased',
+          description: `
+            Number of people deceased at location.
           `
         },
         peopleActive: {

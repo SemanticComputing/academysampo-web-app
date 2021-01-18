@@ -10,6 +10,7 @@ import InstanceHomePageTable from '../../main_layout/InstanceHomePageTable'
 import Network from '../../facet_results/Network'
 import ApexChart from '../../facet_results/ApexChart'
 import Export from '../../facet_results/Export'
+import LeafletMap from '../../facet_results/LeafletMap'
 import {
   coseLayout,
   cytoscapeStyle,
@@ -125,6 +126,7 @@ class InstanceHomePage extends React.Component {
   render = () => {
     const { classes, tableData, isLoading, resultClass, rootUrl } = this.props
     const hasTableData = tableData !== null && Object.values(tableData).length >= 1
+    console.log(this.props)
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -242,6 +244,28 @@ class InstanceHomePage extends React.Component {
                     title='Events by year'
                     xaxisTitle='Year'
                     yaxisTitle='Number of events'
+                  />}
+              />
+              <Route
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/placeMap`}
+                render={() =>
+                  <LeafletMap
+                    center={[22.43, 10.37]}
+                    zoom={2}
+                    results={this.props.results}
+                    layers={this.props.leafletMapLayers}
+                    pageType='instancePage'
+                    rawData={this.props.results}
+                    rawDataUpdateID={this.props.resultUpdateID}
+                    resultClass='placeMap'
+                    facetClass='places'
+                    mapMode='cluster'
+                    uri={tableData.id}
+                    fetchByURI={this.props.fetchByURI}
+                    fetching={isLoading}
+                    fetchData={this.props.fetchResults}
+                    showInstanceCountInClusters
+                    showExternalLayers={false}
                   />}
               />
               <Route

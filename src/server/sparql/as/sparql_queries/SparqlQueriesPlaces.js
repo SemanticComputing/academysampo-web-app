@@ -82,6 +82,12 @@ UNiON
     skos:prefLabel ?image__title .
     BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
 }
+UNION
+{
+  SELECT DISTINCT ?id (COUNT(DISTINCT ?link) AS ?eventcount) {
+    ?link schema:place ?id
+  } GROUPBY ?id
+}
 `
 
 export const placePropertiesFacetResults = `
@@ -89,7 +95,7 @@ export const placePropertiesFacetResults = `
 BIND(?prefLabel__id AS ?prefLabel__prefLabel)
 BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
-{
+OPTIONAL {
   ?id skos:broader ?broader__id .
   ?broader__id skos:prefLabel ?broader__prefLabel .
   FILTER (LANG(?broader__prefLabel)="fi")
@@ -124,6 +130,34 @@ OPTIONAL {
   ?related__id skos:prefLabel ?related__prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
 }
+`
+
+export const placeMapQuery = `
+SELECT ?id ?lat ?long
+(COUNT(DISTINCT ?person) as ?instanceCount)
+WHERE {
+VALUES ?_id { <ID> }
+?id skos:broader* ?_id .
+
+  { ?person :has_event/schema:place ?id }
+  UNION
+  { ?person :has_title/schema:place ?id }
+
+  OPTIONAL {
+    ?id geo:lat ?lat1 ;
+      geo:long ?long1
+  }
+  OPTIONAL {
+    ?id skos:broader [ geo:lat ?lat2 ; geo:long ?long2 ]
+  }
+  BIND (COALESCE(?lat1, ?lat2) AS ?lat)
+  BIND (COALESCE(?long1, ?long2) AS ?long)
+  
+  # skip all places with missing coordinates:
+  FILTER(BOUND(?lat))
+  FILTER(BOUND(?long))
+}
+GROUP BY ?id ?lat ?long
 `
 
 // https://api.triplydb.com/s/fyCIq_tlO

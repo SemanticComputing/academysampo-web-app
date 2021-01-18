@@ -43,10 +43,13 @@ export const placesPerspectiveConfig = {
     externalLink: {
       orderByPattern: `
       {
-        SELECT ?id (COUNT(?link) AS ?orderBy) WHERE {
+        SELECT ?id (SUM(?weight) AS ?orderBy) WHERE {
           VALUES ?facetClass { <FACET_CLASS> }
           ?id a <FACET_CLASS> .
-          OPTIONAL { ?id :yso|:geonames|:wikidata|:wikipedia ?link }
+          OPTIONAL { ?id schema:sameAs ?link 
+            OPTIONAL { ?link :weight ?w }
+            BIND (COALESCE(?w, 1) AS ?weight)
+          }
         } GROUP BY ?id 
       }
       `

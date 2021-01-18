@@ -116,13 +116,18 @@ export const perspectiveConfig = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'placeByYear',
+        id: 'placeMap',
         value: 1,
+        icon: <AddLocationIcon />
+      },
+      {
+        id: 'placeByYear',
+        value: 2,
         icon: <LineChartIcon />
       },
       {
         id: 'export',
-        value: 2,
+        value: 3,
         icon: <CloudDownloadIcon />
       }
     ]

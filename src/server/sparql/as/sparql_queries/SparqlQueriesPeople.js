@@ -351,7 +351,7 @@ export const peopleEventPlacesQuery = `
     BIND (COALESCE(?long1, ?long2) AS ?long)
     
     # skip all places with missing coordinates:
-    FILTER(BOUND(?lat)) 
+    FILTER(BOUND(?lat))
     FILTER(BOUND(?long))
   }
   GROUP BY ?id ?lat ?long

@@ -74,7 +74,16 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: true,
       minWidth: 170
-    },
+    }, /**
+    {
+      id: 'eventcount',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      minWidth: 70
+    }, */
     {
       id: 'peopleActive',
       valueType: 'object',
@@ -148,7 +157,7 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'peoplePlaces', 'places', 'peopleMigrations', 'placeByYear'
+  'peoplePlaces', 'places', 'peopleMigrations', 'placeByYear', 'placeMap'
 ])
 
 const places = (state = INITIAL_STATE, action) => {

@@ -70,7 +70,7 @@ export const INITIAL_STATE = {
     {
       id: 'ammo',
       valueType: 'object',
-      makeLink: true,
+      makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: false

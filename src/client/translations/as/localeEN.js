@@ -82,6 +82,7 @@ export default {
     connections: 'Connections',
     by_year: 'by year',
     placeByYear: 'Timeline of events',
+    placeMap: 'Map',
     titleByYear: 'Timeline',
     export: 'export',
     nationByYear: 'by year',
@@ -475,6 +476,12 @@ export default {
           A smaller region or geographic division contained within the place.
           `
         },
+        eventcount: {
+          label: 'Number of Events',
+          description: `
+            Number of events at this place.
+          `
+        },
         peopleActive: {
           label: 'Place of Activity',
           description: `
@@ -512,7 +519,7 @@ export default {
           `
         },
         title: {
-          label: 'Related occupations',
+          label: 'Related Titles',
           description: `
             Occupational titles that are connected to this place.
           `

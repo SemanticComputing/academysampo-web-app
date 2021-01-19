@@ -146,7 +146,11 @@ WHERE {
     BIND("red" AS ?markerColor)
   } 
   UNION 
-  { ?id skos:broader <ID> }
+  { 
+    ?id skos:broader <ID> 
+    FILTER EXISTS { [] schema:place ?id }
+  }
+  
 
   ?id skos:prefLabel ?prefLabel .
   BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)

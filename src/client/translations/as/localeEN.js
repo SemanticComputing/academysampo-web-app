@@ -464,6 +464,12 @@ export default {
           A larger region or geographic division in which a place is contained.
           `
         },
+        location: {
+          label: 'Coordinates',
+          description: `
+            Latitude and Longitude of the place.
+          `
+        },
         externalLink: {
           label: 'External Link',
           description: `

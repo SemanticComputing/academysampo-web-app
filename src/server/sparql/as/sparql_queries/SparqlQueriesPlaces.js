@@ -88,6 +88,12 @@ UNION
     ?p :place_of_origin ?id
   } GROUPBY ?id
 }
+UNION
+{
+  ?id geo:lat ?lat ; geo:long ?long .
+  BIND (CONCAT('lat ', STR(?lat), ', long ',STR(?long)) as ?location__prefLabel)
+  BIND (?location__prefLabel AS ?location__id)
+}
 `
 
 export const placePropertiesFacetResults = `
@@ -132,12 +138,11 @@ OPTIONAL {
 }
 `
 
-export const placeMapQuery = `
+export const placeOnMapQuery = `
 SELECT ?id ?lat ?long
 (COUNT(DISTINCT ?person) as ?instanceCount)
 WHERE {
-VALUES ?_id { <ID> }
-?id skos:broader* ?_id .
+  VALUES ?id { <ID> }
 
   { ?person :has_event/schema:place ?id }
   UNION
@@ -153,9 +158,8 @@ VALUES ?_id { <ID> }
   BIND (COALESCE(?lat1, ?lat2) AS ?lat)
   BIND (COALESCE(?long1, ?long2) AS ?long)
   
-  # skip all places with missing coordinates:
-  FILTER(BOUND(?lat))
-  FILTER(BOUND(?long))
+  # skip places with missing coordinates:
+  FILTER(BOUND(?lat) && BOUND(?long))
 }
 GROUP BY ?id ?lat ?long
 `

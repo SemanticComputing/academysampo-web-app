@@ -20,15 +20,6 @@ export const INITIAL_STATE = {
   instanceSparqlQuery: null,
   properties: [
     {
-      id: 'uri',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'prefLabel',
       valueType: 'object',
       makeLink: true,
@@ -56,6 +47,15 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: true,
       minWidth: 170
+    },
+    {
+      id: 'location',
+      valueType: 'object',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'broader',
@@ -154,6 +154,15 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 150
+    },
+    {
+      id: 'uri',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
     }
   ]
 }

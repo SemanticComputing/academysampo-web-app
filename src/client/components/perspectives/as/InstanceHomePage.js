@@ -255,12 +255,11 @@ class InstanceHomePage extends React.Component {
                     results={this.props.results}
                     layers={this.props.leafletMapLayers}
                     pageType='instancePage'
-                    rawData={this.props.results}
-                    rawDataUpdateID={this.props.resultUpdateID}
                     resultClass='placeMap'
                     facetClass='places'
                     mapMode='cluster'
                     uri={tableData.id}
+                    fetchResults={this.props.fetchResults}
                     fetchByURI={this.props.fetchByURI}
                     fetching={isLoading}
                     fetchData={this.props.fetchResults}

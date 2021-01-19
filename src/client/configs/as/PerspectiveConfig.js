@@ -116,7 +116,7 @@ export const perspectiveConfig = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'placeMap',
+        id: 'map',
         value: 1,
         icon: <AddLocationIcon />
       },

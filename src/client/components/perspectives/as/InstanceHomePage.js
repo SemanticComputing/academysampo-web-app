@@ -126,7 +126,6 @@ class InstanceHomePage extends React.Component {
   render = () => {
     const { classes, tableData, isLoading, resultClass, rootUrl } = this.props
     const hasTableData = tableData !== null && Object.values(tableData).length >= 1
-    console.log(this.props)
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -247,7 +246,7 @@ class InstanceHomePage extends React.Component {
                   />}
               />
               <Route
-                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/placeMap`}
+                path={`${rootUrl}/${resultClass}/page/${this.state.localID}/map`}
                 render={() =>
                   <LeafletMap
                     center={[22.43, 10.37]}
@@ -260,10 +259,9 @@ class InstanceHomePage extends React.Component {
                     mapMode='cluster'
                     uri={tableData.id}
                     fetchResults={this.props.fetchResults}
-                    fetchByURI={this.props.fetchByURI}
                     fetching={isLoading}
                     fetchData={this.props.fetchResults}
-                    showInstanceCountInClusters
+                    showInstanceCountInClusters={false}
                     showExternalLayers={false}
                   />}
               />

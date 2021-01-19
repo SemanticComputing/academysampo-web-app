@@ -23,7 +23,7 @@ import {
   actorsAt,
   peopleRelatedTo,
   placeByYearQuery,
-  placeOnMapQuery
+  placeMapQuery
 } from './sparql_queries/SparqlQueriesPlaces'
 import { relativesPropertiesInstancePage } from './sparql_queries/SparqlQueriesRelatives'
 import { titleByYearQuery } from './sparql_queries/SparqlQueriesTitles'
@@ -178,13 +178,8 @@ export const backendSearchConfig = {
   },
   placeMap: {
     perspectiveID: 'places', // use endpoint config from people
-    q: placeOnMapQuery,
-    filterTarget: 'person',
-    resultMapper: mapPlaces,
-    instance: {
-      properties: placePropertiesInfoWindow,
-      relatedInstances: peopleRelatedTo
-    }
+    q: placeMapQuery,
+    resultMapper: makeObjectList
   },
   placeByYear: {
     perspectiveID: 'places',

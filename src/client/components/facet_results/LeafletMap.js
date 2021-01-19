@@ -716,7 +716,7 @@ class LeafletMap extends React.Component {
         marker.on('click', this.markerOnClickFacetResults)
       }
       if (this.props.pageType === 'instancePage') {
-        marker.bindPopup(this.createPopUpContentFindSampo(result))
+        marker.bindPopup(this.createPopUpContentAcademySampo(result))
       }
       if (this.props.pageType === 'clientFSResults') {
         marker.bindPopup(this.createPopUpContentNameSampo(result))
@@ -857,6 +857,24 @@ class LeafletMap extends React.Component {
     if (has(data, 'id')) {
       container.appendChild(this.createPopUpElement({
         label: intl.get('perspectives.finds.properties.uri.label'),
+        value: data.id
+      }))
+    }
+    return container
+  }
+
+  createPopUpContentAcademySampo = data => {
+    const container = document.createElement('div')
+    const heading = document.createElement('h3')
+    const headingLink = document.createElement('a')
+    headingLink.textContent = data.prefLabel
+    headingLink.addEventListener('click', () => history.push(data.dataProviderUrl))
+    headingLink.style.cssText = 'cursor: pointer'
+    heading.appendChild(headingLink)
+    container.appendChild(heading)
+    if (has(data, 'id')) {
+      container.appendChild(this.createPopUpElement({
+        label: 'URI',
         value: data.id
       }))
     }

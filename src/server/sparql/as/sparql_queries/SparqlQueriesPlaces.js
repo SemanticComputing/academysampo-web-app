@@ -138,15 +138,18 @@ OPTIONAL {
 }
 `
 
-export const placeOnMapQuery = `
-SELECT ?id ?lat ?long
-(COUNT(DISTINCT ?person) as ?instanceCount)
+export const placeMapQuery = `
+SELECT *
 WHERE {
-  VALUES ?id { <ID> }
+  { 
+    VALUES ?id { <ID> }
+    BIND("red" AS ?markerColor)
+  } 
+  UNION 
+  { ?id skos:broader <ID> }
 
-  { ?person :has_event/schema:place ?id }
-  UNION
-  { ?person :has_title/schema:place ?id }
+  ?id skos:prefLabel ?prefLabel .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
 
   OPTIONAL {
     ?id geo:lat ?lat1 ;
@@ -157,11 +160,10 @@ WHERE {
   }
   BIND (COALESCE(?lat1, ?lat2) AS ?lat)
   BIND (COALESCE(?long1, ?long2) AS ?long)
-  
+
   # skip places with missing coordinates:
   FILTER(BOUND(?lat) && BOUND(?long))
 }
-GROUP BY ?id ?lat ?long
 `
 
 // https://api.triplydb.com/s/fyCIq_tlO

@@ -7,10 +7,10 @@ import RedoIcon from '@material-ui/icons/Redo'
 import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 import LineChartIcon from '@material-ui/icons/ShowChart'
-import studentsImage from '../../img/main_page/promootio_452x262.jpg'
-import placesImage from '../../img/main_page/senaatti_452x262.jpg'
+import studentsImage from '../../img/main_page/people_452x262.jpg'
+import placesImage from '../../img/main_page/places-452x262.jpg'
 import titlesImage from '../../img/main_page/inauguration.png'
-import studentNationsImage from '../../img/main_page/studentnations_452x262.jpg'
+import studentNationsImage from '../../img/main_page/studentnation_452x262.jpg'
 
 export const perspectiveConfig = [
   {

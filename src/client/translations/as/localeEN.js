@@ -71,8 +71,6 @@ export default {
   tabs: {
     table: 'table',
     map: 'map',
-    production_places: 'production places',
-    last_known_locations: 'last known locations',
     migrations: 'migrations',
     network: 'network',
     pointcloud: 'point cloud',
@@ -127,15 +125,6 @@ export default {
   deckGlMap: {
     arcColouring: 'Arc colouring:',
     showMoreInformation: 'Click to show more information.',
-    manuscriptMigrations: {
-      legendTitle: 'Arc colouring',
-      legendFrom: 'Manuscript production place',
-      legendTo: 'Last known location',
-      from: 'Production place:',
-      to: 'Last known location:',
-      listHeadingSingleInstance: 'Manuscript:',
-      listHeadingMultipleInstances: 'Manuscripts:'
-    },
     peopleMigrations: {
       legendTitle: 'Arc colouring',
       legendFrom: 'Place of birth',
@@ -153,24 +142,48 @@ export default {
       shortDescription: 'Browse the data of 28000 students and their relatives',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to physical manuscript objects.
-          If two or more source datasets include the same manuscript and
-          this has been verified, the information from the source datasets has been merged
-          into one manuscript. See <a href="/instructions">instructions</a> for using the
+          Use this perspective to access data related to the students in the dataset.
+          The data is converted from two main sources:
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+            <a href="https://ylioppilasmatrikkeli.helsinki.fi/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1640–1852</a>: 
+            containing approx. 18000 student records collected by Yrjö Kotivuori.
+            </li>
+            <li>
+            <a href="https://ylioppilasmatrikkeli.helsinki.fi/1853-1899/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1853–1899</a>: 
+            containing approx. 9500 student records collected by Veli-Matti Autio.
+            </li>
+          </ul>
+        </p>
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          General information about the project is available at the <a href="https://seco.cs.aalto.fi/projects/yo-matrikkelit/"  target="_blank" rel="noopener noreferrer">project blog</a>.
+        </p>
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          Use this perspective to access data related to the students in the dataset.
+          See <a href="/instructions">instructions</a> for using the
           filters. The result view can be selected using the tabs:
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all manuscripts in
-            the AcademySampo data. One table row is equivalent to one manuscript.
+            <strong>TABLE</STRONG> view includes all students in
+            the AcademySampo data. One table row is equivalent to one student.
           </li>
           <li>
-            <strong>PRODUCTION PLACES</STRONG> view visualizes the connection
-            between manuscripts and the places where they were produced.
+            <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students 
+            born, enrolled to the University, or deceased.
           </li>
           <li>
-            <strong>MIGRATIONS</strong> view visualizes the migration of a
-            manuscript from place of production to its most recently observed location.
+            <strong>MIGRATIONS</STRONG> view shows the connection
+            between the places of birth and death.
+          </li>
+          <li>
+            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of work.
+          </li>
+          <li>
+            <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships.
+          </li>
+          <li>
+            <strong>POINT CLOUD</strong> is an embedding of the student data into two-dimensional space, so that students with similar features, e.g. having the same vocation or being members in the same organization etc, are mapped near one another.
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -181,23 +194,9 @@ export default {
       instancePage: {
         label: 'Person',
         description: `
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            AcademySampo’s Manuscript entity corresponds to
-            <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo’s</a>
-            Manifestation Singleton, defined as "physical objects that each carry an instance of
-            [an Expression], and that were produced as unique objects..." The various types
-            of records that describe manuscripts in each of the three contributing AcademySampo
-            datasets have been mapped to this entity.
-          </p>
           <h6 class="MuiTypography-root MuiTypography-h6">
             Manuscript labels
           </h6>
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            If the Bibale or Oxford databases reference a shelf mark for the manuscript,
-            that information will appear as its label. Otherwise, an SDBM ID number will serve
-            as its label. SDBM ID numbers contain prefixes that indicate different things about
-            the type of record they contain:
-          </p>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
               SDBM_MS: SDBM Manuscript Record, which aggregates the data of two or more SDBM
@@ -236,7 +235,7 @@ export default {
         image: {
           label: 'Image',
           description: `
-            A possible image of the person. Source: Wikimedia Commons.
+            Possible image of the person. Source: Wikimedia Commons.
           `
         },
         gender: {
@@ -260,7 +259,7 @@ export default {
         entryText: {
           label: 'Entry text',
           description: `
-            Full description.
+            Full description of the person.
           `
         },
         relativeText: {
@@ -282,7 +281,7 @@ export default {
         category: {
           label: 'Category',
           description: `
-            The category of the actor. This list is available only for the people in the 1640–1853 dataset.
+            Categor(y/ies) of the actor. This list is available only for the people in the 1640–1853 dataset.
           `
         },
         reference: {
@@ -294,25 +293,25 @@ export default {
         organization: {
           label: 'Organization',
           description: `
-            An organization related to the actor. The organizations are extracted from the descriptions texts using language technology methods.
+            Organization(s) related to the actor. The organizations are extracted from the descriptions texts using language technology methods.
           `
         },
         title: {
           label: 'Title',
           description: `
-            The title of the actor.
+            The titles, e.g. educations or vocations, of the actor.
           `
         },
         relative: {
           label: 'Relatives in student registry',
           description: `
-            A list of relatives that are also students of the University.
+            List of relatives that also have a record in this dataset.
           `
         },
         otherrelative: {
           label: 'Other Relatives',
           description: `
-            A list of relatives that are mentioned in the description texts.
+            List of relatives that are mentioned in the description texts.
             NB: this list is computationally generated from the texts, so there might be errors. 
           `
         },
@@ -321,24 +320,24 @@ export default {
           description: `
             This list of related people contains students, teachers, supervisors, and namesakes of a person.
           `
-        },
+        }, /*
         relations: {
           label: 'Relations',
           description: `
             Todo, add description.
           `
-        },
+        }, */
         similar: {
           label: 'Similar people',
           description: `
-          This list of recommended people is automatically generated from the data.
+          These recommendations of similar people are generated from the person data with computational methods based on people's linkage to the vocations and organizations.
           The similarity is generated by the entities, e.g. places, vocations, mentioned in the following square-bracketed list.
         `
         },
         studentnation: {
-          label: 'Student nation',
+          label: 'Student Nation',
           description: `
-            The student nation of the person.
+            The Student Nation of the person.
           `
         },
         database: {
@@ -350,41 +349,41 @@ export default {
         birthPlace: {
           label: 'Place of Birth or Baptism',
           description: `
-            The place when the actor was born or baptized.
+            Place where the person was born or baptized.
           `
         },
         birthDateTimespan: {
           label: 'Time of Birth or Baptism',
           description: `
-            The date when the actor was born or baptized.
+            Date when the person was born or baptized.
           `
         },
         externalLink: {
-          label: 'External link',
+          label: 'External Link',
           description: `
-            The links to external databases.
+            Links to external databases.
           `
         },
         enrollmentTimespan: {
-          label: 'Enrollment date',
+          label: 'Enrollment Date',
           description: `
-            The date when the person enrolled.
+            Date when the person enrolled.
           `
         },
         deathDateTimespan: {
           label: 'Time of Death or Burial',
           description: `
-            The date when the actor died or was buried.
+            Date when the person died or was buried.
           `
         },
         deathPlace: {
           label: 'Place of Death or Burial',
           description: `
-            The place when the actor died or was buried.
+            Place where the person died or was buried.
           `
         },
         place: {
-          label: 'Activity location',
+          label: 'Activity Location',
           description: `
             Place(s) of activity linked to this actor. This data has been automatically extracted from the textual descriptions.
           `
@@ -392,7 +391,7 @@ export default {
         source: {
           label: 'Source',
           description: `
-            The source of information. The two available data sources have been Student Register 1640–1852, and Student Register 1853–1899.
+            The source of information. The two available data sources are the Student Registers of  1640–1852 and 1853–1899.
           `
         }
       }
@@ -527,7 +526,7 @@ export default {
         image: {
           label: 'Image',
           description: `
-            A possible image of the place. Source: Wikimedia Commons.
+            Possible image of the place. Source: Wikimedia Commons.
           `
         },
         title: {
@@ -659,7 +658,7 @@ export default {
         broader: {
           label: 'Parent Category',
           description: `
-          A larger category in which a place is contained.
+          A larger category in which this record is contained.
           `
         },
         narrower: {
@@ -671,7 +670,7 @@ export default {
         place: {
           label: 'Related place',
           description: `
-            The specific place(s) associated with the title.
+            The specific place(s) associated with this record.
           `
         },
         related: {
@@ -809,7 +808,7 @@ export default {
         prefLabel: {
           label: 'Name',
           description: `
-            The standardized name of the actor.
+            Standardized name of the person.
           `
         },
         type: {
@@ -822,13 +821,13 @@ export default {
         gender: {
           label: 'Gender',
           description: `
-            The gender of the actor.
+            Gender of the actor.
           `
         },
         fname: {
           label: 'Family name',
           description: `
-            The family name of the actor.
+            Person's family name.
           `
         },
         altLabel: {
@@ -840,19 +839,19 @@ export default {
         image: {
           label: 'Image',
           description: `
-            A possible image of the place. Source: Wikimedia Commons.
+            Possible image of the place. Source: Wikimedia Commons.
           `
         },
         referer: {
           label: 'Referenced with',
           description: `
-            People whose biographical descriptions mention this person.
+            People in whose biographical descriptions this person is mentioned.
           `
         },
         entryText: {
           label: 'Entry text',
           description: `
-            Full description.
+            Full description of the person.
           `
         },
         relativeText: {
@@ -870,62 +869,62 @@ export default {
         title: {
           label: 'Title',
           description: `
-            The title of the actor.
+            Title of the person.
           `
         },
         relative: {
-          label: 'Relatives in student registry',
+          label: 'Relatives in Student Registry',
           description: `
-            A list of relatives that are also students of the University.
+            List of relatives that are also students of the University.
           `
         },
         otherrelative: {
           label: 'Other Relatives',
           description: `
-            A list of relatives that are mentioned in the description texts.
+            List of relatives that are mentioned in the description texts.
             NB: this list is computationally generated from the texts, so there might be errors. 
           `
         },
         birthPlace: {
           label: 'Birth place',
           description: `
-            The place when the actor was born.
+            Place where the person was born.
           `
         },
         birthDateTimespan: {
-          label: 'Birth date',
+          label: 'Birth Date',
           description: `
-            The date when the actor was born.
+            Date when the person was born.
           `
         },
         externalLink: {
-          label: 'External link',
+          label: 'External Link',
           description: `
-            The links to external databases.
+            Links to external databases.
           `
         },
         enrollmentTimespan: {
-          label: 'Enrollment date',
+          label: 'Enrollment Date',
           description: `
-            The date when the person enrolled.
+            Date of enrollment to the University.
           `
         },
         deathDateTimespan: {
-          label: 'Death date',
+          label: 'Death Date',
           description: `
-            The date when the actor died or dissolved.
+            Date when the person died.
           `
         },
         deathPlace: {
           label: 'Death place',
           description: `
-            The place when the actor died.
+            Place where the person died.
           `
         },
         place: {
           label: 'Activity location',
           description: `
-            Place(s) of activity linked to this actor.
+            Place(s) of activity linked to this person.
           `
         },
         source: {
@@ -1100,7 +1099,7 @@ export default {
         eventTimespan: {
           label: 'Date',
           description: `
-            The date or time period associated with the event.
+            Date or time period associated with the event.
           `
         },
         place: {

@@ -205,9 +205,11 @@ export default {
             </li>
             <li>
               <strong>FAMILY RELATIONS</strong> show the family relation network of this person.
+              NB some people may not have any family relations available.
             </li>
             <li>
               <strong>ACADEMIC RELATIONS</STRONG> show the Student-Teacher relation network of this person.
+              NB some people may not have any academic relations available.
             </li>
             <li>
               <strong>CONNECTIONS</strong> shows this person's relations to other persons connected by specific titles, places, organizations etc.
@@ -232,13 +234,6 @@ export default {
           label: 'Name',
           description: `
             The standardized name of the actor.
-          `
-        },
-        type: {
-          label: 'Type',
-          description: `
-            Indicates whether the actor is an individual (Person) or an institution,
-            corporation, or family (Group)
           `
         },
         image: {
@@ -280,7 +275,8 @@ export default {
         referenceText: {
           label: 'List of references',
           description: `
-            List of used references
+            List of used references.
+            NB. This list is available only for the people in the 1640–1853 dataset.
           `
         },
         sourcereference: {
@@ -315,14 +311,14 @@ export default {
           label: 'Relatives in Student Registry',
           description: `
             List of relatives that also have a record in this dataset.
-            NB: Some of these records are computationally generated from the texts, so there might be errors. 
+            NB: Some of these records are computationally generated from the texts, and there might be errors. 
           `
         },
         otherrelative: {
           label: 'Other Relatives',
           description: `
             List of relatives that are mentioned in the description texts. 
-            NB: These records are computationally generated from the texts, so there might be errors. 
+            NB: These records are computationally generated from the texts, and there might be errors. 
           `
         },
         related: {

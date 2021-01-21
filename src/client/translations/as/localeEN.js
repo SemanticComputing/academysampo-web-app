@@ -71,8 +71,6 @@ export default {
   tabs: {
     table: 'table',
     map: 'map',
-    production_places: 'production places',
-    last_known_locations: 'last known locations',
     migrations: 'migrations',
     network: 'network',
     pointcloud: 'point cloud',
@@ -127,15 +125,6 @@ export default {
   deckGlMap: {
     arcColouring: 'Arc colouring:',
     showMoreInformation: 'Click to show more information.',
-    manuscriptMigrations: {
-      legendTitle: 'Arc colouring',
-      legendFrom: 'Manuscript production place',
-      legendTo: 'Last known location',
-      from: 'Production place:',
-      to: 'Last known location:',
-      listHeadingSingleInstance: 'Manuscript:',
-      listHeadingMultipleInstances: 'Manuscripts:'
-    },
     peopleMigrations: {
       legendTitle: 'Arc colouring',
       legendFrom: 'Place of birth',
@@ -153,24 +142,30 @@ export default {
       shortDescription: 'Browse the data of 28000 students and their relatives',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to physical manuscript objects.
-          If two or more source datasets include the same manuscript and
-          this has been verified, the information from the source datasets has been merged
-          into one manuscript. See <a href="/instructions">instructions</a> for using the
+          Use this perspective to access data related to the students in the dataset.
+          See <a href="/instructions">instructions</a> for using the
           filters. The result view can be selected using the tabs:
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all manuscripts in
-            the AcademySampo data. One table row is equivalent to one manuscript.
+            <strong>TABLE</STRONG> view includes all students in
+            the AcademySampo data. One table row is equivalent to one student.
           </li>
           <li>
-            <strong>PRODUCTION PLACES</STRONG> view visualizes the connection
-            between manuscripts and the places where they were produced.
+            <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students born, enrolled to the University, or deceased.
           </li>
           <li>
-            <strong>MIGRATIONS</strong> view visualizes the migration of a
-            manuscript from place of production to its most recently observed location.
+            <strong>MIGRATIONS</STRONG> view visualizes the connection
+            between the places of birth and death.
+          </li>
+          <li>
+            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of work.
+          </li>
+          <li>
+            <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships.
+          </li>
+          <li>
+            <strong>POINT CLOUD</strong> is an embedding of the student data into 2 dimensional space, so that students with similar features, e.g. having the same vocation or being members in the same organization etc, are mapped near one another.
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result

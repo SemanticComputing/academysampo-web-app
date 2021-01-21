@@ -24,29 +24,29 @@ export const perspectiveConfig = [
         icon: <CalendarViewDayIcon />
       },
       {
-        id: 'migrations',
+        id: 'by_year',
         value: 1,
+        icon: <LineChartIcon />
+      },
+      {
+        id: 'migrations',
+        value: 2,
         icon: <RedoIcon />
       },
       {
         id: 'map',
-        value: 2,
+        value: 3,
         icon: <AddLocationIcon />
       },
       {
         id: 'network',
-        value: 3,
+        value: 4,
         icon: <BubbleChartIcon />
       },
       {
         id: 'pointcloud',
-        value: 4,
-        icon: <GrainIcon />
-      },
-      {
-        id: 'by_year',
         value: 5,
-        icon: <LineChartIcon />
+        icon: <GrainIcon />
       },
       {
         id: 'export',

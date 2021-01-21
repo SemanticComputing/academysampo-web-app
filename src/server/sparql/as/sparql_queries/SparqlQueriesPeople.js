@@ -500,7 +500,10 @@ WHERE {
 
     :has_title :has_event :has_category :has_enrollment :related_occupation :student_nation :organization }
   ?source ?prop ?target .
+  
   FILTER ISURI(?target)
+  FILTER (?target != :not_in_ammo)
+
   OPTIONAL { ?prop skos:prefLabel ?label . FILTER (LANG(?label)="fi") }
 }
 `

@@ -146,6 +146,22 @@ export const preprocess = elements => {
   elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
 }
 
+//  preprocessRelationNetwork
+export const preprocessRelationNetwork = elements => {
+  preprocess(elements)
+
+  // nodes
+  const arr = elements.nodes.map(ele => ele.data.distance)
+
+  // node size
+  let res = (new ColorScaler('24px', '6px')).fitTransform(arr)
+  elements.nodes.forEach((ele, i) => { ele.data.size = res[i] })
+
+  //  label size
+  res = (new ValueScaler(12, 8)).fitTransform(arr)
+  elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
+}
+
 //  preprocess for person/connections
 export const preprocessConnections = elements => {
   //  edges

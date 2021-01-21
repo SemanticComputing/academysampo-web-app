@@ -16,7 +16,8 @@ import {
   cytoscapeStyle,
   preprocess,
   preprocessConnections,
-  preprocessFamilytree
+  preprocessFamilytree,
+  preprocessRelationNetwork
 } from '../../../configs/as/Cytoscape.js/NetworkConfig'
 import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
 import { Route, Redirect } from 'react-router-dom'
@@ -208,7 +209,7 @@ class InstanceHomePage extends React.Component {
                     optimize={1.2}
                     style={cytoscapeStyle}
                     layout={coseLayout}
-                    preprocess={preprocess}
+                    preprocess={preprocessRelationNetwork}
                   />}
               />
               <Route

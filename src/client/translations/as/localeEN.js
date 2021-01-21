@@ -196,20 +196,28 @@ export default {
         label: 'Person',
         description: `
           <h6 class="MuiTypography-root MuiTypography-h6">
-            Manuscript labels
+            Person instance page tabs
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              SDBM_MS: SDBM Manuscript Record, which aggregates the data of two or more SDBM
-              Entries. Each Entry represents a different observation of a manuscript at a different
-              point in time, derived from various sources.
+              <strong>TABLE</STRONG> view includes all students in
+              the AcademySampo data. One table row is equivalent to one student.
             </li>
             <li>
-              SDBM_MS_orphan: a single Entry in the SDBM, meaning it has not been linked to any
-              other Entries and therefore has no SDBM Manuscript Record.
+              <strong>FAMILY RELATIONS</strong> show the family relation network of this person.
             </li>
             <li>
-              SDBM_MS_part: a record identified as a fragment of a larger manuscript.
+              <strong>ACADEMIC RELATIONS</STRONG> show the Student-Teacher relation network of this person.
+            </li>
+            <li>
+              <strong>CONNECTIONS</strong> shows this person's relations to other persons connected by specific titles, places, organizations etc.
+            </li>
+            <li>
+              <strong>RELATIONS</strong> shows this person's relations to connected titles, places, organizations etc.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>

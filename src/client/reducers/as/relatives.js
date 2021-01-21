@@ -144,15 +144,6 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'uri',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'externalLink',
       valueType: 'object',
       makeLink: true,

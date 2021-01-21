@@ -113,12 +113,13 @@ export default {
     `,
     repetition: `
       <h6 class="MuiTypography-root MuiTypography-h6">
-        Repetition of data
+        Computationally generated data
       </h6>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        The same or similar data may appear within a single data field multiple times.
-        This repetition occurs due to the merging of multiple records from different datasets
-        to create the AcademySampo record.
+        Plenty of the data is computationally generated, 
+        especially for the family relative and title information.
+        There might be missing, erroneous, or repeting data records
+        due to the errors or unadequate amount of source data.
       </p>
     `
   },
@@ -299,26 +300,28 @@ export default {
         title: {
           label: 'Title',
           description: `
-            The titles, e.g. educations or vocations, of the actor.
+            The titles, e.g. educations or vocations, of the person.
           `
         },
         relative: {
-          label: 'Relatives in student registry',
+          label: 'Relatives in Student Registry',
           description: `
             List of relatives that also have a record in this dataset.
+            NB: Some of these records are computationally generated from the texts, so there might be errors. 
           `
         },
         otherrelative: {
           label: 'Other Relatives',
           description: `
             List of relatives that are mentioned in the description texts. 
-            NB: these records are computationally generated from the texts, so there might be errors. 
+            NB: These records are computationally generated from the texts, so there might be errors. 
           `
         },
         related: {
           label: 'Academic Relations',
           description: `
             This list of related people contains students, teachers, supervisors, and namesakes of a person.
+            NB: These records are not available for all the students.
           `
         }, /*
         relations: {
@@ -337,17 +340,16 @@ export default {
         studentnation: {
           label: 'Student Nation',
           description: `
-            The Student Nation of the person.
+            The student nation of the person.
           `
-        }, /**
+        },
         database: {
-          label: 'External databases',
+          label: 'External Databases',
           description: `
-          Person entries in external databases.
-            NB: these links are computationally generated, so there might be errors due to e.g. missing or faulty information.
-            `
-          },
-        */
+            Person entries in external databases.
+            NB: These links are computationally generated, so there might be errors due to e.g. missing or faulty information.
+          `
+        },
         birthPlace: {
           label: 'Place of Birth or Baptism',
           description: `
@@ -357,7 +359,7 @@ export default {
         birthDateTimespan: {
           label: 'Time of Birth or Baptism',
           description: `
-            Date when the person was born or baptized.
+            Time when the person was born or baptized.
           `
         },
         externalLink: {
@@ -368,15 +370,15 @@ export default {
           `
         },
         enrollmentTimespan: {
-          label: 'Enrollment Date',
+          label: 'Time of Enrollment',
           description: `
-            Date when the person enrolled.
+            Time when the person enrolled.
           `
         },
         deathDateTimespan: {
           label: 'Time of Death or Burial',
           description: `
-            Date when the person died or was buried.
+            Time when the person died or was buried.
           `
         },
         deathPlace: {
@@ -386,7 +388,7 @@ export default {
           `
         },
         place: {
-          label: 'Activity Location',
+          label: 'Place of Activity',
           description: `
             Place(s) of activity linked to this actor. This data has been automatically extracted from the textual descriptions.
           `
@@ -826,15 +828,15 @@ export default {
           `
         },
         birthPlace: {
-          label: 'Birth place',
+          label: 'Place of Birth',
           description: `
             Place where the person was born.
           `
         },
         birthDateTimespan: {
-          label: 'Birth Date',
+          label: 'Time of Birth',
           description: `
-            Date when the person was born.
+            Time when the person was born.
           `
         },
         externalLink: {
@@ -844,25 +846,25 @@ export default {
           `
         },
         enrollmentTimespan: {
-          label: 'Enrollment Date',
+          label: 'Time of Enrollment',
           description: `
             Date of enrollment to the University.
           `
         },
         deathDateTimespan: {
-          label: 'Death Date',
+          label: 'Time of Death',
           description: `
-            Date when the person died.
+            Time when the person died.
           `
         },
         deathPlace: {
-          label: 'Death place',
+          label: 'Place of Death',
           description: `
             Place where the person died.
           `
         },
         place: {
-          label: 'Activity location',
+          label: 'Place of Activity',
           description: `
             Place(s) of activity linked to this person.
           `
@@ -1051,9 +1053,9 @@ export default {
       }
     },
     studentNations: {
-      label: 'Student nations',
-      facetResultsType: 'student nations',
-      shortDescription: 'Student nations.',
+      label: 'Student Nations',
+      facetResultsType: 'student Nations',
+      shortDescription: 'Student Nations.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to ...
@@ -1069,7 +1071,7 @@ export default {
         </ul>
       `,
       instancePage: {
-        label: 'Student nation',
+        label: 'Student Nation',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             Add description here...
@@ -1090,9 +1092,9 @@ export default {
           description: 'Uniform Resource Identifier.'
         },
         related: {
-          label: 'Related student nations',
+          label: 'Related Student Nations',
           description: `
-            List of Student nations having some same people as members.
+            List of Student Nations having some same people as members.
           `
         },
         person: {
@@ -1108,7 +1110,7 @@ export default {
           `
         },
         externalLink: {
-          label: 'External link',
+          label: 'External Link',
           description: `
             Link(s) to external databases.
           `

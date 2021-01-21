@@ -12,8 +12,9 @@ import places from './as/places'
 import placesFacets from './as/placesFacets'
 import titles from './as/titles'
 import titlesFacets from './as/titlesFacets'
+import studentNations from './as/studentNations'
+import studentNationsFacets from './as/studentNationsFacets'
 import times from './as/times'
-import nations from './as/nations'
 import peopleFacets from './as/peopleFacets'
 import categories from './as/categories'
 import references from './as/references'
@@ -22,17 +23,18 @@ import fullTextSearch from './as/fullTextSearch'
 
 const reducer = combineReducers({
   people,
+  peopleFacets,
   relatives,
   places,
+  placesFacets,
   titles,
   titlesFacets,
+  studentNations,
+  studentNationsFacets,
   times,
-  nations,
   categories,
   references,
   organizations,
-  peopleFacets,
-  placesFacets,
   leafletMap,
   animation,
   options,

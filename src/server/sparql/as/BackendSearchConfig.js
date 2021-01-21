@@ -1,6 +1,7 @@
 import { peoplePerspectiveConfig } from './perspective_configs/PeoplePerspectiveConfig'
 import { placesPerspectiveConfig } from './perspective_configs/PlacesPerspectiveConfig'
 import { titlesPerspectiveConfig } from './perspective_configs/TitlesPerspectiveConfig'
+import { studentNationsPerspectiveConfig } from './perspective_configs/StudentNationsPerspectiveConfig'
 import {
   peopleEventPlacesQuery,
   peopleMigrationsQuery,
@@ -25,12 +26,9 @@ import {
   placeByYearQuery,
   placeMapQuery
 } from './sparql_queries/SparqlQueriesPlaces'
+import { nationByYearQuery } from './sparql_queries/SparqlQueriesStudentNations'
 import { relativesPropertiesInstancePage } from './sparql_queries/SparqlQueriesRelatives'
 import { titleByYearQuery } from './sparql_queries/SparqlQueriesTitles'
-import {
-  nationsPropertiesInstancePage,
-  nationByYearQuery
-} from './sparql_queries/SparqlQueriesNations'
 import { categoriesPropertiesInstancePage } from './sparql_queries/SparqlQueriesCategories'
 import { referencesPropertiesInstancePage } from './sparql_queries/SparqlQueriesReferences'
 import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesOrganizations'
@@ -44,25 +42,11 @@ export const backendSearchConfig = {
   people: peoplePerspectiveConfig,
   places: placesPerspectiveConfig,
   titles: titlesPerspectiveConfig,
+  studentNations: studentNationsPerspectiveConfig,
   relatives: {
     perspectiveID: 'people', // use endpoint config from people
     instance: {
       properties: relativesPropertiesInstancePage,
-      relatedInstances: ''
-    }
-  }, /**
-  titles: {
-    perspectiveID: 'people', // use endpoint config from people
-    instance: {
-      properties: titlesPropertiesInstancePage,
-      relatedInstances: ''
-    }
-  },
-  */
-  nations: {
-    perspectiveID: 'people',
-    instance: {
-      properties: nationsPropertiesInstancePage,
       relatedInstances: ''
     }
   },
@@ -95,7 +79,7 @@ export const backendSearchConfig = {
     }
   },
   peoplePlaces: {
-    perspectiveID: 'people', // use endpoint config from people
+    perspectiveID: 'people',
     q: peopleEventPlacesQuery,
     filterTarget: 'person',
     resultMapper: mapPlaces,
@@ -105,13 +89,13 @@ export const backendSearchConfig = {
     }
   },
   peopleMigrations: {
-    perspectiveID: 'people', // use endpoint config from people
+    perspectiveID: 'people',
     q: peopleMigrationsQuery,
     filterTarget: 'person__id',
     resultMapper: makeObjectList
   },
   placesActors: {
-    perspectiveID: 'people', // use endpoint config from people
+    perspectiveID: 'people',
     instance: {
       properties: placePropertiesInfoWindow,
       relatedInstances: actorsAt
@@ -119,7 +103,7 @@ export const backendSearchConfig = {
   },
   // Network tab in people facet results
   peopleNetwork: {
-    perspectiveID: 'people', // use endpoint config from people
+    perspectiveID: 'people',
     q: networkLinksQuery,
     nodes: networkNodesQuery,
     filterTarget: 'person',

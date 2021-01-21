@@ -1,7 +1,7 @@
-export const nationsPropertiesInstancePage = `
+export const studentNationsPropertiesInstancePage = `
 
 ?id skos:prefLabel ?prefLabel__id .
-FILTER (LANG(?prefLabel__id)="fi")
+FILTER (LANG(?prefLabel__id)='<LANG>')
 BIND(?prefLabel__id AS ?prefLabel__prefLabel)
 
 BIND(?id as ?uri__id)
@@ -15,7 +15,7 @@ BIND(?id as ?uri__prefLabel)
 UNION
 {
     ?id skos:prefLabel ?altLabel__id .
-    FILTER (LANG(?altLabel__id)!="fi")
+    FILTER (LANG(?altLabel__id)!='<LANG>')
     BIND (?altLabel__id AS ?altLabel__prefLabel )
 }
 UNION
@@ -37,12 +37,12 @@ UNION
   }
 }
 UNION
-  { SELECT ?id (COUNT(DISTINCT ?prs) AS ?totalcount) {
+  { SELECT ?id (COUNT(DISTINCT ?prs) AS ?numberOfPeople) {
     { ?prs :student_nation ?id }
   UNION
   { ?prs :has_event/:student_nation ?id }
     ?prs a :Person 
-  } GROUPBY ?id
+  } GROUP BY ?id
   }
 UNION
 { 
@@ -52,25 +52,28 @@ UNION
 }
 `
 
-export const nationsPropertiesFacetResults = `
-?id skos:prefLabel ?prefLabel__id .
-FILTER (LANG(?prefLabel__id)="fi")
-BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-
-BIND(?id as ?uri__id)
-BIND(?id as ?uri__dataProviderUrl)
-BIND(?id as ?uri__prefLabel)
-
+export const studentNationsPropertiesFacetResults = `
 {
-    ?id skos:altLabel ?altLabel
+  ?id skos:prefLabel ?prefLabel__id .
+  FILTER (LANG(?prefLabel__id)='<LANG>')
+  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__prefLabel)
+  BIND(CONCAT("/studentNations/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 }
 UNION
-  { SELECT ?id (COUNT(DISTINCT ?prs) AS ?number_of_students) {
-    { ?prs :student_nation ?id }
-  UNION
-  { ?prs :has_event/:student_nation ?id }
-    ?prs a :Person
-  } GROUPBY ?id
+{
+  ?id skos:altLabel ?altLabel
+}
+UNION
+  { 
+    SELECT ?id (COUNT(DISTINCT ?prs) AS ?numberOfPeople) {
+      { ?prs :student_nation ?id }
+      UNION
+      { ?prs :has_event/:student_nation ?id }
+      ?prs a :Person
+    }   GROUP BY ?id
   }
 UNION
 { 
@@ -108,5 +111,7 @@ WHERE {
   ?person__id :has_event/:student_nation ?id ;
     :has_enrollment/schema:date/gvp:estStart ?enr__time .
   BIND (STR(year(?enr__time)) AS ?category)
-} GROUP BY ?category ORDER BY ?category 
+} 
+GROUP BY ?category 
+ORDER BY ?category 
 `

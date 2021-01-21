@@ -71,14 +71,14 @@ export const perspectiveConfig = [
         icon: <BubbleChartIcon />
       },
       {
-        id: 'relationNetwork',
+        id: 'connections',
         value: 3,
-        icon: <BubbleChartIcon />
+        icon: <AutorenewIcon />
       },
       {
-        id: 'connections',
+        id: 'relationNetwork',
         value: 4,
-        icon: <AutorenewIcon />
+        icon: <BubbleChartIcon />
       },
       {
         id: 'export',

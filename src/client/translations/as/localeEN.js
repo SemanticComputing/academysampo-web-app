@@ -311,8 +311,8 @@ export default {
         otherrelative: {
           label: 'Other Relatives',
           description: `
-            List of relatives that are mentioned in the description texts.
-            NB: this list is computationally generated from the texts, so there might be errors. 
+            List of relatives that are mentioned in the description texts. 
+            NB: these records are computationally generated from the texts, so there might be errors. 
           `
         },
         related: {
@@ -339,13 +339,15 @@ export default {
           description: `
             The Student Nation of the person.
           `
-        },
+        }, /**
         database: {
           label: 'External databases',
           description: `
-            Person entries in external databases.
-          `
-        },
+          Person entries in external databases.
+            NB: these links are computationally generated, so there might be errors due to e.g. missing or faulty information.
+            `
+          },
+        */
         birthPlace: {
           label: 'Place of Birth or Baptism',
           description: `
@@ -359,9 +361,10 @@ export default {
           `
         },
         externalLink: {
-          label: 'External Link',
+          label: 'External Links',
           description: `
             Links to external databases.
+            NB: these links are computationally generated, so there might be errors due to e.g. missing or faulty information. 
           `
         },
         enrollmentTimespan: {
@@ -824,68 +827,12 @@ export default {
       label: 'Relatives',
       facetResultsType: 'people',
       shortDescription: 'Browse the data of 28000 students and their relatives.',
-      longDescription: `
-        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to physical manuscript objects.
-          If two or more source datasets include the same manuscript and
-          this has been verified, the information from the source datasets has been merged
-          into one manuscript. See <a href="/instructions">instructions</a> for using the
-          filters. The result view can be selected using the tabs:
-        </p>
-        <ul class="MuiTypography-root MuiTypography-body1">
-          <li>
-            <strong>TABLE</STRONG> view includes all manuscripts in
-            the AcademySampo data. One table row is equivalent to one manuscript.
-          </li>
-          <li>
-            <strong>PRODUCTION PLACES</STRONG> view visualizes the connection
-            between manuscripts and the places where they were produced.
-          </li>
-          <li>
-            <strong>MIGRATIONS</strong> view visualizes the migration of a
-            manuscript from place of production to its most recently observed location.
-          </li>
-          <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
-          </li>
-        </ul>
-      `,
       instancePage: {
         label: 'Referenced Person',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            AcademySampo’s Manuscript entity corresponds to
-            <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo’s</a>
-            Manifestation Singleton, defined as "physical objects that each carry an instance of
-            [an Expression], and that were produced as unique objects..." The various types
-            of records that describe manuscripts in each of the three contributing AcademySampo
-            datasets have been mapped to this entity.
+            Instance page description
           </p>
-          <h6 class="MuiTypography-root MuiTypography-h6">
-            Manuscript labels
-          </h6>
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            If the Bibale or Oxford databases reference a shelf mark for the manuscript,
-            that information will appear as its label. Otherwise, an SDBM ID number will serve
-            as its label. SDBM ID numbers contain prefixes that indicate different things about
-            the type of record they contain:
-          </p>
-          <ul class="MuiTypography-root MuiTypography-body1">
-            <li>
-              SDBM_MS: SDBM Manuscript Record, which aggregates the data of two or more SDBM
-              Entries. Each Entry represents a different observation of a manuscript at a different
-              point in time, derived from various sources.
-            </li>
-            <li>
-              SDBM_MS_orphan: a single Entry in the SDBM, meaning it has not been linked to any
-              other Entries and therefore has no SDBM Manuscript Record.
-            </li>
-            <li>
-              SDBM_MS_part: a record identified as a fragment of a larger manuscript.
-            </li>
-          </ul>
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
         `
       },
       properties: {
@@ -899,17 +846,10 @@ export default {
             Standardized name of the person.
           `
         },
-        type: {
-          label: 'Type',
-          description: `
-            Indicates whether the actor is an individual (Person) or an institution,
-            corporation, or family (Group)
-          `
-        },
         gender: {
           label: 'Gender',
           description: `
-            Gender of the actor.
+            Gender of the person.
           `
         },
         fname: {

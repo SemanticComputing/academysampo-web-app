@@ -92,16 +92,6 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'sourcereference',
-      valueType: 'string',
-      renderAsHTML: true,
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
-    },
-    {
       id: 'source',
       valueType: 'object',
       makeLink: true,
@@ -257,6 +247,16 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: true,
       minWidth: 220
+    },
+    {
+      id: 'sourcereference',
+      valueType: 'string',
+      renderAsHTML: true,
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      onlyOnInstancePage: true
     },
     {
       id: 'uri',

@@ -78,7 +78,7 @@ UNION
   ?id :has_event/:student_nation ?studentnation__id .
   ?studentnation__id skos:prefLabel ?studentnation__prefLabel .
   FILTER (LANG(?studentnation__prefLabel)='fi')
-  BIND(CONCAT("/nations/page/", REPLACE(STR(?studentnation__id), "^.*\\\\/(.+)", "$1")) AS ?studentnation__dataProviderUrl)
+  BIND(CONCAT("/studentNations/page/", REPLACE(STR(?studentnation__id), "^.*\\\\/(.+)", "$1")) AS ?studentnation__dataProviderUrl)
 }
 UNION
 {
@@ -308,7 +308,7 @@ export const peoplePropertiesFacetResults =
     { ?id :student_nation ?studentnation__id }
     ?studentnation__id skos:prefLabel ?studentnation__prefLabel .
     FILTER (LANG(?studentnation__prefLabel)='fi')
-    BIND(CONCAT("/nations/page/", REPLACE(STR(?studentnation__id), "^.*\\\\/(.+)", "$1")) AS ?studentnation__dataProviderUrl)
+    BIND(CONCAT("/studentNations/page/", REPLACE(STR(?studentnation__id), "^.*\\\\/(.+)", "$1")) AS ?studentnation__dataProviderUrl)
   }
   UNION
   {
@@ -549,7 +549,7 @@ SELECT DISTINCT ?id ?prefLabel ?size ?cls ?color ?href
         (:Title     "green"     15 "../../../titles/page/" "/table")
         (:Category  "green"     15 "../../../categories/page/" "/table")
         (:Organization "black"  15 "../../../organizations/page/" "/table")
-        (:StudentNation "black" 15 "../../../nations/page/" "/table")
+        (:StudentNation "black" 15 "../../../studentNations/page/" "/table")
       }
     }
     BIND(COALESCE(?_color, 'grey') AS ?color)

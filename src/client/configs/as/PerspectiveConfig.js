@@ -166,5 +166,40 @@ export const perspectiveConfig = [
         icon: <CloudDownloadIcon />
       }
     ]
+  },
+  {
+    id: 'studentNations',
+    frontPageImage: null,
+    perspectiveDescHeight: 160,
+    defaultActiveFacets: new Set(['prefLabel']),
+    tabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'export',
+        value: 1,
+        icon: <CloudDownloadIcon />
+      }
+    ],
+    instancePageTabs: [
+      {
+        id: 'table',
+        value: 0,
+        icon: <CalendarViewDayIcon />
+      },
+      {
+        id: 'nationByYear',
+        value: 1,
+        icon: <LineChartIcon />
+      },
+      {
+        id: 'export',
+        value: 2,
+        icon: <CloudDownloadIcon />
+      }
+    ]
   }
 ]

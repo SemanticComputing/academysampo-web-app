@@ -609,12 +609,13 @@ const mapStateToProps = state => {
   // const { clientFSResults, clientFSFacetValues } = filterResults(state.clientSideFacetedSearch)
   return {
     categories: state.categories,
-    nations: state.nations,
     organizations: state.organizations,
     people: state.people,
     peopleFacets: state.peopleFacets,
     places: state.places,
     placesFacets: state.placesFacets,
+    studentNations: state.studentNations,
+    studentNationsFacets: state.studentNationsFacets,
     references: state.references,
     relatives: state.relatives,
     times: state.times,
@@ -677,7 +678,6 @@ SemanticPortal.propTypes = {
   relatives: PropTypes.object.isRequired,
   titles: PropTypes.object.isRequired,
   titlesFacets: PropTypes.object.isRequired,
-  nations: PropTypes.object.isRequired,
   categories: PropTypes.object.isRequired,
   references: PropTypes.object.isRequired,
   organizations: PropTypes.object.isRequired,

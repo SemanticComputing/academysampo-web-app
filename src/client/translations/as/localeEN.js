@@ -546,94 +546,6 @@ export default {
         }
       }
     },
-    nations: {
-      label: 'Student Nation',
-      facetResultsType: 'nations',
-      shortDescription: 'Student Nation description',
-      longDescription: `
-        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to events associated with the
-          histories of manuscripts and manuscript collections over the centuries.
-          See <a href="/instructions">instructions</a> for using the filters.
-          The result view can be selected using the tabs:
-        </p>
-        <ul class="MuiTypography-root MuiTypography-body1">
-          <li>
-            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
-          </li>
-          <li>
-            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
-          </li>
-          <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
-          </li>
-        </ul>
-      `,
-      instancePage: {
-        label: 'Student Nation',
-        description: `
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Events refer to various activities related to Manuscripts and Actors. Event
-            types include Production, Transfer of Custody, and Activity events.
-            Production events refer to the production of the physical manuscript.
-            Transfer of Custody events indicate a change of ownership that involved
-            a transaction of some kind, usually through an auction house or bookseller.
-            The generic Activity event type covers all other types of events.
-          </p>
-        `
-      },
-      properties: {
-        prefLabel: {
-          label: 'Label',
-          description: ''
-        },
-        altLabel: {
-          label: 'Alternative labels',
-          description: 'List of alternative labels or abbreviations.'
-        },
-        uri: {
-          label: 'URI',
-          description: 'Uniform Resource Identifier.'
-        },
-        related: {
-          label: 'Related student nations',
-          description: `
-            List of Student nations having some same people as members.
-          `
-        },
-        person: {
-          label: 'People',
-          description: `
-            People associated with this title.
-          `
-        },
-        totalcount: {
-          label: 'Number of People',
-          description: `
-            Total number of students related to this student nation.
-          `
-        },
-        externalLink: {
-          label: 'External link',
-          description: `
-            The links to external databases.
-          `
-        },
-        eventTimespan: {
-          label: 'Date',
-          description: `
-            The date or time period associated with the event.
-          `
-        },
-        place: {
-          label: 'Related place',
-          description: `
-            The specific place(s) associated with the title.
-          `
-        }
-      }
-    },
     organizations: {
       label: 'Organization',
       facetResultsType: 'organizations',
@@ -1195,6 +1107,71 @@ export default {
           label: 'Related place',
           description: `
             The specific place(s) associated with the title.
+          `
+        }
+      }
+    },
+    studentNations: {
+      label: 'Student nations',
+      facetResultsType: 'student nations',
+      shortDescription: 'Student nations.',
+      longDescription: `
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          Use this perspective to ...
+        </p>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes...
+          </li>
+          <li>
+            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            table view into YASGUI query editor.
+          </li>
+        </ul>
+      `,
+      instancePage: {
+        label: 'Student nation',
+        description: `
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            Add description here...
+          </p>
+        `
+      },
+      properties: {
+        prefLabel: {
+          label: 'Label',
+          description: ''
+        },
+        altLabel: {
+          label: 'Alternative labels',
+          description: 'List of alternative labels or abbreviations.'
+        },
+        uri: {
+          label: 'URI',
+          description: 'Uniform Resource Identifier.'
+        },
+        related: {
+          label: 'Related student nations',
+          description: `
+            List of Student nations having some same people as members.
+          `
+        },
+        person: {
+          label: 'People',
+          description: `
+            People associated with this title.
+          `
+        },
+        numberOfPeople: {
+          label: 'Number of People',
+          description: `
+            Total number of students related to this student nation.
+          `
+        },
+        externalLink: {
+          label: 'External link',
+          description: `
+            Link(s) to external databases.
           `
         }
       }

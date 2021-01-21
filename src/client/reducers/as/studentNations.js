@@ -8,9 +8,9 @@ export const INITIAL_STATE = {
   paginatedResultsSparqlQuery: null,
   resultCount: 0,
   page: -1,
-  pagesize: 10,
-  sortBy: null,
-  sortDirection: null,
+  pagesize: 25,
+  sortBy: 'prefLabel',
+  sortDirection: 'asc',
   fetching: false,
   fetchingResultCount: false,
   facetedSearchHeaderExpanded: false,
@@ -25,8 +25,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
-      minWidth: 150
+      numberedList: false
     },
     {
       id: 'altLabel',
@@ -35,18 +34,15 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: false,
-      minWidth: 220,
       onlyOnInstancePage: true
     },
     {
-      id: 'totalcount',
+      id: 'numberOfPeople',
       valueType: 'string',
       makeLink: false,
       externalLink: false,
-      sortValues: true,
-      numberedList: true,
-      minWidth: 180,
-      onlyOnInstancePage: true
+      sortValues: false,
+      numberedList: false
     },
     {
       id: 'person',
@@ -55,7 +51,6 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: true,
-      minWidth: 180,
       onlyOnInstancePage: true
     },
     {
@@ -65,7 +60,6 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       numberedList: true,
-      minWidth: 180,
       onlyOnInstancePage: true
     },
     {
@@ -74,8 +68,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: true,
       sortValues: true,
-      numberedList: false,
-      minWidth: 150
+      numberedList: false
     },
     {
       id: 'uri',
@@ -90,14 +83,14 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'nations',
+  'studentNations',
   'nationByYear'
 ])
 
-const nations = (state = INITIAL_STATE, action) => {
+const studentNations = (state = INITIAL_STATE, action) => {
   if (resultClasses.has(action.resultClass)) {
     return handleDataFetchingAction(state, action)
   } else return state
 }
 
-export default nations
+export default studentNations

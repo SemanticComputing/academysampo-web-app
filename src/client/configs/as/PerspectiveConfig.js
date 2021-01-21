@@ -10,6 +10,7 @@ import LineChartIcon from '@material-ui/icons/ShowChart'
 import studentsImage from '../../img/main_page/promootio_452x262.jpg'
 import placesImage from '../../img/main_page/senaatti_452x262.jpg'
 import titlesImage from '../../img/main_page/inauguration.png'
+import studentNationsImage from '../../img/main_page/studentnations_452x262.jpg'
 
 export const perspectiveConfig = [
   {
@@ -169,7 +170,7 @@ export const perspectiveConfig = [
   },
   {
     id: 'studentNations',
-    frontPageImage: null,
+    frontPageImage: studentNationsImage,
     perspectiveDescHeight: 160,
     defaultActiveFacets: new Set(['prefLabel']),
     tabs: [

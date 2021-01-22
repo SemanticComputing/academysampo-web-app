@@ -22,7 +22,7 @@ export const INITIAL_STATE = {
     {
       id: 'prefLabel',
       valueType: 'object',
-      makeLink: true,
+      makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: false,
@@ -75,7 +75,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       sortBy: 'level',
-      numberedList: false,
+      numberedList: true,
       onlyOnInstancePage: true
     },
     {
@@ -85,7 +85,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       sortBy: 'level',
-      numberedList: false,
+      numberedList: true,
       onlyOnInstancePage: true
     },
     {

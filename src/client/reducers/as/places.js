@@ -22,7 +22,7 @@ export const INITIAL_STATE = {
     {
       id: 'prefLabel',
       valueType: 'object',
-      makeLink: true,
+      makeLink: false,
       externalLink: false,
       sortValues: true,
       numberedList: false,

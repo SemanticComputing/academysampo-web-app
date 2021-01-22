@@ -311,14 +311,16 @@ export default {
           label: 'Relatives in Student Registry',
           description: `
             List of relatives that also have a record in this dataset.
-            NB: Some of these records are computationally generated from the texts, and there might be errors. 
+            NB: Some of these records are computationally generated from the texts, and there might be errors.
+            NB2: in some cases relatives in a distance of several generations might be missing. 
           `
         },
         otherrelative: {
           label: 'Other Relatives',
           description: `
             List of relatives that are mentioned in the description texts. 
-            NB: These records are computationally generated from the texts, and there might be errors. 
+            NB: These records are computationally generated from the texts, and there might be errors.
+            NB2: in some cases relatives in a distance of several generations might be missing. 
           `
         },
         related: {

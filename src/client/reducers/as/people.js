@@ -207,7 +207,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       sortBy: 'level',
-      numberedList: false,
+      numberedList: true,
       onlyOnInstancePage: true
     },
     {
@@ -217,7 +217,7 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: true,
       sortBy: 'level',
-      numberedList: false,
+      numberedList: true,
       onlyOnInstancePage: true
     },
     {

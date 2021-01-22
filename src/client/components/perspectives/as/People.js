@@ -128,6 +128,7 @@ const People = props => {
             showMoreText={intl.get('deckGlMap.showMoreInformation')}
             listHeadingSingleInstance={intl.get('deckGlMap.peopleMigrations.listHeadingSingleInstance')}
             listHeadingMultipleInstances={intl.get('deckGlMap.peopleMigrations.listHeadingMultipleInstances')}
+            instanceVariable='person'
             showTooltips
             mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
             mapBoxStyle={MAPBOX_STYLE}

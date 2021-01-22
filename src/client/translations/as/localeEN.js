@@ -200,8 +200,7 @@ export default {
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              <strong>TABLE</STRONG> view includes all students in
-              the AcademySampo data. One table row is equivalent to one student.
+              <strong>TABLE</STRONG> view includes detailed data about this person.
             </li>
             <li>
               <strong>FAMILY RELATIONS</strong> show the family relation network of this person.
@@ -412,47 +411,64 @@ export default {
       facetResultsType: 'places',
       shortDescription: 'Browse the data of related places',
       longDescription: `
-        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to Works. The AcademySampo data model follows
-          the <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo</a>
-          definition of a work, which refers to “distinct concepts or combinations
-          of concepts identified in artistic and intellectual expressions.” Works
-          contain title and author information. If two or more source
-          datasets include the same Work and this has been verified, the information
-          from the source datasets has been merged into one Work.  See
-          <a href="/instructions">instructions</a> for using the filters.
-          The result view can be selected using the tabs:
-        </p>
+      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+      Use this perspective to access the place data related to the students in the dataset.
+      Places in the AcademySampo data consists of countries, counties, towns, villages, and town neighborhoods, 
+      as well as individual buildings, e.g. schools, churches, hospitals etc.
+      The data is converted from various data sources: 
+      Finnish Geographic Names (for Finnish and Karelian places), 
+      Geonames (for Swedish places),
+      YSO places, and 
+      Wikidata. 
+    </p>
+    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+      See <a href="/instructions">instructions</a> for using the
+      filters. The result view can be selected using the tabs:
+    </p>
+    <ul class="MuiTypography-root MuiTypography-body1">
+      <li>
+        <strong>TABLE</STRONG> view includes all places in
+        the AcademySampo data. One table row is equivalent to one place.
+      </li>
+      <li>
+        <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of work.
+      </li>
+      <li>
+        <strong>EXPORT</strong> the SPARQL query used to generate the result
+        table view into YASGUI query editor.
+      </li>
+    </ul>
+      `,
+      instancePage: {
+        label: 'Place',
+        description: `
+        <h6 class="MuiTypography-root MuiTypography-h6">
+          Place instance page tabs
+        </h6>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view gives you a list of specific works, and
-            the manuscripts and manuscript collections in which they can be found.
+            <strong>TABLE</STRONG>  view includes detailed data about this place.
+          </li>
+          <li>
+            <strong>FAMILY RELATIONS</strong> show the family relation network of this person.
+            NB some people may not have any family relations available.
+          </li>
+          <li>
+            <strong>ACADEMIC RELATIONS</STRONG> show the Student-Teacher relation network of this person.
+            NB some people may not have any academic relations available.
+          </li>
+          <li>
+            <strong>CONNECTIONS</strong> shows this person's relations to other persons connected by specific titles, places, organizations etc.
+          </li>
+          <li>
+            <strong>RELATIONS</strong> shows this person's relations to connected titles, places, organizations etc.
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result
             table view into YASGUI query editor.
           </li>
         </ul>
-      `,
-      instancePage: {
-        label: 'Place',
-        description: `
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            The AcademySampo data model follows the
-            <a href='https://www.ifla.org/publications/node/11240' target='_blank' rel='noopener noreferrer'>FRBRoo</a>
-            definition of a work, which refers to
-            “distinct concepts or combinations of concepts identified in artistic and
-            intellectual expressions.” Works contain title and author information.
-            This definition is not shared by the Bibale or Oxford Libraries’ conception
-            of the term, which both define their internal “work” concept more closely to
-            the FRBRoo conception of an Expression. The SDBM does not have a work concept
-            at all, recording only the titles of the texts as given in its various sources,
-            without normalizing that data or linking it directly to author information.
-            Works were generated within the AcademySampo dataset by manually creating links across
-            the three datasets’ various conceptions of the relationship between authors
-            and their creations. This process was not able to reconcile every work
-            contained within the combined dataset.
-          </p>
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
         `
       },
       properties: {
@@ -481,7 +497,7 @@ export default {
           `
         },
         externalLink: {
-          label: 'External Link',
+          label: 'Datasources',
           description: `
             Link to an external database.
           `

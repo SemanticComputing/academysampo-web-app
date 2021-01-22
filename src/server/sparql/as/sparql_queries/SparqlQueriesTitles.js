@@ -18,6 +18,7 @@ UNION
   ?id :related_occupation ?broad .
   ?broad skos:broader* ?ammo__id .
   ?ammo__id skos:prefLabel ?ammo__prefLabel .
+  FILTER NOT EXISTS { ?ammo__id skos:broader :not_in_ammo }
   # BIND( IF(?ammo__id=?broad, CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")), "") AS ?ammo__dataProviderUrl)
 }
 UNION
@@ -83,6 +84,7 @@ export const titlesPropertiesFacetResults = `
       ?broader__id skos:broader* ?ammo__id .
       ?ammo__id skos:prefLabel ?ammo__prefLabel .
       BIND(CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")) AS ?ammo__dataProviderUrl)
+      FILTER NOT EXISTS { ?ammo__id skos:broader :not_in_ammo }
     }
   }
   UNION

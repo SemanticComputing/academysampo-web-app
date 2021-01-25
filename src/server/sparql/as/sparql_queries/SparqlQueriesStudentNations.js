@@ -33,7 +33,7 @@ UNION
     { ?person__id :has_event/:student_nation ?related__id }
     FILTER (?related__id != ?id)
     ?related__id skos:prefLabel ?related__prefLabel .
-    BIND(CONCAT("/nations/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+    BIND(CONCAT("/studentNations/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
   }
 }
 UNION
@@ -41,9 +41,25 @@ UNION
     { ?prs :student_nation ?id }
   UNION
   { ?prs :has_event/:student_nation ?id }
-    ?prs a :Person 
+    ?prs a :Person
   } GROUP BY ?id
   }
+UNION
+{
+  { SELECT DISTINCT ?id ?role__id ?role__prefLabel ?role__dataProviderUrl
+    {
+      ?evt__id :student_nation ?id ; :has_title ?title__id ; skos:prefLabel ?evt__label .
+      ?title__id a :Title ; skos:prefLabel ?title__label .
+      FILTER (REGEX(?title__label, '^osakunnan '))
+      
+      ?role__id :has_event ?evt__id ; skosxl:prefLabel/skos:prefLabel ?role__label .
+      BIND(CONCAT(REPLACE(?title__label, 'osakunnan ', ''), ': ', ?role__label, ' (', ?evt__label, ')') AS ?role__prefLabel)
+      BIND(CONCAT("/people/page/", REPLACE(STR(?role__id), "^.*\\\\/(.+)", "$1")) AS ?role__dataProviderUrl)
+      
+      OPTIONAL { ?evt__id schema:date/gvp:estStart ?evt__start }
+    } ORDER BY ?evt__start
+  }
+}
 UNION
 { 
   ?id :wikidata ?externalLink__id. 

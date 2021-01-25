@@ -117,7 +117,7 @@ export default {
       </h6>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Plenty of the data is computationally generated, 
-        especially for the family relative and title information.
+        especially for the family relative and vocation information.
         There might be missing, erroneous, or repeting data records
         due to the errors or unadequate amount of source data.
       </p>
@@ -212,10 +212,10 @@ export default {
               NB some people may not have any academic relations available.
             </li>
             <li>
-              <strong>CONNECTIONS</strong> shows this person's relations to other persons connected by specific titles, places, organizations etc.
+              <strong>CONNECTIONS</strong> shows this person's relations to other persons connected by specific vocations, places, organizations etc.
             </li>
             <li>
-              <strong>RELATIONS</strong> shows this person's relations to connected titles, places, organizations etc.
+              <strong>RELATIONS</strong> shows this person's relations to connected vocations, places, organizations etc.
             </li>
             <li>
               <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -302,9 +302,9 @@ export default {
           `
         },
         title: {
-          label: 'Title',
+          label: 'Vocation',
           description: `
-            The titles, e.g. educations or vocations, of the person.
+            The vocations, e.g. professions, educational degrees, or titles of the person.
           `
         },
         relative: {
@@ -459,10 +459,10 @@ export default {
             NB some people may not have any academic relations available.
           </li>
           <li>
-            <strong>CONNECTIONS</strong> shows this person's relations to other persons connected by specific titles, places, organizations etc.
+            <strong>CONNECTIONS</strong> shows this person's relations to other persons connected by specific vocations, places, organizations etc.
           </li>
           <li>
-            <strong>RELATIONS</strong> shows this person's relations to connected titles, places, organizations etc.
+            <strong>RELATIONS</strong> shows this person's relations to connected vocations, places, organizations etc.
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -478,12 +478,12 @@ export default {
           description: 'Uniform Resource Identifier'
         },
         prefLabel: {
-          label: 'Title',
-          description: 'The name or title of the place.'
+          label: 'Name',
+          description: 'The name of this place.'
         },
         altLabel: {
           label: 'Alternative Labels',
-          description: 'The name or title of the place.'
+          description: 'The alternative names, e.g. in foreign languages of the place.'
         },
         broader: {
           label: 'Parent Place',
@@ -552,9 +552,9 @@ export default {
           `
         },
         title: {
-          label: 'Related Titles',
+          label: 'Related vocations',
           description: `
-            Occupational titles that are connected to this place.
+            Vocations that are connected to this place.
           `
         },
         source: {
@@ -620,7 +620,7 @@ export default {
         person: {
           label: 'People',
           description: `
-            People associated with this title.
+            People associated with this vocation.
           `
         }
       }
@@ -704,7 +704,7 @@ export default {
       }
     },
     references: {
-      label: 'Referencs',
+      label: 'References',
       facetResultsType: 'references',
       shortDescription: 'Reference description',
       longDescription: `
@@ -731,7 +731,7 @@ export default {
         person: {
           label: 'People',
           description: `
-            People associated with this category.
+            People having this reference.
           `
         },
         broader: {
@@ -826,9 +826,9 @@ export default {
           `
         },
         title: {
-          label: 'Title',
+          label: 'Vocation',
           description: `
-            Title of the person.
+            Vocation of the person.
           `
         },
         relative: {
@@ -973,9 +973,9 @@ export default {
       }
     },
     titles: {
-      label: 'Titles',
-      facetResultsType: 'titles',
-      shortDescription: 'Collection of titles mentioned in the Student Register data.',
+      label: 'Vocations',
+      facetResultsType: 'vocations',
+      shortDescription: 'Collection of vocations mentioned in the Student Register data.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to events associated with the
@@ -997,7 +997,7 @@ export default {
         </ul>
       `,
       instancePage: {
-        label: 'Title',
+        label: 'Vocation',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             Events refer to various activities related to Manuscripts and Actors. Event
@@ -1025,27 +1025,26 @@ export default {
         broader: {
           label: 'Hierarchy',
           description: `
-            Hierarchy of the occupational titles.
+            Hierarchy of the vocations.
           `
         },
         totalcount: {
           label: 'Number of People',
           description: `
-            Total number of students with this title.
+            Total number of students with this vocation.
           `
         },
         related: {
-          label: 'Related titles',
+          label: 'Related vocations',
           description: `
-            Related occupational titles. 
-            This list shows the 12 most common other titles of people with the current title. 
+            This list shows the 12 most common other vocations of people with the current vocation. 
             The number in parenthesis is the number of people. 
           `
         },
         person: {
           label: 'People',
           description: `
-            People associated with this title.
+            People associated with this vocation.
             NB. this list includes both students and their relatives.
           `
         },
@@ -1064,7 +1063,7 @@ export default {
         place: {
           label: 'Related place',
           description: `
-            The specific place(s) associated with the title.
+            The specific place(s) associated with the vocation.
           `
         }
       }
@@ -1114,16 +1113,22 @@ export default {
             List of Student Nations having some same people as members.
           `
         },
-        person: {
-          label: 'People',
+        numberOfPeople: {
+          label: 'Number of members',
           description: `
-            People associated with this title.
+            Total number of members in this student nation.
           `
         },
-        numberOfPeople: {
-          label: 'Number of People',
+        person: {
+          label: 'Members',
           description: `
-            Total number of students related to this student nation.
+            People mentioned as members of this student nation.
+          `
+        },
+        role: {
+          label: 'Roles',
+          description: `
+            People who are mentioned as inspectors, curators, or founding or honorary members of this student nation.
           `
         },
         externalLink: {

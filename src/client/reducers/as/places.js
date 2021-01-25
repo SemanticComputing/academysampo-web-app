@@ -9,7 +9,7 @@ export const INITIAL_STATE = {
   resultCount: 0,
   page: -1,
   pagesize: 10,
-  sortBy: 'num_born',
+  sortBy: 'num_activies',
   sortDirection: 'desc',
   fetching: false,
   fetchingResultCount: false,
@@ -74,17 +74,6 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: true,
       minWidth: 170
-    },
-    {
-      id: 'num_born',
-      valueType: 'string',
-      makeLink: false,
-      externalLink: false,
-      sortValues: false,
-      numberedList: false,
-      showSource: false,
-      sourceExternalLink: false,
-      minWidth: 70
     },
     {
       id: 'peopleActive',
@@ -154,6 +143,17 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 150
+    },
+    {
+      id: 'num_activies',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false,
+      showSource: false,
+      sourceExternalLink: false,
+      minWidth: 70
     },
     {
       id: 'uri',

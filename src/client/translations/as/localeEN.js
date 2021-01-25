@@ -508,16 +508,10 @@ export default {
           A smaller region or geographic division contained within the place.
           `
         },
-        num_born: {
-          label: 'People Born',
+        num_activies: {
+          label: 'Number of references',
           description: `
-            Number of people born at location.
-          `
-        },
-        num_deceased: {
-          label: 'People Deceased',
-          description: `
-            Number of people deceased at location.
+            Total number of references to this place in the database.
           `
         },
         peopleActive: {
@@ -527,25 +521,25 @@ export default {
           `
         },
         peopleBorn: {
-          label: 'Place of Birth',
+          label: 'People born',
           description: `
             List of people born here.
           `
         },
         peopleBaptized: {
-          label: 'Place of Baptism',
+          label: 'People baptized',
           description: `
             List of people baptized here. Notice that this information is available only for a few people.
           `
         },
         peopleDied: {
-          label: 'Place of Death',
+          label: 'People deceased',
           description: `
-            List of people died here.
+            List of people deceased here.
           `
         },
         peopleBuried: {
-          label: 'Place of Burial',
+          label: 'People buried',
           description: `
             List of people buried here. Notice that this information is available only for a few people.
           `

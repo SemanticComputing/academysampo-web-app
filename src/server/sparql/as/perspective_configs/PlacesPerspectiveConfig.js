@@ -1,5 +1,6 @@
 import {
-  placePropertiesInstancePage
+  placePropertiesInstancePage,
+  placePropertiesFacesPage
 } from '../sparql_queries/SparqlQueriesPlaces'
 import { prefixes } from '../sparql_queries/SparqlQueriesPrefixes'
 
@@ -12,7 +13,7 @@ export const placesPerspectiveConfig = {
   facetClass: '<http://ldf.fi/schema/yoma/Place>',
   defaultConstraint: 'FILTER EXISTS { [] schema:place <SUBJECT> }',
   paginatedResults: {
-    properties: placePropertiesInstancePage
+    properties: placePropertiesFacesPage
   },
   instance: {
     properties: placePropertiesInstancePage,
@@ -54,16 +55,17 @@ export const placesPerspectiveConfig = {
       }
       `
     },
-    num_born: {
+    num_activies: {
       orderByPattern: `
       {
-        SELECT ?id (COUNT(?link) AS ?orderBy) WHERE {
+        SELECT ?id ?orderBy WHERE {
           VALUES ?facetClass { <FACET_CLASS> }
-          ?id a <FACET_CLASS> .
+          ?id a ?facetClass .
           OPTIONAL {
-            ?link schema:place ?id 
+            ?id :number_of_events ?num
           }
-        } GROUP BY ?id 
+          BIND (COALESCE(?num, 0) AS ?orderBy)
+        }
       }
       `
     }

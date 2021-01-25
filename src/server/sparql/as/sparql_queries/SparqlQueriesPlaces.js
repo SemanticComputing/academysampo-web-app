@@ -84,15 +84,66 @@ UNiON
 }
 UNION
 {
-  SELECT DISTINCT ?id (COUNT(DISTINCT ?p) AS ?num_born) {
-    ?p :place_of_origin ?id
-  } GROUPBY ?id
-}
-UNION
-{
   ?id geo:lat ?lat ; geo:long ?long .
   BIND (CONCAT('lat ', STR(?lat), ', long ',STR(?long)) as ?location__prefLabel)
   BIND (?location__prefLabel AS ?location__id)
+}
+UNION
+{
+  ?id :number_of_events ?num_activies
+}
+`
+export const placePropertiesFacesPage = `
+{
+  ?id skos:prefLabel ?prefLabel__id .
+  FILTER (LANG(?prefLabel__id)="fi")
+  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  BIND(?id as ?uri__id)
+  BIND(?id as ?uri__dataProviderUrl)
+  BIND(?id as ?uri__prefLabel)
+}
+UNION
+{
+  ?id skos:altLabel ?altLabel .
+}
+UNION
+{ 
+  ?id skos:broader+ ?broader__id . 
+  ?broader__id skos:prefLabel ?broader__prefLabel .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
+  FILTER (LANG(?broader__prefLabel)='fi')
+}
+UNION 
+{ 
+  ?narrower__id skos:broader ?id ; skos:prefLabel ?narrower__prefLabel .
+  FILTER EXISTS { [] schema:place ?narrower__id }
+  BIND(CONCAT("/places/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
+  FILTER (LANG(?narrower__prefLabel)='fi')
+}
+UNION 
+{
+  ?id schema:sameAs ?externalLink__id .
+  ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+}
+UNION 
+{ 
+  ?title__id schema:place ?id ; 
+    a :Title ;
+    skos:prefLabel ?title__prefLabel .
+  BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
+}
+UNiON
+{
+  ?id schema:image ?image__id ;
+    skos:prefLabel ?image__description ;
+    skos:prefLabel ?image__title .
+    BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
+}
+UNION
+{
+  ?id :number_of_events ?num_activies
 }
 `
 

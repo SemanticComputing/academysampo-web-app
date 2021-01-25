@@ -379,6 +379,7 @@ export const peopleMigrationsQuery = `
     FILTER (lang(?to__prefLabel)="fi")
     BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
     BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
+    FILTER(?from__id != ?to__id)
   }
   GROUP BY ?id 
   ?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl

@@ -45,6 +45,22 @@ UNION
   } GROUP BY ?id
   }
 UNION
+{
+  { SELECT DISTINCT ?id ?role__id ?role__prefLabel ?role__dataProviderUrl
+    {
+      ?evt__id :student_nation ?id ; :has_title ?title__id ; skos:prefLabel ?evt__label .
+      ?title__id a :Title ; skos:prefLabel ?title__label .
+      FILTER (REGEX(?title__label, '^osakunnan '))
+      
+      ?role__id :has_event ?evt__id ; skosxl:prefLabel/skos:prefLabel ?role__label .
+      BIND(CONCAT(?title__label, ': ', ?role__label, ' (', ?evt__label, ')') AS ?role__prefLabel)
+      BIND(CONCAT("/people/page/", REPLACE(STR(?role__id), "^.*\\\\/(.+)", "$1")) AS ?role__dataProviderUrl)
+      
+      OPTIONAL { ?evt__id schema:date/gvp:estStart ?evt__start }
+    } ORDER BY ?evt__start
+  }
+}
+UNION
 { 
   ?id :wikidata ?externalLink__id. 
   BIND ("Wikidata" AS ?externalLink__prefLabel)

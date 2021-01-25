@@ -703,7 +703,7 @@ export default {
       }
     },
     references: {
-      label: 'Referencs',
+      label: 'References',
       facetResultsType: 'references',
       shortDescription: 'Reference description',
       longDescription: `
@@ -730,7 +730,7 @@ export default {
         person: {
           label: 'People',
           description: `
-            People associated with this category.
+            People having this reference.
           `
         },
         broader: {
@@ -1112,16 +1112,22 @@ export default {
             List of Student Nations having some same people as members.
           `
         },
-        person: {
-          label: 'People',
+        numberOfPeople: {
+          label: 'Number of members',
           description: `
-            People associated with this vocation.
+            Total number of members in this student nation.
           `
         },
-        numberOfPeople: {
-          label: 'Number of People',
+        person: {
+          label: 'Members',
           description: `
-            Total number of students related to this student nation.
+            People mentioned as members of this student nation.
+          `
+        },
+        role: {
+          label: 'Roles',
+          description: `
+            People who are mentioned as inspectors, curators, or founding or honorary members of this student nation.
           `
         },
         externalLink: {

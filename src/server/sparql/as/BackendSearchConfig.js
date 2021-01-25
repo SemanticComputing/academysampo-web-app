@@ -5,6 +5,7 @@ import { studentNationsPerspectiveConfig } from './perspective_configs/StudentNa
 import {
   peopleEventPlacesQuery,
   peopleMigrationsQuery,
+  peopleMigrationsDialogQuery,
   networkLinksQuery,
   networkNodesQuery,
   academicNetworkNodesQuery,
@@ -35,7 +36,7 @@ import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQuer
 import { timesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTimes'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { makeObjectList } from '../SparqlObjectMapper'
-import { mapPlaces } from '../Mappers'
+import { mapPlaces, linearScale } from '../Mappers'
 import { mapMultipleLineChart } from '../as_Mappers'
 
 export const backendSearchConfig = {
@@ -91,7 +92,21 @@ export const backendSearchConfig = {
   peopleMigrations: {
     perspectiveID: 'people',
     q: peopleMigrationsQuery,
-    filterTarget: 'person__id',
+    filterTarget: 'person',
+    resultMapper: makeObjectList,
+    postprocess: {
+      func: linearScale,
+      config: {
+        variable: 'instanceCount',
+        minAllowed: 3,
+        maxAllowed: 30
+      }
+    }
+  },
+  peopleMigrationsDialog: {
+    perspectiveID: 'people',
+    q: peopleMigrationsDialogQuery,
+    filterTarget: 'id',
     resultMapper: makeObjectList
   },
   placesActors: {

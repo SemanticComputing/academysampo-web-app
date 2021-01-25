@@ -359,31 +359,42 @@ export const peopleEventPlacesQuery = `
 
 // # https://github.com/uber/deck.gl/blob/master/docs/layers/arc-layer.md
 export const peopleMigrationsQuery = `
-SELECT DISTINCT ?id 
-  ?person__id ?person__dataProviderUrl ?person__prefLabel
-  ?from__id ?from__prefLabel ?from__lat ?from__long
-  ?to__id ?to__prefLabel ?to__lat ?to__long 
-WHERE {
-  <FILTER>
-  ?person__id a :Person ;
-    :place_of_origin ?from__id ;
-    :place_of_end ?to__id ;
-    skos:prefLabel ?person__prefLabel .
-  BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
-  ?from__id skos:prefLabel ?from__prefLabel ;
-            geo:lat ?from__lat ;
-            geo:long ?from__long .
-  FILTER (lang(?from__prefLabel)="fi")
-  BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+  SELECT DISTINCT ?id 
+  ?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl
+  ?to__id ?to__prefLabel ?to__lat ?to__long ?to__dataProviderUrl
+  (COUNT(DISTINCT ?person) as ?instanceCount)
+  WHERE {
+    <FILTER>
+    ?person a :Person ;
+      :place_of_origin ?from__id ;
+      :place_of_end ?to__id .
+    ?from__id skos:prefLabel ?from__prefLabel ;
+              geo:lat ?from__lat ;
+              geo:long ?from__long .
+    FILTER (lang(?from__prefLabel)="fi")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?from__id), "^.*\\\\/(.+)", "$1")) AS ?from__dataProviderUrl)
+    ?to__id skos:prefLabel ?to__prefLabel ;
+            geo:lat ?to__lat ;
+            geo:long ?to__long .
+    FILTER (lang(?to__prefLabel)="fi")
+    BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
+    BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
+  }
+  GROUP BY ?id 
+  ?from__id ?from__prefLabel ?from__lat ?from__long ?from__dataProviderUrl
+  ?to__id ?to__prefLabel ?to__lat ?to__long ?to__dataProviderUrl
+  ORDER BY desc(?instanceCount)
+`
 
-  ?to__id skos:prefLabel ?to__prefLabel ;
-          geo:lat ?to__lat ;
-          geo:long ?to__long .
-  FILTER (lang(?to__prefLabel)="fi")
-  BIND(CONCAT("/places/page/", REPLACE(STR(?to__id), "^.*\\\\/(.+)", "$1")) AS ?to__dataProviderUrl)
-  BIND(IRI(CONCAT(STR(?from__id), "-", REPLACE(STR(?to__id), "http://ldf.fi/yoma/place/", ""))) as ?id)
-} 
-
+export const peopleMigrationsDialogQuery = `
+  SELECT * {
+    <FILTER>
+    ?id :place_of_origin <FROM_ID> ;
+        :place_of_end <TO_ID> ;
+        a :Person ;
+        skos:prefLabel ?prefLabel .
+    BIND(CONCAT("/people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
+  }
 `
 
 //  query on people facet page tab 'Network'

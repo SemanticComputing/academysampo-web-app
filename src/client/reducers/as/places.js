@@ -17,6 +17,8 @@ export const INITIAL_STATE = {
   instancePageHeaderExpanded: false,
   instanceTableData: null,
   instanceTableExternalData: null,
+  instanceAnalysisData: null,
+  instanceAnalysisDataUpdateID: 0,
   instanceSparqlQuery: null,
   properties: [
     {
@@ -168,7 +170,7 @@ export const INITIAL_STATE = {
 }
 
 const resultClasses = new Set([
-  'peoplePlaces', 'places', 'peopleMigrations', 'placeByYear', 'placeMap'
+  'peoplePlaces', 'places', 'peopleMigrations', 'peopleMigrationsDialog', 'placeByYear', 'placeMap'
 ])
 
 const places = (state = INITIAL_STATE, action) => {

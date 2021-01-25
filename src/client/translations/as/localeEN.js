@@ -132,6 +132,7 @@ export default {
       legendTo: 'Place of death',
       from: 'Place of birth:',
       to: 'Place of death:',
+      count: 'Number of people:',
       listHeadingSingleInstance: 'Person:',
       listHeadingMultipleInstances: 'People:'
     }

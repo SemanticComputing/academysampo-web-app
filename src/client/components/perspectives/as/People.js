@@ -115,13 +115,19 @@ const People = props => {
           <Deck
             results={props.placesResults.results}
             facetUpdateID={props.facetData.facetUpdateID}
+            instanceAnalysisData={props.placesResults.instanceAnalysisData}
+            instanceAnalysisDataUpdateID={props.placesResults.instanceAnalysisDataUpdateID}
             resultClass='peopleMigrations'
             facetClass='people'
             fetchResults={props.fetchResults}
+            fetchInstanceAnalysis={props.fetchInstanceAnalysis}
             fetching={props.placesResults.fetching}
+            fetchingInstanceAnalysisData={props.placesResults.fetchingInstanceAnalysisData}
             layerType='arcLayer'
+            getArcWidth={d => d.instanceCountScaled}
             fromText={intl.get('deckGlMap.peopleMigrations.from')}
             toText={intl.get('deckGlMap.peopleMigrations.to')}
+            countText={intl.get('deckGlMap.peopleMigrations.count')}
             legendTitle={intl.get('deckGlMap.peopleMigrations.legendTitle')}
             legendFromText={intl.get('deckGlMap.peopleMigrations.legendFrom')}
             legendToText={intl.get('deckGlMap.peopleMigrations.legendTo')}

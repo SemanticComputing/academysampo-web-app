@@ -29,6 +29,16 @@ export const INITIAL_STATE = {
       minWidth: 150
     },
     {
+      id: 'altLabel',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: false,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 220,
+      onlyOnInstancePage: true
+    },
+    {
       id: 'person',
       valueType: 'object',
       makeLink: true,
@@ -45,16 +55,6 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: false,
       numberedList: true
-    },
-    {
-      id: 'altLabel',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: false,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 220,
-      onlyOnInstancePage: true
     },
     {
       id: 'uri',

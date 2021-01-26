@@ -1081,11 +1081,19 @@ export default {
       shortDescription: 'Student Nations.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to ...
+          Use this perspective to access data related to the student nations in the dataset.
+          For the 1640–1852 dataset the student nations were extracted from the register descriptions.
+          In the 1853–1899 dataset the student nations were provided as data fields in the source material.
+
+          In addition to the student nations of Royal Academy of Turku and Helsinki University, 
+          a few mentioned student nations of Swedish Universities were added to this domain ontology.
+
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes...
+            <strong>TABLE</STRONG> view includes student nations extracted from
+            the AcademySampo data.
+            One table row is equivalent to one student nation.
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result

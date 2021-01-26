@@ -596,22 +596,21 @@ export default {
         label: 'Organization',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Events refer to various activities related to Manuscripts and Actors. Event
-            types include Production, Transfer of Custody, and Activity events.
-            Production events refer to the production of the physical manuscript.
-            Transfer of Custody events indicate a change of ownership that involved
-            a transaction of some kind, usually through an auction house or bookseller.
-            The generic Activity event type covers all other types of events.
+            Organization refers to various groups by people, 
+            e.g. religious, governmental, military, or commercial organizations or companies.
+            Notice that a person is linked only when the name of an organization is mentioned in his/her
+            text description, and that there are cases when a membership e.g. in Finnish Parliament or Military 
+            can only be reasoned from the person's vocation. 
           </p>
         `
       },
       properties: {
         prefLabel: {
-          label: 'label',
+          label: 'Label',
           description: ''
         },
         altLabel: {
-          label: 'alternative labels',
+          label: 'Alternative labels',
           description: 'List of alternative labels or abbreviations.'
         },
         uri: {
@@ -619,13 +618,13 @@ export default {
           description: 'Uniform Resource Identifier.'
         },
         person: {
-          label: 'People',
+          label: 'Related people',
           description: `
-            People associated with this vocation.
+            People associated with this organization.
           `
         },
         related: {
-          label: 'Related',
+          label: 'Related organizations',
           description: `
             Other organizations that some common members. 
             The amount of common members is in parenthesis at the end of the label.
@@ -672,7 +671,7 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: 'label',
+          label: 'Label',
           description: ''
         },
         uri: {
@@ -729,7 +728,7 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: 'label',
+          label: 'Label',
           description: ''
         },
         uri: {
@@ -941,7 +940,7 @@ export default {
       },
       properties: {
         prefLabel: {
-          label: 'label',
+          label: 'Label',
           description: ''
         },
         uri: {

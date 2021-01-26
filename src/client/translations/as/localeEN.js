@@ -169,6 +169,7 @@ export default {
           <li>
             <strong>TABLE</STRONG> view includes all students in
             the AcademySampo data. One table row is equivalent to one student.
+            Wikidata/Wikimedia Commons is used as the image source.
           </li>
           <li>
             <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students 
@@ -179,10 +180,13 @@ export default {
             between the places of birth and death.
           </li>
           <li>
-            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of work.
+            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work or living.
           </li>
           <li>
-            <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships.
+            <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships. 
+              Notice that the amount of people shown in the network is limited for performance reason. 
+              The Teacher-Student relationships are not available for all, so some facet setting may not show the network at all. 
+              More network visualizations concentrating on a particular person can be viewed at person instance pages.
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -236,7 +240,7 @@ export default {
         image: {
           label: 'Image',
           description: `
-            Possible image of the person. Source: Wikimedia Commons.
+            Possible image of the person, some people can have more than one images. Source: Wikimedia Commons.
           `
         },
         gender: {
@@ -413,11 +417,11 @@ export default {
       Use this perspective to access the place data related to the students in the dataset.
       Places in the AcademySampo data consists of countries, counties, towns, villages, and town neighborhoods, 
       as well as individual buildings, e.g. schools, churches, hospitals etc.
-      The data is converted from various data sources: 
+      The data (labels, coordinates, hierarchy) is converted from various data sources: 
       Finnish Geographic Names (for Finnish and Karelian places), 
       Geonames (for Swedish places),
       YSO places, and 
-      Wikidata. 
+      Wikidata (images).
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       See <a href="/instructions">instructions</a> for using the
@@ -429,7 +433,7 @@ export default {
         the AcademySampo data. One table row is equivalent to one place.
       </li>
       <li>
-        <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of work.
+        <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work or living.
       </li>
       <li>
         <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -545,7 +549,7 @@ export default {
         image: {
           label: 'Image',
           description: `
-            Possible image of the place. Source: Wikimedia Commons.
+            Possible image of the place, some places can have more than one images. Source: Wikimedia Commons.
           `
         },
         title: {
@@ -796,13 +800,13 @@ export default {
         altLabel: {
           label: 'Alternative names',
           description: `
-          Alternative names.
+          Alternative names including e.g. spelling variations, maiden or married names.
           `
         },
         image: {
           label: 'Image',
           description: `
-            Possible image of the place. Source: Wikimedia Commons.
+            Possible image of the place. Some places can have more than one images. Source: Wikimedia Commons.
           `
         },
         referer: {

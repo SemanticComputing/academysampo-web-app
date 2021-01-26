@@ -80,6 +80,14 @@ export const INITIAL_STATE = {
       numberedList: false
     },
     {
+      id: 'comment',
+      valueType: 'string',
+      makeLink: false,
+      externalLink: false,
+      sortValues: false,
+      numberedList: false
+    },
+    {
       id: 'uri',
       valueType: 'object',
       makeLink: true,

@@ -66,6 +66,10 @@ UNION
   BIND ("Wikidata" AS ?externalLink__prefLabel)
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
+UNION
+{
+  ?id :comment ?comment
+}
 `
 
 export const studentNationsPropertiesFacetResults = `
@@ -91,6 +95,10 @@ UNION
       ?prs a :Person
     }   GROUP BY ?id
   }
+UNION
+{
+  ?id :comment ?comment
+}
 UNION
 { 
   ?id :wikidata ?externalLink__id. 

@@ -1131,6 +1131,12 @@ export default {
             People who are mentioned as inspectors, curators, or founding or honorary members of this student nation.
           `
         },
+        comment: {
+          label: 'Comment',
+          description: `
+            Optional comment about this student nation.
+          `
+        },
         externalLink: {
           label: 'External Link',
           description: `

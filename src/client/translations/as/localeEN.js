@@ -73,7 +73,7 @@ export default {
     map: 'map',
     migrations: 'migrations',
     network: 'network',
-    pointcloud: 'point cloud',
+    //  pointcloud: 'point cloud',
     familyNetwork: 'Family relations',
     academicNetwork: 'Academic relations',
     relationNetwork: 'Relations',
@@ -183,9 +183,6 @@ export default {
           </li>
           <li>
             <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships.
-          </li>
-          <li>
-            <strong>POINT CLOUD</strong> is an embedding of the student data into two-dimensional space, so that students with similar features, e.g. having the same vocation or being members in the same organization etc, are mapped near one another.
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -1077,7 +1074,7 @@ export default {
     },
     studentNations: {
       label: 'Student Nations',
-      facetResultsType: 'student Nations',
+      facetResultsType: 'student nations',
       shortDescription: 'Student Nations.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -1104,9 +1101,23 @@ export default {
       instancePage: {
         label: 'Student Nation',
         description: `
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Add description here...
-          </p>
+          <h6 class="MuiTypography-root MuiTypography-h6">
+            Person instance page tabs
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TABLE</STRONG> view includes details about this student nation.
+            </li>
+            <li>
+              <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students 
+              who have events relating to this student nation.
+            </li>
+            <li>
+              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              table view into YASGUI query editor.
+            </li>
+          </ul>
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
         `
       },
       properties: {

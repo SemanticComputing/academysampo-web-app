@@ -72,19 +72,19 @@ export const INITIAL_STATE = {
       onlyOnInstancePage: true
     },
     {
-      id: 'externalLink',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false
-    },
-    {
       id: 'comment',
       valueType: 'string',
       makeLink: false,
       externalLink: false,
       sortValues: false,
+      numberedList: false
+    },
+    {
+      id: 'externalLink',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
       numberedList: false
     },
     {

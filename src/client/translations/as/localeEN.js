@@ -16,7 +16,7 @@ export default {
     feedback: 'feedback',
     info: {
       info: 'Info',
-      blog: 'Project blog',
+      blog: 'Project homepage',
       blogUrl: 'https://seco.cs.aalto.fi/projects/yo-matrikkelit/',
       aboutThePortal: 'About the Portal'
     },

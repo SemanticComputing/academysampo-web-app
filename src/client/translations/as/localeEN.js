@@ -623,6 +623,12 @@ export default {
             People associated with this organization.
           `
         },
+        title: {
+          label: 'Related vocations',
+          description: `
+            List of vocations associated with this organization.
+          `
+        },
         related: {
           label: 'Related organizations',
           description: `

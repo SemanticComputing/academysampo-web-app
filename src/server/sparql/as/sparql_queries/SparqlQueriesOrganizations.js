@@ -24,4 +24,17 @@ UNION
   BIND(CONCAT(?person__label, ' (', ?evt__label, ')') AS ?person__prefLabel)
   BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
   } 
-} `
+}
+UNION
+  { SELECT DISTINCT ?id ?related__id
+      (CONCAT (?related__label, ' (', STR(COUNT(?prs)), ')') AS ?related__prefLabel)
+      (CONCAT("/organizations/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+    WHERE {
+      ?prs :has_event/:organization ?id ; :has_event/:organization ?related__id .
+      FILTER (?related__id != ?id)
+      ?related__id skos:prefLabel ?related__label . 
+    }
+    GROUP BY ?id ?related__id ?related__label 
+    ORDER BY DESC(COUNT(?prs))
+} 
+`

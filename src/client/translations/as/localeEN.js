@@ -622,6 +622,13 @@ export default {
           description: `
             People associated with this vocation.
           `
+        },
+        related: {
+          label: 'Related',
+          description: `
+            Other organizations that some common members. 
+            The amount of common members is in parenthesis at the end of the label.
+          `
         }
       }
     },

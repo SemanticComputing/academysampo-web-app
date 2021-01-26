@@ -54,7 +54,7 @@ export const INITIAL_STATE = {
       makeLink: true,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
+      numberedList: true,
       minWidth: 180,
       onlyOnInstancePage: true
     },

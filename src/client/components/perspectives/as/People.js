@@ -82,7 +82,7 @@ const People = props => {
             fetching={props.facetResults.fetching}
             resultClass='peopleNetwork'
             facetClass='people'
-            limit={200}
+            limit={300}
             optimize={1.2}
             style={cytoscapeStyle}
             layout={coseLayout}

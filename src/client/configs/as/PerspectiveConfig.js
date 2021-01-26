@@ -2,7 +2,7 @@ import React from 'react'
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay'
 import AddLocationIcon from '@material-ui/icons/AddLocation'
 import AutorenewIcon from '@material-ui/icons/Autorenew'
-import GrainIcon from '@material-ui/icons/Grain'
+// import GrainIcon from '@material-ui/icons/Grain'
 import RedoIcon from '@material-ui/icons/Redo'
 import BubbleChartIcon from '@material-ui/icons/BubbleChart'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
@@ -43,15 +43,16 @@ export const perspectiveConfig = [
         id: 'network',
         value: 4,
         icon: <BubbleChartIcon />
-      },
+      }, /**
       {
         id: 'pointcloud',
         value: 5,
         icon: <GrainIcon />
       },
+      */
       {
         id: 'export',
-        value: 6,
+        value: 5,
         icon: <CloudDownloadIcon />
       }
     ],

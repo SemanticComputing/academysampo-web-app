@@ -229,7 +229,7 @@ export default {
       properties: {
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Identifier for this register entry in the ldf.fi-database'
         },
         prefLabel: {
           label: 'Name',
@@ -389,6 +389,7 @@ export default {
           label: 'Time of Enrollment',
           description: `
             Time when the person enrolled.
+            NB: For the oldest part of the data (–1640) also enrollments to foreign universities (e.g. Uppsala, Tarto) are shown.
           `
         },
         deathDateTimespan: {
@@ -493,7 +494,7 @@ export default {
       properties: {
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Identifier for this register entry in the ldf.fi-database'
         },
         prefLabel: {
           label: 'Name',
@@ -787,19 +788,23 @@ export default {
     relatives: {
       label: 'Relatives',
       facetResultsType: 'people',
-      shortDescription: 'Browse the data of 28000 students and their relatives.',
+      // shortDescription: 'Browse the data of 28000 students and their relatives.',
       instancePage: {
         label: 'Referenced Person',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Instance page description
+            These pages represent available information about relatives, e.g. parents, spouses, that
+            are mentioned in the biographical descriptions of students. 
+            Notice that only the relative mentioned in the texts are extracted to this database and 
+            the information may not contain all e.g. children of the students. 
+            Also the amount of available data may be limited with e.g. missing places and times of birth.
           </p>
         `
       },
       properties: {
         uri: {
           label: 'URI',
-          description: 'Uniform Resource Identifier'
+          description: 'Identifier for this register entry in the ldf.fi-database'
         },
         prefLabel: {
           label: 'Name',
@@ -828,31 +833,13 @@ export default {
         image: {
           label: 'Image',
           description: `
-            Possible image of the place. Some places can have more than one images. Source: Wikimedia Commons.
+            A possible image of this person. Some people can have more than one images. Source: Wikimedia Commons.
           `
         },
         referer: {
           label: 'Referenced with',
           description: `
             People in whose biographical descriptions this person is mentioned.
-          `
-        },
-        entryText: {
-          label: 'Entry text',
-          description: `
-            Full description of the person.
-          `
-        },
-        relativeText: {
-          label: 'Description of relatives',
-          description: `
-            List of known relatives. This information is only available with the 1640–1852 dataset.
-          `
-        },
-        referenceText: {
-          label: 'Description of references',
-          description: `
-            List of used references. This information is only available with the 1640–1852 dataset.
           `
         },
         title: {
@@ -890,12 +877,6 @@ export default {
           label: 'External Link',
           description: `
             Links to external databases.
-          `
-        },
-        enrollmentTimespan: {
-          label: 'Time of Enrollment',
-          description: `
-            Date of enrollment to the University.
           `
         },
         deathDateTimespan: {

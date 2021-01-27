@@ -790,13 +790,13 @@ export default {
       facetResultsType: 'people',
       // shortDescription: 'Browse the data of 28000 students and their relatives.',
       instancePage: {
-        label: 'Referenced Person',
+        label: 'Relative',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             These pages represent available information about relatives, e.g. parents, spouses, that
-            are mentioned in the biographical descriptions of students. 
+            are mentioned in the biographical descriptions of students.
             Notice that only the relative mentioned in the texts are extracted to this database and 
-            the information may not contain all e.g. children of the students. 
+            the information may not contain all e.g. children or siblings of the students. 
             Also the amount of available data may be limited with e.g. missing places and times of birth.
           </p>
         `
@@ -889,12 +889,6 @@ export default {
           label: 'Place of Death',
           description: `
             Place where the person died.
-          `
-        },
-        place: {
-          label: 'Place of Activity',
-          description: `
-            Place(s) of activity linked to this person.
           `
         },
         source: {

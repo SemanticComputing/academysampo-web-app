@@ -27,7 +27,7 @@ UNION
 }
 UNION 
 { 
-  ?id :has_birth|:has_baptism ?bir 
+  ?id :has_birth ?bir 
   OPTIONAL {
       ?bir schema:place ?birthPlace__id .
       ?birthPlace__id skos:prefLabel ?birthPlace__prefLabel .
@@ -42,7 +42,7 @@ UNION
 }
 UNION
 { 
-  ?id :has_death|:has_burial ?dea
+  ?id :has_death ?dea
   OPTIONAL {
       ?dea schema:place ?deathPlace__id .
       ?deathPlace__id skos:prefLabel ?deathPlace__prefLabel .

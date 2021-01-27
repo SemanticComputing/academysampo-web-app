@@ -61,16 +61,23 @@ UNION
   BIND(CONCAT("/people/page/", REPLACE(STR(?peopleBuried__id), "^.*\\\\/(.+)", "$1")) AS ?peopleBuried__dataProviderUrl)
 } 
 UNION
+{
+  SELECT DISTINCT ?id ?peopleActive__id 
+    (CONCAT("/people/page/", REPLACE(STR(?peopleActive__id), "^.*\\\\/(.+)", "$1")) AS ?peopleActive__dataProviderUrl) 
+    (CONCAT(?peopleActive__label, ' (', ?obj__label, ')') AS ?peopleActive__prefLabel) 
+  {
+    ?obj
+        schema:place ?id ;
+        skos:prefLabel ?obj__label .
+    ?peopleActive__id 
+        :has_title|:has_event ?obj ;
+        a :Person ;
+        skosxl:prefLabel/skos:prefLabel ?peopleActive__label .
+  }
+}
+UNION
 { 
-  { ?peopleActive__id :has_event/schema:place ?id }
-  UNION
-  { ?peopleActive__id :has_title/schema:place ?id }
-  ?peopleActive__id a :Person ; skos:prefLabel ?peopleActive__prefLabel .
-  BIND(CONCAT("/people/page/", REPLACE(STR(?peopleActive__id), "^.*\\\\/(.+)", "$1")) AS ?peopleActive__dataProviderUrl)
-} 
-UNION 
-{ 
-  ?title__id schema:place ?id ; 
+  ?title__id schema:place ?id ;
     a :Title ;
     skos:prefLabel ?title__prefLabel .
   BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)

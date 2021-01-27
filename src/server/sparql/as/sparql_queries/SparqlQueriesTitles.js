@@ -49,15 +49,29 @@ UNION
 }
 UNION
 {
-  { ?person__id :has_title ?id } UNION { ?person__id :has_event/:has_title ?id }
-  {
-    ?person__id a :Person .
-    BIND(CONCAT("/people/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
-  } UNION {
-    ?person__id a :ReferencedPerson .
-    BIND(CONCAT("/relatives/page/", REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
-  }
-  ?person__id skos:prefLabel ?person__prefLabel .
+  SELECT DISTINCT ?id ?person__id
+      (CONCAT(?person__label, COALESCE(SAMPLE(?postfix), '')) AS ?person__prefLabel)
+      (CONCAT(?link_start, REPLACE(STR(?person__id), "^.*\\\\/(.+)", "$1")) AS ?person__dataProviderUrl)
+    {
+      {
+        ?obj :has_title ?id ; skos:prefLabel ?obj__label .
+        ?person__id :has_event ?obj .
+        BIND(CONCAT(' (', ?obj__label, ')') AS ?postfix)
+      }
+      UNION
+      {
+        ?person__id :has_title ?id
+      }
+      
+      ?person__id
+        skosxl:prefLabel/skos:prefLabel ?person__label ;
+        a ?person__class .
+      
+      VALUES (?person__class ?link_start) {
+        (:Person '/people/page/')
+        (:ReferencedPerson '/relatives/page/')
+    }
+  } GROUPBY ?id ?person__id ?person__label ?link_start 
 }
 `
 

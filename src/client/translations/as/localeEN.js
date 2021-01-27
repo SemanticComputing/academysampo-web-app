@@ -530,7 +530,8 @@ export default {
         peopleActive: {
           label: 'Place of Activity',
           description: `
-            List of people who have life time activities connecting to this place.
+            List of people who have life time activities relating to this place.
+            Besides the name, a brief description about the activity is shown in parenthesis.
           `
         },
         peopleBorn: {
@@ -1049,6 +1050,7 @@ export default {
           label: 'People',
           description: `
             People associated with this vocation.
+            Besides the names, a possible description about the activity is shown in parenthesis.
             NB. this list includes both students and their relatives.
           `
         },

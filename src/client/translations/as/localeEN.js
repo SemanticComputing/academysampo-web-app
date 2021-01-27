@@ -735,16 +735,20 @@ export default {
       label: 'References',
       facetResultsType: 'references',
       shortDescription: 'Reference description',
-      longDescription: `
-        Reference literature for the actors. 
-        This data is available only for students in the 1640–1852 dataset.
-      `,
+      longDescription: '',
       instancePage: {
         label: 'Reference',
         description: `
-        <p>Reference literature for the actors. 
-        This data is available only for students in the 1640–1852 dataset.
-        </p>
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+        References are the same literatury sources as on the 
+        <a href="https://ylioppilasmatrikkeli.helsinki.fi/hakukriteeri_1.php"
+          target='_blank' rel='noopener noreferrer'>
+          Ylioppilasmatrikkeli 1640–1852</a>
+          database search page.
+        This reference material is a collection of historical records such as registers of universities, high schools, parishes, and student nations etc.
+
+        The reference data is available only for people in the 1640–1852 dataset.
+      </p>
         `
       },
       properties: {
@@ -759,19 +763,19 @@ export default {
         person: {
           label: 'People',
           description: `
-            People having this reference.
+            People mentioned in this reference.
           `
         },
         broader: {
           label: 'Parent Category',
           description: `
-          A larger category in which a place is contained.
+          A larger category of reference records.
           `
         },
         narrower: {
           label: 'Subcategories',
           description: `
-          A subcategory.
+          List of subcategory of this record type.
           `
         },
         related: {
@@ -1078,9 +1082,14 @@ export default {
           For the 1640–1852 dataset the student nations were extracted from the register descriptions.
           In the 1853–1899 dataset the student nations were provided as data fields in the source material.
 
+          <br/><br/>
           In addition to the student nations of Royal Academy of Turku and Helsinki University, 
-          a few mentioned student nations of Swedish Universities were added to this domain ontology.
+          a few mentioned student nations of Swedish Universities were added to this dataset.
 
+          <br/><br/>
+          More information about the history of Student Nations in Helsinki University is available 
+          <a href="https://osakunta.fi/historia/" target='_blank' rel='noopener noreferrer'>
+          here</a> in Finnish.
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>

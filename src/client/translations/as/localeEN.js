@@ -270,7 +270,7 @@ export default {
         relativeText: {
           label: 'List of relatives',
           description: `
-            List of known relatives
+            List of relatives mentioned in the source data.
           `
         },
         referenceText: {
@@ -287,19 +287,22 @@ export default {
         category: {
           label: 'Category',
           description: `
-            Categor(y/ies) of the actor. This list is available only for the people in the 1640–1852 dataset.
+            Categor(y/ies) of the actor. 
+            This list is available only for the people in the 1640–1852 dataset.
           `
         },
         reference: {
           label: 'References',
           description: `
-            The literature references for this actor. This list is available only for the people in the 1640–1852 dataset.
+            The literature references for this actor. 
+            This list is available only for the people in the 1640–1852 dataset.
           `
         },
         organization: {
           label: 'Organization',
           description: `
-            Organization(s) related to the actor. The organizations are extracted from the descriptions texts using language technology methods.
+            Organization(s) related to the actor. 
+            The organizations are extracted from the descriptions texts using language technology methods.
           `
         },
         title: {
@@ -361,12 +364,18 @@ export default {
           label: 'Place of Birth or Baptism',
           description: `
             Place where the person was born or baptized.
+            NB. in most of the cases the source data contains information about the birth.
+            However, there are a few cases when this information is not available, 
+            and details about the baptism are provided instead. 
           `
         },
         birthDateTimespan: {
           label: 'Time of Birth or Baptism',
           description: `
             Time when the person was born or baptized.
+            NB. in most of the cases the source data contains information about the birth.
+            However, there are a few cases when this information is not available, 
+            and details about the baptism are provided instead. 
           `
         },
         externalLink: {
@@ -386,24 +395,32 @@ export default {
           label: 'Time of Death or Burial',
           description: `
             Time when the person died or was buried.
+            NB. in most of the cases the source data contains information about the death.
+            However, there are a few cases when this information is not available, 
+            and details about the burial are provided instead. 
           `
         },
         deathPlace: {
           label: 'Place of Death or Burial',
           description: `
             Place where the person died or was buried.
+            NB. in most of the cases the source data contains information about the death.
+            However, there are a few cases when this information is not available, 
+            and details about the burial are provided instead. 
           `
         },
         place: {
           label: 'Place of Activity',
           description: `
-            Place(s) of activity linked to this actor. This data has been automatically extracted from the textual descriptions.
+            Place(s) of activity linked to this actor. 
+            This data has been automatically extracted from the textual descriptions.
           `
         },
         source: {
           label: 'Source',
           description: `
-            The source of information. The two available data sources are the Student Registers of  1640–1852 and 1853–1899.
+            The source of information. 
+            The two available data sources are the Student Registers of 1640–1852 and 1853–1899.
           `
         }
       }
@@ -935,12 +952,9 @@ export default {
         label: 'Timespan',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Events refer to various activities related to Manuscripts and Actors. Event
-            types include Production, Transfer of Custody, and Activity events.
-            Production events refer to the production of the physical manuscript.
-            Transfer of Custody events indicate a change of ownership that involved
-            a transaction of some kind, usually through an auction house or bookseller.
-            The generic Activity event type covers all other types of events.
+            Timespans refer to various events related to People. Event
+            types include Birth or Baptism, Enrollment, and Death or Burial.
+            One use-case of this page is to get a list of all students enrolled at the same time.
           </p>
         `
       },
@@ -960,21 +974,22 @@ export default {
           `
         },
         born: {
-          label: 'Births',
+          label: 'Births or baptisms',
           description: `
-            List of people born during this timespan.
+            List of people born or baptized during this timespan.
           `
         },
         deceased: {
-          label: 'Deceased',
+          label: 'Deceased or buried',
           description: `
-          List of people deceased during this timespan.
+          List of people deceased or burial during this timespan.
           `
         },
         broader: {
           label: 'Broader',
           description: `
           A wider timespan containing this.
+          NB. the events of narrower timespans are not shown on this page.
           `
         },
         narrower: {

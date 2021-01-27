@@ -176,22 +176,6 @@ export const INITIAL_STATE = {
       type: 'hierarchical',
       priority: 6
     },
-    database: {
-      id: 'database',
-      distinctValueCount: 0,
-      values: [],
-      flatValues: [],
-      sortBy: 'instanceCount',
-      sortDirection: 'desc',
-      sortButton: false,
-      spatialFilterButton: false,
-      isFetching: false,
-      searchField: false,
-      containerClass: 'ten',
-      filterType: 'uriFilter',
-      uriFilter: null,
-      priority: 6
-    },
     organization: {
       id: 'organization',
       // predicate: defined in backend
@@ -220,6 +204,22 @@ export const INITIAL_STATE = {
       spatialFilterButton: false,
       isFetching: false,
       searchField: true,
+      containerClass: 'ten',
+      filterType: 'uriFilter',
+      uriFilter: null,
+      priority: 6
+    },
+    database: {
+      id: 'database',
+      distinctValueCount: 0,
+      values: [],
+      flatValues: [],
+      sortBy: 'instanceCount',
+      sortDirection: 'desc',
+      sortButton: false,
+      spatialFilterButton: false,
+      isFetching: false,
+      searchField: false,
       containerClass: 'ten',
       filterType: 'uriFilter',
       uriFilter: null,

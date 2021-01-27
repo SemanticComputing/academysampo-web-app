@@ -277,7 +277,7 @@ export default {
           label: 'List of references',
           description: `
             List of used references.
-            NB. This list is available only for the people in the 1640–1853 dataset.
+            NB. This list is available only for the people in the 1640–1852 dataset.
           `
         },
         sourcereference: {
@@ -287,13 +287,13 @@ export default {
         category: {
           label: 'Category',
           description: `
-            Categor(y/ies) of the actor. This list is available only for the people in the 1640–1853 dataset.
+            Categor(y/ies) of the actor. This list is available only for the people in the 1640–1852 dataset.
           `
         },
         reference: {
           label: 'References',
           description: `
-            The literature references for this actor. This list is available only for the people in the 1640–1853 dataset.
+            The literature references for this actor. This list is available only for the people in the 1640–1852 dataset.
           `
         },
         organization: {
@@ -722,13 +722,13 @@ export default {
       shortDescription: 'Reference description',
       longDescription: `
         Reference literature for the actors. 
-        This data is available only for students in the 1640-1853 dataset.
+        This data is available only for students in the 1640–1852 dataset.
       `,
       instancePage: {
         label: 'Reference',
         description: `
         <p>Reference literature for the actors. 
-        This data is available only for students in the 1640-1853 dataset.
+        This data is available only for students in the 1640–1852 dataset.
         </p>
         `
       },
@@ -829,13 +829,13 @@ export default {
         relativeText: {
           label: 'Description of relatives',
           description: `
-            List of known relatives. This information is only available with the 1640–1853 dataset.
+            List of known relatives. This information is only available with the 1640–1852 dataset.
           `
         },
         referenceText: {
           label: 'Description of references',
           description: `
-            List of used references. This information is only available with the 1640–1853 dataset.
+            List of used references. This information is only available with the 1640–1852 dataset.
           `
         },
         title: {

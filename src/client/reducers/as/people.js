@@ -192,15 +192,6 @@ export const INITIAL_STATE = {
       minWidth: 220
     },
     {
-      id: 'externalLink',
-      valueType: 'object',
-      makeLink: true,
-      externalLink: true,
-      sortValues: true,
-      numberedList: false,
-      minWidth: 150
-    },
-    {
       id: 'relative',
       valueType: 'object',
       makeLink: true,
@@ -247,6 +238,15 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: true,
       minWidth: 220
+    },
+    {
+      id: 'externalLink',
+      valueType: 'object',
+      makeLink: true,
+      externalLink: true,
+      sortValues: true,
+      numberedList: false,
+      minWidth: 150
     },
     {
       id: 'sourcereference',

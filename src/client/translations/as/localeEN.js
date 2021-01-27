@@ -287,7 +287,7 @@ export default {
         category: {
           label: 'Category',
           description: `
-            Categor(y/ies) of the actor. 
+            Categories of the students.
             This list is available only for the people in the 1640–1852 dataset.
           `
         },
@@ -467,21 +467,14 @@ export default {
         </h6>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG>  view includes detailed data about this place.
+            <strong>TABLE</STRONG> view includes detailed data about this place.
           </li>
           <li>
-            <strong>FAMILY RELATIONS</strong> show the family relation network of this person.
-            NB some people may not have any family relations available.
+            <strong>MAP</STRONG> visualizes this location and the places within it on a map.
           </li>
           <li>
-            <strong>ACADEMIC RELATIONS</STRONG> show the Student-Teacher relation network of this person.
-            NB some people may not have any academic relations available.
-          </li>
-          <li>
-            <strong>CONNECTIONS</strong> shows this person's relations to other persons connected by specific vocations, places, organizations etc.
-          </li>
-          <li>
-            <strong>RELATIONS</strong> shows this person's relations to connected vocations, places, organizations etc.
+            <strong>TIMELINE OF EVENTS</strong> is a timeline chart showing the yearly number of students 
+            births, lifetime events, or deaths.
           </li>
           <li>
             <strong>EXPORT</strong> the SPARQL query used to generate the result
@@ -684,12 +677,16 @@ export default {
         label: 'Category',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Events refer to various activities related to Manuscripts and Actors. Event
-            types include Production, Transfer of Custody, and Activity events.
-            Production events refer to the production of the physical manuscript.
-            Transfer of Custody events indicate a change of ownership that involved
-            a transaction of some kind, usually through an auction house or bookseller.
-            The generic Activity event type covers all other types of events.
+            Categories are the classifications as on the 
+            <a href="https://ylioppilasmatrikkeli.helsinki.fi/hakukriteeri_1.php"
+              target='_blank' rel='noopener noreferrer'>
+              Ylioppilasmatrikkeli 1640–1852</a>
+              database search page.
+            These categories include e.g. a student's place of birth, his schools before entering the university,
+            or vocation during his career after graduation.
+
+            Notice that the category data is available only for people in the 1640–1852 dataset.
+            However, similar information is available in the data fields of vocations and activity locations of a person.
           </p>
         `
       },
@@ -705,7 +702,7 @@ export default {
         person: {
           label: 'People',
           description: `
-            People associated with this category.
+            People in this category.
           `
         },
         broader: {
@@ -717,13 +714,13 @@ export default {
         narrower: {
           label: 'Subcategories',
           description: `
-          A subcategory.
+          List of subcategories.
           `
         },
         place: {
           label: 'Related place',
           description: `
-            The specific place(s) associated with this record.
+            The specific place(s) associated with this category.
           `
         },
         related: {

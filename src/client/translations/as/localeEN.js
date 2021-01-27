@@ -1288,7 +1288,7 @@ export default {
       The search functionality of the AcademySampo portal is based on the
       <a href="https://doi.org/10.2200/S00190ED1V01Y200904ICR005" target='_blank' rel='noopener noreferrer'>
       faceted search</a> paradigm. By default each perspective displays
-      all results from the corresponding class (Manuscripts, Works, Events, Actors, or Places).
+      all results from the corresponding class (People, Places, Vocations, or Student Nations).
       This default result set can be narrowed down by using the filters on the left.
     </p>
 
@@ -1309,8 +1309,8 @@ export default {
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Multiple values can be selected within a single filter. Selecting multiple values
       generates results that contain any of the selected values. For example, selecting
-      both <i>Saint Augustine</i> and <i>Saint Jerome</i> as an Author returns results that
-      include either <i>Saint Augustine</i> <strong>OR</strong> <i>Saint Jerome</i> as an Author.
+      both <i>Turku</i> and <i>Viipuri</i> as places of birth returns results that
+      include either <i>Turku</i> <strong>OR</strong> <i>Viipuri</i> as the place of birth.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Selected values of a filter appear in the Active filters section at the top of the list
@@ -1355,18 +1355,18 @@ export default {
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       The effectiveness of faceted search is realized when multiple filters are
       applied at the same time. As in many e-commerce sites, a logical AND is
-      always used between the filters. For example selecting <i>Saint Augustine </i>
-      and <i>Saint Jerome</i> as an Author and <i>Sir Thomas Phillipps</i> and
-      <i> Thomas Thorpe</i> as an Owner, the results are narrowed down as follows:
+      always used between the filters. For example selecting <i>Turku</i> 
+      and <i>Viipuri</i> as places of birth and <i>Helsinki</i> and
+      <i> Tukholma</i> as places of death, the results are narrowed down as follows:
     </p>
     <p class="MuiTypography-root MuiTypography-body1">
-      (Author: <i>Saint Augustine</i> <strong>OR</strong> Author: <i>Saint Jerome</i>)
+      (Place of birth: <i>Turku</i> <strong>OR</strong> Place of birth: <i>Viipuri</i>)
     </p>
     <p class="MuiTypography-root MuiTypography-body1">
         <strong>AND</strong>
     </p>
     <p class="MuiTypography-root MuiTypography-body1">
-      (Owner: <i>Sir Thomas Phillipps</i> <strong>OR</strong> Owner: <i>Thomas Thorpe</i>)
+      (Place of death: <i>Helsinki</i> <strong>OR</strong> Place of death: <i>Tukholma</i>)
     </p>
   `,
   feedback: `

@@ -1107,7 +1107,7 @@ export default {
         label: 'Student Nation',
         description: `
           <h6 class="MuiTypography-root MuiTypography-h6">
-            Person instance page tabs
+            Page tabs
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>

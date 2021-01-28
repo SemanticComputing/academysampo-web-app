@@ -283,7 +283,7 @@ export const peoplePropertiesFacetResults =
   }
   UNION
   {
-  ?id :has_title ?title__id . # { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
+  { ?id :has_title ?title__id } UNION { ?id :has_event/:has_title ?title__id }
   # FILTER EXISTS { ?title__id :related_occupation/skos:broader [] }
   ?title__id skos:prefLabel ?title__prefLabel .
   BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)

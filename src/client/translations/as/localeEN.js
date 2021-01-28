@@ -8,7 +8,7 @@ export default {
     `
   },
   appDescription: `
-
+    app description
   `,
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
@@ -1179,104 +1179,21 @@ export default {
       }
     }
   },
-  aboutThePortal: `
-    <h1 class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom">
-      About the Portal
-    </h1>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      AcademySampo Portal has been developed with funding from the Trans-Atlantic
-      Platform under its Digging into Data Challenge (2017-2019). The partners in this project are
-      the University of Oxford, the University of Pennsylvania, Aalto University,
-      and the Institut de recherche et d’histoire des textes.
-      Funding has been provided by the UK Economic and Social Research Council,
-      the Institute of Museum and Library Services, the Academy of Finland, and the
-      Agence nationale de la recherche.
-    </p>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      AcademySampo Portal is intended to enable large-scale exploration of data relating to the history and provenance
-      of (primarily) Western European medieval and early modern manuscripts.
-    </p>
-    <h2 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom">
-      Data
-    </h2>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      AcademySampo Portal combines data from three specialist databases:
-    </p>
-    <ul class="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom">
-      <li>
-        <a href="https://sdbm.library.upenn.edu/"
-          target='_blank' rel='noopener noreferrer'
-        >
-          Schoenberg Database of Manuscripts
-        </a>
-      </li>
-      <li>
-        <a href="http://bibale.irht.cnrs.fr/"
-          target='_blank' rel='noopener noreferrer'
-        >
-          Bibale
-        </a>
-      </li>
-      <li>
-        <a href="https://medieval.bodleian.ox.ac.uk/"
-          target='_blank' rel='noopener noreferrer'
-        >
-          Medieval Manuscripts in Oxford Libraries
-        </a>
-      </li>
-    </ul>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The data have been combined using a unified Data Model based on the CIDOC-CRM
-      and FRBRoo ontologies. A diagram of the Data Model can be seen
-      <a href="https://drive.google.com/open?id=1uyTA8Prwtts5g13eor48tKHk_g63NaaG" target='_blank' rel='noopener noreferrer'>
-      here</a>. The data have not been corrected or amended in any way. If you notice an error in the data,
-      please report it to the custodians of the original database.
-    </p>
-    <h2 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom">
-      Features
-    </h2>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The AcademySampo Portal enables you to browse and search through most of the data assembled by the AcademySampo project
-      from the two source databases. If you want to inspect the full raw data for any individual
-      manuscript or other entity, please click on the “Open in Linked Data browser” button on
-      the “Export” tab of the landing-page for that entity.
-    </p>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The AcademySampo Portal also provides map-based visualizations for a selection of the data relating to
-      Manuscripts, Actors, and Places. The data resulting from a search or a filtered browse can be
-      exported in the form of a CSV file. Click on the “Export” tab and then on the button
-      “Open SPARQL query in yasgui.org”.
-    </p>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      If you want to search all the underlying data using the SPARQL query language, the endpoint is
-      available here: <a href="http://ldf.fi/yoma/sparql" target='_blank' rel='noopener noreferrer'>
-      http://ldf.fi/yoma/sparql</a>.
-    </p>
-    <h2 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom">
-      Data Reuse
-    </h2>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The AcademySampo data are made available for reuse under a
-      <a href="https://creativecommons.org/licenses/by-nc/4.0/" target='_blank' rel='noopener noreferrer'>CC-BY-NC 4.0 licence</a>.
-    </p>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      You must give appropriate credit, provide a link to the license, and indicate if changes
-      were made. You may do so in any reasonable manner, but not in any way that suggests the
-      AcademySampo project or its partner institutions endorses you or your use.
-    </p>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      You may not use the data for commercial purposes.
-    </p>
-    <h2 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom">
-      More Information
-    </h2>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      The AcademySampo project has its own
-      <a href="https://github.com/mapping-manuscript-migrations" target='_blank' rel='noopener noreferrer'>GitHub site</a>.
-    </p>
-    <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      Here you will find documentation, scripts and programs, and samples of the raw data.
-    </p>
+  aboutThePortalPartOne: `
+  <h1 class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom">
+  About the Portal
+  </h1>
+  <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+    AcademySampo system consists of two components. 1) The AcademySampo portal with its different application perspectives
+    is targeted for human end-users for searching and exploring Finnish Academic People during 1640–1899.
+    2) The portal is based on the Linked Open Data service that publishes data conversion
+    of Ylioppilasmatrikkelit 1640–1852 and 1853–1899 source material. 
+    The data service can be used freely for application development and is available at the Finnish Linked Data service LDF.fi.
+  </p>
+  <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+    AcademySampo is a living laboratory prototype on the Web. It has been developed by the Semantic Computing Research
+    Group (SeCo).
+  </p>
   `,
   instructions: `
     <h1 class="MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom">
@@ -1372,7 +1289,7 @@ export default {
       Feedback
     </h1>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      This semantic portal has been developed by the research project “Mapping Manuscript Migrations”.
+      This semantic portal has been developed by the research project “AcademySampo”.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       We are interested in your feedback on the functionality, coverage, and usefulness of the portal and its data.

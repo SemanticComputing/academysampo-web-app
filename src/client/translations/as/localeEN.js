@@ -7,9 +7,7 @@ export default {
       Finnish Academic People 1640&ndash;1899
     `
   },
-  appDescription: `
-    app description
-  `,
+  appDescription: '',
   selectPerspective: 'Select a perspective to search and browse the knowledge graph:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
   topBar: {

@@ -773,7 +773,7 @@ class LeafletMap extends React.Component {
       container.appendChild(p)
       container.appendChild(this.createInstanceListing(data.related))
     }
-    if (this.props.resultClass === 'peoplePlaces') {
+    if (this.props.resultClass === 'peoplePlaces' || this.props.resultClass === 'placesPeople') {
       const p = document.createElement('p')
       p.textContent = 'People:'
       container.appendChild(p)

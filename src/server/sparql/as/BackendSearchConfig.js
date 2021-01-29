@@ -79,6 +79,7 @@ export const backendSearchConfig = {
       relatedInstances: ''
     }
   },
+  // People perspective, MAP tab
   peoplePlaces: {
     perspectiveID: 'people',
     q: peopleEventPlacesQuery,
@@ -87,6 +88,18 @@ export const backendSearchConfig = {
     instance: {
       properties: placePropertiesInfoWindow,
       relatedInstances: peopleRelatedTo
+    }
+  },
+  // Places perspective, MAP tab
+  placesPeople: {
+    perspectiveID: 'places',
+    q: peopleEventPlacesQuery,
+    filterTarget: 'id',
+    resultMapper: mapPlaces,
+    instance: {
+      properties: placePropertiesInfoWindow,
+      relatedInstances: peopleRelatedTo,
+      noFilterForRelatedInstances: true
     }
   },
   peopleMigrations: {

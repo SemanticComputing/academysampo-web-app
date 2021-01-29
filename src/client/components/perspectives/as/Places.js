@@ -48,7 +48,7 @@ const Places = props => {
             pageType='facetResults'
             facetUpdateID={props.facetData.facetUpdateID}
             facetID=''
-            resultClass='peoplePlaces'
+            resultClass='placesPeople'
             facetClass='places'
             mapMode='cluster'
             instance={props.facetResults.instanceTableData}

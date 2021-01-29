@@ -59,10 +59,12 @@ class InstanceHomePage extends React.Component {
     // handle the case when the TABLE tab was not originally active
     const prevPathname = prevProps.routeProps.location.pathname
     const currentPathname = this.props.routeProps.location.pathname
-    if (prevPathname !== currentPathname && currentPathname.endsWith('table')) {
+    if (!this.hasTableData() && prevPathname !== currentPathname && currentPathname.endsWith('table')) {
       this.fetchTableData()
     }
   }
+
+  hasTableData = () => this.props.tableData !== null && Object.values(this.props.tableData).length >= 1
 
   fetchTableData = () => {
     let uri = ''
@@ -126,7 +128,6 @@ class InstanceHomePage extends React.Component {
 
   render = () => {
     const { classes, tableData, isLoading, resultClass, rootUrl } = this.props
-    const hasTableData = tableData !== null && Object.values(tableData).length >= 1
     return (
       <div className={classes.root}>
         <PerspectiveTabs
@@ -139,13 +140,14 @@ class InstanceHomePage extends React.Component {
             <div className={classes.spinnerContainer}>
               <CircularProgress style={{ color: purple[500] }} thickness={5} />
             </div>}
-          {!hasTableData &&
+          {!this.hasTableData() &&
             <>
               <Typography variant='h6'>
                 No data found for id: <span style={{ fontStyle: 'italic' }}>{this.state.localID}</span>
               </Typography>
             </>}
-          {hasTableData &&
+          {/* make sure that tableData exists before rendering any components */}
+          {this.hasTableData() &&
             <>
               <Route
                 exact path={`${rootUrl}/${resultClass}/page/${this.state.localID}`}

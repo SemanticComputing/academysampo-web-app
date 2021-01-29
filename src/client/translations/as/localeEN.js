@@ -47,24 +47,6 @@ export default {
     pieChart: {
       tooltip: 'Pie chart'
     },
-    barChart: {
-      tooltip: 'Bar chart',
-      language: {
-        title: 'Language',
-        xaxisTitle: 'Language',
-        yaxisTitle: 'Manuscript count',
-        seriesTitle: 'Manuscript count'
-      }
-    },
-    lineChart: {
-      tooltip: 'Line chart',
-      productionTimespan: {
-        title: 'Manuscript production by decade',
-        xaxisTitle: 'Decade',
-        yaxisTitle: 'Manuscript count',
-        seriesTitle: 'Manuscript count'
-      }
-    }
   },
   tabs: {
     table: 'table',
@@ -82,7 +64,6 @@ export default {
     titleByYear: 'Timeline',
     export: 'export',
     nationByYear: 'by year',
-    'by-period': 'by period'
   },
   table: {
     rowsPerPage: 'Rows per page',
@@ -114,10 +95,10 @@ export default {
         Computationally generated data
       </h6>
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        Plenty of the data is computationally generated, 
+        Plenty of the data is computationally generated,
         especially for the family relative and vocation information.
         There might be missing, erroneous, or repeting data records
-        due to the errors or unadequate amount of source data.
+        due to the errors or inadequate amount of source data.
       </p>
     `
   },
@@ -146,11 +127,11 @@ export default {
           The data is converted from two main sources:
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-            <a href="https://ylioppilasmatrikkeli.helsinki.fi/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1640–1852</a>: 
+            <a href="https://ylioppilasmatrikkeli.helsinki.fi/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1640–1852</a>:
             containing approx. 18000 student records collected by Yrjö Kotivuori.
             </li>
             <li>
-            <a href="https://ylioppilasmatrikkeli.helsinki.fi/1853-1899/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1853–1899</a>: 
+            <a href="https://ylioppilasmatrikkeli.helsinki.fi/1853-1899/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1853–1899</a>:
             containing approx. 9500 student records collected by Veli-Matti Autio.
             </li>
           </ul>
@@ -170,7 +151,7 @@ export default {
             Wikidata/Wikimedia Commons is used as the image source.
           </li>
           <li>
-            <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students 
+            <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students
             born, enrolled to the University, or deceased.
           </li>
           <li>
@@ -181,9 +162,9 @@ export default {
             <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work or living.
           </li>
           <li>
-            <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships. 
-              Notice that the amount of people shown in the network is limited for performance reason. 
-              The Teacher-Student relationships are not available for all, so some facet setting may not show the network at all. 
+            <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships.
+              Notice that the amount of people shown in the network is limited for performance reason.
+              The Teacher-Student relationships are not available for all, so some facet setting may not show the network at all.
               More network visualizations focusing on a particular person can be viewed at person instance pages.
           </li>
           <li>
@@ -292,14 +273,14 @@ export default {
         reference: {
           label: 'References',
           description: `
-            The literature references for this actor. 
+            The literature references for this actor.
             This list is available only for the people in the 1640–1852 dataset.
           `
         },
         organization: {
           label: 'Organization',
           description: `
-            Organization(s) related to the actor. 
+            Organization(s) related to the actor.
             The organizations are extracted from the descriptions texts using language technology methods.
           `
         },
@@ -314,15 +295,15 @@ export default {
           description: `
             List of relatives that also have a record in this dataset.
             NB: Some of these records are computationally generated from the texts, and there might be errors.
-            NB2: in some cases relatives in a distance of several generations might be missing. 
+            NB2: in some cases relatives in a distance of several generations might be missing.
           `
         },
         otherrelative: {
           label: 'Other Relatives',
           description: `
-            List of relatives that are mentioned in the description texts. 
+            List of relatives that are mentioned in the description texts.
             NB: These records are computationally generated from the texts, and there might be errors.
-            NB2: in some cases relatives in a distance of several generations might be missing. 
+            NB2: in some cases relatives in a distance of several generations might be missing.
           `
         },
         related: {
@@ -363,8 +344,8 @@ export default {
           description: `
             Place where the person was born or baptized.
             NB. in most of the cases the source data contains information about the birth.
-            However, there are a few cases when this information is not available, 
-            and details about the baptism are provided instead. 
+            However, there are a few cases when this information is not available,
+            and details about the baptism are provided instead.
           `
         },
         birthDateTimespan: {
@@ -372,15 +353,15 @@ export default {
           description: `
             Time when the person was born or baptized.
             NB. in most of the cases the source data contains information about the birth.
-            However, there are a few cases when this information is not available, 
-            and details about the baptism are provided instead. 
+            However, there are a few cases when this information is not available,
+            and details about the baptism are provided instead.
           `
         },
         externalLink: {
           label: 'External Links',
           description: `
             Links to external databases.
-            NB: these links are computationally generated, so there might be errors due to e.g. missing or faulty information. 
+            NB: these links are computationally generated, so there might be errors due to e.g. missing or faulty information.
           `
         },
         enrollmentTimespan: {
@@ -395,8 +376,8 @@ export default {
           description: `
             Time when the person died or was buried.
             NB. in most of the cases the source data contains information about the death.
-            However, there are a few cases when this information is not available, 
-            and details about the burial are provided instead. 
+            However, there are a few cases when this information is not available,
+            and details about the burial are provided instead.
           `
         },
         deathPlace: {
@@ -404,21 +385,21 @@ export default {
           description: `
             Place where the person died or was buried.
             NB. in most of the cases the source data contains information about the death.
-            However, there are a few cases when this information is not available, 
-            and details about the burial are provided instead. 
+            However, there are a few cases when this information is not available,
+            and details about the burial are provided instead.
           `
         },
         place: {
           label: 'Place of Activity',
           description: `
-            Place(s) of activity linked to this actor. 
+            Place(s) of activity linked to this actor.
             This data has been automatically extracted from the textual descriptions.
           `
         },
         source: {
           label: 'Source',
           description: `
-            The source of information. 
+            The source of information.
             The two available data sources are the Student Registers of 1640–1852 and 1853–1899.
           `
         }
@@ -431,12 +412,12 @@ export default {
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Use this perspective to access the place data related to the students in the dataset.
-      Places in the AcademySampo data consists of countries, counties, towns, villages, and town neighborhoods, 
+      Places in the AcademySampo data consists of countries, counties, towns, villages, and town neighborhoods,
       as well as individual buildings, e.g. schools, churches, hospitals etc.
-      The data (labels, coordinates, hierarchy) is converted from various data sources: 
-      Finnish Geographic Names (for Finnish and Karelian places), 
+      The data (labels, coordinates, hierarchy) is converted from various data sources:
+      Finnish Geographic Names (for Finnish and Karelian places),
       Geonames (for Swedish places),
-      YSO places, and 
+      YSO places, and
       Wikidata (images).
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -471,7 +452,7 @@ export default {
             <strong>MAP</STRONG> visualizes this location and the places within it on a map.
           </li>
           <li>
-            <strong>TIMELINE OF EVENTS</strong> is a timeline chart showing the yearly number of students 
+            <strong>TIMELINE OF EVENTS</strong> is a timeline chart showing the yearly number of students
             births, lifetime events, or deaths.
           </li>
           <li>
@@ -571,9 +552,6 @@ export default {
         source: {
           label: 'Source',
           description: `
-            The source database(s) (Schoenberg, Bibale, and Bodleian) that the Work
-            occurs in. Click on the result table link to view the original record on the
-            source’s website.
           `
         }
       }
@@ -606,11 +584,11 @@ export default {
         label: 'Organization',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Organization refers to various groups by people, 
+            Organization refers to various groups by people,
             e.g. religious, governmental, military, or commercial organizations or companies.
             Notice that a person is linked only when the name of an organization is mentioned in his/her
-            text description, and that there are cases when a membership e.g. in Finnish Parliament or Military 
-            can only be reasoned from the person's vocation. 
+            text description, and that there are cases when a membership e.g. in Finnish Parliament or Military
+            can only be reasoned from the person's vocation.
           </p>
         `
       },
@@ -642,7 +620,7 @@ export default {
         related: {
           label: 'Related organizations',
           description: `
-            Other organizations that some common members. 
+            Other organizations that some common members.
             The amount of common members is in parenthesis at the end of the label.
           `
         }
@@ -676,7 +654,7 @@ export default {
         label: 'Category',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Categories are the classifications as on the 
+            Categories are the classifications as on the
             <a href="https://ylioppilasmatrikkeli.helsinki.fi/hakukriteeri_1.php"
               target='_blank' rel='noopener noreferrer'>
               Ylioppilasmatrikkeli 1640–1852</a>
@@ -739,7 +717,7 @@ export default {
         label: 'Reference',
         description: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-        References are the same literatury sources as on the 
+        References are the same literatury sources as on the
         <a href="https://ylioppilasmatrikkeli.helsinki.fi/hakukriteeri_1.php"
           target='_blank' rel='noopener noreferrer'>
           Ylioppilasmatrikkeli 1640–1852</a>
@@ -774,7 +752,7 @@ export default {
         narrower: {
           label: 'Subcategories',
           description: `
-          List of subcategory of this record type.
+          List of subcategories of this record type.
           `
         },
         related: {
@@ -795,8 +773,8 @@ export default {
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             These pages represent available information about relatives, e.g. parents, spouses, that
             are mentioned in the biographical descriptions of students.
-            Notice that only the relative mentioned in the texts are extracted to this database and 
-            the information may not contain all e.g. children or siblings of the students. 
+            Notice that only the relative mentioned in the texts are extracted to this database and
+            the information may not contain all e.g. children or siblings of the students.
             Also the amount of available data may be limited with e.g. missing places and times of birth.
           </p>
         `
@@ -858,7 +836,7 @@ export default {
           label: 'Other Relatives',
           description: `
             List of relatives that are mentioned in the description texts.
-            NB: this list is computationally generated from the texts, so there might be errors. 
+            NB: this list is computationally generated from the texts, so there might be errors.
           `
         },
         birthPlace: {
@@ -1003,12 +981,6 @@ export default {
         label: 'Vocation',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            Events refer to various activities related to Manuscripts and Actors. Event
-            types include Production, Transfer of Custody, and Activity events.
-            Production events refer to the production of the physical manuscript.
-            Transfer of Custody events indicate a change of ownership that involved
-            a transaction of some kind, usually through an auction house or bookseller.
-            The generic Activity event type covers all other types of events.
           </p>
         `
       },
@@ -1040,8 +1012,8 @@ export default {
         related: {
           label: 'Related vocations',
           description: `
-            This list shows the 12 most common other vocations of people with the current vocation. 
-            The number in parenthesis is the number of people. 
+            This list shows the 12 most common other vocations of people with the current vocation.
+            The number in parenthesis is the number of people.
           `
         },
         person: {
@@ -1083,11 +1055,11 @@ export default {
           In the 1853–1899 dataset the student nations were provided as data fields in the source material.
 
           <br/><br/>
-          In addition to the student nations of Royal Academy of Turku and Helsinki University, 
+          In addition to the student nations of Royal Academy of Turku and Helsinki University,
           a few mentioned student nations of Swedish Universities were added to this dataset.
 
           <br/><br/>
-          More information about the history of Student Nations in Helsinki University is available 
+          More information about the history of Student Nations in Helsinki University is available
           <a href="https://osakunta.fi/historia/" target='_blank' rel='noopener noreferrer'>
           here</a> in Finnish.
         </p>
@@ -1114,7 +1086,7 @@ export default {
               <strong>TABLE</STRONG> view includes details about this student nation.
             </li>
             <li>
-              <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students 
+              <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students
               who have events relating to this student nation.
             </li>
             <li>
@@ -1185,7 +1157,7 @@ export default {
     AcademySampo system consists of two components. 1) The AcademySampo portal with its different application perspectives
     is targeted for human end-users for searching and exploring Finnish Academic People during 1640–1899.
     2) The portal is based on the Linked Open Data service that publishes data conversion
-    of Ylioppilasmatrikkelit 1640–1852 and 1853–1899 source material. 
+    of Ylioppilasmatrikkelit 1640–1852 and 1853–1899 source material.
     The data service can be used freely for application development and is available at the Finnish Linked Data service LDF.fi.
   </p>
   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -1268,7 +1240,7 @@ export default {
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       The effectiveness of faceted search is realized when multiple filters are
       applied at the same time. As in many e-commerce sites, a logical AND is
-      always used between the filters. For example selecting <i>Turku</i> 
+      always used between the filters. For example selecting <i>Turku</i>
       and <i>Viipuri</i> as places of birth and <i>Helsinki</i> and
       <i> Tukholma</i> as places of death, the results are narrowed down as follows:
     </p>

@@ -20,11 +20,19 @@ UNION
   FILTER (LANG(?broader__prefLabel)='fi')
 }
 UNION 
-{ 
-  ?narrower__id skos:broader ?id ; skos:prefLabel ?narrower__prefLabel .
-  FILTER EXISTS { [] schema:place ?narrower__id }
-  BIND(CONCAT("/places/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
-  FILTER (LANG(?narrower__prefLabel)='fi')
+{ SELECT ?id ?narrower__id 
+    # (CONCAT(?narrower__label, ' (', STR(COALESCE(?num_events, 0)), ')') AS ?narrower__prefLabel)
+    (?narrower__label AS ?narrower__prefLabel)
+    (CONCAT("/places/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl) 
+  WHERE {
+    ?narrower__id skos:broader ?id ;
+                  skos:prefLabel ?narrower__label .
+    FILTER EXISTS { [] schema:place ?narrower__id }
+    FILTER (LANG(?narrower__label)='fi')
+    FILTER (!(?narrower__id in (places:m3802)))
+      
+    OPTIONAL { ?narrower__id :number_of_events ?num_events }
+  } ORDER BY DESC(?num_events)
 }
 UNION 
 {

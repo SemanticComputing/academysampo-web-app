@@ -199,7 +199,9 @@ OPTIONAL {
   { ?related__id :has_event/schema:place ?id }
   UNION
   { ?related__id :has_title/schema:place ?id }
-  ?related__id skos:prefLabel ?related__prefLabel .
+  VALUES ?rclass { :Person :ReferencedPerson }
+  ?related__id a ?rclass ;
+    skos:prefLabel ?related__prefLabel .
   BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
 }
 `

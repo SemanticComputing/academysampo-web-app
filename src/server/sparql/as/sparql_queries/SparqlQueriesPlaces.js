@@ -213,9 +213,9 @@ WHERE {
     VALUES ?id { <ID> }
     BIND("red" AS ?markerColor)
   } 
-  UNION 
-  { 
-    ?id skos:broader <ID> 
+  UNION
+  {
+    ?id skos:broader+ <ID> 
     FILTER EXISTS { [] schema:place ?id }
   }
   

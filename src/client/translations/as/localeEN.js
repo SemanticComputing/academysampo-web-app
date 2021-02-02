@@ -62,7 +62,7 @@ export default {
     placeByYear: 'Timeline of events',
     placeMap: 'Map',
     titleByYear: 'Timeline',
-    export: 'export',
+    export: 'sparql-query',
     nationByYear: 'by year'
   },
   table: {
@@ -168,7 +168,7 @@ export default {
               More network visualizations focusing on a particular person can be viewed at person instance pages.
           </li>
           <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
             table view into YASGUI query editor.
           </li>
         </ul>
@@ -198,7 +198,7 @@ export default {
               <strong>RELATIONS</strong> shows this person's relations to connected vocations, places, organizations etc.
             </li>
             <li>
-              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
               table view into YASGUI query editor.
             </li>
           </ul>
@@ -433,7 +433,7 @@ export default {
         <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work or living.
       </li>
       <li>
-        <strong>EXPORT</strong> the SPARQL query used to generate the result
+        <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
         table view into YASGUI query editor.
       </li>
     </ul>
@@ -456,7 +456,7 @@ export default {
             births, lifetime events, or deaths.
           </li>
           <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
             table view into YASGUI query editor.
           </li>
         </ul>
@@ -581,7 +581,7 @@ export default {
             <strong>MAP</STRONG> view visualizes the events that have location information on a map.
           </li>
           <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
             table view into YASGUI query editor.
           </li>
         </ul>
@@ -883,7 +883,7 @@ export default {
             <strong>MAP</STRONG> view visualizes the events that have location information on a map.
           </li>
           <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
             table view into YASGUI query editor.
           </li>
         </ul>
@@ -959,7 +959,7 @@ export default {
             <strong>MAP</STRONG> view visualizes the events that have location information on a map.
           </li>
           <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
             table view into YASGUI query editor.
           </li>
         </ul>
@@ -1057,7 +1057,7 @@ export default {
             One table row is equivalent to one student nation.
           </li>
           <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
             table view into YASGUI query editor.
           </li>
         </ul>
@@ -1077,7 +1077,7 @@ export default {
               who have events relating to this student nation.
             </li>
             <li>
-              <strong>EXPORT</strong> the SPARQL query used to generate the result
+              <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
               table view into YASGUI query editor.
             </li>
           </ul>

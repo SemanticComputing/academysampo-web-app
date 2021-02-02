@@ -29,12 +29,11 @@ export const INITIAL_STATE = {
     },
     {
       id: 'altLabel',
-      valueType: 'object',
-      makeLink: true,
+      valueType: 'string',
+      makeLink: false,
       externalLink: false,
       sortValues: true,
-      numberedList: false,
-      onlyOnInstancePage: true
+      numberedList: false
     },
     {
       id: 'numberOfPeople',

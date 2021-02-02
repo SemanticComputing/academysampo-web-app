@@ -9,14 +9,12 @@ BIND(?id as ?uri__dataProviderUrl)
 BIND(?id as ?uri__prefLabel)
 
 {
-    ?id skos:altLabel ?altLabel__id .
-    BIND (?altLabel__id AS ?altLabel__prefLabel )
+    ?id skos:altLabel ?altLabel
 }
 UNION
 {
-    ?id skos:prefLabel ?altLabel__id .
-    FILTER (LANG(?altLabel__id)!='<LANG>')
-    BIND (?altLabel__id AS ?altLabel__prefLabel )
+    ?id skos:prefLabel ?altLabel .
+    FILTER (LANG(?altLabel)!='<LANG>')
 }
 UNION
 {
@@ -67,6 +65,12 @@ UNION
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 UNION
+{ 
+  ?id :wikipedia ?externalLink__id. 
+  BIND ("Wikipedia" AS ?externalLink__prefLabel)
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+}
+UNION
 {
   ?id :comment ?comment
 }
@@ -87,6 +91,11 @@ UNION
   ?id skos:altLabel ?altLabel
 }
 UNION
+{
+    ?id skos:prefLabel ?altLabel .
+    FILTER (LANG(?altLabel)!='<LANG>')
+}
+UNION
   { 
     SELECT ?id (COUNT(DISTINCT ?prs) AS ?numberOfPeople) {
       { ?prs :student_nation ?id }
@@ -100,9 +109,15 @@ UNION
   ?id :comment ?comment
 }
 UNION
-{ 
+{
   ?id :wikidata ?externalLink__id. 
   BIND ("Wikidata" AS ?externalLink__prefLabel)
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+}
+UNION
+{
+  ?id :wikipedia ?externalLink__id. 
+  BIND ("Wikipedia" AS ?externalLink__prefLabel)
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
 }
 `

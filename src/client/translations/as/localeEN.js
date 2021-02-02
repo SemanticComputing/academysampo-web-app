@@ -636,26 +636,7 @@ export default {
       label: 'Categories',
       facetResultsType: 'categories',
       shortDescription: 'Category description',
-      longDescription: `
-        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to events associated with the
-          histories of manuscripts and manuscript collections over the centuries.
-          See <a href="/instructions">instructions</a> for using the filters.
-          The result view can be selected using the tabs:
-        </p>
-        <ul class="MuiTypography-root MuiTypography-body1">
-          <li>
-            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
-          </li>
-          <li>
-            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
-          </li>
-          <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
-          </li>
-        </ul>
-      `,
+      longDescription: 'Category description',
       instancePage: {
         label: 'Category',
         description: `
@@ -1162,13 +1143,11 @@ export default {
   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
     AcademySampo system consists of two components. 1) The AcademySampo portal with its different application perspectives
     is targeted for human end-users for searching and exploring Finnish Academic People during 1640–1899.
-    2) The portal is based on the Linked Open Data service that publishes data conversion
-    of Ylioppilasmatrikkelit 1640–1852 and 1853–1899 source material.
+    2) The portal is based on the Linked Open Data service that publishes linked open data extracted from the student registries Ylioppilasmatrikkelit 1640–1852 and 1853–1899 of the Royal Academy of Turku and University of Helsinki, enriched with data linking and reasoning.
     The data service can be used freely for application development and is available at the Finnish Linked Data service LDF.fi.
   </p>
   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-    AcademySampo is a living laboratory prototype on the Web. It has been developed by the Semantic Computing Research
-    Group (SeCo).
+    AcademySampo is a living laboratory prototype on the Web. It has been developed by the Semantic Computing Research Group (SeCo) of Aalto University and University of Helsinki.
   </p>
   `,
   instructions: `

@@ -268,7 +268,7 @@ export default {
           `
         },
         reference: {
-          label: 'Kirjallinen lähde',
+          label: 'Kirjallisuusviitteet',
           description: `
             Kirjoja joissa tietoa tästä henkilöstä
             Huomaa, että tämä tieto on olemassa vain 1640–1852-matrikkelin henkilöille.
@@ -409,7 +409,7 @@ export default {
       Akatemiasammon paikat koostuvat maista, lääneistä, kaupungeista, kylistä ja kaupunginosista, sekä myös yksittäisistä rakennuksista.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-    Sivulla <a href="/instructions">ohjeet</a> on tietoa hakuominaisukksien käytöstä.
+    Sivulla <a href="/instructions">ohjeet</a> on tietoa hakuominaisuuksien käytöstä.
     Tuoksia voi tarkastella seuraavien välilähtien kautta:
     </p>
     <ul class="MuiTypography-root MuiTypography-body1">
@@ -417,7 +417,7 @@ export default {
         <strong>TAULUKKO</STRONG>-välilehti sisältää tietoa Akatemiasammon paikoista riveittäin. Yksi rivi vastaa yhden paikan tietoja.
       </li>
       <li>
-        <strong>KARTTA</strong>-välilehti näyttää kartalla paikkoja joissa on ollut jotain toimintaa.
+        <strong>KARTTA</strong>-välilehti näyttää kartalla paikkoja, joissa on ollut jotain toimintaa.
       </li>
       <li>
         <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
@@ -476,7 +476,7 @@ export default {
         externalLink: {
           label: 'Datan lähteet',
           description: `
-          Linkki ulkoiseen tietokantaan
+          Linkki ulkoiseen tietokantaan.
           `
         },
         narrower: {
@@ -1019,8 +1019,8 @@ export default {
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Tämän näkymän kautta voi tarkastella datassa oleviin osakuntiin liittyviä tietoja.
-          1640–1852-matrikkelin henkilöille osakuntatieto on louhittu matrikkelin tekstistä-
-          1853–1899 tieto osakunnasta on ollut omana kenttänään.
+          1640–1852-matrikkelin henkilöille osakuntatieto on louhittu matrikkelin tekstistä.
+          MAtrikkelin 1853–1899 osalta tieto osakunnasta on ollut omana kenttänään.
 
           <br/><br/>
           Turun akatemian ja Helsingin yliopiston osakuntien lisäksi mukana on eräitä ruotsalaisten yliopistojen osakuntia,

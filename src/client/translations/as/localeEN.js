@@ -46,7 +46,7 @@ export default {
     applyFacetSelection: 'apply',
     pieChart: {
       tooltip: 'Pie chart'
-    },
+    }
   },
   tabs: {
     table: 'table',
@@ -63,7 +63,7 @@ export default {
     placeMap: 'Map',
     titleByYear: 'Timeline',
     export: 'export',
-    nationByYear: 'by year',
+    nationByYear: 'by year'
   },
   table: {
     rowsPerPage: 'Rows per page',
@@ -177,7 +177,7 @@ export default {
         label: 'Person',
         description: `
           <h6 class="MuiTypography-root MuiTypography-h6">
-            Person instance page tabs
+            Page tabs
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
@@ -442,7 +442,7 @@ export default {
         label: 'Place',
         description: `
         <h6 class="MuiTypography-root MuiTypography-h6">
-          Place instance page tabs
+          Page tabs
         </h6>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>

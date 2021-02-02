@@ -58,12 +58,12 @@ export default {
     academicNetwork: 'Akateemiset suhteet',
     relationNetwork: 'Suhteet',
     connections: 'Yhteydet',
-    by_year: 'vuosittain',
+    by_year: 'Aikajana',
     placeByYear: 'Aikajana tapahtumille',
     placeMap: 'Kartta',
     titleByYear: 'Aikajana',
-    export: 'Tuo',
-    nationByYear: 'Vuosittain',
+    export: 'SPARQL-kysely',
+    nationByYear: 'Aikajana',
   },
   table: {
     rowsPerPage: 'Riviä sivulla',
@@ -79,16 +79,18 @@ export default {
   openInLinkedDataBrowser: 'avaa linkitetyn datan selaimessa',
   instancePageGeneral: {
     introduction: `
-      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      Tämä sivu tarjoaa ihmisluettavan tiivistelmän tähän {entity} resurssiin liittyvistä
-      asioista. Klikkaa "avaa linkitetyn datan selaimessa" nappia tarkastellaksesi
-      kaikkia tähän resurssiin liittyviä luokkia ja ominaisuuksia.
-      </p>
-      <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      Viitataksesi tähän resurssiin käytä tätä url-osoitetta. Voit käyttää osoitetta
-      myös palataksesi tähän resurssiin milloin vain.
-      </p>
     `,
+    // introduction: `
+    //   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+    //   Tämä sivu tarjoaa ihmisluettavan tiivistelmän tähän {entity} resurssiin liittyvistä
+    //   asioista. Klikkaa "avaa linkitetyn datan selaimessa" nappia tarkastellaksesi
+    //   kaikkia tähän resurssiin liittyviä luokkia ja ominaisuuksia.
+    //   </p>
+    //   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+    //   Viitataksesi tähän resurssiin käytä tätä url-osoitetta. Voit käyttää osoitetta
+    //   myös palataksesi tähän resurssiin milloin vain.
+    //   </p>
+    // `,
     repetition: `
       <h6 class="MuiTypography-root MuiTypography-h6">
         Automaattisesti luotu tieto
@@ -117,7 +119,7 @@ export default {
   perspectives: {
     people: {
       label: 'Henkilöt',
-      facetResultsType: 'henkilöt',
+      facetResultsType: 'henkilöä',
       shortDescription: 'Selaa tietoja 28000 opiskelijasta ja heidän sukulaisistaan',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -149,7 +151,7 @@ export default {
             Kuvien lähde on Wikidata/Wikimedia Commons.
           </li>
           <li>
-            <strong>VUOSITTAIN</strong> on aikajanakaavio, joka näyttää vuosittain kuinka monta opiskelijaa
+            <strong>AIKAJANA</strong> on aikajanakaavio, joka näyttää vuosittain kuinka monta opiskelijaa
             on kirjautunut, kuollut tai syntynyt.
           </li>
           <li>
@@ -165,7 +167,7 @@ export default {
               Lisää verkostovisualisointoja yksittäiseen henkilöön keskittyen, voi löytää henkilön kotisivulta.
           </li>
           <li>
-            <strong>TUO</strong> tulosten hakuun käytetty SPARQL kysely YASGUI editorissa.
+            <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
           </li>
         </ul>
       `,
@@ -177,24 +179,24 @@ export default {
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              <strong>TAULUKKO</STRONG> yksityiskohtaista tietoa henkilöstä.
+              <strong>TAULUKKO</STRONG>-välilehti näyttää yksityiskohtaista tietoa henkilöstä.
             </li>
             <li>
-              <strong>PERHESUHTEET</strong> visualisointi henkilön perhesuhteiden verkostosta.
+              <strong>PERHESUHTEET</strong>-välilehti visualisoi henkilön perhesuhteiden verkostosta.
               Huomaa, että joillain henkilöillä ei ole datassa merkittyjä sukulaisia.
             </li>
             <li>
-              <strong>AKATEEMISET SUHTEET</STRONG> visualisoi henkilön opettaja-oppilas suhteita.
+              <strong>AKATEEMISET SUHTEET</STRONG>-välilehti visualisoi henkilön opettaja-oppilas suhteita.
               Huomaa, että joillain henkilöillä ei ole datassa merkittyjä akateemisia suhteita.
             </li>
             <li>
-              <strong>YHTEYDET</strong> näyttää henkilön yhteydet toisiin henkilöihin esimerkiksi ammattien ja paikkojen kautta.
+              <strong>YHTEYDET</strong>-välilehti näyttää henkilön yhteydet toisiin henkilöihin esimerkiksi ammattien ja paikkojen kautta.
             </li>
             <li>
-              <strong>SUHTEET</strong>  visualisoi henkilön yhteyksiä esimerkiksi ammatteihin ja paikkoihin.
+              <strong>SUHTEET</strong>-välilehti visualisoi henkilön yhteyksiä esimerkiksi ammatteihin ja paikkoihin.
             </li>
             <li>
-              <strong>TUO</strong> tulosten hakuun käytetty SPARQL kysely YASGUI editorissa.
+              <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -202,8 +204,8 @@ export default {
       },
       properties: {
         uri: {
-          label: 'URI',
-          description: 'Tämän resurssin tunniste ldf.fi-tiettokannassa'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         prefLabel: {
           label: 'Nimi',
@@ -232,7 +234,7 @@ export default {
         altLabel: {
           label: 'Vaihtoehtoisia nimiä',
           description: `
-          VAihtoehtoisia nimiä.
+          Vaihtoehtoisia nimiä.
           `
         },
         entryText: {
@@ -251,25 +253,25 @@ export default {
           label: 'Viitteet',
           description: `
             Luettelo käytetyistä lähteistä.
-            Huomaa, että tämä tieto on olemassa vain 1640–1852 matrikkelin henkilöille.
+            Huomaa, että tämä tieto on olemassa vain 1640–1852-matrikkelin henkilöille.
           `
         },
         sourcereference: {
-          label: 'Viite lähteeseen',
-          description: 'Viite lähteeseen'
+          label: 'Viite matrikkeliin',
+          description: 'Viite matrikkeliin.'
         },
         category: {
-          label: 'Kategoria',
+          label: 'Henkilöryhmä',
           description: `
-            Opiskelijan kategoriat.
-            Huomaa, että tämä tieto on olemassa vain 1640–1852 matrikkelin henkilöille.
+            Erilaisia ryhmiä, joihin henkilön on katsottu kuuluneen.
+            Huomaa, että tämä tieto on olemassa vain 1640–1852-matrikkelin henkilöille.
           `
         },
         reference: {
-          label: 'Kirjallisuusviitteet',
+          label: 'Kirjallinen lähde',
           description: `
             Kirjoja joissa tietoa tästä henkilöstä
-            Huomaa, että tämä tieto on olemassa vain 1640–1852 matrikkelin henkilöille.
+            Huomaa, että tämä tieto on olemassa vain 1640–1852-matrikkelin henkilöille.
           `
         },
         organization: {
@@ -280,9 +282,9 @@ export default {
           `
         },
         title: {
-          label: 'Ammatti/titteli',
+          label: 'Ammatti tai arvo',
           description: `
-            Henkilön ammatit tai erilaiset tittelit.
+            Henkilön ammatit tai erilaiset arvot.
           `
         },
         relative: {
@@ -324,7 +326,7 @@ export default {
         studentnation: {
           label: 'Osakunta',
           description: `
-            Henkilön osakunta
+            Henkilön osakunta.
           `
         },
         database: {
@@ -366,7 +368,7 @@ export default {
           `
         },
         deathDateTimespan: {
-          label: 'kuoleman tai hautauksen ajankohta',
+          label: 'Kuoleman tai hautauksen ajankohta',
           description: `
             Ajankohta jolloin henkilö kuoli tai haudattiin.
             (Useimmiten sisätää tiedon kuolemasta, mutta joissain tapauksissa tätä tietoa ei ole saatavilla
@@ -389,9 +391,9 @@ export default {
           `
         },
         source: {
-          label: 'Lähde',
+          label: 'Matrikkeli',
           description: `
-            Tiedon lähde.
+            Ylioppilas matrikkeli, joka on tämän tiedon lähde.
             Lähteinä ovat ylioppilasmatrikkelit vuosilta 1640–1852 ja 1853–1899.
           `
         }
@@ -399,17 +401,12 @@ export default {
     },
     places: {
       label: 'Paikat',
-      facetResultsType: 'paikat',
+      facetResultsType: 'paikkaa',
       shortDescription: 'Selaa paikkoihin liittyviä tietoja',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      Käytä tätä näkymää saadaksesi tietoa paikoista joihin datassa olevat henkilöt liittyvät.
-      Akatemiasammon paikot koostuvat maista, lääneistä, kaupungeista, kylistä ja kaupunginosista, sekä myös yksittäisistä rakennuksista.
-      PAikkoihin liittyvää dataa on haettu useasta lähteestä:
-      Finnish Geographic Names (nykyisen Suomen ja Karjalan paikoille),
-      Geonames (nykyisen Ruotsin paikoille),
-      YSO-paikat ja
-      Wikidata (kuvat).
+      Käytä tätä näkymää saadaksesi tietoa paikoista, joihin datassa olevat henkilöt liittyvät.
+      Akatemiasammon paikat koostuvat maista, lääneistä, kaupungeista, kylistä ja kaupunginosista, sekä myös yksittäisistä rakennuksista.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
     Sivulla <a href="/instructions">ohjeet</a> on tietoa hakuominaisukksien käytöstä.
@@ -417,13 +414,13 @@ export default {
     </p>
     <ul class="MuiTypography-root MuiTypography-body1">
       <li>
-        <strong>TAULUKKO</STRONG> sisältää tietoa AKatemiasammon paikoista riveittäin. Yksi rivi vastaa yhden paikan tietoja.
+        <strong>TAULUKKO</STRONG>-välilehti sisältää tietoa Akatemiasammon paikoista riveittäin. Yksi rivi vastaa yhden paikan tietoja.
       </li>
       <li>
-        <strong>KARTTA</strong> näyttää kartalla paikkoja joissa on ollut jotain toimintaa.
+        <strong>KARTTA</strong>-välilehti näyttää kartalla paikkoja joissa on ollut jotain toimintaa.
       </li>
       <li>
-        <strong>TUO</strong> tulosten hakuun köyetty SPARQL kysely YASGUI editorissa.
+        <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
       </li>
     </ul>
       `,
@@ -431,7 +428,7 @@ export default {
         label: 'Paikka',
         description: `
         <h6 class="MuiTypography-root MuiTypography-h6">
-          Käytössä olevat välilehdet
+          Käytössä olevat välilehdet:
         </h6>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
@@ -445,7 +442,7 @@ export default {
             tapahtumien, syntymien sekä kuolemien määrän,
           </li>
           <li>
-            <strong>TUO</strong> tulosten hakuun köyetty SPARQL kysely YASGUI editorissa.
+            <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
           </li>
         </ul>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -453,8 +450,8 @@ export default {
       },
       properties: {
         uri: {
-          label: 'URI',
-          description: 'Resurssin tunniste ldf.fi-tietokannassa'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         prefLabel: {
           label: 'Nimi',
@@ -462,12 +459,12 @@ export default {
         },
         altLabel: {
           label: 'Vaihtoehtoinen nimi',
-          description: 'VAihtoehtoinen, esimerkiksi vieraskielinen, nimi paikalle'
+          description: 'Vaihtoehtoinen, esimerkiksi vieraskielinen, nimi paikalle'
         },
         broader: {
-          label: 'Laajempi paikka',
+          label: 'Hierarkia',
           description: `
-          Laajempi alue, jonka osa tämä paikka on.
+          Hierarkiassa laajempi alue, jonka osa paikka on.
           `
         },
         location: {
@@ -489,9 +486,9 @@ export default {
           `
         },
         num_activies: {
-          label: 'Viitteiden määrä',
+          label: 'Viittausten määrä datassa',
           description: `
-            Tähän paikaan kohdistuvien viitteiden määrä tässä tietokannassa
+            Tähän paikaan kohdistuvien viitteiden määrä Akatemiasammon datassa.
           `
         },
         peopleActive: {
@@ -528,13 +525,13 @@ export default {
         image: {
           label: 'Kuva',
           description: `
-            MAhdollinen kuva tästä paikasta. Joillain paikoilla on useampi kuin yksi kuva. lähde: Wikimedia Commons.
+            Mahdollinen kuva tästä paikasta. Joillain paikoilla on useampi kuin yksi kuva. lähde: Wikimedia Commons.
           `
         },
         title: {
-          label: 'Liittyvät ammatit ja tittelit',
+          label: 'Liittyvät ammatit ja arvot',
           description: `
-          TGÄhän paikkaan liittyviä ammatteja ja titteleitä
+          Tähän paikkaan liittyviä ammatteja ja titteleitä.
           `
         },
         source: {
@@ -546,7 +543,7 @@ export default {
     },
     organizations: {
       label: 'Organisaatio',
-      facetResultsType: 'organisaatiot',
+      facetResultsType: 'organisaatiota',
       shortDescription: 'Organisaation kuvaus',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -573,8 +570,7 @@ export default {
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
             Organisaatiota ovat erilaiset ihmisten ryhmät, kuten uskonnolliset, sotilaalliset organisaatiot, sekä kaupalliset yhtiöt.
-            Huomaa, että henkilö on yhdistetty organisaatiooon vain jos organisaatio on mainittu hänen matrikkelitekstissään,
-            ja joissain tapauksissa organisaation voi päätellä vain henkilön tittelistä.
+            Huomaa, että henkilö on yhdistetty organisaatiooon vain jos organisaatio on mainittu hänen matrikkelitekstissään.
           </p>
         `
       },
@@ -585,11 +581,11 @@ export default {
         },
         altLabel: {
           label: 'Vaihtoehtoisia nimiä',
-          description: 'Lista vaihtoisista nimistä tai lyhenteistä'
+          description: 'Lista vaihtoisista nimistä tai lyhenteistä.'
         },
         uri: {
-          label: 'URI',
-          description: 'Resurssin URI tunniste.'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         person: {
           label: 'Liittyvät ihmiset',
@@ -613,9 +609,9 @@ export default {
       }
     },
     categories: {
-      label: 'Kategoriat',
-      facetResultsType: 'kategoriat',
-      shortDescription: 'Kategoriat',
+      label: 'Henkilöryhmät',
+      facetResultsType: 'henkilöryhmää',
+      shortDescription: 'Henkilöryhmät',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to events associated with the
@@ -637,17 +633,17 @@ export default {
         </ul>
       `,
       instancePage: {
-        label: 'Kategoria',
+        label: 'Henkilöryhmä',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            KAtegoriat ovat ylippoilasmatrikkelin luokittelukiteerejä. Kts. esimerkiksi:
+            Henkilöryhmät (kategoriat) ovat ylioppilasmatrikkelin luokittelukiteerejä. Kts. esimerkiksi:
             <a href="https://ylioppilasmatrikkeli.helsinki.fi/hakukriteeri_1.php"
               target='_blank' rel='noopener noreferrer'>
               Ylioppilasmatrikkeli 1640–1852</a>
 
             Kategoriat voivat olla esimerkiksi henkilön syntymäpaikkoja tai kouluja.
 
-            Tämä tieto on suoraan saatavilla vain 1640–1852 matrikkelin henkilöille, mutta vastaava
+            Tämä tieto on suoraan saatavilla vain 1640–1852-matrikkelin henkilöille, mutta vastaava
             tieto on saatavilla henkilön titteleiden ja toiminnan kautta.
           </p>
         `
@@ -658,31 +654,31 @@ export default {
           description: ''
         },
         uri: {
-          label: 'URI',
-          description: 'Resurssin Uniform Resource Identifier tunniste.'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         person: {
           label: 'Henkilöt',
           description: `
-            Tähän kategoriaan kuuluvat henkilöt
+            Tähän henkilöryhmään kuuluvat henkilöt.
           `
         },
         broader: {
-          label: 'Ylempi kategoria',
+          label: 'Laajempi henkilöryhmä',
           description: `
-          Laajempi kategoria
+          Laajempi henkilöryhmä (kategoria).
           `
         },
         narrower: {
-          label: 'Alakategoriat',
+          label: 'Alaryhmät',
           description: `
-          Lista alakategorioista
+          Lista alaryhmistä (alakategorioista).
           `
         },
         place: {
           label: 'Liittyvä paikka',
           description: `
-            Tähän kategoriaan liittyvät paikat
+            Tähän ryhmään liittyvät paikat.
           `
         },
         related: {
@@ -708,7 +704,7 @@ export default {
           Ylioppilasmatrikkeli 1640–1852</a>
 
           Tämä viitemateriaali on kokoelma erilaisia asiakirjoja, esimerkiksi yliopistoilta, seurakunnilta, jne.
-          Tämä viitemateriaali on saatavilla vain vuosien 1640–1852 matrikkelin henkilöille.
+          Tämä viitemateriaali on saatavilla vain vuosien 1640–1852-matrikkelin henkilöille.
       </p>
         `
       },
@@ -718,25 +714,25 @@ export default {
           description: ''
         },
         uri: {
-          label: 'URI',
-          description: 'Resurssin Uniform Resource Identifier tunniste'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         person: {
           label: 'Henkilöt',
           description: `
-            Tässä viitemateriaalissa mainitut henkilöt
+            Tässä viitemateriaalissa mainitut henkilöt.
           `
         },
         broader: {
           label: 'Ylempi kategoria',
           description: `
-          Viitemateriaalin ylempi kategoria
+          Viitemateriaalin ylempi kategoria.
           `
         },
         narrower: {
           label: 'Alakategoria',
           description: `
-          Alakategorioiden lista
+          Alakategorioiden lista.
           `
         },
         related: {
@@ -762,19 +758,19 @@ export default {
       },
       properties: {
         uri: {
-          label: 'URI',
-          description: 'Tämän resurssin tunniste ldf.fi-tietokannassa'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         prefLabel: {
           label: 'Nimi',
           description: `
-            Henkilön nimi standarsoidussa muodossa
+            Henkilön nimi standarsoidussa muodossa.
           `
         },
         gender: {
           label: 'Sukupuoli',
           description: `
-            Henkilön sukupuoli
+            Henkilön sukupuoli.
           `
         },
         fname: {
@@ -802,9 +798,9 @@ export default {
           `
         },
         title: {
-          label: 'Ammatti tai titteli',
+          label: 'Ammatti tai arvo',
           description: `
-            HEnkilön ammatti tai titteli
+            Henkilön ammatti tai arvo.
           `
         },
         relative: {
@@ -817,50 +813,50 @@ export default {
           label: 'Muut sukulaiset',
           description: `
             ista sukulaisista, jotka on mainittu kuvausteksteissä.
-            Huomaa, että tämä lista on automaattisesti generoitu ja voi sisältää virheitä
+            Huomaa, että tämä lista on automaattisesti generoitu ja voi sisältää virheitä.
           `
         },
         birthPlace: {
           label: 'Syntymäpaikka',
           description: `
-            Henkilön syntymäpaikka
+            Henkilön syntymäpaikka.
           `
         },
         birthDateTimespan: {
           label: 'syntymäpaikasta',
           description: `
-            Henkilön syntymäaika
+            Henkilön syntymäaika.
           `
         },
         externalLink: {
           label: 'Ulkoinen linkki',
           description: `
-            Linkki henkilön tietoihin ulkoisessa tietokannassa
+            Linkki henkilön tietoihin ulkoisessa tietokannassa.
           `
         },
         deathDateTimespan: {
           label: 'Kuoleman ajankohta',
           description: `
-            Ajankohta jolloin henkilö on kuollut
+            Ajankohta jolloin henkilö on kuollut.
           `
         },
         deathPlace: {
           label: 'Kuolinpaikka',
           description: `
-            Paikka jossa henkilö kuoli
+            Paikka jossa henkilö kuoli.
           `
         },
         source: {
-          label: 'Lähde',
+          label: 'Matrikkeli',
           description: `
-            Tiedon lähde
+            Ylioppilasmatrikkeli, joka on tiedon lähde.
           `
         }
       }
     },
     times: {
       label: 'Aikaväli',
-      facetResultsType: 'ajat',
+      facetResultsType: 'aikaa',
       shortDescription: 'Aikavälin kuvaus',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -897,19 +893,19 @@ export default {
           description: ''
         },
         uri: {
-          label: 'URI',
-          description: 'Uniform Resource Identifier tunniste.'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         enrolled: {
           label: 'Kirjautumiset',
           description: `
-            Henkilöt, jotka kirjautuivat yliopistoon tänä aikana
+            Henkilöt, jotka kirjautuivat yliopistoon tänä aikana.
           `
         },
         born: {
           label: 'Syntymät tai kasteet',
           description: `
-            Lista henkilöistä, jotka syntyivät tai jotka kastettiin tänä aikana
+            Lista henkilöistä, jotka syntyivät tai jotka kastettiin tänä aikana.
           `
         },
         deceased: {
@@ -921,7 +917,7 @@ export default {
         broader: {
           label: 'Laajempi aikaväli',
           description: `
-          Laajempi aikaväli, joka sisältää tämän aikavälin
+          Laajempi aikaväli, joka sisältää tämän aikavälin.
           `
         },
         narrower: {
@@ -934,31 +930,24 @@ export default {
       }
     },
     titles: {
-      label: 'Ammatit ja tittelit',
-      facetResultsType: 'ammattia tai titteliä',
+      label: 'Ammatit ja arvot',
+      facetResultsType: 'ammattia tai arvoa',
       shortDescription: 'Kokoelma ylioppilasmatrikkelissa mainittuja ammatteja ja titteleitä.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to events associated with the
-          histories of manuscripts and manuscript collections over the centuries.
-          See <a href="/instructions">instructions</a> for using the filters.
-          The result view can be selected using the tabs:
+        Käytössä olevat välilehdet:
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
+            <strong>TAULUKKO</STRONG>-välilehti näyttää ammattiin tai arvoon liittyvää tietoa riveittäin.
           </li>
           <li>
-            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
-          </li>
-          <li>
-            <strong>EXPORT</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
+            <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
           </li>
         </ul>
       `,
       instancePage: {
-        label: 'Ammatti tai titteli',
+        label: 'Ammatti tai arvo',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           </p>
@@ -974,32 +963,32 @@ export default {
           description: 'Lista vaihtoehtoisista nimistä tai lyhenteistä.'
         },
         uri: {
-          label: 'URI',
-          description: 'Uniform Resource Identifier.'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         broader: {
           label: 'Hierarkia',
           description: `
-            Ammattien tai titteleiden hierarkia
+            Ammattien tai titteleiden hierarkia.
           `
         },
         totalcount: {
           label: 'Henkilöiden määrä',
           description: `
-            Lukumäärä henkilöistä, joilla on tämä ammatti tai titteli
+            Lukumäärä henkilöistä, joilla on tämä ammatti tai arvo.
           `
         },
         related: {
-          label: 'Liittyvät ammatit tai tittelit',
+          label: 'Liittyvät ammatit tai arvot',
           description: `
-            Tämä lista näyttää 12 yleisintä muuta ammattia tai titteliä joita on hekilöillä,
-            joilla on tämä ammatti tai titteli. Lukumäärä on ilmaistu suluissa.
+            Tämä lista näyttää 12 yleisintä muuta ammattia tai arvoa joita on hekilöillä,
+            joilla on tämä ammatti tai arvo. Lukumäärä on ilmaistu suluissa.
           `
         },
         person: {
           label: 'Henkilöt',
           description: `
-            Henkilöt, jotka liittyvät tähän ammattii tai titteliin.
+            Henkilöt, jotka liittyvät tähän ammattii tai arvoon.
             Huomaa: tämä lista voi sisältää sekä matrikkelin henkilöitä, että heidän sukulaisiaan.
           `
         },
@@ -1018,19 +1007,19 @@ export default {
         place: {
           label: 'Liittyvä paikka',
           description: `
-            Ammattiin tai titteliin liittyvät paikat
+            Ammattiin tai arvoon liittyvät paikat
           `
         }
       }
     },
     studentNations: {
       label: 'Osakunnat',
-      facetResultsType: 'osakunnat',
+      facetResultsType: 'osakuntaa',
       shortDescription: 'Osakunnat.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Tämän näkymän kautta voi tarkastella datassa oleviin osakuntiin liittyviä tietoja.
-          1640–1852 matrikkelin henkilöille osakuntatieto on louhittu matrikkelin tekstistä-
+          1640–1852-matrikkelin henkilöille osakuntatieto on louhittu matrikkelin tekstistä-
           1853–1899 tieto osakunnasta on ollut omana kenttänään.
 
           <br/><br/>
@@ -1047,7 +1036,7 @@ export default {
             <strong>TAULUKKO</STRONG> välilehti näyttää osakuntaan liittyvää tietoa riveittäin. Yksi rivi vastaa yhtä osakuntaa.
           </li>
           <li>
-            <strong>TUO</strong> tietojen hakuun käytetty SPARQL kysely YASGUI editorissa.
+            <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
           </li>
         </ul>
       `,
@@ -1055,17 +1044,17 @@ export default {
         label: 'Osakunta',
         description: `
           <h6 class="MuiTypography-root MuiTypography-h6">
-            Välilehdet
+            Välilehdet:
           </h6>
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
-              <strong>TAULUKKO</STRONG> välilehti sisältää yksityiskohtaista tietoa tästä osakunnasta.
+              <strong>TAULUKKO</STRONG>-välilehti sisältää yksityiskohtaista tietoa tästä osakunnasta.
             </li>
             <li>
-              <strong>VUOSITTAIN</strong> on aikajanakaavio, joka näyttää osakuntaan liittyvien vuosittaisten tapahtumien määrän.
+              <strong>AIKAJANA</strong> on aikajanakaavio, joka näyttää osakuntaan liittyvien vuosittaisten tapahtumien määrän.
             </li>
             <li>
-              <strong>TUO</strong> tiedon hakemiseen käytetty SPARQL kysely YASGUI editorissa.
+              <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -1081,8 +1070,8 @@ export default {
           description: 'Lista vaihtoehtoisista nimistä tai lyhenteistä'
         },
         uri: {
-          label: 'URI',
-          description: 'Uniform Resource Identifier.'
+          label: 'Tunniste',
+          description: 'URI-tunniste, jota klikkaamalla voi selata siihen liittyvä dataa LDF.fi-datapalvelussa.'
         },
         related: {
           label: 'Liittyvät osakunnat',

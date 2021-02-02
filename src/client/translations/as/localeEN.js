@@ -477,7 +477,7 @@ export default {
           description: 'The alternative names, e.g. in foreign languages of the place.'
         },
         broader: {
-          label: 'Parent Place',
+          label: 'Hierarchy of Places',
           description: `
           A larger region or geographic division in which a place is contained.
           `
@@ -492,6 +492,12 @@ export default {
           label: 'Datasources',
           description: `
             Link to an external database.
+          `
+        },
+        nearby: {
+          label: 'Neighboring Places',
+          description: `
+          Neighboring places within the same region.
           `
         },
         narrower: {
@@ -510,7 +516,7 @@ export default {
           label: 'Place of Activity',
           description: `
             List of people who have life time activities relating to this place.
-            Besides the name, a brief description about the activity is shown in parenthesis.
+            Besides the name a brief description about the activity is shown in parenthesis.
           `
         },
         peopleBorn: {

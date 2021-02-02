@@ -19,7 +19,22 @@ UNION
   BIND(CONCAT("/places/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
   FILTER (LANG(?broader__prefLabel)='fi')
 }
-UNION 
+UNION
+{
+  SELECT DISTINCT 
+    ?id ?nearby__id ?nearby__prefLabel
+    (CONCAT("/places/page/", REPLACE(STR(?nearby__id), "^.*\\\\/(.+)", "$1")) AS ?nearby__dataProviderUrl)
+  WHERE {
+    ?id skos:broader/(^skos:broader) ?nearby__id .
+    FILTER (?nearby__id != ?id)
+    
+    ?nearby__id skos:prefLabel ?nearby__prefLabel ;
+      :number_of_events ?nearby__sortby .
+    FILTER (LANG(?nearby__prefLabel)='fi')
+      
+    } ORDER BY DESC(?nearby__sortby)
+}
+UNION
 { SELECT ?id ?narrower__id 
     # (CONCAT(?narrower__label, ' (', STR(COALESCE(?num_events, 0)), ')') AS ?narrower__prefLabel)
     (?narrower__label AS ?narrower__prefLabel)

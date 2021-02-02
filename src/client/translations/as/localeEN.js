@@ -207,7 +207,7 @@ export default {
       },
       properties: {
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Identifier for this register entry in the ldf.fi-database'
         },
         prefLabel: {
@@ -291,7 +291,7 @@ export default {
           `
         },
         relative: {
-          label: 'Relatives in Student Registry',
+          label: 'Relatives in student registry',
           description: `
             List of relatives that also have a record in this dataset.
             NB: Some of these records are computationally generated from the texts, and there might be errors.
@@ -299,7 +299,7 @@ export default {
           `
         },
         otherrelative: {
-          label: 'Other Relatives',
+          label: 'Other relatives',
           description: `
             List of relatives that are mentioned in the description texts.
             NB: These records are computationally generated from the texts, and there might be errors.
@@ -307,7 +307,7 @@ export default {
           `
         },
         related: {
-          label: 'Academic Relations',
+          label: 'Academic relations',
           description: `
             This list of related people contains students, teachers, supervisors, and namesakes of a person.
             NB: These records are not available for all the students.
@@ -327,20 +327,20 @@ export default {
         `
         },
         studentnation: {
-          label: 'Student Nation',
+          label: 'Student nation',
           description: `
             The student nation of the person.
           `
         },
         database: {
-          label: 'External Databases',
+          label: 'External databases',
           description: `
             Person entries in external databases.
             NB: These links are computationally generated, so there might be errors due to e.g. missing or faulty information.
           `
         },
         birthPlace: {
-          label: 'Place of Birth or Baptism',
+          label: 'Place of birth or baptism',
           description: `
             Place where the person was born or baptized.
             NB. in most of the cases the source data contains information about the birth.
@@ -349,7 +349,7 @@ export default {
           `
         },
         birthDateTimespan: {
-          label: 'Time of Birth or Baptism',
+          label: 'Time of birth or baptism',
           description: `
             Time when the person was born or baptized.
             NB. in most of the cases the source data contains information about the birth.
@@ -358,21 +358,21 @@ export default {
           `
         },
         externalLink: {
-          label: 'External Links',
+          label: 'External links',
           description: `
             Links to external databases.
             NB: these links are computationally generated, so there might be errors due to e.g. missing or faulty information.
           `
         },
         enrollmentTimespan: {
-          label: 'Time of Enrollment',
+          label: 'Time of enrollment',
           description: `
             Time when the person enrolled.
             NB: For the oldest part of the data (–1640) also enrollments to foreign universities (e.g. Uppsala, Tarto) are shown.
           `
         },
         deathDateTimespan: {
-          label: 'Time of Death or Burial',
+          label: 'Time of death or burial',
           description: `
             Time when the person died or was buried.
             NB. in most of the cases the source data contains information about the death.
@@ -381,7 +381,7 @@ export default {
           `
         },
         deathPlace: {
-          label: 'Place of Death or Burial',
+          label: 'Place of death or burial',
           description: `
             Place where the person died or was buried.
             NB. in most of the cases the source data contains information about the death.
@@ -390,7 +390,7 @@ export default {
           `
         },
         place: {
-          label: 'Place of Activity',
+          label: 'Place of activity',
           description: `
             Place(s) of activity linked to this actor.
             This data has been automatically extracted from the textual descriptions.
@@ -465,7 +465,7 @@ export default {
       },
       properties: {
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Identifier for this register entry in the ldf.fi-database'
         },
         prefLabel: {
@@ -473,11 +473,11 @@ export default {
           description: 'The name of this place.'
         },
         altLabel: {
-          label: 'Alternative Labels',
+          label: 'Alternative labels',
           description: 'The alternative names, e.g. in foreign languages of the place.'
         },
         broader: {
-          label: 'Hierarchy of Places',
+          label: 'Hierarchy of places',
           description: `
           A larger region or geographic division in which a place is contained.
           `
@@ -495,7 +495,7 @@ export default {
           `
         },
         nearby: {
-          label: 'Neighboring Places',
+          label: 'Neighboring places',
           description: `
           Neighboring places within the same region.
           `
@@ -513,7 +513,7 @@ export default {
           `
         },
         peopleActive: {
-          label: 'Place of Activity',
+          label: 'Place of activity',
           description: `
             List of people who have life time activities relating to this place.
             Besides the name a brief description about the activity is shown in parenthesis.
@@ -608,7 +608,7 @@ export default {
           description: 'List of alternative labels or abbreviations.'
         },
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Uniform Resource Identifier.'
         },
         person: {
@@ -660,7 +660,7 @@ export default {
           description: ''
         },
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Uniform Resource Identifier.'
         },
         person: {
@@ -670,7 +670,7 @@ export default {
           `
         },
         broader: {
-          label: 'Parent Category',
+          label: 'Parent category',
           description: `
           A larger category in which this record is contained.
           `
@@ -721,7 +721,7 @@ export default {
           description: ''
         },
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Uniform Resource Identifier.'
         },
         person: {
@@ -731,7 +731,7 @@ export default {
           `
         },
         broader: {
-          label: 'Parent Category',
+          label: 'Parent category',
           description: `
           A larger category of reference records.
           `
@@ -768,7 +768,7 @@ export default {
       },
       properties: {
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Identifier for this register entry in the ldf.fi-database'
         },
         prefLabel: {
@@ -814,44 +814,44 @@ export default {
           `
         },
         relative: {
-          label: 'Relatives in Student Registry',
+          label: 'Relatives in student registry',
           description: `
             List of relatives that are also students of the University.
           `
         },
         otherrelative: {
-          label: 'Other Relatives',
+          label: 'Other relatives',
           description: `
             List of relatives that are mentioned in the description texts.
             NB: this list is computationally generated from the texts, so there might be errors.
           `
         },
         birthPlace: {
-          label: 'Place of Birth',
+          label: 'Place of birth',
           description: `
             Place where the person was born.
           `
         },
         birthDateTimespan: {
-          label: 'Time of Birth',
+          label: 'Time of birth',
           description: `
             Time when the person was born.
           `
         },
         externalLink: {
-          label: 'External Link',
+          label: 'External link',
           description: `
             Links to external databases.
           `
         },
         deathDateTimespan: {
-          label: 'Time of Death',
+          label: 'Time of death',
           description: `
             Time when the person died.
           `
         },
         deathPlace: {
-          label: 'Place of Death',
+          label: 'Place of death',
           description: `
             Place where the person died.
           `
@@ -904,7 +904,7 @@ export default {
           description: ''
         },
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Uniform Resource Identifier.'
         },
         enrolled: {
@@ -981,7 +981,7 @@ export default {
           description: 'List of alternative labels or abbreviations.'
         },
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Uniform Resource Identifier.'
         },
         broader: {
@@ -991,7 +991,7 @@ export default {
           `
         },
         totalcount: {
-          label: 'Number of People',
+          label: 'Number of people',
           description: `
             Total number of students with this vocation.
           `
@@ -1094,11 +1094,11 @@ export default {
           description: 'List of alternative labels or abbreviations.'
         },
         uri: {
-          label: 'URI',
+          label: 'Identifier',
           description: 'Uniform Resource Identifier.'
         },
         related: {
-          label: 'Related Student Nations',
+          label: 'Related student nations',
           description: `
             List of Student Nations having some same people as members.
           `
@@ -1128,7 +1128,7 @@ export default {
           `
         },
         externalLink: {
-          label: 'External Link',
+          label: 'External link',
           description: `
             Link(s) to external databases.
           `

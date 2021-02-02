@@ -1050,13 +1050,13 @@ export default {
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes student nations extracted from
+            <strong>TABLE</STRONG> tab lists the student nations extracted from
             the AcademySampo data.
             One table row is equivalent to one student nation.
           </li>
           <li>
-            <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
-            table view into YASGUI query editor.
+            <strong>SPARQL-QUERY</strong> tab presents the SPARQL query used to generate the result
+            table view in the YASGUI query editor.
           </li>
         </ul>
       `,

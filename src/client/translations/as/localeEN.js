@@ -946,17 +946,15 @@ export default {
       shortDescription: 'Collection of vocations mentioned in the Student Register data.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Use this perspective to access data related to events associated with the
-          histories of manuscripts and manuscript collections over the centuries.
+        Use this perspective to access the data related to the vocations of the students and their relatives in the dataset. Vocations in the AcademySampo data consists of academic degrees, professions, and various types of descriptions for a person.
+        The data is converted automatically from text descriptions in the source material.
           See <a href="/instructions">instructions</a> for using the filters.
           The result view can be selected using the tabs:
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
-          </li>
-          <li>
-            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
+            <strong>TABLE</STRONG> view includes all vocations in the AcademySampo data.
+            <br/>NB. In many cases the vocation is related to a place (e.g. <i>Bishop of Turku</i> or <i>Merchant living in Porvoo</i>) so the facet 'Related place' can be used to search for this kind of relations to a particular place.
           </li>
           <li>
             <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result

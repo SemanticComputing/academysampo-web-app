@@ -75,7 +75,8 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: false,
       numberedList: true,
-      minWidth: 170
+      minWidth: 170,
+      onlyOnInstancePage: true
     },
     {
       id: 'narrower',
@@ -84,7 +85,8 @@ export const INITIAL_STATE = {
       externalLink: false,
       sortValues: false,
       numberedList: true,
-      minWidth: 170
+      minWidth: 170,
+      onlyOnInstancePage: true
     },
     {
       id: 'peopleActive',
@@ -154,7 +156,7 @@ export const INITIAL_STATE = {
       sortValues: true,
       numberedList: false,
       minWidth: 150
-    },
+    }, /**
     {
       id: 'num_activies',
       valueType: 'string',
@@ -166,6 +168,7 @@ export const INITIAL_STATE = {
       sourceExternalLink: false,
       minWidth: 70
     },
+    */
     {
       id: 'uri',
       valueType: 'object',

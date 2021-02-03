@@ -46,7 +46,7 @@ export default {
     applyFacetSelection: 'Hae',
     pieChart: {
       tooltip: 'Piirakkakaavio'
-    },
+    }
   },
   tabs: {
     table: 'taulukko',
@@ -63,7 +63,7 @@ export default {
     placeMap: 'Kartta',
     titleByYear: 'Aikajana',
     export: 'SPARQL-kysely',
-    nationByYear: 'Aikajana',
+    nationByYear: 'Aikajana'
   },
   table: {
     rowsPerPage: 'Riviä sivulla',
@@ -162,8 +162,8 @@ export default {
           </li>
           <li>
             <strong>VERKOSTO</strong> visualisoi sosiaalista verkostoa opiskelija-oppias suhteiden osalta.
-              Huomaa, että visualisoinnissa näkiviä henkilöitä on rajoitettu suorituskyvyn vuoksi. Opettaja-oppilas verkostoja
-              eimole saatavilla kaikille henkilöille, joten joillain rajauksilla ei verkostoa löydy lainkaan.
+              Huomaa, että visualisoinnissa näkiviä henkilöitä on rajoitettu suorituskyvyn vuoksi. Opettaja-oppilas verkostot
+              eivät ole saatavilla kaikille henkilöille, joten joillain rajauksilla ei verkostoa löydy lainkaan.
               Lisää verkostovisualisointoja yksittäiseen henkilöön keskittyen, voi löytää henkilön kotisivulta.
           </li>
           <li>
@@ -477,6 +477,12 @@ export default {
           label: 'Datan lähteet',
           description: `
           Linkki ulkoiseen tietokantaan.
+          `
+        },
+        nearby: {
+          label: 'Lähialueen paikat',
+          description: `
+          Muita paikkoja samalla lähialueella.
           `
         },
         narrower: {

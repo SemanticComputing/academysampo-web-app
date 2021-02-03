@@ -120,7 +120,7 @@ export default {
     people: {
       label: 'People',
       facetResultsType: 'people',
-      shortDescription: 'Browse the data of 28000 students and their relatives',
+      shortDescription: 'Browse the data of 28000 university students.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to the students in the dataset.
@@ -408,7 +408,7 @@ export default {
     places: {
       label: 'Places',
       facetResultsType: 'places',
-      shortDescription: 'Browse the data of related places',
+      shortDescription: 'Browse the data of related places.',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Use this perspective to access the place data related to the students in the dataset.
@@ -943,7 +943,7 @@ export default {
     titles: {
       label: 'Vocations',
       facetResultsType: 'vocations',
-      shortDescription: 'Collection of vocations mentioned in the Student Register data.',
+      shortDescription: 'Collection of vocations mentioned in the student register data.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Use this perspective to access the data related to the vocations of the students and their relatives in the dataset. Vocations in the AcademySampo data consists of academic degrees, professions, and various types of descriptions for a person.
@@ -1032,7 +1032,7 @@ export default {
     studentNations: {
       label: 'Student Nations',
       facetResultsType: 'student nations',
-      shortDescription: 'Student Nations.',
+      shortDescription: 'Student Nations mentioned in the data.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Use this perspective to access data related to the student nations in the dataset.

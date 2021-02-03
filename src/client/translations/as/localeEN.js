@@ -452,8 +452,7 @@ export default {
             <strong>MAP</STRONG> visualizes this location and the places within it on a map.
           </li>
           <li>
-            <strong>TIMELINE OF EVENTS</strong> is a timeline chart showing the yearly number of students
-            births, lifetime events, or deaths.
+            <strong>TIMELINE OF EVENTS</strong> is a timeline chart showing the yearly number of events relating to this place. These events consist of births, deaths, and lifetime events such as living or working at this place.
           </li>
           <li>
             <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result

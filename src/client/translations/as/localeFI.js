@@ -18,7 +18,7 @@ export default {
       blogUrl: 'https://seco.cs.aalto.fi/projects/yo-matrikkelit/',
       aboutThePortal: 'Tietoa portaalista'
     },
-    searchBarPlaceHolder: 'Etsi kaikesta sisällöstä',
+    searchBarPlaceHolder: 'Etsi kaikista näkymistä',
     searchBarPlaceHolderShort: 'Etsi',
     instructions: 'ohjeet'
   },
@@ -1021,7 +1021,7 @@ export default {
     studentNations: {
       label: 'Osakunnat',
       facetResultsType: 'osakuntaa',
-      shortDescription: 'Osakunnat.',
+      shortDescription: 'Tietoa osakunnista.',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Tämän näkymän kautta voi tarkastella datassa oleviin osakuntiin liittyviä tietoja.

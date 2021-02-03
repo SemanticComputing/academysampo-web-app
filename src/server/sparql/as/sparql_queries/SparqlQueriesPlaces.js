@@ -123,7 +123,7 @@ UNION
   ?id :number_of_events ?num_activies
 }
 `
-export const placePropertiesFacesPage = `
+export const placePropertiesFacetPage = `
 {
   ?id skos:prefLabel ?prefLabel__id .
   FILTER (LANG(?prefLabel__id)="fi")
@@ -144,14 +144,7 @@ UNION
   BIND(CONCAT("/places/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
   FILTER (LANG(?broader__prefLabel)='fi')
 }
-UNION 
-{ 
-  ?narrower__id skos:broader ?id ; skos:prefLabel ?narrower__prefLabel .
-  FILTER EXISTS { [] schema:place ?narrower__id }
-  BIND(CONCAT("/places/page/", REPLACE(STR(?narrower__id), "^.*\\\\/(.+)", "$1")) AS ?narrower__dataProviderUrl)
-  FILTER (LANG(?narrower__prefLabel)='fi')
-}
-UNION 
+UNION
 {
   ?id schema:sameAs ?externalLink__id .
   ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .

@@ -1,6 +1,6 @@
 import {
   placePropertiesInstancePage,
-  placePropertiesFacesPage
+  placePropertiesFacetPage
 } from '../sparql_queries/SparqlQueriesPlaces'
 import { prefixes } from '../sparql_queries/SparqlQueriesPrefixes'
 
@@ -13,7 +13,7 @@ export const placesPerspectiveConfig = {
   facetClass: '<http://ldf.fi/schema/yoma/Place>',
   defaultConstraint: 'FILTER EXISTS { [] schema:place <SUBJECT> }',
   paginatedResults: {
-    properties: placePropertiesFacesPage
+    properties: placePropertiesFacetPage
   },
   instance: {
     properties: placePropertiesInstancePage,

@@ -100,10 +100,14 @@ UNION
 }
 UNION
 { 
-  ?title__id schema:place ?id ;
-    a :Title ;
-    skos:prefLabel ?title__prefLabel .
-  BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
+  SELECT DISTINCT ?id ?title__id ?title__prefLabel
+    (CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
+  WHERE {
+    { ?title__id schema:place ?id ; a :Title }
+    UNION
+    { ?evt schema:place ?id ; :has_title ?title__id }
+    ?title__id a :Title ; skos:prefLabel ?title__prefLabel .
+  }
 }
 UNiON
 {
@@ -149,13 +153,6 @@ UNION
   ?id schema:sameAs ?externalLink__id .
   ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
   BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-}
-UNION 
-{ 
-  ?title__id schema:place ?id ; 
-    a :Title ;
-    skos:prefLabel ?title__prefLabel .
-  BIND(CONCAT("/titles/page/", REPLACE(STR(?title__id), "^.*\\\\/(.+)", "$1")) AS ?title__dataProviderUrl)
 }
 UNiON
 {

@@ -964,8 +964,22 @@ export default {
       instancePage: {
         label: 'Vocation',
         description: `
-          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          </p>
+        <h6 class="MuiTypography-root MuiTypography-h6">
+        Page tabs
+        </h6>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes detailed data about this place.
+          </li>
+          <li>
+            <strong>TIMELINE</strong> is a timeline chart showing the yearly number of lifetime events relating to this vocation.
+          </li>
+          <li>
+            <strong>SPARQL-QUERY</strong> tab presents the SPARQL query used to generate the result
+            table view in the YASGUI query editor.
+          </li>
+        </ul>
+        <br/>
         `
       },
       properties: {

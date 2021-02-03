@@ -94,7 +94,7 @@ export const titlesPropertiesFacetResults = `
     ?broader__id skos:prefLabel ?broader__prefLabel .
     BIND(CONCAT("/titles/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
 
-    OPTIONAL { 
+    OPTIONAL {
       ?broader__id skos:broader* ?ammo__id .
       ?ammo__id skos:prefLabel ?ammo__prefLabel .
       BIND(CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")) AS ?ammo__dataProviderUrl)
@@ -106,8 +106,9 @@ export const titlesPropertiesFacetResults = `
     { ?prs :has_title ?id }
     UNION 
     { ?prs :has_event/:has_title ?id }
+
     VALUES ?prs_class { :Person :ReferencedPerson }
-    ?prs a ?prs_class 
+    ?prs a ?prs_class
     } GROUPBY ?id
   }
   UNION

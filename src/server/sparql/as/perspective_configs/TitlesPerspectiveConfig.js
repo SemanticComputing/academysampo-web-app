@@ -49,13 +49,16 @@ export const titlesPerspectiveConfig = {
       id: 'totalcount',
       orderByPattern: `
         {
-          SELECT ?id (COUNT(?prs) AS ?orderBy)
+          SELECT ?id (COUNT(DISTINCT ?prs) AS ?orderBy)
           WHERE {
             VALUES ?facetClass { <FACET_CLASS> }
             ?id a ?facetClass .
             { ?prs :has_title ?id }
             UNION 
             { ?prs :has_event/:has_title ?id }
+
+            VALUES ?prs_class { :Person :ReferencedPerson }
+            ?prs a ?prs_class
           } GROUPBY ?id 
         }
       `

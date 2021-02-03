@@ -159,7 +159,7 @@ export default {
             between the places of birth and death.
           </li>
           <li>
-            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work or living.
+            <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work, or living.
           </li>
           <li>
             <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships.
@@ -430,7 +430,7 @@ export default {
         the AcademySampo data. One table row is equivalent to one place.
       </li>
       <li>
-        <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work or living.
+        <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work, or living.
       </li>
       <li>
         <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result

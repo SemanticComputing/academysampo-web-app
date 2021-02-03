@@ -152,7 +152,8 @@ export default {
           </li>
           <li>
             <strong>BY YEAR</strong> is a timeline chart showing the yearly number of students
-            born, enrolled to the University, or deceased.
+            born, enrolled to the University, or deceased. 
+            NB. Using the buttons on the top right corner of the visualization allows you to e.g. zoom to a shorter interval or to save the visualization as an image in png or svg format. By hovering or clicking at the buttons for Birth, Enrollment, or Death it is possible to focus or hide some of the chartlines.
           </li>
           <li>
             <strong>MIGRATIONS</STRONG> view shows the connection

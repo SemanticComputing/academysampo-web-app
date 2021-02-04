@@ -72,7 +72,7 @@ export const INITIAL_STATE = {
       valueType: 'object',
       makeLink: false,
       externalLink: false,
-      sortValues: true,
+      sortValues: false,
       numberedList: false
     },
     {

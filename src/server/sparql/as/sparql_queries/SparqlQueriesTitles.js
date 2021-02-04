@@ -1,5 +1,4 @@
 export const titlesPropertiesInstancePage = `
-
 {
 ?id skos:prefLabel ?prefLabel__id .
 BIND(?prefLabel__id AS ?prefLabel__prefLabel)
@@ -17,9 +16,9 @@ UNION
 { 
   ?id :related_occupation ?broad .
   ?broad skos:broader* ?ammo__id .
+  FILTER NOT EXISTS { ?ammo__id skos:broader? :not_in_ammo }
   ?ammo__id skos:prefLabel ?ammo__prefLabel .
-  FILTER NOT EXISTS { ?ammo__id skos:broader :not_in_ammo }
-  # BIND( IF(?ammo__id=?broad, CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")), "") AS ?ammo__dataProviderUrl)
+  BIND(?ammo__id AS ?ammo__dataProviderUrl)
 }
 UNION
 { SELECT DISTINCT ?id ?related__id (COUNT(?person__id) AS ?countprs)
@@ -43,6 +42,7 @@ UNION
   { ?prs :has_title ?id } 
   UNION 
   { ?prs :has_event/:has_title ?id }
+
   VALUES ?prs_class { :Person :ReferencedPerson }
   ?prs a ?prs_class 
   } GROUPBY ?id
@@ -77,46 +77,46 @@ UNION
 
 export const titlesPropertiesFacetResults = `
   ?id skos:prefLabel ?prefLabel__id .
-  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-  BIND(CONCAT("/titles/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-  
-  BIND(?id as ?uri__id)
-  BIND(?id as ?uri__dataProviderUrl)
-  BIND(?id as ?uri__prefLabel)
+BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+BIND(CONCAT("/titles/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 
-  {
-    ?id skos:altLabel ?altLabel__id .
-    BIND (?altLabel__id AS ?altLabel__prefLabel )
-  }
-  UNION
-  {
-    ?id :related_occupation ?broader__id .
-    ?broader__id skos:prefLabel ?broader__prefLabel .
-    BIND(CONCAT("/titles/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
+BIND(?id as ?uri__id)
+BIND(?id as ?uri__dataProviderUrl)
+BIND(?id as ?uri__prefLabel)
 
-    OPTIONAL {
-      ?broader__id skos:broader* ?ammo__id .
-      ?ammo__id skos:prefLabel ?ammo__prefLabel .
-      BIND(CONCAT("/titles/page/", REPLACE(STR(?ammo__id), "^.*\\\\/(.+)", "$1")) AS ?ammo__dataProviderUrl)
-      FILTER NOT EXISTS { ?ammo__id skos:broader :not_in_ammo }
-    }
-  }
-  UNION
-  { SELECT ?id (COUNT(DISTINCT ?prs) AS ?totalcount) {
-    { ?prs :has_title ?id }
-    UNION 
-    { ?prs :has_event/:has_title ?id }
+{
+  ?id skos:altLabel ?altLabel__id .
+  BIND (?altLabel__id AS ?altLabel__prefLabel )
+}
+UNION
+{
+  ?id :related_occupation ?broader__id .
+  ?broader__id skos:prefLabel ?broader__prefLabel .
+  BIND(CONCAT("/titles/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
 
-    VALUES ?prs_class { :Person :ReferencedPerson }
-    ?prs a ?prs_class
-    } GROUPBY ?id
+  OPTIONAL {
+    ?broader__id skos:broader* ?ammo__id .
+    FILTER NOT EXISTS { ?ammo__id skos:broader? :not_in_ammo }
+    ?ammo__id skos:prefLabel ?ammo__prefLabel .
+    BIND(?ammo__id AS ?ammo__dataProviderUrl)
   }
+}
+UNION
+{ SELECT ?id (COUNT(DISTINCT ?prs) AS ?totalcount) {
+  { ?prs :has_title ?id }
   UNION
-  {
-    ?id schema:place ?place__id .
-    ?place__id skos:prefLabel ?place__prefLabel .
-    BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
-  }
+  { ?prs :has_event/:has_title ?id }
+
+  VALUES ?prs_class { :Person :ReferencedPerson }
+  ?prs a ?prs_class
+  } GROUPBY ?id
+}
+UNION
+{
+  ?id schema:place ?place__id .
+  ?place__id skos:prefLabel ?place__prefLabel .
+  BIND(CONCAT("/places/page/", REPLACE(STR(?place__id), "^.*\\\\/(.+)", "$1")) AS ?place__dataProviderUrl)
+}
 `
 
 // https://api.triplydb.com/s/WfxaTI92x

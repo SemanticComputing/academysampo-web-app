@@ -146,28 +146,28 @@ export default {
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TAULUKKO</STRONG> tämä näkymä näyttää opiskelijoiden tietoja riveittäin,
+            <strong>TAULUKKO</STRONG>-väilehti näyttää opiskelijoiden tietoja riveittäin,
             ja yksi rivi vastaa yhden henkilön tietoja.
             Kuvien lähde on Wikidata/Wikimedia Commons.
           </li>
           <li>
-            <strong>AIKAJANA</strong> on aikajanakaavio, joka näyttää vuosittain kuinka monta opiskelijaa
+            <strong>AIKAJANA</strong>-välilehti on aikajanakaavio, joka näyttää vuosittain kuinka monta opiskelijaa
             on kirjautunut, kuollut tai syntynyt.
           </li>
           <li>
-            <strong>MUUTTOLIIKE</STRONG> visualisoi yhteyttä syntymä- ja kuolinpaikkojen välillä.
+            <strong>MUUTTOLIIKE</STRONG>-välilehti visualisoi yhteyttä syntymä- ja kuolinpaikkojen välillä.
           </li>
           <li>
-            <strong>KARTTA</strong> visualisoi kartalla henkilöihin liittyvien aktiviteettien paikkoja, kuten opiskelupaikkoja tai työhön liittyviä paikkoja.
+            <strong>KARTTA</strong>-välilehti visualisoi kartalla henkilöihin liittyvien aktiviteettien paikkoja, kuten opiskelupaikkoja tai työhön liittyviä paikkoja.
           </li>
           <li>
-            <strong>VERKOSTO</strong> visualisoi sosiaalista verkostoa opiskelija-oppias suhteiden osalta.
+            <strong>VERKOSTO</strong>-välilehti visualisoi sosiaalista verkostoa opiskelija-oppias suhteiden osalta.
               Huomaa, että visualisoinnissa näkiviä henkilöitä on rajoitettu suorituskyvyn vuoksi. Opettaja-oppilas verkostot
               eivät ole saatavilla kaikille henkilöille, joten joillain rajauksilla ei verkostoa löydy lainkaan.
               Lisää verkostovisualisointoja yksittäiseen henkilöön keskittyen, voi löytää henkilön kotisivulta.
           </li>
           <li>
-            <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
+            <strong>SPARQL-KYSELY</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
           </li>
         </ul>
       `,
@@ -196,7 +196,7 @@ export default {
               <strong>SUHTEET</strong>-välilehti visualisoi henkilön yhteyksiä esimerkiksi ammatteihin ja paikkoihin.
             </li>
             <li>
-              <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
+              <strong>SPARQL-KYSELY</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
             </li>
           </ul>
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>
@@ -420,7 +420,7 @@ export default {
         <strong>KARTTA</strong>-välilehti näyttää kartalla paikkoja, joissa on ollut jotain toimintaa.
       </li>
       <li>
-        <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
+        <strong>SPARQL-KYSELY</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
       </li>
     </ul>
       `,
@@ -432,7 +432,7 @@ export default {
         </h6>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
-            <strong>TAULUKKO</STRONG> yksityiskohtaista tietoa tästä oaikasta.
+            <strong>TAULUKKO</STRONG>-välilehti näyttää riveittäin tietoa tästä paikasta.
           </li>
           <li>
             <strong>KARTTA</STRONG> näyttää tämän paikan ja siihen kuuluvat paikat kartallla.
@@ -442,7 +442,7 @@ export default {
             tapahtumien, syntymien sekä kuolemien määrän,
           </li>
           <li>
-            <strong>SPARQL-kysely</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
+            <strong>SPARQL-KYSELY</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
           </li>
         </ul>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph"></p>

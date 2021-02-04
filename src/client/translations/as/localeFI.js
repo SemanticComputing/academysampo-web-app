@@ -70,7 +70,7 @@ export default {
     of: ''
   },
   lineChart: {
-    Birth: 'Syntyvä',
+    Birth: 'Syntymä',
     Enrollment: 'Kirjautuminen',
     Death: 'Kuolema',
     Event: 'Tapahtuma'
@@ -956,7 +956,24 @@ export default {
         label: 'Ammatti tai arvo',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          Tällä sivulla on yksityiskohtaista tietoa tästä ammatista tai arvosta.
           </p>
+          <h6 class="MuiTypography-root MuiTypography-h6">
+          Välilehdet
+          </h6>
+          <ul class="MuiTypography-root MuiTypography-body1">
+            <li>
+              <strong>TAULUKKO</STRONG>-välilehti näyttää tähän ammattiin tai arvoon liittyvää tietoa riveittäin.
+            </li>
+            <li>
+              <strong>AIKAJANA</strong>-välilehti taarjoaa aikajana visualisoinnin,
+              jossa on laskettu vuosittain tähän ammattiin liittyvien tapahtumien kokonaismäärä.
+            </li>
+            <li>
+              <strong>SPARQL-KYSELY</strong>-välilehti avaa tämän tiedon hakemiseen käytetyn SPARQL-kyselyn YASGUI-editorissa.
+            </li>
+          </ul>
+          <br/>
         `
       },
       properties: {

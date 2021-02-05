@@ -123,7 +123,7 @@ export default {
       shortDescription: 'Selaa tietoja noin 28000 opiskelijasta ja heidän sukulaisistaan',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Tämän näkymän kautta voit tarkastela opiskelijoihin liittyvää dataa.
+          Tämän näkymän kautta voit tutkia opiskelijoihin liittyvää dataa.
           Data on luotu kahden pääasiallisen lähteen perusteella:
           <ul class="MuiTypography-root MuiTypography-body1">
             <li>
@@ -132,7 +132,7 @@ export default {
             </li>
             <li>
             <a href="https://ylioppilasmatrikkeli.helsinki.fi/1853-1899/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1853–1899</a>:
-            joka sisältää noin 9500 opiskelijan tiedot ja jonka on koonnut Veli-Matti Autio.
+            joka sisältää noin 9500 opiskelijan tiedot, ja jonka on koonnut Veli-Matti Autio.
             </li>
           </ul>
         </p>
@@ -140,9 +140,8 @@ export default {
           Enemmän taustatietoa Akatemiasammosta voi lukea projektin <a href="https://seco.cs.aalto.fi/projects/yo-matrikkelit/"  target="_blank" rel="noopener noreferrer">kotisivulta</a>.
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Käytä tätä näkymää käsitelläksesi matrikkelin henkilöiden tietoja.
           Sivulla <a href="/instructions">ohjeet</a> on tietoa hakuominaisuuksien käytöstä.
-          Tuoksia voi tarkastella seuraavien välilähtien kautta:
+          Hakutuloksia voi tarkastella seuraavien välilähtien kautta:
         </p>
         <ul class="MuiTypography-root MuiTypography-body1">
           <li>
@@ -405,7 +404,7 @@ export default {
       shortDescription: 'Selaa paikkoihin liittyviä tietoja',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-      Käytä tätä näkymää saadaksesi tietoa paikoista, joihin datassa olevat henkilöt liittyvät.
+      Käytä tätä näkymää saadaksesi tietoa paikoista, joihin matrikkeleissa mainitut henkilöt liittyvät.
       Akatemiasammon paikat koostuvat maista, lääneistä, kaupungeista, kylistä ja kaupunginosista, sekä myös yksittäisistä rakennuksista.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
@@ -1041,16 +1040,16 @@ export default {
       shortDescription: 'Tietoa osakunnista',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Tämän näkymän kautta voi tarkastella datassa oleviin osakuntiin liittyviä tietoja.
+          Tämän näkymän kautta voi tarkastella matrikkeleissa mainittuihin osakuntiin liittyviä tietoja.
           1640–1852-matrikkelin henkilöille osakuntatieto on louhittu matrikkelin tekstistä.
-          MAtrikkelin 1853–1899 osalta tieto osakunnasta on ollut omana kenttänään.
+          Matrikkelin 1853–1899 osalta tieto osakunnasta on ollut saatavissa omana tietokenttänään.
 
           <br/><br/>
           Turun akatemian ja Helsingin yliopiston osakuntien lisäksi mukana on eräitä ruotsalaisten yliopistojen osakuntia,
           jotka on mainittu henkilöiden kuvauksissa.
 
           <br/><br/>
-          Lisää tietoa suomalaisten osakuntien historiasta voit lukea:
+          Lisää tietoa suomalaisten osakuntien historiasta voit lukea
           <a href="https://osakunta.fi/historia/" target='_blank' rel='noopener noreferrer'>
           täältä</a>.
         </p>

@@ -36,12 +36,12 @@ const useStyles = makeStyles(theme => ({
     color: '#fff'
   },
   bannerSubheading: {
-    marginTop: theme.spacing(1.5),
-    display: 'flex',
-    '& div': {
-      flexGrow: 1,
-      width: 0
-    }
+    marginTop: theme.spacing(1.5)
+    // display: 'flex',
+    // '& div': {
+    //   flexGrow: 1,
+    //   width: 0
+    // }
   },
   layout: {
     width: 'auto',

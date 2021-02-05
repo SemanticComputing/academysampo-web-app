@@ -120,7 +120,7 @@ export default {
     people: {
       label: 'Henkilöt',
       facetResultsType: 'henkilöä',
-      shortDescription: 'Selaa tietoja 28000 opiskelijasta ja heidän sukulaisistaan',
+      shortDescription: 'Selaa tietoja noin 28000 opiskelijasta ja heidän sukulaisistaan',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Tämän näkymän kautta voit tarkastela opiskelijoihin liittyvää dataa.
@@ -137,7 +137,7 @@ export default {
           </ul>
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-          Enemmän tietoa projektista voi lukea sivustolta <a href="https://seco.cs.aalto.fi/projects/yo-matrikkelit/"  target="_blank" rel="noopener noreferrer">projektin blogi</a>.
+          Enemmän taustatietoa Akatemiasammosta voi lukea projektin <a href="https://seco.cs.aalto.fi/projects/yo-matrikkelit/"  target="_blank" rel="noopener noreferrer">kotisivulta</a>.
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Käytä tätä näkymää käsitelläksesi matrikkelin henkilöiden tietoja.
@@ -938,7 +938,7 @@ export default {
     titles: {
       label: 'Ammatit ja arvot',
       facetResultsType: 'ammattia tai arvoa',
-      shortDescription: 'Kokoelma ylioppilasmatrikkelissa mainittuja ammatteja ja titteleitä.',
+      shortDescription: 'Kokoelma ylioppilasmatrikkelissa mainittuja ammatteja ja titteleitä',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
         Käytössä olevat välilehdet:
@@ -1038,7 +1038,7 @@ export default {
     studentNations: {
       label: 'Osakunnat',
       facetResultsType: 'osakuntaa',
-      shortDescription: 'Tietoa osakunnista.',
+      shortDescription: 'Tietoa osakunnista',
       longDescription: `
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Tämän näkymän kautta voi tarkastella datassa oleviin osakuntiin liittyviä tietoja.
@@ -1140,13 +1140,24 @@ export default {
   Tietoa portaalista
   </h1>
   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-  Akatemiasampo koostuu kahdesta osasta. 1) Akatemiasampo portaali, joka on ihmiskäyttäjille suunnattu sovellus,
-  vuosilta 1640–1899 olevien suomalaisten akateemisten henkilöiden tutkimiseen.
-  2) Datapalvelu johon portaali perustuu, julkaisee dataa Ylioppilasmatrikkelit 1640–1852 ja 1853–1899 lähdemateriaaliin perustuen.
-  Datapalvelua voi käyttää vapaasti sovelluskehityksessä ja tutkimuksessa, ja se on käytettävissä LDF.fi palvelun kautta.
+  <i>Akatemiasampo – akateemiset henkilöt Suomessa 1640–1899</i> koostuu kahdesta osasta, 1) Akatemiasampo.fi-portaalista ja 2) 
+  <a href="http://ldf.fi/dataset/yoma" target='_blank' rel='noopener noreferrer'>linkitetyn avoimen datan palvelusta,</a> 
+  joka on julkaistu Linked Data Finland -palvelussa.
   </p>
   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-  Akatemiasampo on verkossa avoimesti toimiva prototyyppi. Sen on kehittänyt Semanttisen laskennan tutkimusryhmä (SeCo).
+  Akatemiasampo.fi-portaali tarjoaa käyttäjälleen älykkäät haku- ja selailutoiminnat, 
+  joihin on saumattomasti integroitu joukko data-analyyttisiä työkaluja ja visualisointeja henkilöiden ja henkilöryhmien 
+  tutkimista ja analysointia varten verkostoina, tilastoina, erilaisina graafeina ja kartoilla. Portaalin käyttö ei edellytä 
+  erityistä tietoteknistä osaamista.
+  </p>
+  <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+  Akatemiasammon datapalvelun avoimet rajapinnat ja SPARQL-palvelupiste puolestaan tarjoavat 
+  helppokäyttöisen mahdollisuuden uusien data-analyysien toteuttamiseen digitaalisten ihmistieteiden tutkijoille, 
+  joilla on jonkin verran kokemusta semanttisen webin SPARQL-kyselykielestä ja ohjelmoinnista.
+  </p>
+  <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+  Akatemiasampo on verkossa avoimesti toimiva prototyyppi, jonka on kehittänyt 
+  <a href="https://seco.cs.aalto.fi/" target='_blank' rel='noopener noreferrer'>Semanttisen laskennan tutkimusryhmä (SeCo)</a>.
   </p>
   `,
   instructions: `
@@ -1156,7 +1167,7 @@ export default {
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Akatemiasammon hakuominaisuudet perustuvat
       <a href="https://doi.org/10.2200/S00190ED1V01Y200904ICR005" target='_blank' rel='noopener noreferrer'>
-      fasettihaku</a> paradigmaan. Oletuksena kukin näkymä näytää kaikki tulokset haettavasta luokasta (Henkilö, Paikka, Osakunta...)
+      fasettihaku</a>-paradigmaan. Oletuksena kukin näkymä näytää kaikki tulokset haettavasta luokasta (Henkilö, Paikka, Osakunta...)
       Tätä tulosjoukkoa voi rajata (tietokoneen näytöllä vasemmalla olevista) suodattimista.
     </p>
 
@@ -1175,13 +1186,13 @@ export default {
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
     Samasta suodattimesta voi tehdä useita valintoja. Useiden valintojen tekeminen yhdestä suodattimestä
     luo tulosjoukon johon kuuluvat kaikki valitun kriteerin täyttävät tulokset.
-    Esimerkiksi valitsemalla <i>Turku</i> ja <i>Viipuri</i> syntymäpaikka suodattimesta
-      saa valintajoukon joka sisältää henkilöt joilla on syntymäoaikkana <i>Turku</i> <strong>TAI</strong> <i>Viipuri</i>.
+    Esimerkiksi valitsemalla <i>Turku</i> ja <i>Viipuri</i> syntymäpaikka-suodattimesta
+      saa valintajoukon joka sisältää henkilöt joilla on syntymäpaikkana <i>Turku</i> <strong>TAI</strong> <i>Viipuri</i>.
       Muista suodattimista tehdyt valinnat taas rajaavat hakujoukkoa pienemmäksi.
     </p>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-    Valitut arvot näkyvät suodattimien listan yläpuolella aktiiviset suodattimet listana.
-    Voit poistaa valintoja, joka tästä listasta, tai suoraan suodattimesta.
+    Valitut arvot näkyvät suodattimien listan yläpuolella aktiiviset suodattimet -listana.
+    Voit poistaa valintoja, joko tästä listasta, tai suoraan suodattimesta.
     </p>
 
     <h3 class="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom">
@@ -1195,14 +1206,14 @@ export default {
       Useiden suodattimien yhtäaikainen käyttö
     </h2>
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-    Fasettihaun teho tulee esiin useita suodattimia yhtö aikaa käyttäessä.
-    Suodattimien välillä käytetään looginen JA operaatiota. Tämä tarkoittaa,
-    että eri faseteista tehdyt valinnat rajoittavat hakujoukkoa. Esmirkiksi jos valitset paikat <i>Turku</i>
+    Fasettihaun teho tulee esiin useita suodattimia yhtä aikaa käyttäessä.
+    Suodattimien välillä käytetään looginen JA -operaatiota. Tämä tarkoittaa,
+    että eri faseteista tehdyt valinnat rajoittavat hakujoukkoa. Esimerkiksi jos valitset paikat <i>Turku</i>
       ja <i>Viipuri</i> syntymäpaikoiksi sekä <i>Helsinki</i> ja
       <i> Tukholma</i> kuolinpaikoiksi, tuloksia rajoitetaan seuraavasti:
     </p>
     <p class="MuiTypography-root MuiTypography-body1">
-      (Syntymäpaikka: <i>Turku</i> <strong>TAI</strong> syntymäpaikkah: <i>Viipuri</i>)
+      (Syntymäpaikka: <i>Turku</i> <strong>TAI</strong> syntymäpaikka: <i>Viipuri</i>)
     </p>
     <p class="MuiTypography-root MuiTypography-body1">
         <strong>JA</strong>

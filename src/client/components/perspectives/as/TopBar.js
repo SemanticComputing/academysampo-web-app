@@ -17,6 +17,7 @@ import TopBarLanguageButton from '../../main_layout/TopBarLanguageButton'
 import Divider from '@material-ui/core/Divider'
 import { has } from 'lodash'
 import secoLogo from '../../../img/logos/seco-logo-48x50.png'
+// import asLogoEn from '../../../img/logos/as_logo_en.png'
 import { showLanguageButton, feedbackLink } from '../../../configs/as/GeneralConfig'
 
 const useStyles = makeStyles((theme) => ({
@@ -65,6 +66,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     [theme.breakpoints.down('md')]: {
       display: 'none'
+    }
+  },
+  mainLogoImg: {
+    height: 35,
+    width: 227,
+    [theme.breakpoints.down(1400)]: {
+      height: 18,
+      width: 120
     }
   }
 }))
@@ -216,6 +225,7 @@ const TopBar = props => {
         <Toolbar className={classes.toolbar}>
           <Button component={AdapterLink} to='/'>
             <Typography className={classes.homeButtonText} variant='h6'>{intl.get('appTitle.short')}</Typography>
+            {/* <img className={classes.mainLogoImg} src={props.currentLocale === 'en' ? asLogoEn : asLogoEn} /> */}
           </Button>
           {!clientFSMode &&
             <TopBarSearchField
@@ -260,6 +270,13 @@ const TopBar = props => {
             <Button><img src={secoLogo} /></Button>
           </a>
           <div className={classes.sectionMobile}>
+            {showLanguageButton &&
+              <TopBarLanguageButton
+                currentLocale={currentLocale}
+                availableLocales={availableLocales}
+                loadLocales={props.loadLocales}
+                location={props.location}
+              />}
             <IconButton aria-haspopup='true' onClick={handleMobileMenuOpen} color='inherit'>
               <MoreIcon />
             </IconButton>

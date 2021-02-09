@@ -161,6 +161,7 @@ export default {
           </li>
           <li>
             <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work, or living.
+            Places without the coordinate information are shown as a part of the place higher in the hierarchy.
           </li>
           <li>
             <strong>NETWORK</strong> is a social network visualization showing the Teacher-Student relationships.
@@ -432,6 +433,7 @@ export default {
       </li>
       <li>
         <strong>MAP</strong> is a map visualization showing the known locations of activities, e.g. places of studying, work, or living.
+        NB. places that do not have the coordinate information are shown within the place higher in the hierarchy.
       </li>
       <li>
         <strong>SPARQL-QUERY</strong> the SPARQL query used to generate the result
@@ -1160,6 +1162,19 @@ export default {
   </p>
   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
     AcademySampo is a living laboratory prototype on the Web. It has been developed by the Semantic Computing Research Group (SeCo) of Aalto University and University of Helsinki.
+  </p>
+  <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+  The student data is based on two main sources:
+  <ul class="MuiTypography-root MuiTypography-body1">
+    <li>
+    <a href="https://ylioppilasmatrikkeli.helsinki.fi/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1640–1852</a>:
+    containing approx. 18000 student records collected by Yrjö Kotivuori.
+    </li>
+    <li>
+    <a href="https://ylioppilasmatrikkeli.helsinki.fi/1853-1899/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1853–1899</a>:
+    containing approx. 9500 student records collected by Veli-Matti Autio.
+    </li>
+  </ul>
   </p>
   `,
   instructions: `

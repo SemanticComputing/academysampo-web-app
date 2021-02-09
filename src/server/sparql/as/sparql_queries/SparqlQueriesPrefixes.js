@@ -1,9 +1,9 @@
 export const prefixes = `
 PREFIX bioc: <http://ldf.fi/schema/bioc/>
-PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX dct: <http://purl.org/dc/terms/> 
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX geosparql: <http://www.opengis.net/ont/geosparql#> 
+prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> 
 PREFIX gvp: <http://vocab.getty.edu/ontology#>
 PREFIX label: <http://ldf.fi/yoma/label/> 
 PREFIX owl: <http://www.w3.org/2002/07/owl#>

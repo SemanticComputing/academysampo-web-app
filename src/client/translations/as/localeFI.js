@@ -157,7 +157,7 @@ export default {
             <strong>MUUTTOLIIKE</STRONG>-välilehti visualisoi yhteyttä syntymä- ja kuolinpaikkojen välillä.
           </li>
           <li>
-            <strong>KARTTA</strong>-välilehti visualisoi kartalla henkilöihin liittyvien aktiviteettien paikkoja, kuten opiskelupaikkoja tai työhön liittyviä paikkoja.
+            <strong>KARTTA</strong>-välilehti visualisoi kartalla henkilöihin liittyvien aktiviteettien paikkoja, kuten opiskelupaikkoja tai työhön liittyviä paikkoja. Paikat, joiden koordinaatit eivät ole tiedossa, näytetään hierarkiassa ylemmän paikan yhteydessä.
           </li>
           <li>
             <strong>VERKOSTO</strong>-välilehti visualisoi sosiaalista verkostoa opiskelija-oppias suhteiden osalta.
@@ -416,7 +416,7 @@ export default {
         <strong>TAULUKKO</STRONG>-välilehti sisältää tietoa Akatemiasammon paikoista riveittäin. Yksi rivi vastaa yhden paikan tietoja.
       </li>
       <li>
-        <strong>KARTTA</strong>-välilehti näyttää kartalla paikkoja, joissa on ollut jotain toimintaa.
+        <strong>KARTTA</strong>-välilehti näyttää kartalla paikkoja, joissa on ollut jotain toimintaa. Huom. paikat, joiden koordinaatit eivät ole tiedossa, näytetään hierarkiassa ylemmän paikan yhteydessä.
       </li>
       <li>
         <strong>SPARQL-KYSELY</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.
@@ -1157,6 +1157,19 @@ export default {
   <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
   Akatemiasampo on verkossa avoimesti toimiva prototyyppi, jonka on kehittänyt 
   <a href="https://seco.cs.aalto.fi/" target='_blank' rel='noopener noreferrer'>Semanttisen laskennan tutkimusryhmä (SeCo)</a>.
+  </p>
+  <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+  Akatemiasampon henkilötiedot perustuvat kahteen lähteeseen:
+  <ul class="MuiTypography-root MuiTypography-body1">
+    <li>
+    <a href="https://ylioppilasmatrikkeli.helsinki.fi/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1640–1852</a>:
+      joka sisältää noin 18000 opiskelijan tiedot, ja jonka on koonnut Yrjö Kotivuori.
+    </li>
+    <li>
+    <a href="https://ylioppilasmatrikkeli.helsinki.fi/1853-1899/" target="_blank" rel="noopener noreferrer">Ylioppilasmatrikkeli 1853–1899</a>:
+    joka sisältää noin 9500 opiskelijan tiedot, ja jonka on koonnut Veli-Matti Autio.
+    </li>
+  </ul>
   </p>
   `,
   instructions: `

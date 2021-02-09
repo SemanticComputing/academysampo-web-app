@@ -443,7 +443,14 @@ export const networkFamilyRelationQuery = `
   SELECT DISTINCT ?source ?target ?prefLabel (1 as ?weight)
   WHERE {
     VALUES ?id { <ID> }
-    VALUES ?rel { rels:f3 rels:f4 rels:f5 rels:f6 rels:f7 rels:f10 rels:f11 rels:f12 }
+    VALUES ?rel {
+      rels:f3 rels:f4 rels:f5 rels:f6 rels:f7 rels:f10 rels:f11 rels:f12 
+      # rels:f75 rels:f76
+      rels:f77 rels:f75
+      # rels:f65  rels:f66  rels:f67  rels:f68  rels:f69  rels:f70  rels:f71  
+      # rels:f55  rels:f56 
+      # rels:f105
+    }
     {
       ?id bioc:has_family_relation [ a ?rel ; a/rels:level ?level ; bioc:inheres_in ?target ] .
       OPTIONAL { ?rel skos:prefLabel ?prefLabel . FILTER(LANG(?prefLabel)='fi') }

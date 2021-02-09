@@ -133,7 +133,7 @@ export const preprocess = elements => {
   let res = (new ValueScaler(1.0, maxEdgeWidth)).fitTransform(arr)
   elements.edges.forEach((ele, i) => { ele.data.weight = res[i] })
 
-  // console.log(elements.nodes)
+  console.log(elements.nodes)
   // nodes
   arr = elements.nodes.map(ele => ele.data.pagerank)
 
@@ -144,6 +144,15 @@ export const preprocess = elements => {
   //  label size
   res = (new ValueScaler(8, 12)).fitTransform(arr)
   elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
+
+  elements.nodes.forEach(ele => {
+    if (ele.data.distance === 0) {
+      ele.data.size = '16px'
+      ele.data.color = 'black'
+      ele.data.font_size = 12.0
+      // console.log('Found')
+    }
+  })
 }
 
 //  preprocessRelationNetwork
@@ -188,6 +197,15 @@ export const preprocessConnections = elements => {
   elements.nodes.forEach((ele, i) => { ele.data.font_size = res[i] })
 
   elements.nodes.forEach(ele => { ele.data.color = (ele.data.distance < 1) ? 'red' : 'blue' })
+
+  elements.nodes.forEach(ele => {
+    if (ele.data.distance === 0) {
+      ele.data.size = '16px'
+      ele.data.color = 'black'
+      ele.data.font_size = 12.0
+      // console.log('Found')
+    }
+  })
 }
 
 //  preprocess by ego node distance
@@ -227,12 +245,18 @@ export const preprocessPointCloud = elements => {
 }
 
 export const preprocessFamilytree = elements => {
+  console.log(elements.nodes)
   const nodes = elements.nodes.map(ob => {
+    if (ob.data.distance === 0) {
+      ob.data.size = '24px'
+      ob.data.color = 'black'
+      // console.log('Found')
+    }
     return {
       data: ob.data,
       position: {
-        x: 540 * parseFloat(ob.data.x),
-        y: 360 * parseFloat(ob.data.y)
+        x: 800 * parseFloat(ob.data.x),
+        y: 600 * parseFloat(ob.data.y)
       }
     }
   })

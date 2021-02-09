@@ -4,45 +4,48 @@ export const fullTextSearchProperties = `
 BIND(STR(?type__prefLabel_) AS ?type__prefLabel)  # ignore language tags
 
 {
-  ?id a :Person .
-  ?id skos:prefLabel ?prefLabel__id .
+  ?id a :Person ;
+    skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/people/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 }
 UNION
 {
-  ?id a :Place .
+  ?id a :Place ; skos:prefLabel ?prefLabel__id .
   FILTER EXISTS { [] schema:place ?id }
-  ?id skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 }
 UNION
 {
-  ?id a :Title .
-  ?id skos:prefLabel ?prefLabel__id .
+  ?id a :Title ; skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/titles/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 }
 UNION
 {
-  ?id a :Category .
-  ?id skos:prefLabel ?prefLabel__id .
+  ?id a :Category ; skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/categories/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 }
 UNION
 {
-  ?id a :StudentNation .
-  ?id skos:prefLabel ?prefLabel__id .
+  ?id a :StudentNation ; skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/studentNations/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 }
 UNION
 {
-  ?id a :Organization .
-  ?id skos:prefLabel ?prefLabel__id .
+  ?id a :Organization ; skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/organizations/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-}
+} 
 `
+
+/**
+UNION
+{
+  ?id a :ReferencedPerson ; skos:prefLabel ?prefLabel__id .
+  BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(CONCAT("/relatives/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+} */

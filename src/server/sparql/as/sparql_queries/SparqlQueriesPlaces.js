@@ -259,8 +259,10 @@ WHERE {
     (:Career 0 0 1)
     (:Event 0 0 1)
     (:Study 0 0 1)
+    (:Enrollment 0 0 1)
   }
-  ?evt schema:place/skos:broader* ?id ;
+  ?plc skos:broader* ?id .
+  ?evt schema:place ?plc ;
     schema:date/gvp:estStart ?evt__time ;
     a ?evt__class .
   

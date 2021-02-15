@@ -1,5 +1,12 @@
 export default {
   languageLabel: 'Suomi',
+  html: {
+    title: 'Akatemiasampo – Suomalaiset akateemiset henkilöt 1640–1899',
+    description: `Akatemiasampo.fi-portaali tarjoaa älykkäät haku- ja 
+    selailutoiminnat, joihin on saumattomasti integroitu joukko data-analyyttisiä työkaluja 
+    ja visualisointeja henkilöiden ja henkilöryhmien tutkimista ja analysointia varten verkostoina, 
+    tilastoina, erilaisina graafeina ja kartoilla.`
+  },
   appTitle: {
     short: 'Akatemiasampo',
     long: 'Akatemiasampo',

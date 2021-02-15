@@ -1,5 +1,10 @@
 export default {
   languageLabel: 'English',
+  html: {
+    title: 'AcademySampo – Finnish Academic People 1640–1899',
+    description: `The AcademySampo portal offers tools for exploring biographical descriptions 
+    about 28 000 Finnish and Swedish university students in 1640–1899.`
+  },
   appTitle: {
     short: 'AcademySampo',
     long: 'AcademySampo',

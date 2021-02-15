@@ -1,4 +1,4 @@
-import { backendSearchConfig } from '../sparql/sampo/BackendSearchConfig'
+import { backendSearchConfig } from '../sparql/as/BackendSearchConfig'
 import { createWriteStream } from 'fs'
 import { resolve } from 'path'
 import { createGzip } from 'zlib'
@@ -69,7 +69,7 @@ const getURLs = async resultClasses => {
   sitemapStream.write(createSitemapEntry({ path: null }))
   sitemapStream.write(createSitemapEntry({ path: 'about' }))
   sitemapStream.write(createSitemapEntry({ path: 'instructions' }))
-  sitemapStream.write(createSitemapEntry({ path: 'feedback' }))
+  // sitemapStream.write(createSitemapEntry({ path: 'feedback' }))
 
   // Then process each resultClass
   for (const resultClass of resultClasses) {

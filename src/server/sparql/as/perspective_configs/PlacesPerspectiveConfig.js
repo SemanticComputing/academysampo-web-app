@@ -11,13 +11,15 @@ export const placesPerspectiveConfig = {
     useAuth: true
   },
   facetClass: '<http://ldf.fi/schema/yoma/Place>',
+  includeInSitemap: true,
   defaultConstraint: 'FILTER EXISTS { [] schema:place <SUBJECT> }',
   paginatedResults: {
     properties: placePropertiesFacetPage
   },
   instance: {
     properties: placePropertiesInstancePage,
-    relatedInstances: ''
+    relatedInstances: '',
+    defaultTab: 'table'
   },
   facets: {
     prefLabel: {

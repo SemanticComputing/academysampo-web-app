@@ -15,6 +15,7 @@ export const peoplePerspectiveConfig = {
     useAuth: true
   },
   facetClass: '<http://ldf.fi/schema/yoma/Person>',
+  includeInSitemap: true,
   langTag: 'fi',
   langTagSecondary: 'sv',
   paginatedResults: {
@@ -22,7 +23,8 @@ export const peoplePerspectiveConfig = {
   },
   instance: {
     properties: peoplePropertiesInstancePage,
-    relatedInstances: ''
+    relatedInstances: '',
+    defaultTab: 'table'
   },
   facets: {
     prefLabel: {

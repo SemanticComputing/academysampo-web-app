@@ -11,6 +11,7 @@ export const titlesPerspectiveConfig = {
     useAuth: true
   },
   facetClass: '<http://ldf.fi/schema/yoma/Title>',
+  includeInSitemap: true,
   langTag: 'fi',
   langTagSecondary: 'sv',
   paginatedResults: {
@@ -18,7 +19,8 @@ export const titlesPerspectiveConfig = {
   },
   instance: {
     properties: titlesPropertiesInstancePage,
-    relatedInstances: ''
+    relatedInstances: '',
+    defaultTab: 'table'
   },
   facets: {
     prefLabel: {

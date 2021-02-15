@@ -35,6 +35,7 @@ import { referencesPropertiesInstancePage } from './sparql_queries/SparqlQueries
 import { organizationsPropertiesInstancePage } from './sparql_queries/SparqlQueriesOrganizations'
 import { timesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTimes'
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
+import { sitemapInstancePageQuery } from '../SparqlQueriesGeneral'
 import { makeObjectList } from '../SparqlObjectMapper'
 import { mapPlaces, linearScale } from '../Mappers'
 import { mapMultipleLineChart } from '../as_Mappers'
@@ -46,13 +47,18 @@ export const backendSearchConfig = {
   studentNations: studentNationsPerspectiveConfig,
   relatives: {
     perspectiveID: 'people', // use endpoint config from people
+    rdfType: ':ReferencedPerson',
+    includeInSitemap: true,
     instance: {
       properties: relativesPropertiesInstancePage,
-      relatedInstances: ''
+      relatedInstances: '',
+      defaultTab: 'table'
     }
   },
   categories: {
     perspectiveID: 'people',
+    rdfType: ':Category',
+    includeInSitemap: true,
     instance: {
       properties: categoriesPropertiesInstancePage,
       relatedInstances: ''
@@ -60,6 +66,8 @@ export const backendSearchConfig = {
   },
   references: {
     perspectiveID: 'people',
+    rdfType: ':Reference',
+    includeInSitemap: true,
     instance: {
       properties: referencesPropertiesInstancePage,
       relatedInstances: ''
@@ -67,6 +75,8 @@ export const backendSearchConfig = {
   },
   organizations: {
     perspectiveID: 'people',
+    rdfType: ':Organization',
+    includeInSitemap: true,
     instance: {
       properties: organizationsPropertiesInstancePage,
       relatedInstances: ''
@@ -202,5 +212,13 @@ export const backendSearchConfig = {
     perspectiveID: 'titles',
     q: titleByYearQuery,
     resultMapper: mapMultipleLineChart
+  },
+  sitemapConfig: {
+    baseUrl: 'https://akatemiasampo.fi',
+    langPrimary: 'fi',
+    langSecondary: 'en',
+    outputDir: './src/server/sitemap_generator/sitemap_output',
+    sitemapUrl: 'https://akatemiasampo.fi/sitemap',
+    sitemapInstancePageQuery
   }
 }

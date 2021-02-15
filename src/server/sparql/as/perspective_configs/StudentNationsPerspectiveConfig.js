@@ -11,6 +11,7 @@ export const studentNationsPerspectiveConfig = {
     useAuth: true
   },
   facetClass: '<http://ldf.fi/schema/yoma/StudentNation>',
+  includeInSitemap: true,
   langTag: 'fi',
   langTagSecondary: 'sv',
   paginatedResults: {
@@ -18,7 +19,8 @@ export const studentNationsPerspectiveConfig = {
   },
   instance: {
     properties: studentNationsPropertiesInstancePage,
-    relatedInstances: ''
+    relatedInstances: '',
+    defaultTab: 'table'
   },
   facets: {
     prefLabel: {

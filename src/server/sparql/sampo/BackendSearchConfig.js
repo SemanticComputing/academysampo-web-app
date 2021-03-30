@@ -175,13 +175,19 @@ export const backendSearchConfig = {
     perspectiveID: 'perspective1',
     q: productionsByDecadeQuery,
     filterTarget: 'instance',
-    resultMapper: mapLineChart
+    resultMapper: mapLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: false
+    }
   },
   eventLineChart: {
     perspectiveID: 'perspective1',
     q: eventsByDecadeQuery,
     filterTarget: 'manuscript',
-    resultMapper: mapMultipleLineChart
+    resultMapper: mapMultipleLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: false
+    }
   },
   manuscriptInstancePageNetwork: {
     perspectiveID: 'perspective1',
@@ -241,7 +247,10 @@ export const backendSearchConfig = {
     perspectiveID: 'emloActors',
     q: emloSentReceivedQuery,
     // filterTarget: 'id',
-    resultMapper: mapMultipleLineChart
+    resultMapper: mapMultipleLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: false
+    }
   },
   hellerauMigrations: {
     perspectiveID: 'hellerau',

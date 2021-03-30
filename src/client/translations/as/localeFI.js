@@ -17,6 +17,7 @@ export default {
   appDescription: '',
   selectPerspective: 'Valitse näkymä tiedon hakuun:',
   mainPageImageLicence: 'Images used under license from Wikimedia Commons',
+  backendErrorText: 'Yksi Akatemiasampo.fi-portaalin taustapalveluista ei ole tällä hetkellä saatavilla. Ole hyvä yritä myöhemmin uudestaan.',
   topBar: {
     feedback: 'palaute',
     info: {
@@ -145,8 +146,6 @@ export default {
         </p>
         <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Enemmän taustatietoa Akatemiasammosta voi lukea projektin <a href="https://seco.cs.aalto.fi/projects/yo-matrikkelit/"  target="_blank" rel="noopener noreferrer">kotisivulta</a>.
-        </p>
-        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
           Sivulla <a href="/instructions">ohjeet</a> on tietoa hakuominaisuuksien käytöstä.
           Hakutuloksia voi tarkastella seuraavien välilähtien kautta:
         </p>
@@ -170,7 +169,7 @@ export default {
             <strong>VERKOSTO</strong>-välilehti visualisoi sosiaalista verkostoa opiskelija-oppias suhteiden osalta.
               Huomaa, että visualisoinnissa näkiviä henkilöitä on rajoitettu suorituskyvyn vuoksi. Opettaja-oppilas verkostot
               eivät ole saatavilla kaikille henkilöille, joten joillain rajauksilla ei verkostoa löydy lainkaan.
-              Lisää verkostovisualisointoja yksittäiseen henkilöön keskittyen, voi löytää henkilön kotisivulta.
+              Lisää verkostovisualisointoja yksittäiseen henkilöön keskittyen löytyy henkilön kotisivulta.
           </li>
           <li>
             <strong>SPARQL-KYSELY</strong>-välilehti avaa tulosten hakuun käytetyn SPARQL-kyselyn YASGUI-editorissa.

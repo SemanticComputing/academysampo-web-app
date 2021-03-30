@@ -153,7 +153,13 @@ const People = props => {
             createChartData={createMultipleLineChartData}
             title='People by year'
             xaxisTitle='Year'
+            xaxisType='category'
+            xaxisTickAmount={20}
             yaxisTitle='Number of people'
+            stroke={{
+              curve: 'straight',
+              width: 2
+            }}
             resultClass='eventsByYear'
             facetClass='people'
           />}

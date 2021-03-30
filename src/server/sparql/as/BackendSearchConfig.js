@@ -37,8 +37,7 @@ import { timesPropertiesInstancePage } from './sparql_queries/SparqlQueriesTimes
 import { fullTextSearchProperties } from './sparql_queries/SparqlQueriesFullText'
 import { sitemapInstancePageQuery } from '../SparqlQueriesGeneral'
 import { makeObjectList } from '../SparqlObjectMapper'
-import { mapPlaces, linearScale } from '../Mappers'
-import { mapMultipleLineChart } from '../as_Mappers'
+import { mapPlaces, mapMultipleLineChart, linearScale } from '../Mappers'
 
 export const backendSearchConfig = {
   people: peoplePerspectiveConfig,
@@ -191,12 +190,18 @@ export const backendSearchConfig = {
     perspectiveID: 'people',
     q: eventsByYearQuery,
     filterTarget: 'person__id',
-    resultMapper: mapMultipleLineChart
+    resultMapper: mapMultipleLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: true
+    }
   },
   nationByYear: {
     perspectiveID: 'people',
     q: nationByYearQuery,
-    resultMapper: mapMultipleLineChart
+    resultMapper: mapMultipleLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: true
+    }
   },
   placeMap: {
     perspectiveID: 'places', // use endpoint config from people
@@ -206,12 +211,18 @@ export const backendSearchConfig = {
   placeByYear: {
     perspectiveID: 'places',
     q: placeByYearQuery,
-    resultMapper: mapMultipleLineChart
+    resultMapper: mapMultipleLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: true
+    }
   },
   titleByYear: {
     perspectiveID: 'titles',
     q: titleByYearQuery,
-    resultMapper: mapMultipleLineChart
+    resultMapper: mapMultipleLineChart,
+    resultMapperConfig: {
+      fillEmptyValues: true
+    }
   },
   sitemapConfig: {
     baseUrl: 'https://akatemiasampo.fi',

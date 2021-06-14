@@ -9,6 +9,7 @@ export default {
   },
   appTitle: {
     short: 'Akatemiasampo',
+    mobile: 'AS',
     long: 'Akatemiasampo',
     subheading: `
       Suomalaiset akateemiset henkilöt 1640&ndash;1899

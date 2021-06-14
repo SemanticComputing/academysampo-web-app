@@ -1,16 +1,14 @@
+import bannerImage from '../../img/main_page/yo-banner.jpg'
+
 export const rootUrl = ''
 
 export const defaultLocale = 'fi'
-
-export const showLanguageButton = true
 
 export const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoicHRsZXNraW4iLCJhIjoiY2s4ZTk2aGtjMTI1NjNucGVyazZvenVlZCJ9.jSq3iYrWOoDphMhxfnpX6w'
 
 export const MAPBOX_STYLE = 'light-v10' // https://docs.mapbox.com/api/maps/#styles
 
 export const documentFinderAPIUrl = 'https://data.finlex.fi/document-finder-backend'
-
-export const backendErrorText = 'The database is not available. Please try again later.'
 
 export const yasguiBaseUrl = 'https://yasgui.triply.cc'
 
@@ -22,4 +20,47 @@ export const yasguiParams = {
   tabTitle: 'Exported query'
 }
 
-export const feedbackLink = 'https://link.webropolsurveys.com/S/C7AB8D6B5FFC61C9'
+export const SLIDER_DURATION = {
+  halfSpeed: 1200,
+  normalSpeed: 600,
+  doubleSpeed: 300
+}
+
+export const layoutConfig = {
+  hundredPercentHeightBreakPoint: 'md',
+  reducedHeightBreakpoint: 'xl',
+  tabHeight: 58,
+  paginationToolbarHeight: 37,
+  tableFontSize: '0.8rem',
+  topBar: {
+    showLanguageButton: true,
+    feedbackLink: 'https://link.webropolsurveys.com/S/C7AB8D6B5FFC61C9',
+    reducedHeight: 44,
+    defaultHeight: 64,
+    mobileMenuBreakpoint: 1360
+  },
+  mainPage: {
+    bannerBackround: `linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(${bannerImage})`,
+    bannerMobileHeight: 150,
+    bannerReducedHeight: 220,
+    bannerDefaultHeight: 300
+  },
+  infoHeader: {
+    default: {
+      height: 49,
+      expandedContentHeight: 160,
+      headingVariant: 'h4',
+      infoIconFontSize: 40
+    },
+    reducedHeight: {
+      height: 40,
+      expandedContentHeight: 100,
+      headingVariant: 'h6',
+      infoIconFontSize: 32
+    }
+  },
+  footer: {
+    reducedHeight: 44,
+    defaultHeight: 64
+  }
+}

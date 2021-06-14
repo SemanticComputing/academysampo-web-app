@@ -516,7 +516,7 @@ const SemanticPortal = props => {
               />
             </Switch>
           )}
-          <Route
+          {/* <Route
             path={`${rootUrlWithLang}/clientFSPlaces/federated-search`}
             render={routeProps =>
               <>
@@ -569,7 +569,7 @@ const SemanticPortal = props => {
                 <Footer layoutConfig={layoutConfig} />
               </>}
 
-          />
+          /> */}
           {/* create routes for info buttons */}
           {/* <Route
               path={`${rootUrlWithLang}/feedback`}
@@ -584,11 +584,11 @@ const SemanticPortal = props => {
               <div className={classNames(classes.mainContainer, classes.textPageContainer)}>
                 <TextPage>
                   {intl.getHTML('aboutThePortalPartOne')}
-                  <KnowledgeGraphMetadataTable
+                  {/* <KnowledgeGraphMetadataTable
                     resultClass='perspective1KnowledgeGraphMetadata'
                     fetchKnowledgeGraphMetadata={props.fetchKnowledgeGraphMetadata}
                     knowledgeGraphMetadata={props.perspective1.knowledgeGraphMetadata}
-                  />
+                  /> */}
                   {intl.getHTML('aboutThePortalPartTwo')}
                 </TextPage>
               </div>}

@@ -7,6 +7,7 @@ export default {
   },
   appTitle: {
     short: 'AcademySampo',
+    mobile: 'AS',
     long: 'AcademySampo',
     subheading: `
       Finnish Academic People 1640&ndash;1899

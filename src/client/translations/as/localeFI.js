@@ -230,7 +230,7 @@ export default {
           `
         },
         image: {
-          label: 'kuva',
+          label: 'Kuva',
           description: `
             Mahdollinen kuva henkilöstä. Lähde: Wikimedia Commons.
           `

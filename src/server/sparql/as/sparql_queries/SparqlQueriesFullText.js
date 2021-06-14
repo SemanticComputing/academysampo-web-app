@@ -1,8 +1,7 @@
 export const fullTextSearchProperties = `
 ?id a ?type__id .
-?type__id skos:prefLabel ?type__prefLabel_ .
-BIND(STR(?type__prefLabel_) AS ?type__prefLabel)  # ignore language tags
-
+?type__id skos:prefLabel ?type__prefLabel .
+FILTER(LANG(?type__prefLabel) = 'fi')
 {
   ?id a :Person ;
     skos:prefLabel ?prefLabel__id .

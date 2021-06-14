@@ -126,6 +126,16 @@ export default {
     }
   },
   perspectives: {
+    fullTextSearch: {
+      properties: {
+        prefLabel: {
+          label: 'Nimi'
+        },
+        type: {
+          label: 'Tyyppi'
+        }
+      }
+    },
     people: {
       label: 'Henkilöt',
       facetResultsType: 'henkilöä',

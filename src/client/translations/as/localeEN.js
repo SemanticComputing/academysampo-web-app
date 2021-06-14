@@ -124,6 +124,16 @@ export default {
     }
   },
   perspectives: {
+    fullTextSearch: {
+      properties: {
+        prefLabel: {
+          label: 'Label'
+        },
+        type: {
+          label: 'Type'
+        }
+      }
+    },
     people: {
       label: 'People',
       facetResultsType: 'people',

@@ -18,6 +18,16 @@ export const INITIAL_STATE = {
   instanceTableData: null,
   instanceTableExternalData: null,
   instanceSparqlQuery: null,
+  maps: {
+    peoplePlaces: {
+      center: [22.43, 10.37],
+      zoom: 2
+    },
+    peopleMigrations: {
+      center: [22.43, 10.37],
+      zoom: 2
+    }
+  },
   properties: [
     {
       id: 'prefLabel',
@@ -272,6 +282,9 @@ export const INITIAL_STATE = {
 
 const resultClasses = new Set([
   'people',
+  'peoplePlaces',
+  'peopleMigrations',
+  'peopleMigrationsDialog',
   'peopleNetwork',
   'familyNetwork',
   'academicNetwork',

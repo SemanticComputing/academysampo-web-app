@@ -133,7 +133,7 @@ export const preprocess = elements => {
   let res = (new ValueScaler(1.0, maxEdgeWidth)).fitTransform(arr)
   elements.edges.forEach((ele, i) => { ele.data.weight = res[i] })
 
-  console.log(elements.nodes)
+  // console.log(elements.nodes)
   // nodes
   arr = elements.nodes.map(ele => ele.data.pagerank)
 
@@ -245,7 +245,7 @@ export const preprocessPointCloud = elements => {
 }
 
 export const preprocessFamilytree = elements => {
-  console.log(elements.nodes)
+  // console.log(elements.nodes)
   const nodes = elements.nodes.map(ob => {
     if (ob.data.distance === 0) {
       ob.data.size = '24px'

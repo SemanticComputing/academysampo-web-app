@@ -223,11 +223,9 @@ WHERE {
     ?id skos:broader+ <ID> 
     FILTER EXISTS { [] schema:place ?id }
   }
-  
-
-  ?id skos:prefLabel ?prefLabel .
-  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?dataProviderUrl)
-
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
   OPTIONAL {
     ?id geo:lat ?lat1 ;
       geo:long ?long1

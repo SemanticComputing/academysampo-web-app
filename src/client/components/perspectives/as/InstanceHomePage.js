@@ -20,6 +20,8 @@ import {
   preprocessRelationNetwork
 } from '../../../configs/as/Cytoscape.js/NetworkConfig'
 import { createMultipleLineChartData } from '../../../configs/as/ApexCharts/LineChartConfig'
+import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from '../../../configs/as/GeneralConfig'
+import { createPopUpContentAs } from '../../../configs/as/Leaflet/LeafletConfig'
 import { Route, Redirect } from 'react-router-dom'
 import { has } from 'lodash'
 
@@ -28,11 +30,12 @@ const styles = () => ({
     width: '100%',
     height: '100%'
   },
-  content: {
+  content: props => ({
+    padding: 0,
     width: '100%',
-    height: 'calc(100% - 72px)',
+    height: `calc(100% - ${props.layoutConfig.tabHeight}px)`,
     overflow: 'auto'
-  },
+  }),
   spinnerContainer: {
     display: 'flex',
     width: '100%',
@@ -62,22 +65,26 @@ class InstanceHomePage extends React.Component {
     if (!this.hasTableData() && prevPathname !== currentPathname && currentPathname.endsWith('table')) {
       this.fetchTableData()
     }
+    // handle browser's back button
+    const localID = this.getLocalIDFromURL()
+    if (this.state.localID !== localID) {
+      this.fetchTableData()
+    }
   }
 
-  hasTableData = () => this.props.tableData !== null && Object.values(this.props.tableData).length >= 1
+  hasTableData = () => {
+    const { instanceTableData } = this.props.perspectiveState
+    return instanceTableData !== null && Object.values(instanceTableData).length >= 1
+  }
 
   fetchTableData = () => {
+    const { perspectiveConfig } = this.props
+    const localID = this.getLocalIDFromURL()
+    this.setState({ localID })
     let uri = ''
     const base = 'http://ldf.fi/yoma'
-    const locationArr = this.props.routeProps.location.pathname.split('/')
-    let localID = locationArr.pop()
-    this.props.tabs.map(tab => {
-      if (localID === tab.id) {
-        localID = locationArr.pop() // pop again if tab id
-      }
-    })
-    this.setState({ localID: localID })
-    switch (this.props.resultClass) {
+    const resultClass = perspectiveConfig.id
+    switch (resultClass) {
       case 'categories':
         uri = `${base}/categories/${localID}`
         break
@@ -107,16 +114,28 @@ class InstanceHomePage extends React.Component {
         break
     }
     this.props.fetchByURI({
-      resultClass: this.props.resultClass,
+      resultClass,
       facetClass: null,
       variant: null,
       uri: uri
     })
   }
 
+  getLocalIDFromURL = () => {
+    const locationArr = this.props.routeProps.location.pathname.split('/')
+    let localID = locationArr.pop()
+    this.props.perspectiveConfig.instancePageTabs.map(tab => {
+      if (localID === tab.id) {
+        localID = locationArr.pop() // pop again if tab id
+      }
+    })
+    return localID
+  }
+
   getVisibleRows = rows => {
+    const { instanceTableData } = this.props.perspectiveState
     const visibleRows = []
-    const instanceClass = this.props.tableData.type ? this.props.tableData.type.id : ''
+    const instanceClass = instanceTableData.type ? instanceTableData.type.id : ''
     rows.map(row => {
       if ((has(row, 'onlyForClass') && row.onlyForClass === instanceClass) ||
        !has(row, 'onlyForClass')) {
@@ -127,17 +146,22 @@ class InstanceHomePage extends React.Component {
   }
 
   render = () => {
-    const { classes, tableData, isLoading, resultClass, rootUrl } = this.props
+    const { classes, perspectiveState, perspectiveConfig, rootUrl, screenSize, layoutConfig } = this.props
+    const { instanceTableData, instanceSparqlQuery, fetching } = perspectiveState
+    const resultClass = perspectiveConfig.id
+    const defaultInstancePageTab = perspectiveConfig.defaultInstancePageTab
+      ? perspectiveConfig.defaultInstancePageTab : 'table'
     const hasTableData = this.hasTableData()
     return (
       <div className={classes.root}>
         <PerspectiveTabs
           routeProps={this.props.routeProps}
-          tabs={this.props.tabs}
-          screenSize={this.props.screenSize}
+          tabs={perspectiveConfig.instancePageTabs}
+          screenSize={screenSize}
+          layoutConfig={layoutConfig}
         />
         <Paper square className={classes.content}>
-          {isLoading && !hasTableData &&
+          {fetching && !hasTableData &&
             <div className={classes.spinnerContainer}>
               <CircularProgress style={{ color: purple[500] }} thickness={5} />
             </div>}
@@ -152,15 +176,17 @@ class InstanceHomePage extends React.Component {
             <>
               <Route
                 exact path={`${rootUrl}/${resultClass}/page/${this.state.localID}`}
-                render={() => <Redirect to={`${rootUrl}/${resultClass}/page/${this.state.localID}/table`} />}
+                render={() => <Redirect to={`${rootUrl}/${resultClass}/page/${this.state.localID}/${defaultInstancePageTab}`} />}
               />
               <Route
                 path={[`${rootUrl}/${resultClass}/page/${this.state.localID}/table`, '/iframe.html']} // support also rendering in Storybook
                 render={() =>
                   <InstanceHomePageTable
                     resultClass={resultClass}
-                    data={tableData}
-                    properties={this.getVisibleRows(this.props.properties)}
+                    data={instanceTableData}
+                    properties={this.getVisibleRows(perspectiveState.properties)}
+                    screenSize={screenSize}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
@@ -168,18 +194,19 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <Network
                     pageType='instancePage'
-                    results={this.props.results}
-                    resultUpdateID={this.props.resultUpdateID}
+                    results={perspectiveState.results}
+                    resultUpdateID={perspectiveState.resultUpdateID}
                     fetchResults={this.props.fetchResults}
-                    fetching={isLoading}
+                    fetching={fetching}
                     resultClass='familyNetwork'
-                    uri={tableData.id}
+                    uri={instanceTableData.id}
                     limit={150}
                     optimize={1.2}
                     style={cytoscapeStyle}
                     fitLayout
                     // layout={coseLayout}
                     preprocess={preprocessFamilytree}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
@@ -187,17 +214,18 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <Network
                     pageType='instancePage'
-                    results={this.props.results}
-                    resultUpdateID={this.props.resultUpdateID}
+                    results={perspectiveState.results}
+                    resultUpdateID={perspectiveState.resultUpdateID}
                     fetchResults={this.props.fetchResults}
-                    fetching={isLoading}
+                    fetching={fetching}
                     resultClass='academicNetwork'
-                    uri={tableData.id}
+                    uri={instanceTableData.id}
                     limit={200}
                     optimize={1.2}
                     style={cytoscapeStyle}
                     layout={coseLayout}
                     preprocess={preprocess}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
@@ -205,17 +233,18 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <Network
                     pageType='instancePage'
-                    results={this.props.results}
-                    resultUpdateID={this.props.resultUpdateID}
+                    results={perspectiveState.results}
+                    resultUpdateID={perspectiveState.resultUpdateID}
                     fetchResults={this.props.fetchResults}
-                    fetching={isLoading}
+                    fetching={fetching}
                     resultClass='relationNetwork'
-                    uri={tableData.id}
+                    uri={instanceTableData.id}
                     limit={200}
                     optimize={1.2}
                     style={cytoscapeStyle}
                     layout={coseLayout}
                     preprocess={preprocessRelationNetwork}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
@@ -223,17 +252,18 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <Network
                     pageType='instancePage'
-                    results={this.props.results}
-                    resultUpdateID={this.props.resultUpdateID}
+                    results={perspectiveState.results}
+                    resultUpdateID={perspectiveState.resultUpdateID}
                     fetchResults={this.props.fetchResults}
-                    fetching={isLoading}
+                    fetching={fetching}
                     resultClass='connections'
-                    uri={tableData.id}
+                    uri={instanceTableData.id}
                     limit={60}
                     optimize={1.2}
                     style={cytoscapeStyle}
                     layout={coseLayout}
                     preprocess={preprocessConnections}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
@@ -241,11 +271,11 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <ApexChart
                     pageType='instancePage'
-                    rawData={this.props.results}
-                    rawDataUpdateID={this.props.resultUpdateID}
-                    fetching={isLoading}
+                    rawData={perspectiveState.results}
+                    rawDataUpdateID={perspectiveState.resultUpdateID}
+                    fetching={fetching}
                     fetchData={this.props.fetchResults}
-                    uri={tableData.id}
+                    uri={instanceTableData.id}
                     createChartData={createMultipleLineChartData}
                     resultClass='placeByYear'
                     title='Events by year'
@@ -267,26 +297,43 @@ class InstanceHomePage extends React.Component {
                         stops: [20, 60, 100, 100]
                       }
                     }}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
                 path={`${rootUrl}/${resultClass}/page/${this.state.localID}/map`}
                 render={() =>
                   <LeafletMap
-                    center={[22.43, 10.37]}
-                    zoom={2}
-                    results={this.props.results}
-                    layers={this.props.leafletMapLayers}
+                    mapBoxAccessToken={MAPBOX_ACCESS_TOKEN}
+                    mapBoxStyle={MAPBOX_STYLE}
+                    center={perspectiveState.maps.placeMap.center}
+                    zoom={perspectiveState.maps.placeMap.zoom}
+                    results={perspectiveState.results}
+                    leafletMapState={this.props.leafletMapState}
                     pageType='instancePage'
                     resultClass='placeMap'
                     facetClass='places'
                     mapMode='cluster'
-                    uri={tableData.id}
+                    instance={instanceTableData}
+                    uri={instanceTableData.id}
+                    createPopUpContent={createPopUpContentAs}
+                    popupMaxHeight={320}
+                    popupMinWidth={280}
                     fetchResults={this.props.fetchResults}
-                    fetching={isLoading}
-                    fetchData={this.props.fetchResults}
+                    fetchGeoJSONLayers={this.props.fetchGeoJSONLayers}
+                    clearGeoJSONLayers={this.props.clearGeoJSONLayers}
+                    fetchByURI={this.props.fetchByURI}
+                    fetching={fetching}
                     showInstanceCountInClusters={false}
+                    updateFacetOption={this.props.updateFacetOption}
+                    updateMapBounds={this.props.updateMapBounds}
+                    showError={this.props.showError}
                     showExternalLayers={false}
+                    // layerControlExpanded={layerControlExpanded}
+                    // customMapControl
+                    // layerConfigs={layerConfigs}
+                    infoHeaderExpanded={this.props.perspectiveState.instancePageHeaderExpanded}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
@@ -294,11 +341,11 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <ApexChart
                     pageType='instancePage'
-                    rawData={this.props.results}
-                    rawDataUpdateID={this.props.resultUpdateID}
-                    fetching={isLoading}
+                    rawData={perspectiveState.results}
+                    rawDataUpdateID={perspectiveState.resultUpdateID}
+                    fetching={fetching}
                     fetchData={this.props.fetchResults}
-                    uri={tableData.id}
+                    uri={instanceTableData.id}
                     createChartData={createMultipleLineChartData}
                     resultClass='titleByYear'
                     title='People by year'
@@ -320,6 +367,7 @@ class InstanceHomePage extends React.Component {
                         stops: [20, 60, 100, 100]
                       }
                     }}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
@@ -327,11 +375,11 @@ class InstanceHomePage extends React.Component {
                 render={() =>
                   <ApexChart
                     pageType='instancePage'
-                    rawData={this.props.results}
-                    rawDataUpdateID={this.props.resultUpdateID}
-                    fetching={isLoading}
+                    rawData={perspectiveState.results}
+                    rawDataUpdateID={perspectiveState.resultUpdateID}
+                    fetching={fetching}
                     fetchData={this.props.fetchResults}
-                    uri={tableData.id}
+                    uri={instanceTableData.id}
                     createChartData={createMultipleLineChartData}
                     resultClass='nationByYear'
                     title='Timeline'
@@ -353,15 +401,17 @@ class InstanceHomePage extends React.Component {
                         stops: [20, 60, 100, 100]
                       }
                     }}
+                    layoutConfig={layoutConfig}
                   />}
               />
               <Route
                 path={`${rootUrl}/${resultClass}/page/${this.state.localID}/export`}
                 render={() =>
                   <Export
-                    sparqlQuery={this.props.sparqlQuery}
+                    sparqlQuery={instanceSparqlQuery}
                     pageType='instancePage'
-                    id={tableData.id}
+                    id={instanceTableData.id}
+                    layoutConfig={layoutConfig}
                   />}
               />
             </>}
@@ -372,21 +422,87 @@ class InstanceHomePage extends React.Component {
 }
 
 InstanceHomePage.propTypes = {
-  classes: PropTypes.object.isRequired,
-  fetchByURI: PropTypes.func.isRequired,
+  /**
+   * Faceted search configs and results of this perspective.
+   */
+  perspectiveState: PropTypes.object.isRequired,
+  /**
+    * Leaflet map config and external layers.
+    */
+  leafletMapState: PropTypes.object.isRequired,
+  /**
+    * Redux action for fetching paginated results.
+    */
+  fetchPaginatedResults: PropTypes.func.isRequired,
+  /**
+    * Redux action for fetching all results.
+    */
   fetchResults: PropTypes.func.isRequired,
-  resultClass: PropTypes.string.isRequired,
-  tableData: PropTypes.object,
-  tableExternalData: PropTypes.object,
-  results: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  resultUpdateID: PropTypes.number.isRequired,
-  sparqlQuery: PropTypes.string,
-  properties: PropTypes.array.isRequired,
-  tabs: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  /**
+    * Redux action for fetching facet values for statistics.
+    */
+  fetchFacetConstrainSelf: PropTypes.func.isRequired,
+  /**
+    * Redux action for loading external GeoJSON layers.
+    */
+  fetchGeoJSONLayers: PropTypes.func.isRequired,
+  /**
+    * Redux action for loading external GeoJSON layers via backend.
+    */
+  fetchGeoJSONLayersBackend: PropTypes.func.isRequired,
+  /**
+    * Redux action for clearing external GeoJSON layers.
+    */
+  clearGeoJSONLayers: PropTypes.func.isRequired,
+  /**
+    * Redux action for fetching information about a single entity.
+    */
+  fetchByURI: PropTypes.func.isRequired,
+  /**
+    * Redux action for updating the page of paginated results.
+    */
+  updatePage: PropTypes.func.isRequired,
+  /**
+    * Redux action for updating the rows per page of paginated results.
+    */
+  updateRowsPerPage: PropTypes.func.isRequired,
+  /**
+    * Redux action for sorting the paginated results.
+    */
+  sortResults: PropTypes.func.isRequired,
+  /**
+    * Redux action for updating the active selection or config of a facet.
+    */
+  showError: PropTypes.func.isRequired,
+  /**
+    * Redux action for showing an error
+    */
+  updateFacetOption: PropTypes.func.isRequired,
+  /**
+    * Routing information from React Router.
+    */
   routeProps: PropTypes.object.isRequired,
+  /**
+    * Perspective config.
+    */
+  perspective: PropTypes.object.isRequired,
+  /**
+    * State of the animation, used by TemporalMap.
+    */
+  animationValue: PropTypes.array.isRequired,
+  /**
+    * Redux action for animating TemporalMap.
+    */
+  animateMap: PropTypes.func.isRequired,
+  /**
+    * Current screen size.
+    */
   screenSize: PropTypes.string.isRequired,
-  rootUrl: PropTypes.string.isRequired
+  /**
+    * Root url of the application.
+    */
+  rootUrl: PropTypes.string.isRequired,
+  layoutConfig: PropTypes.object.isRequired
 }
 
 export const InstanceHomePageComponent = InstanceHomePage

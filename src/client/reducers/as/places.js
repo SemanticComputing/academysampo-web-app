@@ -20,6 +20,16 @@ export const INITIAL_STATE = {
   instanceAnalysisData: null,
   instanceAnalysisDataUpdateID: 0,
   instanceSparqlQuery: null,
+  maps: {
+    placeMap: {
+      center: [22.43, 10.37],
+      zoom: 2
+    },
+    placesPeople: {
+      center: [22.43, 10.37],
+      zoom: 2
+    }
+  },
   properties: [
     {
       id: 'prefLabel',
@@ -183,10 +193,7 @@ export const INITIAL_STATE = {
 
 const resultClasses = new Set([
   'places',
-  'peoplePlaces',
   'placesPeople',
-  'peopleMigrations',
-  'peopleMigrationsDialog',
   'placeByYear',
   'placeMap'
 ])

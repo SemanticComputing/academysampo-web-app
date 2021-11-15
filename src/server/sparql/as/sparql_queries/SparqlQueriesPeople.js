@@ -164,7 +164,9 @@ UNION
   SELECT DISTINCT ?id 
     ?similar__id 
     (CONCAT("/people/page/", REPLACE(STR(?similar__id), "^.*\\\\/(.+)", "$1")) AS ?similar__dataProviderUrl) 
-    (CONCAT(SAMPLE(?similar__label),': [', GROUP_CONCAT(DISTINCT ?link; separator="; "), ']') AS ?similar__prefLabel)
+    (COALESCE(
+    CONCAT(SAMPLE(?similar__label),': [', GROUP_CONCAT(DISTINCT ?link; separator="; "), ']'),
+  		SAMPLE(?similar__label)) AS ?similar__prefLabel)
     WHERE {
       ?id ^rels:relates_to ?node .
       ?node

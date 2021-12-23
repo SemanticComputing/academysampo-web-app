@@ -67,7 +67,7 @@ export default {
     academicNetwork: 'Akateemiset suhteet',
     relationNetwork: 'Suhteet',
     connections: 'Yhteydet',
-    by_year: 'Aikajana',
+    events_by_year: 'Aikajana',
     placeByYear: 'Aikajana tapahtumille',
     placeMap: 'Kartta',
     titleByYear: 'Aikajana',

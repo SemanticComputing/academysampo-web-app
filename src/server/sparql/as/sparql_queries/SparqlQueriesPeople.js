@@ -166,7 +166,7 @@ UNION
     (CONCAT("/people/page/", REPLACE(STR(?similar__id), "^.*\\\\/(.+)", "$1")) AS ?similar__dataProviderUrl) 
     (COALESCE(
     CONCAT(SAMPLE(?similar__label),': [', GROUP_CONCAT(DISTINCT ?link; separator="; "), ']'),
-  		SAMPLE(?similar__label)) AS ?similar__prefLabel)
+    SAMPLE(?similar__label)) AS ?similar__prefLabel)
     WHERE {
       ?id ^rels:relates_to ?node .
       ?node
@@ -633,4 +633,23 @@ WHERE {
   FILTER (year(?time_0)=year(?time_1))
   BIND (STR(year(?time_0)) AS ?category)
 } GROUP BY ?category ORDER BY ?category
+`
+
+export const placePropertiesInfoWindow = `
+?id skos:prefLabel ?prefLabel__id .
+BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+`
+
+export const peopleRelatedTo = `
+OPTIONAL {
+  <FILTER>
+  { ?related__id :has_event/schema:place ?id }
+  UNION
+  { ?related__id :has_title/schema:place ?id }
+  VALUES ?rclass { :Person :ReferencedPerson }
+  ?related__id a ?rclass ;
+    skos:prefLabel ?related__prefLabel .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+}
 `

@@ -180,12 +180,6 @@ OPTIONAL {
 }
 `
 
-export const placePropertiesInfoWindow = `
-?id skos:prefLabel ?prefLabel__id .
-BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-`
-
 export const allPlacesQuery = `
 SELECT *
 WHERE {
@@ -195,19 +189,6 @@ WHERE {
     ?id wgs84:lat ?lat ;
         wgs84:long ?long .
   }
-}
-`
-
-export const peopleRelatedTo = `
-OPTIONAL {
-  <FILTER>
-  { ?related__id :has_event/schema:place ?id }
-  UNION
-  { ?related__id :has_title/schema:place ?id }
-  VALUES ?rclass { :Person :ReferencedPerson }
-  ?related__id a ?rclass ;
-    skos:prefLabel ?related__prefLabel .
-  BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
 }
 `
 

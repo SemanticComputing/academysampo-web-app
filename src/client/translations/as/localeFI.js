@@ -23,9 +23,9 @@ export default {
     feedback: 'palaute',
     info: {
       info: 'Info',
-      blog: 'Projektin kotisivu',
-      blogUrl: 'https://seco.cs.aalto.fi/projects/yo-matrikkelit/',
-      aboutThePortal: 'Tietoa portaalista'
+      aboutThePortal: 'Tietoa portaalista',
+      aboutTheProject: 'Projektin kotisivu',
+      aboutTheProjectUrl: 'https://seco.cs.aalto.fi/projects/yo-matrikkelit/'
     },
     searchBarPlaceHolder: 'Etsi kaikista näkymistä',
     searchBarPlaceHolderShort: 'Etsi',

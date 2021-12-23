@@ -1,0 +1,462 @@
+{
+    "id": "people",
+    "endpoint": {
+        "url": "https://ldf.fi/yoma/sparql",
+        "useAuth": false,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesPeople.js",
+    "baseURI": "http://ldf.fi/yoma",
+    "URITemplate": "<BASE_URI>/work/<LOCAL_ID>",
+    "facetClass": ":Person",
+    "frontPageImage": "main_page/people_452x262.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [
+        "prefLabel"
+    ],
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "resultClasses": {
+        "people": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "peoplePropertiesFacetResults",
+                "pagesize": 20,
+                "paginatedResultsAlwaysExpandRows": true,
+                "paginatedResultsRowContentMaxHeight": 150,
+                "sortBy": "externalLink",
+                "sortDirection": "desc"
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "peoplePropertiesInstancePage",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    },
+                    "instancePageExport": {
+                        "tabID": 1,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        },
+        "export": {
+            "tabID": 1,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "resultClass": "perspective1",
+            "facetClass": "perspective1"
+        },
+        "perspective1KnowledgeGraphMetadata": {
+            "sparqlQuery": "knowledgeGraphMetadataQuery",
+            "resultMapper": "makeObjectList"
+        }
+    },
+    "properties": [
+        {
+            "id": "image",
+            "valueType": "image",
+            "previewImageHeight": 160,
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": false,
+            "hideHeader": false
+        },
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 180
+        },     
+        {
+            "id": "enrollmentTimespan",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "altLabel",
+            "valueType": "string",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "entryText",
+            "valueType": "string",
+            "renderAsHTML": true,
+            "HTMLParserTask": "createReactRouterLinks",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "relativeText",
+            "valueType": "string",
+            "renderAsHTML": true,
+            "HTMLParserTask": "createReactRouterLinks",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "referenceText",
+            "valueType": "string",
+            "renderAsHTML": true,
+            "HTMLParserTask": "createReactRouterLinks",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "source",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 150
+        },
+        {
+            "id": "gender",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 80
+        },
+        {
+            "id": "birthDateTimespan",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "birthPlace",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "deathDateTimespan",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "deathPlace",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "title",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "minWidth": 180
+        },
+        {
+            "id": "place",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "minWidth": 180,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "studentnation",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "minWidth": 180
+        },
+        {
+            "id": "category",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "minWidth": 220
+        },
+        {
+            "id": "organization",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "minWidth": 220
+        },
+        {
+            "id": "relative",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "sortBy": "level",
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "otherrelative",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "sortBy": "level",
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "related",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "similar",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "sortBy": "distance",
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "reference",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "minWidth": 220
+        },
+        {
+            "id": "externalLink",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 150
+        },
+        {
+            "id": "sourcereference",
+            "valueType": "string",
+            "renderAsHTML": true,
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        }
+    ],
+    "facets": {
+        "externalLink": {
+            "sortByPattern": "{ SELECT ?id (SUM(?weight) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a <FACET_CLASS> . OPTIONAL { ?id schema:sameAs ?link OPTIONAL { ?link :weight ?w } BIND (COALESCE(?w, 1) AS ?weight) } } GROUP BY ?id }"
+    },
+    "prefLabel": {
+        "containerClass": "one",
+        "facetType": "text",
+        "filterType": "textFilter",
+        "sortByPredicate": "skos:prefLabel",
+        "textQueryProperty": "skos:prefLabel"
+    },
+    "birthDateTimespan": {
+        "containerClass": "four",
+        "endProperty": "gvp:estEnd",
+        "facetType": "timespan",
+        "filterType": "timespanFilter",
+        "max": null,
+        "min": null,
+        "predicate": ":date_of_origin",
+        "sortByAscPredicate": ":date_of_origin/gvp:estStart",
+        "sortByDescPredicate": ":date_of_origin/gvp:estEnd",
+        "startProperty": "gvp:estStart"
+    },
+    "birthPlace": {
+        "containerClass": "ten",
+        "facetLabelFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+        "facetType": "hierarchical",
+        "filterType": "uriFilter",
+        "parentProperty": "skos:broader",
+        "predicate": ":place_of_origin",
+        "searchField": true,
+        "sortByPredicate": ":place_of_origin/skos:prefLabel"
+    },
+    "enrollmentTimespan": {
+        "containerClass": "four",
+        "endProperty": "gvp:estEnd",
+        "facetType": "timespan",
+        "filterType": "timespanFilter",
+        "max": null,
+        "min": null,
+        "predicate": ":has_enrollment/schema:date",
+        "sortByAscPredicate": ":has_enrollment/schema:date/gvp:estStart",
+        "sortByDescPredicate": ":has_enrollment/schema:date/gvp:estEnd",
+        "startProperty": "gvp:estStart"
+    },
+    "deathDateTimespan": {
+        "containerClass": "four",
+        "endProperty": "gvp:estEnd",
+        "facetType": "timespan",
+        "filterType": "timespanFilter",
+        "max": null,
+        "min": null,
+        "predicate": ":date_of_end",
+        "sortByAscPredicate": ":date_of_end/gvp:estStart",
+        "sortByDescPredicate": ":date_of_end/gvp:estEnd",
+        "startProperty": "gvp:estStart"
+    },
+    "deathPlace": {
+        "containerClass": "ten",
+        "facetType": "hierarchical",
+        "filterType": "uriFilter",
+        "parentProperty": "skos:broader",
+        "predicate": ":place_of_end",
+        "searchField": true,
+        "sortByPredicate": ":place_of_end/skos:prefLabel"
+    },
+    "gender": {
+        "containerClass": "five",
+        "facetType": "list",
+        "filterType": "uriFilter",
+        "predicate": "schema:gender",
+        "sortBy": "instanceCount",
+        "sortByPredicate": "schema:gender/skos:prefLabel",
+        "sortDirection": "desc"
+    },
+    "title": {
+        "containerClass": "ten",
+        "facetType": "hierarchical",
+        "facetValueFilter": "FILTER(?id NOT IN ( <http://ldf.fi/ammo/ylioppilas> ))",
+        "filterType": "uriFilter",
+        "parentProperty": "skos:broader",
+        "predicate": "a :Person ; (:has_event?)/:has_title/:related_occupation",
+        "searchField": true,
+        "sortButton": true,
+        "sortByPredicate": ":has_title/skos:prefLabel"
+    },
+    "category": {
+        "containerClass": "ten",
+        "facetType": "hierarchical",
+        "filterType": "uriFilter",
+        "parentProperty": "skos:broader",
+        "predicate": ":has_category",
+        "searchField": true,
+        "sortButton": true,
+        "sortByPredicate": ":has_category/skos:prefLabel"
+    },
+    "organization": {
+        "containerClass": "ten",
+        "facetType": "list",
+        "filterType": "uriFilter",
+        "predicate": ":has_event/:organization",
+        "searchField": true,
+        "sortButton": true,
+        "sortBy": "prefLabel",
+        "sortByPredicate": ":has_event/:organization/skos:prefLabel",
+        "sortDirection": "asc"
+    },
+    "studentnation": {
+        "containerClass": "ten",
+        "facetType": "list",
+        "facetValueFilter": "FILTER(LANG(?prefLabel_) = '<LANG>')",
+        "filterType": "uriFilter",
+        "predicate": ":has_event/:student_nation",
+        "searchField": true,
+        "sortButton": true,
+        "sortBy": "prefLabel",
+        "sortByPredicate": ":has_event/:student_nation/skos:prefLabel",
+        "sortDirection": "asc"
+    },
+    "database": {
+        "containerClass": "ten",
+        "facetType": "list",
+        "facetValueFilter": "FILTER EXISTS { ?id skos:prefLabel [] }",
+        "filterType": "uriFilter",
+        "predicate": "schema:sameAs/rdf:type",
+        "sortBy": "instanceCount",
+        "sortByPredicate": "schema:sameAs/rdf:type/skos:prefLabel",
+        "sortDirection": "desc"
+    },
+    "source": {
+        "containerClass": "five",
+        "facetType": "list",
+        "filterType": "uriFilter",
+        "predicate": "dct:source",
+        "sortBy": "instanceCount",
+        "sortByPredicate": "dct:source/skos:prefLabel",
+        "sortDirection": "desc"
+    },
+    "reference": {
+        "containerClass": "ten",
+        "facetType": "hierarchical",
+        "filterType": "uriFilter",
+        "parentProperty": "skos:broader",
+        "predicate": ":has_reference",
+        "searchField": true,
+        "sortButton": true,
+        "sortByPredicate": ":has_reference/skos:prefLabel"
+    }
+}
+}

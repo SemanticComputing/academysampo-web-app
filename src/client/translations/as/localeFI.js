@@ -490,7 +490,7 @@ export default {
           `
         },
         externalLink: {
-          label: 'Datan lähteet',
+          label: 'Datan lähde',
           description: `
           Linkki ulkoiseen tietokantaan.
           `

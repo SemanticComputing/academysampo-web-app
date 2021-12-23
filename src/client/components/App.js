@@ -1,11 +1,17 @@
 import React from 'react'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles'
 import SemanticPortal from '../containers/SemanticPortal'
-import indigo from '@material-ui/core/colors/indigo'
+import portalConfig from '../../configs/portalConfig.json'
+const { colorPalette } = portalConfig.layoutConfig
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
-    primary: indigo
+    primary: {
+      main: colorPalette.primary.main
+    },
+    secondary: {
+      main: colorPalette.secondary.main
+    }
   },
   overrides: {
     MuiTooltip: {

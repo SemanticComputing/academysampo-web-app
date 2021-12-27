@@ -612,12 +612,7 @@ export const peopleEventPlacesQuery = `
   (COUNT(DISTINCT ?person) as ?instanceCount)
   WHERE {
     <FILTER>
-    ?id a :Place .
     { ?person :has_event/schema:place ?id }
-    UNION
-    { ?person :has_birth/schema:place ?id }
-    UNION
-    { ?person :has_death/schema:place ?id }
     UNION
     { ?person :has_title/schema:place ?id }
     OPTIONAL {
@@ -649,10 +644,6 @@ export const peopleRelatedTo = `
     { ?related__id :has_event/schema:place ?id }
     UNION
     { ?related__id :has_title/schema:place ?id }
-    UNION
-    { ?related__id :has_birth/schema:place ?id }
-    UNION
-    { ?related__id :has_death/schema:place ?id }
     VALUES ?rclass { :Person :ReferencedPerson }
     ?related__id a ?rclass ;
       skos:prefLabel ?related__prefLabel .

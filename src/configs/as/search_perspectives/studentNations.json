@@ -1,0 +1,177 @@
+{
+    "id": "studentNations",
+    "endpoint": {
+        "url": "https://ldf.fi/yoma/sparql",
+        "useAuth": false,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesStudentNations.js",
+    "baseURI": "http://ldf.fi/yoma",
+    "URITemplate": "<BASE_URI>/nations/<LOCAL_ID>",
+    "facetClass": ":StudentNation",
+    "langTag": "fi",
+    "frontPageImage": "main_page/studentnation_452x262.jpg",
+    "searchMode": "faceted-search",
+    "defaultActiveFacets": [
+        "prefLabel"
+    ],
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "resultClasses": {
+        "studentNations": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "studentNationsPropertiesFacetResults",
+                "pagesize": 25,
+                "paginatedResultsAlwaysExpandRows": false,
+                "sortBy": "numberOfPeople",
+                "sortDirection": "desc"
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "studentNationsPropertiesInstancePage",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    },
+                    "nationByYear": {
+                        "tabID": 1,
+                        "component": "ApexCharts",
+                        "pageType": "instancePage",
+                        "createChartData": "createSingleLineChartData",
+                        "stroke": {
+                            "curve": "straight",
+                            "width": 2
+                        },
+                        "title": "Student nation by year",
+                        "xaxisTitle": "Year",
+                        "xaxisType": "category",
+                        "xaxisTickAmount": 20,
+                        "yaxisTitle": "Number of events",
+                        "tabPath": "by_year",
+                        "tabIcon": "ShowChart",
+                        "sparqlQuery": "nationByYearQuery",
+                        "resultMapper": "mapLineChart",
+                        "resultMapperConfig": {
+                            "fillEmptyValues": true
+                        }
+                    },
+                    "instancePageExport": {
+                        "tabID": 2,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        },
+        "export": {
+            "tabID": 1,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload"
+        }
+    },
+    "properties": [
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "height": 33
+        },
+        {
+            "id": "altLabel",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "numberOfPeople",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
+        },
+        {
+            "id": "person",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "role",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "related",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "comment",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false
+        },
+        {
+            "id": "externalLink",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false
+        },
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        }
+    ],
+    "facets": {
+        "prefLabel": {
+            "sortByPredicate": "skos:prefLabel"
+        },
+        "altLabel": {
+            "sortByPredicate": "skos:altLabel"
+        },
+        "externalLink": {
+            "sortByPredicate": ":wikidata "
+        },
+        "comment": {
+            "sortByPredicate": ":comment "
+        },
+        "numberOfPeople": {
+            "sortByPattern": "{ SELECT ?id (COUNT(?prs) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . { ?prs :student_nation ?id } UNION { ?prs :has_event/:student_nation ?id } } GROUP BY ?id }"
+        }
+    }
+}

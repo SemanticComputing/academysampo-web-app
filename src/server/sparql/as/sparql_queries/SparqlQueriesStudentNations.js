@@ -144,10 +144,10 @@ UNION
 
 // https://api.triplydb.com/s/v-cnFMKbM
 export const nationByYearQuery = `
-SELECT DISTINCT ?category (COUNT(DISTINCT ?person__id) AS ?Registerings)
+SELECT DISTINCT ?category (COUNT(DISTINCT ?person) AS ?count)
 WHERE {
   VALUES ?id { <ID> }
-  ?person__id :has_event/:student_nation ?id ;
+  ?person :has_event/:student_nation ?id ;
     :has_enrollment/schema:date/gvp:estStart ?enr__time .
   BIND (STR(year(?enr__time)) AS ?category)
 } 

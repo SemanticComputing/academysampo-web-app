@@ -127,99 +127,74 @@ UNION
   ?id :number_of_events ?num_activies
 }
 `
-export const placePropertiesFacetPage = `
-{
-  ?id skos:prefLabel ?prefLabel__id .
-  FILTER (LANG(?prefLabel__id)="fi")
-  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-  BIND(?id as ?uri__id)
-  BIND(?id as ?uri__dataProviderUrl)
-  BIND(?id as ?uri__prefLabel)
-}
-UNION
-{
-  ?id skos:altLabel ?altLabel .
-}
-UNION
-{ 
-  ?id skos:broader+ ?broader__id . 
-  ?broader__id skos:prefLabel ?broader__prefLabel .
-  BIND(CONCAT("/places/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
-  FILTER (LANG(?broader__prefLabel)='fi')
-}
-UNION
-{
-  ?id schema:sameAs ?externalLink__id .
-  ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
-  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
-}
-UNiON
-{
-  ?id schema:image ?image__id ;
-    skos:prefLabel ?image__description ;
-    skos:prefLabel ?image__title .
-    BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
-}
-UNION
-{
-  ?id :number_of_events ?num_activies
-}
-`
-
 export const placePropertiesFacetResults = `
-?id skos:prefLabel ?prefLabel__id .
-BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-
-OPTIONAL {
-  ?id skos:broader ?broader__id .
-  ?broader__id skos:prefLabel ?broader__prefLabel .
-  FILTER (LANG(?broader__prefLabel)="fi")
-  BIND(CONCAT("/places/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
-}
-`
-
-export const allPlacesQuery = `
-SELECT *
-WHERE {
-  <FILTER>
-  ?id a :Place .
-  OPTIONAL {
-    ?id wgs84:lat ?lat ;
-        wgs84:long ?long .
+  {
+    ?id skos:prefLabel ?prefLabel__id .
+    FILTER (LANG(?prefLabel__id)="fi")
+    BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+    BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+    BIND(?id as ?uri__id)
+    BIND(?id as ?uri__dataProviderUrl)
+    BIND(?id as ?uri__prefLabel)
   }
-}
+  UNION
+  {
+    ?id skos:altLabel ?altLabel .
+  }
+  UNION
+  { 
+    ?id skos:broader+ ?broader__id . 
+    ?broader__id skos:prefLabel ?broader__prefLabel .
+    BIND(CONCAT("/places/page/", REPLACE(STR(?broader__id), "^.*\\\\/(.+)", "$1")) AS ?broader__dataProviderUrl)
+    FILTER (LANG(?broader__prefLabel)='fi')
+  }
+  UNION
+  {
+    ?id schema:sameAs ?externalLink__id .
+    ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
+    BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+  }
+  UNiON
+  {
+    ?id schema:image ?image__id ;
+      skos:prefLabel ?image__description ;
+      skos:prefLabel ?image__title .
+      BIND(URI(CONCAT(REPLACE(STR(?image__id), "https*:", ""), "?width=600")) as ?image__url)
+  }
+  UNION
+  {
+    ?id :number_of_events ?num_activies
+  }
 `
 
 export const placeMapQuery = `
-SELECT *
-WHERE {
-  { 
-    VALUES ?id { <ID> }
-    BIND("red" AS ?markerColor)
-  } 
-  UNION
-  {
-    ?id skos:broader+ <ID> 
-    FILTER EXISTS { [] schema:place ?id }
-  }
-  ?id skos:prefLabel ?prefLabel__id .
-  BIND(?prefLabel__id as ?prefLabel__prefLabel)
-  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
-  OPTIONAL {
-    ?id geo:lat ?lat1 ;
-      geo:long ?long1
-  }
-  OPTIONAL {
-    ?id skos:broader [ geo:lat ?lat2 ; geo:long ?long2 ]
-  }
-  BIND (COALESCE(?lat1, ?lat2) AS ?lat)
-  BIND (COALESCE(?long1, ?long2) AS ?long)
+  SELECT *
+  WHERE {
+    { 
+      VALUES ?id { <ID> }
+      BIND("red" AS ?markerColor)
+    } 
+    UNION
+    {
+      ?id skos:broader+ <ID> 
+      FILTER EXISTS { [] schema:place ?id }
+    }
+    ?id skos:prefLabel ?prefLabel__id .
+    BIND(?prefLabel__id as ?prefLabel__prefLabel)
+    BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+    OPTIONAL {
+      ?id geo:lat ?lat1 ;
+        geo:long ?long1
+    }
+    OPTIONAL {
+      ?id skos:broader [ geo:lat ?lat2 ; geo:long ?long2 ]
+    }
+    BIND (COALESCE(?lat1, ?lat2) AS ?lat)
+    BIND (COALESCE(?long1, ?long2) AS ?long)
 
-  # skip places with missing coordinates:
-  FILTER(BOUND(?lat) && BOUND(?long))
-}
+    # skip places with missing coordinates:
+    FILTER(BOUND(?lat) && BOUND(?long))
+  }
 `
 
 // https://api.triplydb.com/s/fyCIq_tlO
@@ -247,4 +222,50 @@ WHERE {
   
   BIND (STR(year(?evt__time)) AS ?category)
 } GROUP BY ?category ORDER BY ?category 
+`
+
+export const peopleEventPlacesQuery = `
+  SELECT ?id ?lat ?long
+  (COUNT(DISTINCT ?person) as ?instanceCount)
+  WHERE {
+    <FILTER>
+
+    { ?person :has_event/schema:place ?id }
+    UNION
+    { ?person :has_title/schema:place ?id }
+
+    OPTIONAL {
+      ?id geo:lat ?lat1 ;
+        geo:long ?long1
+    }
+    OPTIONAL {
+      ?id skos:broader [ geo:lat ?lat2 ; geo:long ?long2 ]
+    }
+    BIND (COALESCE(?lat1, ?lat2) AS ?lat)
+    BIND (COALESCE(?long1, ?long2) AS ?long)
+    
+    # skip all places with missing coordinates:
+    FILTER(BOUND(?lat))
+    FILTER(BOUND(?long))
+  }
+  GROUP BY ?id ?lat ?long
+`
+
+export const placePropertiesInfoWindow = `
+?id skos:prefLabel ?prefLabel__id .
+BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+`
+
+export const peopleRelatedTo = `
+OPTIONAL {
+  <FILTER>
+  { ?related__id :has_event/schema:place ?id }
+  UNION
+  { ?related__id :has_title/schema:place ?id }
+  VALUES ?rclass { :Person :ReferencedPerson }
+  ?related__id a ?rclass ;
+    skos:prefLabel ?related__prefLabel .
+  BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+}
 `

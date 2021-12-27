@@ -40,7 +40,7 @@
                 "component": "ResultTable",
                 "tabPath": "table",
                 "tabIcon": "CalendarViewDay",
-                "propertiesQueryBlock": "placePropertiesFacetPage",
+                "propertiesQueryBlock": "placePropertiesFacetResults",
                 "pagesize": 20,
                 "paginatedResultsAlwaysExpandRows": true,
                 "paginatedResultsRowContentMaxHeight": 150,
@@ -56,8 +56,58 @@
                         "tabPath": "table",
                         "tabIcon": "CalendarViewDay"
                     },
-                    "instancePageExport": {
+                    "placeMap": {
                         "tabID": 1,
+                        "tabPath": "map",
+                        "tabIcon": "LocationOn",
+                        "component": "LeafletMap",
+                        "pageType": "instancePage",
+                        "mapMode": "marker",
+                        "showInstanceCountInClusters": false,
+                        "sparqlQuery": "placeMapQuery",
+                        "instanceConfig": {
+                            "createPopUpContent": "createPopUpContentAs"
+                        }
+                    },
+                    "placeByYear": {
+                        "tabID": 2,
+                        "component": "ApexCharts",
+                        "pageType": "instancePage",
+                        "createChartData": "createMultipleLineChartData",
+                        "stroke": {
+                            "curve": "straight",
+                            "width": 2
+                        },
+                        "fill": {
+                            "type": "gradient",
+                            "gradient": {
+                                "shadeIntensity": 1,
+                                "inverseColors": false,
+                                "opacityFrom": 0.6,
+                                "opacityTo": 0.05,
+                                "stops": [
+                                    20,
+                                    60,
+                                    100,
+                                    100
+                                ]
+                            }
+                        },
+                        "title": "Events by year",
+                        "xaxisTitle": "Year",
+                        "xaxisType": "category",
+                        "xaxisTickAmount": 20,
+                        "yaxisTitle": "Number of events",
+                        "tabPath": "by_year",
+                        "tabIcon": "ShowChart",
+                        "sparqlQuery": "placeByYearQuery",
+                        "resultMapper": "mapMultipleLineChart",
+                        "resultMapperConfig": {
+                            "fillEmptyValues": true
+                        }
+                    },
+                    "instancePageExport": {
+                        "tabID": 3,
                         "component": "Export",
                         "tabPath": "export",
                         "tabIcon": "CloudDownload",
@@ -86,7 +136,8 @@
             "tabID": 2,
             "component": "Export",
             "tabPath": "export",
-            "tabIcon": "CloudDownload"        }
+            "tabIcon": "CloudDownload"
+        }
     },
     "properties": [
         {

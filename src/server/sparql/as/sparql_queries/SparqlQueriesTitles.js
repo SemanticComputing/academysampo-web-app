@@ -121,17 +121,17 @@ UNION
 
 // https://api.triplydb.com/s/WfxaTI92x
 export const titleByYearQuery = `
-SELECT DISTINCT ?category (COUNT(DISTINCT ?people__id) AS ?People)
+SELECT DISTINCT ?category (COUNT(DISTINCT ?person) AS ?count)
 WHERE {
   VALUES ?id { <ID> }
   {
     # titles from events with dates
-  ?people__id :has_event [
+  ?person :has_event [
       :has_title ?id ;
       schema:date/gvp:estStart ?evt__time ]
   } UNION {
     # titles mentioned without date
-  ?people__id :has_title ?id ;
+  ?person :has_title ?id ;
               :date_of_origin/gvp:estStart ?bir__time .
     BIND((?bir__time + "P10957DT0H0M0.000S"^^xsd:duration) AS ?evt__time)
   }

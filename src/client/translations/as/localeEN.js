@@ -61,16 +61,12 @@ export default {
     migrations: 'migrations',
     network: 'network',
     //  pointcloud: 'point cloud',
-    familyNetwork: 'Family relations',
-    academicNetwork: 'Academic relations',
-    relationNetwork: 'Relations',
-    connections: 'Connections',
-    by_year: 'by year',
-    placeByYear: 'Timeline of events',
-    placeMap: 'Map',
-    titleByYear: 'Timeline',
-    export: 'sparql-query',
-    nationByYear: 'by year'
+    familyNetwork: 'family relations',
+    academicNetwork: 'academic relations',
+    relationNetwork: 'relations',
+    connections: 'connections',
+    by_year: 'timeline',
+    export: 'sparql query'
   },
   table: {
     rowsPerPage: 'Rows per page',

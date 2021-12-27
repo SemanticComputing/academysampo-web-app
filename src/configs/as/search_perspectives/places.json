@@ -86,10 +86,7 @@
             "tabID": 2,
             "component": "Export",
             "tabPath": "export",
-            "tabIcon": "CloudDownload",
-            "resultClass": "perspective1",
-            "facetClass": "perspective1"
-        }
+            "tabIcon": "CloudDownload"        }
     },
     "properties": [
         {

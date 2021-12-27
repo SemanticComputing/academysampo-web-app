@@ -70,7 +70,7 @@ export default {
     events_by_year: 'Aikajana',
     placeByYear: 'Aikajana tapahtumille',
     placeMap: 'Kartta',
-    titleByYear: 'Aikajana',
+    by_year: 'Aikajana',
     export: 'SPARQL-kysely',
     nationByYear: 'Aikajana'
   },
@@ -982,7 +982,7 @@ export default {
               <strong>TAULUKKO</STRONG>-välilehti näyttää tähän ammattiin tai arvoon liittyvää tietoa riveittäin.
             </li>
             <li>
-              <strong>AIKAJANA</strong>-välilehti taarjoaa aikajana visualisoinnin,
+              <strong>AIKAJANA</strong>-välilehti tarjoaa aikajana-visualisoinnin,
               jossa on laskettu vuosittain tähän ammattiin liittyvien tapahtumien kokonaismäärä.
             </li>
             <li>

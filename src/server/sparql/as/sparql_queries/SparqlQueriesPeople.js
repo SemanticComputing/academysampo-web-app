@@ -331,34 +331,6 @@ export const peoplePropertiesFacetResults =
     ?source__id skos:prefLabel ?source__prefLabel .
   }
 `
-
-export const peopleEventPlacesQuery = `
-  SELECT ?id ?lat ?long
-  (COUNT(DISTINCT ?person) as ?instanceCount)
-  WHERE {
-    <FILTER>
-
-    { ?person :has_event/schema:place ?id }
-    UNION
-    { ?person :has_title/schema:place ?id }
-
-    OPTIONAL {
-      ?id geo:lat ?lat1 ;
-        geo:long ?long1
-    }
-    OPTIONAL {
-      ?id skos:broader [ geo:lat ?lat2 ; geo:long ?long2 ]
-    }
-    BIND (COALESCE(?lat1, ?lat2) AS ?lat)
-    BIND (COALESCE(?long1, ?long2) AS ?long)
-    
-    # skip all places with missing coordinates:
-    FILTER(BOUND(?lat))
-    FILTER(BOUND(?long))
-  }
-  GROUP BY ?id ?lat ?long
-`
-
 // # https://github.com/uber/deck.gl/blob/master/docs/layers/arc-layer.md
 export const peopleMigrationsQuery = `
   SELECT DISTINCT ?id 
@@ -635,21 +607,55 @@ WHERE {
 } GROUP BY ?category ORDER BY ?category
 `
 
+export const peopleEventPlacesQuery = `
+  SELECT ?id ?lat ?long
+  (COUNT(DISTINCT ?person) as ?instanceCount)
+  WHERE {
+    <FILTER>
+    ?id a :Place .
+    { ?person :has_event/schema:place ?id }
+    UNION
+    { ?person :has_birth/schema:place ?id }
+    UNION
+    { ?person :has_death/schema:place ?id }
+    UNION
+    { ?person :has_title/schema:place ?id }
+    OPTIONAL {
+      ?id geo:lat ?lat1 ;
+        geo:long ?long1
+    }
+    OPTIONAL {
+      ?id skos:broader [ geo:lat ?lat2 ; geo:long ?long2 ]
+    }
+    BIND (COALESCE(?lat1, ?lat2) AS ?lat)
+    BIND (COALESCE(?long1, ?long2) AS ?long)
+    
+    # skip all places with missing coordinates:
+    FILTER(BOUND(?lat))
+    FILTER(BOUND(?long))
+  }
+  GROUP BY ?id ?lat ?long
+`
+
 export const placePropertiesInfoWindow = `
-?id skos:prefLabel ?prefLabel__id .
-BIND(?prefLabel__id AS ?prefLabel__prefLabel)
-BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+  ?id skos:prefLabel ?prefLabel__id .
+  BIND(?prefLabel__id AS ?prefLabel__prefLabel)
+  BIND(CONCAT("/places/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
 `
 
 export const peopleRelatedTo = `
-OPTIONAL {
-  <FILTER>
-  { ?related__id :has_event/schema:place ?id }
-  UNION
-  { ?related__id :has_title/schema:place ?id }
-  VALUES ?rclass { :Person :ReferencedPerson }
-  ?related__id a ?rclass ;
-    skos:prefLabel ?related__prefLabel .
-  BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
-}
+  OPTIONAL {
+    <FILTER>
+    { ?related__id :has_event/schema:place ?id }
+    UNION
+    { ?related__id :has_title/schema:place ?id }
+    UNION
+    { ?related__id :has_birth/schema:place ?id }
+    UNION
+    { ?related__id :has_death/schema:place ?id }
+    VALUES ?rclass { :Person :ReferencedPerson }
+    ?related__id a ?rclass ;
+      skos:prefLabel ?related__prefLabel .
+    BIND(CONCAT("/people/page/", REPLACE(STR(?related__id), "^.*\\\\/(.+)", "$1")) AS ?related__dataProviderUrl)
+  }
 `

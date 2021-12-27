@@ -9,6 +9,7 @@
     "baseURI": "http://ldf.fi/yoma",
     "URITemplate": "<BASE_URI>/places/<LOCAL_ID>",
     "facetClass": ":Place",
+    "defaultConstraint": "FILTER EXISTS { [] schema:place <SUBJECT> }",
     "langTag": "fi",
     "frontPageImage": "main_page/places-452x262.jpg",
     "searchMode": "faceted-search",
@@ -44,8 +45,8 @@
                 "pagesize": 20,
                 "paginatedResultsAlwaysExpandRows": true,
                 "paginatedResultsRowContentMaxHeight": 150,
-                "sortBy": null,
-                "sortDirection": null
+                "sortBy": "num_activies",
+                "sortDirection": "desc"
             },
             "instanceConfig": {
                 "propertiesQueryBlock": "placePropertiesInstancePage",
@@ -285,5 +286,28 @@
             "onlyOnInstancePage": true
         }
     ],
-    "facets": {}
+    "facets": {
+        "externalLink": {
+            "sortByPattern": "{ SELECT ?id (SUM(?weight) AS ?orderBy) WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id schema:sameAs ?link OPTIONAL { ?link :weight ?w } BIND (COALESCE(?w, 1) AS ?weight) } } GROUP BY ?id } }"
+        },
+        "num_activies": {
+            "sortByPattern": "{ SELECT ?id ?orderBy WHERE { VALUES ?facetClass { <FACET_CLASS> } ?id a ?facetClass . OPTIONAL { ?id :number_of_events ?num } BIND (COALESCE(?num, 0) AS ?orderBy) }}"
+        },
+        "prefLabel": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "sortByPredicate": "skos:prefLabel",
+            "textQueryProperty": "skos:prefLabel"
+        },
+        "broader": {
+            "containerClass": "ten",
+            "facetType": "hierarchical",
+            "filterType": "uriFilter",
+            "parentProperty": "skos:broader",
+            "predicate": "skos:broader",
+            "searchField": true,
+            "sortByPredicate": "skos:broader/skos:prefLabel"
+        }
+    }
 }

@@ -1,17 +1,17 @@
 {
-  "id": "categories",
+  "id": "relatives",
   "endpoint": {
     "url": "http://ldf.fi/yoma/sparql",
     "useAuth": false,
     "prefixesFile": "SparqlQueriesPrefixes.js"
   },
-  "sparqlQueriesFile": "SparqlQueriesCategories.js",
+  "sparqlQueriesFile": "SparqlQueriesRelatives.js",
   "baseURI": "http://ldf.fi/yoma",
-  "URITemplate": "<BASE_URI>/categories/<LOCAL_ID>",
+  "URITemplate": "<BASE_URI>/people/<LOCAL_ID>",
   "resultClasses": {
-    "categories": {
+    "relatives": {
       "instanceConfig": {
-        "propertiesQueryBlock": "categoriesPropertiesInstancePage",
+        "propertiesQueryBlock": "relativesPropertiesInstancePage",
         "instancePageResultClasses": {
           "instancePageTable": {
             "tabID": 0,
@@ -34,37 +34,13 @@
     {
       "id": "prefLabel",
       "valueType": "object",
-      "makeLink": true,
+      "makeLink": false,
       "externalLink": false,
       "sortValues": true,
       "numberedList": false
     },
     {
-      "id": "broader",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": false,
-      "sortValues": true,
-      "numberedList": false
-    },
-    {
-      "id": "narrower",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": false,
-      "sortValues": true,
-      "numberedList": true
-    },
-    {
-      "id": "person",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": false,
-      "sortValues": true,
-      "numberedList": true
-    },
-    {
-      "id": "place",
+      "id": "altLabel",
       "valueType": "object",
       "makeLink": true,
       "externalLink": false,
@@ -72,11 +48,93 @@
       "numberedList": false
     },
     {
-      "id": "related",
-      "valueType": "object",
+      "id": "image",
+      "valueType": "image",
+      "previewImageHeight": 160,
       "makeLink": true,
       "externalLink": true,
       "sortValues": false,
+      "numberedList": false
+    },
+    {
+      "id": "title",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true
+    },
+    {
+      "id": "referer",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "relative",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "sortBy": "level",
+      "numberedList": true
+    },
+    {
+      "id": "otherrelative",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "sortBy": "level",
+      "numberedList": true
+    },
+    {
+      "id": "gender",
+      "valueType": "object",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "birthDateTimespan",
+      "valueType": "object",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "birthPlace",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "deathDateTimespan",
+      "valueType": "object",
+      "makeLink": false,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "deathPlace",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "externalLink",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": true,
       "numberedList": false
     },
     {

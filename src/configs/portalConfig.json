@@ -6,10 +6,15 @@
           "people",
           "places",
           "titles",
-          "studentNations"
+          "studentNations",
+          "fullTextSearch"
         ],
         "onlyInstancePages": [
-        
+            "organizations",
+            "categories",
+            "references",
+            "relatives",
+            "times"
         ]
     },
     "localeConfig": {

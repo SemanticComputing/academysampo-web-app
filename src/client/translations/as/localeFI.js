@@ -773,7 +773,7 @@ export default {
         label: 'Sukulainen',
         description: `
           <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
-            SUkulaisia ovat tässä sukulaiset, jotka on mainittu henkilön kuvauksessa, mutta joilla ei ole omaa matrikkelimerkintää.
+            Sukulaisia ovat tässä sukulaiset, jotka on mainittu henkilön kuvauksessa, mutta joilla ei ole omaa matrikkelimerkintää.
             Datassa on tietoa vain matrikkelitekstissä mainituista sukulaisista, ja tässä voi olla puutteita.
           </p>
         `
@@ -804,13 +804,13 @@ export default {
         altLabel: {
           label: 'Vaihtoehtoiset nimet',
           description: `
-          VAihtoehtoisia nimiä, kuten erilaisia kirjoitusasuja sekä tyttönimiä.
+          Vaihtoehtoisia nimiä, kuten erilaisia kirjoitusasuja sekä tyttönimiä.
           `
         },
         image: {
           label: 'Kuva',
           description: `
-            MAhdollinen kuva henkilöstä. Lähde: Wikimedia Commons.
+            Mahdollinen kuva henkilöstä. Lähde: Wikimedia Commons.
           `
         },
         referer: {
@@ -834,7 +834,7 @@ export default {
         otherrelative: {
           label: 'Muut sukulaiset',
           description: `
-            ista sukulaisista, jotka on mainittu kuvausteksteissä.
+            Lista sukulaisista, jotka on mainittu kuvausteksteissä.
             Huomaa, että tämä lista on automaattisesti generoitu ja voi sisältää virheitä.
           `
         },
@@ -845,7 +845,7 @@ export default {
           `
         },
         birthDateTimespan: {
-          label: 'syntymäpaikasta',
+          label: 'Syntymän tai kasteen aika',
           description: `
             Henkilön syntymäaika.
           `

@@ -1,17 +1,17 @@
 {
-  "id": "categories",
+  "id": "times",
   "endpoint": {
     "url": "http://ldf.fi/yoma/sparql",
     "useAuth": false,
     "prefixesFile": "SparqlQueriesPrefixes.js"
   },
-  "sparqlQueriesFile": "SparqlQueriesCategories.js",
+  "sparqlQueriesFile": "SparqlQueriesTimes.js",
   "baseURI": "http://ldf.fi/yoma",
-  "URITemplate": "<BASE_URI>/categories/<LOCAL_ID>",
+  "URITemplate": "<BASE_URI>/times/<LOCAL_ID>",
   "resultClasses": {
-    "categories": {
+    "times": {
       "instanceConfig": {
-        "propertiesQueryBlock": "categoriesPropertiesInstancePage",
+        "propertiesQueryBlock": "timesPropertiesInstancePage",
         "instancePageResultClasses": {
           "instancePageTable": {
             "tabID": 0,
@@ -52,19 +52,11 @@
       "valueType": "object",
       "makeLink": true,
       "externalLink": false,
-      "sortValues": true,
-      "numberedList": true
+      "sortValues": false,
+      "numberedList": false
     },
     {
-      "id": "person",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": false,
-      "sortValues": true,
-      "numberedList": true
-    },
-    {
-      "id": "place",
+      "id": "born",
       "valueType": "object",
       "makeLink": true,
       "externalLink": false,
@@ -72,10 +64,18 @@
       "numberedList": false
     },
     {
-      "id": "related",
+      "id": "enrolled",
       "valueType": "object",
       "makeLink": true,
-      "externalLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": true
+    },
+    {
+      "id": "deceased",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
       "sortValues": false,
       "numberedList": false
     },

@@ -1,17 +1,17 @@
 {
-  "id": "categories",
+  "id": "organizations",
   "endpoint": {
     "url": "http://ldf.fi/yoma/sparql",
     "useAuth": false,
     "prefixesFile": "SparqlQueriesPrefixes.js"
   },
-  "sparqlQueriesFile": "SparqlQueriesCategories.js",
+  "sparqlQueriesFile": "SparqlQueriesOrganizations.js",
   "baseURI": "http://ldf.fi/yoma",
-  "URITemplate": "<BASE_URI>/categories/<LOCAL_ID>",
+  "URITemplate": "<BASE_URI>/organizations/<LOCAL_ID>",
   "resultClasses": {
-    "categories": {
+    "organizations": {
       "instanceConfig": {
-        "propertiesQueryBlock": "categoriesPropertiesInstancePage",
+        "propertiesQueryBlock": "organizationsPropertiesInstancePage",
         "instancePageResultClasses": {
           "instancePageTable": {
             "tabID": 0,
@@ -40,20 +40,12 @@
       "numberedList": false
     },
     {
-      "id": "broader",
+      "id": "altLabel",
       "valueType": "object",
       "makeLink": true,
       "externalLink": false,
       "sortValues": true,
       "numberedList": false
-    },
-    {
-      "id": "narrower",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": false,
-      "sortValues": true,
-      "numberedList": true
     },
     {
       "id": "person",
@@ -64,20 +56,20 @@
       "numberedList": true
     },
     {
-      "id": "place",
+      "id": "title",
       "valueType": "object",
       "makeLink": true,
       "externalLink": false,
       "sortValues": true,
-      "numberedList": false
+      "numberedList": true
     },
     {
       "id": "related",
       "valueType": "object",
       "makeLink": true,
-      "externalLink": true,
+      "externalLink": false,
       "sortValues": false,
-      "numberedList": false
+      "numberedList": true
     },
     {
       "id": "uri",

@@ -1,17 +1,17 @@
 {
-  "id": "categories",
+  "id": "references",
   "endpoint": {
     "url": "http://ldf.fi/yoma/sparql",
     "useAuth": false,
     "prefixesFile": "SparqlQueriesPrefixes.js"
   },
-  "sparqlQueriesFile": "SparqlQueriesCategories.js",
+  "sparqlQueriesFile": "SparqlQueriesReferences.js",
   "baseURI": "http://ldf.fi/yoma",
-  "URITemplate": "<BASE_URI>/categories/<LOCAL_ID>",
+  "URITemplate": "<BASE_URI>/references/<LOCAL_ID>",
   "resultClasses": {
-    "categories": {
+    "references": {
       "instanceConfig": {
-        "propertiesQueryBlock": "categoriesPropertiesInstancePage",
+        "propertiesQueryBlock": "referencesPropertiesInstancePage",
         "instancePageResultClasses": {
           "instancePageTable": {
             "tabID": 0,
@@ -62,14 +62,6 @@
       "externalLink": false,
       "sortValues": true,
       "numberedList": true
-    },
-    {
-      "id": "place",
-      "valueType": "object",
-      "makeLink": true,
-      "externalLink": false,
-      "sortValues": true,
-      "numberedList": false
     },
     {
       "id": "related",

@@ -45,14 +45,14 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   bannerSubheading: {
-    marginTop: theme.spacing(1.5),
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-      '& div': {
-        flexGrow: 1,
-        width: 0
-      }
-    }
+    marginTop: theme.spacing(1.5)
+    // [theme.breakpoints.up('md')]: {
+    //   display: 'flex',
+    //   '& div': {
+    //     flexGrow: 1,
+    //     width: 0
+    //   }
+    // }
   },
   layout: {
     marginLeft: theme.spacing(1),

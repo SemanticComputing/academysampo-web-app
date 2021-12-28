@@ -17,7 +17,6 @@
             "times"
         ]
     },
-    "knowledgeGraphMetadataSource": "perspective1",
     "localeConfig": {
         "defaultLocale": "fi",
         "readTranslationsFromGoogleSheets": "false",
@@ -43,6 +42,10 @@
         "outputDir": "./src/server/sitemap_generator/sitemap_output",
         "sitemapUrl": "https://akatemiasampo.fi/sitemap",
         "sitemapInstancePageQuery": "sitemapInstancePageQuery"
+    },
+    "knowledgeGraphMetadataConfig": {
+        "showTable": false,
+        "perspective": "perspective1" 
     },
     "layoutConfig": {
         "colorPalette": {

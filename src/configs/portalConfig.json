@@ -17,6 +17,7 @@
             "times"
         ]
     },
+    "knowledgeGraphMetadataSource": "perspective1",
     "localeConfig": {
         "defaultLocale": "fi",
         "readTranslationsFromGoogleSheets": "false",
@@ -61,6 +62,8 @@
             "logoTextTransform": "none",
             "showLanguageButton": true,
             "feedbackLink": "https://link.webropolsurveys.com/S/C7AB8D6B5FFC61C9",
+            "externalInstructions": false,
+            "externalAboutPage": false,
             "reducedHeight": 44,
             "defaultHeight": 64,
             "mobileMenuBreakpoint": 1360,

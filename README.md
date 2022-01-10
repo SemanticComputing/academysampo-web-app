@@ -1,3 +1,4 @@
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 # AcademySampo &ndash; Finnish Academic People 1640 &ndash; 1899
 
 Based on [Sampo-UI - A framework for building semantic portal user interfaces](https://github.com/SemanticComputing/sampo-ui)

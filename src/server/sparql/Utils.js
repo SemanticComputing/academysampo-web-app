@@ -3,8 +3,8 @@ import { has } from 'lodash'
 
 // import { backendSearchConfig as oldBackendSearchConfig } from './veterans/BackendSearchConfig'
 
-// import { titlesPerspectiveConfig as oldPerspectiveConfig } from './as/perspective_configs/TitlesPerspectiveConfig'
-// import { INITIAL_STATE } from '../../client/reducers/as/titlesFacets'
+// import { battlesPerspectiveConfig as oldPerspectiveConfig } from './sotasurmat/perspective_configs/BattlesPerspectiveConfig'
+// import { INITIAL_STATE } from '../../client/reducers/sotasurmat/battlesFacets'
 
 export const createBackendSearchConfig = async () => {
   const portalConfigJSON = await readFile('src/configs/portalConfig.json')
@@ -49,10 +49,24 @@ export const createBackendSearchConfig = async () => {
         }
       }
       // handle other resultClasses
+      let extraResultClasses = {}
       for (const resultClass in perspectiveConfig.resultClasses) {
         if (resultClass === perspectiveID) { continue }
         const resultClassConfig = perspectiveConfig.resultClasses[resultClass]
         processResultClassConfig(resultClassConfig, sparqlQueries, resultMappers)
+        if (resultClassConfig.resultClasses) {
+          for (const extraResultClass in resultClassConfig.resultClasses) {
+            processResultClassConfig(resultClassConfig.resultClasses[extraResultClass], sparqlQueries, resultMappers)
+          }
+          extraResultClasses = {
+            ...extraResultClasses,
+            ...resultClassConfig.resultClasses
+          }
+        }
+      }
+      perspectiveConfig.resultClasses = {
+        ...perspectiveConfig.resultClasses,
+        ...extraResultClasses
       }
       // merge facet results and instance page result classes
       if (hasInstancePageResultClasses) {
@@ -327,11 +341,4 @@ export const createExtraResultClassesForJSONConfig = async oldBackendSearchConfi
 }
 
 // createExtraResultClassesForJSONConfig(oldBackendSearchConfig)
-
 // mergeFacetConfigs(INITIAL_STATE.facets, oldPerspectiveConfig.facets)
-
-// console.log(JSON.stringify(INITIAL_STATE.properties))
-
-// "tabID": 0,
-// "tabPath": "",
-// "tabIcon": "",

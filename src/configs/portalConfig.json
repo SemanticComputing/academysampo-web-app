@@ -56,8 +56,8 @@
                 "main": "#EB1806"
             }
         },
-        "hundredPercentHeightBreakPoint": "md",
-        "reducedHeightBreakpoint": "xl",
+        "hundredPercentHeightBreakPoint": 900,
+        "reducedHeightBreakpoint": 1920,
         "tabHeight": 58,
         "paginationToolbarHeight": 37,
         "tableFontSize": "0.8rem",
@@ -67,7 +67,7 @@
             "feedbackLink": "https://link.webropolsurveys.com/S/C7AB8D6B5FFC61C9",
             "externalInstructions": false,
             "externalAboutPage": false,
-            "reducedHeight": 44,
+            "reducedHeight": 48,
             "defaultHeight": 64,
             "mobileMenuBreakpoint": 1360,
             "infoDropdown": [

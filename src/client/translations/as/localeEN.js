@@ -65,6 +65,7 @@ export default {
     academicNetwork: 'academic relations',
     relationNetwork: 'relations',
     connections: 'connections',
+    events_by_year: 'timeline',
     by_year: 'timeline',
     export: 'sparql query'
   },

@@ -1,5 +1,7 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-# AcademySampo &ndash; Finnish Academic People 1640 &ndash; 1899
+# User interface for AcademySampo &ndash; Finnish Academic People 1640 &ndash; 1899
+
+master branch published at https://akatemiasampo.fi
 
 Based on [Sampo-UI - A framework for building semantic portal user interfaces](https://github.com/SemanticComputing/sampo-ui)
 
@@ -14,8 +16,6 @@ more information.
 * [Nodemon &ndash; monitor for any changes in your source and automatically restart your server](https://nodemon.io/)
 
 Note for Linux users: if your home directory is mounted from a network drive, using the [Node Version Manager](https://github.com/nvm-sh/nvm) for installing Node.js highly recommended. 
-
-Currently using a password protected SPARQL endpoint. When running on a local machine, you need to put a `.env` file at the root of this repository and define `SPARQL_ENDPOINT_BASIC_AUTH=...` there.  
 
 ## Installation
 

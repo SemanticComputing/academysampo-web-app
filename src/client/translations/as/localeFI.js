@@ -616,7 +616,7 @@ export default {
           `
         },
         title: {
-          label: 'Liittyviä ammmatteja tai titteleitä',
+          label: 'Liittyviä ammatteja tai titteleitä',
           description: `
             Lista tähän organisaatioon liittyvistä ammateista tai titteleistä
           `

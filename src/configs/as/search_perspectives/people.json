@@ -550,6 +550,15 @@
             "minWidth": 100
         },
         {
+            "id": "degree",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": true,
+            "minWidth": 180
+        },
+        {
             "id": "title",
             "valueType": "object",
             "makeLink": true,

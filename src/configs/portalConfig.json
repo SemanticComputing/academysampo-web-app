@@ -12,6 +12,7 @@
         "onlyInstancePages": [
             "organizations",
             "categories",
+            "degrees",
             "references",
             "relatives",
             "times"

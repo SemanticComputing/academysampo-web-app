@@ -1,0 +1,103 @@
+{
+  "id": "degrees",
+  "endpoint": {
+    "url": "http://ldf.fi/yoma/sparql",
+    "useAuth": false,
+    "prefixesFile": "SparqlQueriesPrefixes.js"
+  },
+  "sparqlQueriesFile": "SparqlQueriesDegrees.js",
+  "baseURI": "http://ldf.fi/schema/yoma",
+  "URITemplate": "<BASE_URI>/<LOCAL_ID>",
+  "resultClasses": {
+    "degrees": {
+      "instanceConfig": {
+        "propertiesQueryBlock": "degreesPropertiesInstancePage",
+        "instancePageResultClasses": {
+          "instancePageTable": {
+            "tabID": 0,
+            "component": "InstancePageTable",
+            "tabPath": "table",
+            "tabIcon": "CalendarViewDay"
+          },
+          "degreeByYear": {
+            "tabID": 1,
+            "component": "ApexCharts",
+            "pageType": "instancePage",
+            "createChartData": "createMultipleLineChartData",
+            "stroke": {
+                "curve": "straight",
+                "width": 2
+            },
+            "fill": {
+                "type": "gradient",
+                "gradient": {
+                    "shadeIntensity": 1,
+                    "inverseColors": false,
+                    "opacityFrom": 0.6,
+                    "opacityTo": 0.05,
+                    "stops": [
+                        20,
+                        60,
+                        100,
+                        100
+                    ]
+                }
+            },
+            "title": "Graduations by year",
+            "xaxisTitle": "Year",
+            "xaxisType": "category",
+            "xaxisTickAmount": 20,
+            "yaxisTitle": "Number of events",
+            "tabPath": "by_year",
+            "tabIcon": "ShowChart",
+            "sparqlQuery": "degreeByYearQuery",
+            "resultMapper": "mapMultipleLineChart",
+            "resultMapperConfig": {
+                "fillEmptyValues": true
+            }
+          },
+          "instancePageExport": {
+            "tabID": 2,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "pageType": "instancePage"
+          }
+        }
+      }
+    }
+  },
+  "properties": [
+    {
+      "id": "prefLabel",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true,
+      "numberedList": false
+    },
+    {
+      "id": "title",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": true
+    },
+    {
+      "id": "person",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": true
+    },
+    {
+      "id": "related",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": false,
+      "sortValues": false,
+      "numberedList": false
+    }
+  ]
+}

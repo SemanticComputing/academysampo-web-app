@@ -300,6 +300,12 @@ export default {
             The organizations are extracted from the descriptions texts using language technology methods.
           `
         },
+        degree: {
+          label: 'Degree',
+          description: `
+            Degrees this person has completed.
+          `
+        },
         title: {
           label: 'Vocation',
           description: `
@@ -644,6 +650,62 @@ export default {
           description: `
             Other organizations that some common members.
             The amount of common members is in parenthesis at the end of the label.
+          `
+        }
+      }
+    },
+    degrees: {
+      label: 'Degree',
+      facetResultsType: 'degrees',
+      shortDescription: 'Descriptions of the degree',
+      longDescription: `
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          See <a href="/instructions">instructions</a> for using the filters.
+          The result view can be selected using the tabs:
+        </p>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
+          </li>
+          <li>
+            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
+          </li>
+          <li>
+            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            table view into YASGUI query editor.
+          </li>
+        </ul>
+      `,
+      instancePage: {
+        label: 'Degree',
+        description: `
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            Degree completed in the University
+          </p>
+        `
+      },
+      properties: {
+        prefLabel: {
+          label: 'Degree',
+          description: ''
+        },
+        person: {
+          label: 'Students with this degree',
+          description: `
+            List of students with this degree. The year of graduation is in parenthesis after the name.
+          `
+        },
+        title: {
+          label: 'Related vocation',
+          description: `
+            Link to a possible, related vocation
+          `
+        },
+        related: {
+          label: 'Similar degrees',
+          description: `
+            Similar degrees completed the same students.
+            The number of students is in parenthesis.
           `
         }
       }

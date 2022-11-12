@@ -297,6 +297,12 @@ export default {
             TOrganisaatiot on louhittu tekstistä kieliteknologisin menetelmin.
           `
         },
+        degree: {
+          label: 'Tutkinto',
+          description: `
+            Henkilön suorittamat tutkinnot.
+          `
+        },
         title: {
           label: 'Ammatti tai arvo',
           description: `
@@ -416,9 +422,9 @@ export default {
       }
     },
     places: {
-      label: 'Paikat',
-      facetResultsType: 'paikkaa',
-      shortDescription: 'Selaa paikkoihin liittyviä tietoja',
+      label: 'Places',
+      facetResultsType: 'places',
+      shortDescription: 'Browse the data of related places.',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Käytä tätä näkymää saadaksesi tietoa paikoista, joihin matrikkeleissa mainitut henkilöt liittyvät.
@@ -626,6 +632,62 @@ export default {
           description: `
             Muita organisaatiota, joilla on yhteisiä jäseniä.
             Yhteisten jäsenten määrä suluissa.
+          `
+        }
+      }
+    },
+    degrees: {
+      label: 'Tutkinto',
+      facetResultsType: 'tutkintoa',
+      shortDescription: 'Tutkinnon kuvaus',
+      longDescription: `
+        <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+          See <a href="/instructions">instructions</a> for using the filters.
+          The result view can be selected using the tabs:
+        </p>
+        <ul class="MuiTypography-root MuiTypography-body1">
+          <li>
+            <strong>TABLE</STRONG> view includes all events in the AcademySampo data.
+          </li>
+          <li>
+            <strong>MAP</STRONG> view visualizes the events that have location information on a map.
+          </li>
+          <li>
+            <strong>EXPORT</strong> the SPARQL query used to generate the result
+            table view into YASGUI query editor.
+          </li>
+        </ul>
+      `,
+      instancePage: {
+        label: 'Tutkinto',
+        description: `
+          <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
+            Yliopistossa suorittu tutkinto
+          </p>
+        `
+      },
+      properties: {
+        prefLabel: {
+          label: 'Tutkinto',
+          description: ''
+        },
+        person: {
+          label: 'Tutkinnon suorittaneet',
+          description: `
+            Lista tutkinnon suorittaneista. Nimen perässä on suluissa suoritusvuosi.
+          `
+        },
+        title: {
+          label: 'Liittyvä ammatti',
+          description: `
+            Linkki tähän tutkintoon liittyvistä ammateista
+          `
+        },
+        related: {
+          label: 'Samankaltaiset tutkinnot',
+          description: `
+            Muita tutkintoja, joita samat opiskelijat ovat suorittaneet.
+            Yhteisten opiskelijoiden määrä suluissa.
           `
         }
       }

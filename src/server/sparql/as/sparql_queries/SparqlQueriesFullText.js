@@ -35,6 +35,12 @@ UNION
 }
 UNION
 {
+  ?id a :Graduation ; skos:prefLabel ?prefLabel__id .
+  BIND(?prefLabel__id as ?prefLabel__prefLabel)
+  BIND(CONCAT("/degrees/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)
+} 
+UNION
+{
   ?id a :Organization ; skos:prefLabel ?prefLabel__id .
   BIND(?prefLabel__id as ?prefLabel__prefLabel)
   BIND(CONCAT("/organizations/page/", REPLACE(STR(?id), "^.*\\\\/(.+)", "$1")) AS ?prefLabel__dataProviderUrl)

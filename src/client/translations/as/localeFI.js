@@ -674,7 +674,7 @@ export default {
         person: {
           label: 'Tutkinnon suorittaneet',
           description: `
-            Lista tutkinnon suorittaneista. Nimen perässä on suluissa suoritusvuosi.
+            Lista tutkinnon suorittaneista. Nimen perässä on suluissa suoritusvuosi, lista on järjestetty vuosiluvun mukaan.
           `
         },
         title: {

@@ -692,7 +692,7 @@ export default {
         person: {
           label: 'Students with this degree',
           description: `
-            List of students with this degree. The year of graduation is in parenthesis after the name.
+            List of students with this degree. The year of graduation is in parenthesis after the name, list is ordered by the year of graduation.
           `
         },
         title: {

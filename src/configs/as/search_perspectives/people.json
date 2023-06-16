@@ -300,7 +300,7 @@
                 "curve": "straight",
                 "width": 2
             },
-            "title": "Tapahtumien lukumäärä vuosittain",
+            "title": "Syntymät, kirjautumiset ja kuolemat vuosittain",
             "xaxisTitle": "Vuosi",
             "xaxisType": "category",
             "xaxisTickAmount": 20,

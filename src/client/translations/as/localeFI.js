@@ -51,7 +51,7 @@ export default {
     maxYear: 'Max vuosi',
     min: 'Min',
     max: 'Max',
-    facetSearchFieldPlaceholder: 'Etsi...',
+    facetSearchFieldPlaceholder: 'Etsi ...',
     applyFacetSelection: 'Hae',
     pieChart: {
       tooltip: 'Piirakkakaavio'
@@ -279,22 +279,22 @@ export default {
         category: {
           label: 'Henkilöryhmä',
           description: `
-            Erilaisia ryhmiä, joihin henkilön on katsottu kuuluneen.
+            Erilaisia ryhmiä, joihin henkilön on katsottu kuuluneen. 
             Huomaa, että tämä tieto on olemassa vain 1640–1852-matrikkelin henkilöille.
           `
         },
         reference: {
           label: 'Kirjallisuusviitteet',
           description: `
-            Kirjoja joissa tietoa tästä henkilöstä
+            Kirjoja, joissa on tietoa tästä henkilöstä. 
             Huomaa, että tämä tieto on olemassa vain 1640–1852-matrikkelin henkilöille.
           `
         },
         organization: {
           label: 'Organisaatio',
           description: `
-            Henkilöön liittyviä organisaatioita (järjestöjä etc)
-            TOrganisaatiot on louhittu tekstistä kieliteknologisin menetelmin.
+            Henkilöön liittyviä organisaatioita, kuten järjestöjä ja yrityksiä. 
+            Organisaatiot on louhittu tekstistä kieliteknologisin menetelmin.
           `
         },
         degree: {
@@ -312,7 +312,7 @@ export default {
         relative: {
           label: 'Sukulaiset ylioppilasmatrikkelissa',
           description: `
-            Lista sukulaisista, jotka ovat myös ylioppilasmatrikkelissa.
+            Lista sukulaisista, jotka ovat myös ylioppilasmatrikkelissa. 
             (Osa näistä on automaattisesti luotuja, ja saattavat sisältää virheitä.
               Eräissä tapauksissa usean sukupolven takaisia sukulaisia voi myös puuttua.)
           `
@@ -328,21 +328,15 @@ export default {
         related: {
           label: 'Akateemiset suhteet',
           description: `
-            Tämä lista sisältää henkilön opiskelijat, opettajat ja valvojat.
+            Tämä lista sisältää henkilön opettajat, valvojat ja opiskelijat, .
             (Näitä tietoja ei ole saatavilla kaikille henkilöille.)
           `
-        }, /*
-        relations: {
-          label: 'Relations',
-          description: `
-            Todo, add description.
-          `
-        }, */
+        },
         similar: {
           label: 'Samanlaisia henkilöitä',
           description: `
           Nämä suositukset "samankaltaisista henkilöistä" on luotu automaattisesti esimerkiksi henkilöiden ammattien ja organisaatioiden perusteella.
-          Samankaltaisuus on laskettu resursseista (paikoista, ammateista...) jotka ovat seuraavassa listassa.
+          Samankaltaisuus on laskettu resursseista (paikoista, ammateista ...) jotka on lueteltu listana nimen perässä.
         `
         },
         studentnation: {
@@ -354,7 +348,7 @@ export default {
         database: {
           label: 'Ulkoinen tietokanta',
           description: `
-            Henkilön tiedot ulkoisessa tietokannassa.
+            Henkilön tiedot ulkoisessa tietokannassa. 
             (Nämä on luotu automaattisesti, ja saattavat sisältää virheitä.)
           `
         },
@@ -369,7 +363,7 @@ export default {
         birthDateTimespan: {
           label: 'Syntymän tai kasteen aika',
           description: `
-            Aika jolloin henkilö syntyi tai kastettiin.
+            Henkilön synnyin- tai kasteaika.
             (Useimmiten sisätää tiedon syntymästä, mutta joissain tapauksissa tätä tietoa ei ole saatavilla
             ja kasteen tiedot on annettu sen sijaan.)
           `
@@ -377,7 +371,7 @@ export default {
         externalLink: {
           label: 'Ulkoiset linkit',
           description: `
-            Linkkejä ulkoisiin tietokantoihin..
+            Linkkejä ulkoisiin tietokantoihin.
             (Nämä on luotu automaattisesti, ja saattavat sisältää virheitä.)
           `
         },
@@ -422,9 +416,9 @@ export default {
       }
     },
     places: {
-      label: 'Places',
-      facetResultsType: 'places',
-      shortDescription: 'Browse the data of related places.',
+      label: 'Paikat',
+      facetResultsType: 'paikkaa',
+      shortDescription: 'Selaa paikkoihin liittyvää tietoa.',
       longDescription: `
       <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Käytä tätä näkymää saadaksesi tietoa paikoista, joihin matrikkeleissa mainitut henkilöt liittyvät.
@@ -1164,7 +1158,7 @@ export default {
       properties: {
         prefLabel: {
           label: 'Nimi',
-          description: ''
+          description: 'Osakunnan nimi'
         },
         altLabel: {
           label: 'Vaihtoehtoiset nimet',
@@ -1258,7 +1252,7 @@ export default {
     <p class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph">
       Akatemiasammon hakuominaisuudet perustuvat
       <a href="https://doi.org/10.2200/S00190ED1V01Y200904ICR005" target='_blank' rel='noopener noreferrer'>
-      fasettihaku</a>-paradigmaan. Oletuksena kukin näkymä näytää kaikki tulokset haettavasta luokasta (Henkilö, Paikka, Osakunta...)
+      fasettihaku</a>-paradigmaan. Oletuksena kukin näkymä näytää kaikki tulokset haettavasta luokasta (Henkilö, Paikka, Osakunta ...)
       Tätä tulosjoukkoa voi rajata (tietokoneen näytöllä vasemmalla olevista) suodattimista.
     </p>
 

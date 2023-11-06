@@ -16,5 +16,5 @@ PREFIX skosxl: <http://www.w3.org/2008/05/skos-xl#>
 PREFIX spatial: <http://jena.apache.org/spatial#>
 PREFIX text: <http://jena.apache.org/text#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX : <http://ldf.fi/schema/yoma/>
+PREFIX : <http://ldf.fi/schema/yoma/> 
 `

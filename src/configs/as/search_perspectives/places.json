@@ -215,7 +215,8 @@
             "sortValues": true,
             "numberedList": true,
             "minWidth": 250,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "peopleBorn",
@@ -225,7 +226,8 @@
             "sortValues": true,
             "numberedList": true,
             "minWidth": 250,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "peopleBaptized",
@@ -235,7 +237,8 @@
             "sortValues": true,
             "numberedList": true,
             "minWidth": 250,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "peopleDied",
@@ -245,7 +248,8 @@
             "sortValues": true,
             "numberedList": true,
             "minWidth": 250,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "peopleBuried",
@@ -255,7 +259,8 @@
             "sortValues": true,
             "numberedList": true,
             "minWidth": 250,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "title",

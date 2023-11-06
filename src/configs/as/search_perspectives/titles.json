@@ -116,7 +116,8 @@
             "sortValues": true,
             "numberedList": true,
             "minWidth": 180,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "place",
@@ -143,7 +144,8 @@
             "sortValues": false,
             "numberedList": true,
             "minWidth": 180,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "uri",

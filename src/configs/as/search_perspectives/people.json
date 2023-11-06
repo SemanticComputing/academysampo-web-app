@@ -556,7 +556,9 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": true,
-            "minWidth": 180
+            "minWidth": 180,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "title",
@@ -565,7 +567,8 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": true,
-            "minWidth": 180
+            "minWidth": 180,
+            "expandedOnInstancePage": true
         },
         {
             "id": "place",
@@ -575,7 +578,8 @@
             "sortValues": true,
             "numberedList": true,
             "minWidth": 180,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "studentnation",
@@ -584,7 +588,8 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": true,
-            "minWidth": 180
+            "minWidth": 180,
+            "expandedOnInstancePage": true
         },
         {
             "id": "category",
@@ -593,7 +598,9 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": true,
-            "minWidth": 220
+            "minWidth": 220,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "organization",
@@ -602,7 +609,9 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": true,
-            "minWidth": 220
+            "minWidth": 220,
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "relative",
@@ -612,7 +621,8 @@
             "sortValues": true,
             "sortBy": "level",
             "numberedList": true,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "otherrelative",
@@ -622,7 +632,8 @@
             "sortValues": true,
             "sortBy": "level",
             "numberedList": true,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "related",
@@ -631,7 +642,8 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": true,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "similar",
@@ -641,7 +653,8 @@
             "sortValues": true,
             "sortBy": "distance",
             "numberedList": true,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "reference",
@@ -650,7 +663,8 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": true,
-            "minWidth": 220
+            "minWidth": 220,
+            "expandedOnInstancePage": true
         },
         {
             "id": "externalLink",
@@ -659,7 +673,8 @@
             "externalLink": true,
             "sortValues": true,
             "numberedList": false,
-            "minWidth": 150
+            "minWidth": 150,
+            "expandedOnInstancePage": true
         },
         {
             "id": "sourcereference",
@@ -669,7 +684,8 @@
             "externalLink": false,
             "sortValues": true,
             "numberedList": false,
-            "onlyOnInstancePage": true
+            "onlyOnInstancePage": true,
+            "expandedOnInstancePage": true
         },
         {
             "id": "uri",

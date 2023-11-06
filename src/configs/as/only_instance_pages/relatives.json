@@ -69,7 +69,8 @@
       "makeLink": true,
       "externalLink": false,
       "sortValues": true,
-      "numberedList": false
+      "numberedList": false,
+      "expandedOnInstancePage": true
     },
     {
       "id": "relative",
@@ -78,7 +79,8 @@
       "externalLink": false,
       "sortValues": true,
       "sortBy": "level",
-      "numberedList": true
+      "numberedList": true,
+      "expandedOnInstancePage": true
     },
     {
       "id": "otherrelative",
@@ -87,7 +89,8 @@
       "externalLink": false,
       "sortValues": true,
       "sortBy": "level",
-      "numberedList": true
+      "numberedList": true,
+      "expandedOnInstancePage": true
     },
     {
       "id": "gender",

@@ -43,5 +43,11 @@ UNION
     }
     GROUP BY ?id ?related__id ?related__label 
     ORDER BY DESC(COUNT(?prs))
-} 
+}
+UNION
+{
+  ?id schema:sameAs ?externalLink__id .
+  ?externalLink__id a/skos:prefLabel ?externalLink__prefLabel .
+  BIND (?externalLink__id AS ?externalLink__dataProviderUrl)
+}
 `

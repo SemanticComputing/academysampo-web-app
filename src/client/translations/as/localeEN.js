@@ -644,6 +644,12 @@ export default {
           description: `
             List of vocations associated with this organization.
           `
+        },  
+        externalLink: {
+          label: 'External link',
+          description: `
+            Links to external databases.
+          `
         },
         related: {
           label: 'Related organizations',

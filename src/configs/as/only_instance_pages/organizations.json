@@ -71,6 +71,14 @@
       "sortValues": false,
       "numberedList": true
     },
+    { "id": "externalLink",
+      "valueType": "object",
+      "makeLink": true,
+      "externalLink": true,
+      "sortValues": false,
+      "numberedList": false,
+      "expandedOnInstancePage": true
+    },
     {
       "id": "uri",
       "valueType": "object",

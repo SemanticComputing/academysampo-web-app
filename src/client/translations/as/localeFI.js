@@ -621,6 +621,13 @@ export default {
             Lista tähän organisaatioon liittyvistä ammateista tai titteleistä
           `
         },
+        externalLink: {
+          label: 'Ulkoiset linkit',
+          description: `
+            Linkkejä ulkoisiin tietokantoihin.
+            (Nämä on luotu automaattisesti, ja saattavat sisältää virheitä.)
+          `
+        },
         related: {
           label: 'Liittyvät organisaatiot',
           description: `

@@ -9,9 +9,9 @@ export const categoriesPropertiesInstancePage = `
   BIND(?id as ?uri__prefLabel)
 } 
 UNION
-{ ?id skos:related ?related__id 
+{ ?id skos:related ?related__id ; skos:prefLabel ?prefLabel__id .
   BIND("Search page at ylioppilasmatrikkeli.helsinki.fi" AS ?related__prefLabel)
-  BIND(?related__id AS ?related__dataProviderUrl)
+  BIND (CONCAT("https://ylioppilasmatrikkeli.fi/hakulomake.php?hakutermi=", STR(REPLACE(?prefLabel__id, ' ', "\\\\+"))) AS ?related__dataProviderUrl)
 }
 UNION
 { 
